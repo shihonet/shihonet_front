@@ -1,20 +1,19 @@
 {
-  "name": "vue-sample-project",
+  "name": "shihonet_front",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "api:build": "aspida"
   },
   "dependencies": {
     "@aspida/axios": "^1.14.0",
-    "@aspida/fetch": "^1.14.0",
     "@vue/cli": "^5.0.8",
     "aspida": "^1.14.0",
     "axios": "^1.6.5",
     "core-js": "^3.8.3",
-    "package-name": "^0.1.0",
     "vue-class-component": "^8.0.0-0"
   },
   "devDependencies": {
