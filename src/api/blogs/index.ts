@@ -1,8 +1,10 @@
 import type { DefineMethods } from 'aspida';
+import { blogsRequests } from '@/types/requests';
+import { blogsResponses } from '@/types/responses';
 
 export type Methods = DefineMethods<{
-    post: {
-        reqBody: null;
-        resBody: null;
+    get: {
+        reqBody: blogsRequests;
+        resBody: blogsResponses;
     };
 }>;
