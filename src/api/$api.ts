@@ -1,18 +1,22 @@
 import type { AspidaClient } from 'aspida';
-import type { Methods as Methods_dlvvmz } from './blogs';
+import type { Methods as Methods_14n3zk0 } from './api/blogs';
+
+const defaultBaseURL = 'http://localhost:3001';
 
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
-  const prefix = (baseURL === undefined ? '' : baseURL).replace(/\/$/, '');
-  const PATH0 = '/blogs';
+  const prefix = defaultBaseURL;
+  const PATH0 = '/api/blogs';
   const GET = 'GET';
 
   return {
-    blogs: {
-      get: (option: { body: Methods_dlvvmz['get']['reqBody'], config?: T | undefined }) =>
-        fetch<Methods_dlvvmz['get']['resBody']>(prefix, PATH0, GET, option).json(),
-      $get: (option: { body: Methods_dlvvmz['get']['reqBody'], config?: T | undefined }) =>
-        fetch<Methods_dlvvmz['get']['resBody']>(prefix, PATH0, GET, option).json().then(r => r.body),
-      $path: () => `${prefix}${PATH0}`,
+    api: {
+      blogs: {
+        get: (option: { body: Methods_14n3zk0['get']['reqBody'], config?: T | undefined }) =>
+          fetch<Methods_14n3zk0['get']['resBody']>(prefix, PATH0, GET, option).json(),
+        $get: (option: { body: Methods_14n3zk0['get']['reqBody'], config?: T | undefined }) =>
+          fetch<Methods_14n3zk0['get']['resBody']>(prefix, PATH0, GET, option).json().then(r => r.body),
+        $path: () => `${prefix}${PATH0}`,
+      },
     },
   };
 };

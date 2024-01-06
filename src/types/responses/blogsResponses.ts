@@ -1,4 +1,11 @@
+import {paginationResponses} from "@/types/responses/pagination";
+
 export interface blogsResponses {
-    page: number;
-    limit: number;
+    blogs: [
+        title: string,
+        member_name: string,
+        published_at: string,
+        url_path: string,
+    ]
+    pagination: paginationResponses
 }
