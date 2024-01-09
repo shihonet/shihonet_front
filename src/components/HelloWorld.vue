@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <p>{{ schedules }}</p>
+    <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -8,8 +8,7 @@
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
@@ -30,27 +29,16 @@
   </div>
 </template>
 
-<script>
-import axios from 'axios';
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
 
-export default {
-  data() {
-    return {
-      schedules: []
-    }
-  },
-  created() {
-    axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = 'https://shihonet-api-stg-f80a0764e52a.herokuapp.com';
-    axios.get('/api/schedules')
-        .then(response => {
-          console.log(response.data);
-          this.schedules = response.data;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
+@Options({
+  props: {
+    msg: String
   }
+})
+export default class HelloWorld extends Vue {
+  msg!: string
 }
 </script>
 
