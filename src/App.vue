@@ -4,7 +4,11 @@
 </template>
 
 <script lang="ts">
+import './index.css';
 
+export default {
+  name: 'App'
+}
 </script>
 
 <style>

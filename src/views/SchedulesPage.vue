@@ -10,7 +10,6 @@ import axios from 'axios';
 import HelloWorld from "@/views/components/HelloWorld.vue";
 
 export default {
-  name: 'App',
   components: {
     HelloWorld
   },
