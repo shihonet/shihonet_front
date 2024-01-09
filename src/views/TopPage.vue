@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>トップページ</p>
+    <h1>トップページ</h1>
     <HelloWorld />
   </div>
 </template>
