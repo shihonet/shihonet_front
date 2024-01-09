@@ -1,17 +1,13 @@
 <template>
-  <div>
-    <h1>トップページ</h1>
-    <HelloWorld />
-  </div>
+  <h1>トップページ</h1>
+  <img src='../assets/img.png'>
+  <h1 class="text-center text-5xl">加藤史帆</h1>
 </template>
 
 <script>
-import {defineComponent} from "vue";
-import HelloWorld from "@/views/components/HelloWorld.vue";
+export default {
 
-export default defineComponent({
-  components: {HelloWorld}
-})
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

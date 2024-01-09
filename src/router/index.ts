@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import TopPage from '../views/TopPage.vue'
 import BlogsPage from '../views/BlogsPage.vue'
 import SchedulesPage from '../views/SchedulesPage.vue'
+
 const routes = [
     {
         path: '/',
@@ -18,6 +19,11 @@ const routes = [
         name: 'schedules',
         component: SchedulesPage
     },
+    {
+        // 未定義のURLをルートにリダイレクト
+        path: '/:catchAll(.*)',
+        redirect: { name: 'main' }
+    }
 ]
 
 const router = createRouter({
