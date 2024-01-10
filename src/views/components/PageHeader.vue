@@ -1,25 +1,19 @@
 <template>
-  <p>ヘッダー</p>
+  <nav class="sticky top-0 header">
+    <div class="p-4 bg-white">
+      <p class="text-center font-semibold text-white text-3xl shihonet-base-pink">#shihonet</p>
+    </div>
+    <div class="border-b-2 border-fuchsia-300"></div>
+  </nav>
 </template>
 
-<script lang="ts">
-
+<script>
+export default {
+  name: 'PageHeader'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
