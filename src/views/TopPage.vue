@@ -1,6 +1,5 @@
 <template>
-  <h1>トップページ</h1>
-  <img src='../assets/img.png'>
+  <img src='../assets/top_image.png' class="w-full">
   <h1 class="text-center text-5xl">加藤史帆</h1>
 </template>
 
