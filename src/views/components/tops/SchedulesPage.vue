@@ -7,8 +7,8 @@
     <div class="mt-4">
       <div v-if="isSchedulePresent">
         <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
-          <span class="shiho-color">◆加藤 </span><span>{{ schedule.started_date }}【{{ schedule.category_name }}】</span>
-          <a :href="'https://www.hinatazaka46.com' + schedule.url_path">
+          <span class="shiho-color">◆加藤 </span><span>{{ schedule.startedDate }}【{{ schedule.categoryName }}】</span>
+          <a :href="'https://www.hinatazaka46.com' + schedule.urlPath">
             <p class="mt-2">{{ schedule.name }}</p>
           </a>
         </div>
@@ -24,8 +24,10 @@
 
 <script lang="ts">
 import axios, {AxiosResponse} from 'axios';
+import {defineComponent} from 'vue';
+import camelcaseKeys from 'camelcase-keys';
 
-export default {
+export default defineComponent({
   data() {
     return {
       schedules: [] as any[],
@@ -52,7 +54,7 @@ export default {
           },
         })
         .then((response: AxiosResponse) => {
-          this.schedules = response.data.schedules;
+          this.schedules = camelcaseKeys(response.data.schedules);
         })
         .catch((error: any) => {
           console.error('Error fetching data:', error);
@@ -63,7 +65,7 @@ export default {
       return !!this.schedules && this.schedules.length > 0;
     },
   },
-};
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
