@@ -8,12 +8,14 @@
       <p>「かとし」「としちゃん」という愛称で親しまれており、親友であるキャプテン佐々木久美とグループを引っ張っている。</p>
       <p>.........</p>
     </div>
-    <div class="mx-8 h-16 flex justify-center items-center text-[20px] bg-white rounded-[20px] border prof-button">
+    <router-link to="/shiho"
+                 class="mx-8 h-16 flex justify-center items-center text-[20px] bg-white rounded-[20px] border prof-button">
       加藤史帆をもっと知る
-    </div>
-    <div class="mx-8 h-16 flex justify-center items-center text-[20px] bg-white rounded-[20px] border prof-button mt-4">
+    </router-link>
+    <router-link to="/shiho/blogs"
+                 class="mx-8 h-16 flex justify-center items-center text-[20px] bg-white rounded-[20px] border prof-button mt-4">
       ブログを読む
-    </div>
+    </router-link>
   </div>
 </template>
 
