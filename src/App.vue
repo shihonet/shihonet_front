@@ -1,7 +1,7 @@
 <template>
   <PageHeader/>
   <router-view></router-view>
-  <PageFooter/>
+  <PageFooter class="mt-40"/>
 </template>
 
 <script lang="ts">
@@ -31,6 +31,10 @@ export default {
 
 .text-site-base-pink {
   color: #FF61DC;
+}
+
+.gb-site-base-pink {
+  background-color: #FF61DC;
 }
 
 .border-site-base-pink {
