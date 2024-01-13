@@ -1,15 +1,15 @@
 <template>
   <nav class="sticky top-0 header">
     <div class="p-4 bg-white">
-      <p class="text-center font-semibold text-white text-3xl shihonet-base-pink">
+      <p class="text-center font-semibold text-white text-3xl text-site-base-pink">
         <router-link to="/">としきょんのーと</router-link>
       </p>
     </div>
-    <div class="border-b-2 border-fuchsia-300"></div>
+    <div class="border-b-2 border-site-base-pink"></div>
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'PageHeader'
 }
