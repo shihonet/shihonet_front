@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TopPage from '../views/TopPage.vue'
-import BlogsPage from '../views/BlogsPage.vue'
-import SchedulesPage from '../views/SchedulesPage.vue'
+import TopPage from '../views/pages/TopPage.vue'
+import ShihoPage from "@/views/pages/ShihoPage.vue";
+import KyokoPage from "@/views/pages/KyokoPage.vue";
+import KyokoBlogsPage from "@/views/pages/KyokoBlogsPage.vue";
+import ShihoBlogsPage from "@/views/pages/ShihoBlogsPage.vue";
 
 const routes = [
     {
@@ -10,14 +12,24 @@ const routes = [
         component: TopPage
     },
     {
-        path: '/blogs',
-        name: 'blogs',
-        component: BlogsPage
+        path: '/shiho',
+        name: 'shiho',
+        component: ShihoPage
     },
     {
-        path: '/schedules',
-        name: 'schedules',
-        component: SchedulesPage
+        path: '/kyoko',
+        name: 'kyoko',
+        component: KyokoPage
+    },
+    {
+        path: '/shiho/blogs',
+        name: 'shihoBlogs',
+        component: ShihoBlogsPage
+    },
+    {
+        path: '/kyoko/blogs',
+        name: 'kyokoBlogs',
+        component: KyokoBlogsPage
     },
     {
         // 未定義のURLをルートにリダイレクト
