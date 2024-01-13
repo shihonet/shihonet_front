@@ -8,10 +8,10 @@
       <p>「かとし」「としちゃん」という愛称で親しまれており、親友であるキャプテン佐々木久美とグループを引っ張っている。</p>
       <p>.........</p>
     </div>
-    <div class="mx-8 h-16 flex justify-center items-center bg-white rounded-[20px] border prof-button">
+    <div class="mx-8 h-16 flex justify-center items-center text-[20px] bg-white rounded-[20px] border prof-button">
       齊藤京子をもっと知る
     </div>
-    <div class="mx-8 h-16 flex justify-center items-center bg-white rounded-[20px] border prof-button mt-4">
+    <div class="mx-8 h-16 flex justify-center items-center text-[20px] bg-white rounded-[20px] border prof-button mt-4">
       ブログを読む
     </div>
   </div>
