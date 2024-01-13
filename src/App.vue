@@ -29,7 +29,15 @@ export default {
   color: #2c3e50;
 }
 
-.shihonet-base-pink {
+.text-site-base-pink {
   color: #FF61DC;
+}
+
+.border-site-base-pink {
+  border-color: #FF61DC;
+}
+
+.shiho-color {
+  color: #6197FF;
 }
 </style>
