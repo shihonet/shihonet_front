@@ -1,5 +1,7 @@
 <template>
-  <p>フッター</p>
+  <div class="mt-30">
+    <p>フッター</p>
+  </div>
 </template>
 
 <script>

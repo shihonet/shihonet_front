@@ -1,7 +1,7 @@
 <template>
   <img src='../../assets/top_image.png' class="w-full">
   <SchedulesPage/>
-  <ShihoProfile/>
+  <ShihoProfile class="mb-16"/>
   <KyokoProfile/>
 </template>
 

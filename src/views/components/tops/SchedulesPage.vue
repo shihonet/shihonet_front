@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-24 ml-10 mr-10 mb-40">
+  <div class="mt-24 mx-10 mb-40">
     <div class="mb-10">
-      <p class="text-2xl text-center">今週のふたりのスケジュール</p>
+      <p class="text-2xl text-center">今週のスケジュール</p>
       <div class="border-b-2 border-site-base-pink"></div>
     </div>
     <div class="mt-4">
