@@ -2,9 +2,15 @@
   <FadeInOnScroll>
     <div class="w-full gb-site-base-pink px-6 py-6">
       <ul class="text-[20px]">
-        <li class="pb-1">Shiho Kato</li>
-        <li class="pb-1">Kyoko Saito</li>
-        <li class="pb-1">日向坂46オフィシャルサイト</li>
+        <li class="pb-1">
+          <router-link to="/shiho">Shiho Kato</router-link>
+        </li>
+        <li class="pb-1">
+          <router-link to="/kyoko">Kyoko Saito</router-link>
+        </li>
+        <li class="pb-1">
+          <a href="https://www.hinatazaka46.com/s/official/?ima=0000">日向坂46オフィシャルサイト</a>
+        </li>
       </ul>
       <img src='../../../assets/x-logo-black.png' class="mt-10 w-10">
       <div class="mt-4 text-[8px] text-center">
