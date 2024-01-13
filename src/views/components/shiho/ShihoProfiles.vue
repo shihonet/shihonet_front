@@ -2,10 +2,8 @@
   <p>加藤史帆プロフィール</p>
 </template>
 
-<script>
-export default {
-
-}
+<script lang="ts">
+export default {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

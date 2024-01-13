@@ -6,7 +6,7 @@
   <KyokoBlogs/>
 </template>
 
-<script>
+<script lang="ts">
 import KyokoProfile from "@/views/components/tops/KyokoProfile.vue";
 import KyokoSchedules from "@/views/components/kyoko/KyokoSchedules.vue";
 import KyokoBlogs from "@/views/components/kyoko/KyokoBlogs.vue";

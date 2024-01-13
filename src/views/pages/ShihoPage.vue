@@ -6,7 +6,7 @@
   <ShihoBlogs/>
 </template>
 
-<script>
+<script lang="ts">
 import ShihoProfile from "@/views/components/tops/ShihoProfile.vue";
 import ShihoSchedules from "@/views/components/shiho/ShihoSchedules.vue";
 import ShihoBlogs from "@/views/components/shiho/ShihoBlogs.vue";

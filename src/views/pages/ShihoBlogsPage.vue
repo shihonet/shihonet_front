@@ -2,7 +2,7 @@
   <ShihoAllBlogs/>
 </template>
 
-<script>
+<script lang="ts">
 import ShihoAllBlogs from "@/views/components/blogs/ShihoAllBlogs.vue";
 
 export default {

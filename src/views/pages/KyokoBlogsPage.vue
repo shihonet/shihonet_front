@@ -2,7 +2,7 @@
   <KyokoAllBlogs/>
 </template>
 
-<script>
+<script lang="ts">
 import KyokoAllBlogs from "@/views/components/blogs/KyokoAllBlogs.vue";
 
 export default {

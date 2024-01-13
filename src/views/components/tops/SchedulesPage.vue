@@ -1,33 +1,37 @@
 <template>
-  <div class="mt-24 mx-10 mb-40">
-    <div class="mb-10">
-      <p class="text-2xl text-center">今週のスケジュール</p>
-      <div class="border-b-2 border-site-base-pink"></div>
-    </div>
-    <div class="mt-4">
-      <div v-if="isSchedulePresent">
-        <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
-          <span class="shiho-color">◆加藤 </span><span>{{ schedule.startedDate }}【{{ schedule.categoryName }}】</span>
-          <a :href="'https://www.hinatazaka46.com' + schedule.urlPath">
-            <p class="mt-2">{{ schedule.name }}</p>
-          </a>
+  <FadeInOnScroll>
+    <div class="mt-24 mx-10 mb-40">
+      <div class="mb-10">
+        <p class="text-2xl text-center">今週のスケジュール</p>
+        <div class="border-b-2 border-site-base-pink"></div>
+      </div>
+      <div class="mt-4">
+        <div v-if="isSchedulePresent">
+          <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
+            <span class="shiho-color">◆加藤 </span><span>{{ schedule.startedDate }}【{{ schedule.categoryName }}】</span>
+            <a :href="'https://www.hinatazaka46.com' + schedule.urlPath">
+              <p class="mt-2">{{ schedule.name }}</p>
+            </a>
+          </div>
+        </div>
+        <div v-else>
+          <div>
+            <p>今週のスケジュールはありません</p>
+          </div>
         </div>
       </div>
-      <div v-else>
-        <div>
-          <p>今週のスケジュールはありません</p>
-        </div>
-      </div>
     </div>
-  </div>
+  </FadeInOnScroll>
 </template>
 
 <script lang="ts">
 import axios, {AxiosResponse} from 'axios';
 import {defineComponent} from 'vue';
 import camelcaseKeys from 'camelcase-keys';
+import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 
 export default defineComponent({
+  components: {FadeInOnScroll},
   data() {
     return {
       schedules: [] as any[],
@@ -35,7 +39,7 @@ export default defineComponent({
   },
   created() {
     axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = 'https://shihonet-api-stg-f80a0764e52a.herokuapp.com';
+    axios.defaults.baseURL = 'https://shihonet-api-29ca225d2dcb.herokuapp.com/';
 
     // 開始日を今日に設定
     const startDate = new Date().toISOString().split('T')[0];
