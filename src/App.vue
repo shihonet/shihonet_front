@@ -1,15 +1,17 @@
 <template>
   <PageHeader/>
   <router-view></router-view>
+  <PageFooter/>
 </template>
 
 <script lang="ts">
 import './index.css';
-import PageHeader from "@/views/components/PageHeader.vue";
+import PageHeader from "@/views/components/common/PageHeader.vue";
+import PageFooter from "@/views/components/common/PageFooter.vue";
 
 export default {
   name: 'App',
-  components: {PageHeader}
+  components: {PageHeader, PageFooter}
 }
 </script>
 

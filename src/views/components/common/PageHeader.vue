@@ -1,7 +1,9 @@
 <template>
   <nav class="sticky top-0 header">
     <div class="p-4 bg-white">
-      <p class="text-center font-semibold text-white text-3xl shihonet-base-pink">#shihonet</p>
+      <p class="text-center font-semibold text-white text-3xl shihonet-base-pink">
+        <router-link to="/">としきょんのーと</router-link>
+      </p>
     </div>
     <div class="border-b-2 border-fuchsia-300"></div>
   </nav>
