@@ -5,7 +5,7 @@
         <router-link to="/">としきょんのーと</router-link>
       </p>
     </div>
-    <div class="border-b-2 border-fuchsia-300"></div>
+    <div class="border-b-2 border-site-base-pink"></div>
   </nav>
 </template>
 
