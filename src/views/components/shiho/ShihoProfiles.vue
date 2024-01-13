@@ -1,6 +1,5 @@
 <template>
-  <img src='../assets/top_image.png' class="w-full">
-  <h1 class="text-center text-5xl">加藤史帆</h1>
+  <p>加藤史帆プロフィール</p>
 </template>
 
 <script>
@@ -11,5 +10,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+p {
+  color: #42b983;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <p>{{ blogs }}</p>
+  {{ blogs }}
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   created() {
     axios.defaults.withCredentials = true;
     axios.defaults.baseURL = 'https://shihonet-api-stg-f80a0764e52a.herokuapp.com';
-    axios.get('/api/blogs')
+    axios.get('/api/blogs?member=kyoko')
         .then(response => {
           this.blogs = response.data;
         })
