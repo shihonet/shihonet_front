@@ -1,7 +1,7 @@
 <template>
   <PageHeader/>
   <router-view></router-view>
-  <PageFooter/>
+  <PageFooter class="mt-40"/>
 </template>
 
 <script lang="ts">
@@ -26,10 +26,22 @@ export default {
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #333;
 }
 
-.shihonet-base-pink {
+.text-site-base-pink {
   color: #FF61DC;
+}
+
+.gb-site-base-pink {
+  background-color: #FF61DC;
+}
+
+.border-site-base-pink {
+  border-color: #FF61DC;
+}
+
+.shiho-color {
+  color: #6197FF;
 }
 </style>
