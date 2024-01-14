@@ -51,7 +51,7 @@ export default defineComponent({
     axios.get('/api/blogs', {
       params: {
         member: 'shiho',
-        limit: 5
+        limit: 3
       }
     })
         .then(response => {
