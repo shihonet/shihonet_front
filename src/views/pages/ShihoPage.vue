@@ -1,19 +1,22 @@
 <template>
-  <img src='../../assets/images/top_image.png' class="w-full">
-  <h1 class="text-center text-5xl">加藤史帆</h1>
-  <ShihoProfile/>
+  <FadeInOnScroll>
+    <img src='../../assets/images/top_shiho.png' class="w-full">
+  </FadeInOnScroll>
+  <ShihoDetailProfiles/>
   <ShihoSchedules/>
   <ShihoBlogs/>
 </template>
 
 <script lang="ts">
-import ShihoProfile from "@/views/components/tops/ShihoProfile.vue";
+import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import ShihoSchedules from "@/views/components/shiho/ShihoSchedules.vue";
 import ShihoBlogs from "@/views/components/shiho/ShihoBlogs.vue";
+import ShihoDetailProfiles from "@/views/components/shiho/ShihoDetailProfiles.vue";
+import {defineComponent} from "vue";
 
-export default {
-  components: {ShihoBlogs, ShihoSchedules, ShihoProfile}
-}
+export default defineComponent({
+  components: {ShihoDetailProfiles, ShihoBlogs, ShihoSchedules, FadeInOnScroll}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
