@@ -44,4 +44,8 @@ export default {
 .shiho-color {
   color: #6197FF;
 }
+
+.kyoko-color {
+  color: #FF61DC;
+}
 </style>
