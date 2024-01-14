@@ -7,16 +7,23 @@
   <div class="mx-2 mt-2">
     <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
       <FadeInOnScroll>
-        <figure class="transition-all duration-300 cursor-pointer hover:grayscale-0">
+        <div class="relative">
           <img :src="blog.thumbnail_image_url" class="rounded-lg">
-          <figcaption class="absolute px-4 text-lg text-white bottom-6">
-            <div class="">{{ blog.published_at }}</div>
-            <div class="">{{ blog.title }}</div>
-          </figcaption>
-        </figure>
+          <div class="absolute bottom-0 left-0 right-0 bg-shiho-color bg-opacity-50 text-white px-4 py-2 rounded-lg">
+            <div class="text-[12px] font-extrabold">{{ blog.published_at }}</div>
+            <div class="text-[16px] font-extrabold">{{ blog.title }}</div>
+          </div>
+        </div>
       </FadeInOnScroll>
     </div>
   </div>
+  <FadeInOnScroll>
+    <div class="mt-10">
+      <router-link to="/shiho/blogs">
+        <MoreView :borderClass="'border-shiho-color'"/>
+      </router-link>
+    </div>
+  </FadeInOnScroll>
 </template>
 
 <script lang="ts">
@@ -24,9 +31,10 @@ import axios from 'axios';
 import {defineComponent} from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitleForShiho from "@/views/components/common/TitleForShiho.vue";
+import MoreView from "@/views/components/common/MoreView.vue";
 
 export default defineComponent({
-  components: {TitleForShiho, FadeInOnScroll},
+  components: {MoreView, TitleForShiho, FadeInOnScroll},
   data() {
     return {
       blogs: [] as any[],

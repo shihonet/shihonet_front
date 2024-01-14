@@ -45,12 +45,21 @@ export default {
   color: #6197FF;
 }
 
+.bg-shiho-color {
+  background-color: #6197FF;
+  opacity: 0.8;
+}
+
 .border-shiho-color {
   border-color: #6197FF;
 }
 
 .kyoko-color {
   color: #FF61DC;
+}
+
+.bg-kyoko-color {
+  background-color: #FF61DC;
 }
 
 .border-kyoko-color {
