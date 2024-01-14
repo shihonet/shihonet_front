@@ -8,8 +8,10 @@
       <div class="mt-4">
         <div v-if="isSchedulePresent">
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
-            <span class="shiho-color">◆加藤 </span><span>{{ schedule.startedDate }}【{{ schedule.categoryName }}】</span>
-            <a :href="'https://www.hinatazaka46.com' + schedule.urlPath">
+            <span class="shiho-color mr-2" v-if="memberIsShiho(schedule.members)">◆{{ schedule.members }}</span>
+            <span class="kyoko-color mr-2" v-if="memberIsKyoko(schedule.members)">◆{{ schedule.members }}</span>
+            <span>{{ schedule.started_date }}【{{ schedule.category_name }}】</span>
+            <a :href="'https://www.hinatazaka46.com' + schedule.url_path">
               <p class="mt-2">{{ schedule.name }}</p>
             </a>
           </div>
@@ -66,7 +68,15 @@ export default defineComponent({
   computed: {
     isSchedulePresent(): boolean {
       return !!this.schedules && this.schedules.length > 0;
+    }
+  },
+  methods: {
+    memberIsShiho(members: string): boolean {
+      return members === '加藤'
     },
+    memberIsKyoko(members: string): boolean {
+      return members === '齊藤'
+    }
   },
 });
 </script>
