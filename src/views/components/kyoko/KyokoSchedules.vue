@@ -5,7 +5,6 @@
 <script lang="ts">
 import axios from 'axios';
 import {defineComponent} from "vue";
-import camelcaseKeys from "camelcase-keys";
 
 export default defineComponent({
   data() {
@@ -33,7 +32,7 @@ export default defineComponent({
       },
     })
         .then(response => {
-          this.schedules = camelcaseKeys(response.data);
+          this.schedules = response.data;
         })
         .catch(error => {
           console.error('Error fetching data:', error);

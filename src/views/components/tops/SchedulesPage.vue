@@ -27,7 +27,6 @@
 <script lang="ts">
 import axios, {AxiosResponse} from 'axios';
 import {defineComponent} from 'vue';
-import camelcaseKeys from 'camelcase-keys';
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 
 export default defineComponent({
@@ -58,7 +57,7 @@ export default defineComponent({
           },
         })
         .then((response: AxiosResponse) => {
-          this.schedules = camelcaseKeys(response.data.schedules);
+          this.schedules = response.data.schedules;
         })
         .catch((error: any) => {
           console.error('Error fetching data:', error);
