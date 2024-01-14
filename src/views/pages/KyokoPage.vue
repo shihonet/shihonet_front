@@ -1,5 +1,5 @@
 <template>
-  <img src='../../assets/top_image.png' class="w-full">
+  <img src='../../assets/images/top_image.png' class="w-full">
   <h1 class="text-center text-5xl">齊藤京子</h1>
   <KyokoProfile/>
   <KyokoSchedules/>

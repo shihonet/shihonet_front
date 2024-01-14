@@ -1,8 +1,8 @@
 <template>
   <FadeInOnScroll>
     <div class="mx-4 py-8 bg-shiho rounded-md">
-      <img src='../../../assets/shiho_kato_name.png' class="mx-auto">
-      <img src='../../../assets/shiho_kato_image.png' class="mx-auto mt-6 w-2/3">
+      <img src='../../../assets/images/shiho_kato_name.png' class="mx-auto">
+      <img src='../../../assets/images/shiho_kato_image.png' class="mx-auto mt-6 w-2/3">
       <div class="mx-4 mt-6 mb-14">
         <p>日向坂46一期生。</p>
         <p>グループのお姉さん的存在。</p>

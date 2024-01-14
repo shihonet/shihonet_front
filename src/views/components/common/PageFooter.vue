@@ -12,7 +12,7 @@
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000">日向坂46オフィシャルサイト</a>
         </li>
       </ul>
-      <img src='../../../assets/x-logo-black.png' class="mt-10 w-10">
+      <img src='../../../assets/images/x-logo-black.png' class="mt-10 w-10">
       <div class="mt-4 text-[8px] text-center">
         <p>© 2024 #shihonet, developing by @toshikyon_net.</p>
         <p>このサイトはSeed & Flower、SMEその他各種権利者から許諾等を得ているものではありません。</p>
