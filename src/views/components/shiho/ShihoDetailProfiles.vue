@@ -32,7 +32,7 @@
         <div class="h-6"></div>
         <tr class="mb-2">
           <td>カラー</td>
-          <td>青×青</td>
+          <td>青 × 青</td>
         </tr>
         <tr class="mb-2">
           <td>愛称</td>
@@ -60,8 +60,7 @@ export default defineComponent({
   components: {TitlePart, FadeInOnScroll},
   data() {
     return {
-      pageTitle: "PROFILE",
-      title: "BLOG",
+      title: "PROFILE",
       borderClass: "border-shiho-color",
       textColorClass: "shiho-color"
     }

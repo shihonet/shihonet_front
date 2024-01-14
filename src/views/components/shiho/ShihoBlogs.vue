@@ -9,10 +9,12 @@
       <FadeInOnScroll>
         <div class="relative">
           <img :src="blog.thumbnail_image_url" class="rounded-lg">
-          <div class="absolute bottom-0 left-0 right-0 bg-shiho-color bg-opacity-50 text-white px-4 py-2 rounded-lg">
-            <div class="text-[12px] font-extrabold">{{ blog.published_at }}</div>
-            <div class="text-[16px] font-extrabold">{{ blog.title }}</div>
-          </div>
+          <a :href="'https://www.hinatazaka46.com' + blog.url_path">
+            <div class="absolute bottom-0 left-0 right-0 bg-shiho-color bg-opacity-50 text-white px-4 py-2 rounded-lg">
+              <div class="text-[12px] font-extrabold">{{ blog.published_at }}</div>
+              <div class="text-[16px] font-extrabold">{{ blog.title }}</div>
+            </div>
+          </a>
         </div>
       </FadeInOnScroll>
     </div>
@@ -49,7 +51,7 @@ export default defineComponent({
     axios.get('/api/blogs', {
       params: {
         member: 'shiho',
-        limit: 3
+        limit: 5
       }
     })
         .then(response => {

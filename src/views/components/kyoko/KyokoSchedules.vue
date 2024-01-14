@@ -33,8 +33,7 @@ export default defineComponent({
   data() {
     return {
       schedules: [] as any[],
-      pageTitle: "SCHEDULE",
-      title: "BLOG",
+      title: "SCHEDULE",
       borderClass: "border-kyoko-color",
       textColorClass: "kyoko-color"
     }

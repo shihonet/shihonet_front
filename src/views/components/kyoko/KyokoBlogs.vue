@@ -9,10 +9,12 @@
       <FadeInOnScroll>
         <div class="relative">
           <img :src="blog.thumbnail_image_url" class="rounded-lg">
-          <div class="absolute bottom-0 left-0 right-0 bg-kyoko-color bg-opacity-50 text-white px-4 py-2 rounded-lg">
-            <div class="text-[12px] font-extrabold">{{ blog.published_at }}</div>
-            <div class="text-[16px] font-extrabold">{{ blog.title }}</div>
-          </div>
+          <a :href="'https://www.hinatazaka46.com' + blog.url_path">
+            <div class="absolute bottom-0 left-0 right-0 bg-kyoko-color bg-opacity-50 text-white px-4 py-2 rounded-lg">
+              <div class="text-[12px] font-extrabold">{{ blog.published_at }}</div>
+              <div class="text-[16px] font-extrabold">{{ blog.title }}</div>
+            </div>
+          </a>
         </div>
       </FadeInOnScroll>
     </div>
@@ -38,7 +40,6 @@ export default defineComponent({
   data() {
     return {
       blogs: [] as any[],
-      pageTitle: "BLOG",
       title: "BLOG",
       borderClass: "border-kyoko-color",
       textColorClass: "kyoko-color"
@@ -65,7 +66,5 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-p {
-  color: #42b983;
-}
+
 </style>
