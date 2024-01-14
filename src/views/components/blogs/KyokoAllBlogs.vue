@@ -4,25 +4,33 @@
 
 <script lang="ts">
 import axios from 'axios';
+import {defineComponent} from "vue";
+import camelcaseKeys from "camelcase-keys";
 
-export default {
+export default defineComponent({
   data() {
     return {
-      blogs: []
+      blogs: [] as any[]
     }
   },
   created() {
     axios.defaults.withCredentials = true;
     axios.defaults.baseURL = 'https://shihonet-api-29ca225d2dcb.herokuapp.com/';
-    axios.get('/api/blogs?member=kyoko')
+    axios.get('/api/blogs', {
+      params: {
+        member: 'kyoko',
+        page: 1,
+        limit: 15
+      }
+    })
         .then(response => {
-          this.blogs = response.data;
+          this.blogs = camelcaseKeys(response.data);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
         });
   }
-}
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

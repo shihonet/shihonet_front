@@ -34,7 +34,7 @@ export default defineComponent({
   components: {FadeInOnScroll},
   data() {
     return {
-      schedules: [] as any[],
+      schedules: [] as any[]
     };
   },
   created() {
