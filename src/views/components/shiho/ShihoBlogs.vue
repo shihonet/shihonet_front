@@ -2,19 +2,24 @@
   {{ blogs }}
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   data() {
     return {
-      blogs: []
+      blogs: [] as any[]
     }
   },
   created() {
     axios.defaults.withCredentials = true;
     axios.defaults.baseURL = 'https://shihonet-api-29ca225d2dcb.herokuapp.com/';
-    axios.get('/api/blogs?member=shiho')
+    axios.get('/api/blogs', {
+      params: {
+        member: 'shiho'
+      }
+    })
         .then(response => {
           this.blogs = response.data;
         })
@@ -22,7 +27,7 @@ export default {
           console.error('Error fetching data:', error);
         });
   }
-}
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
