@@ -1,19 +1,22 @@
 <template>
-  <img src='../../assets/top_image.png' class="w-full">
-  <h1 class="text-center text-5xl">齊藤京子</h1>
-  <KyokoProfile/>
+  <FadeInOnScroll>
+    <img src='../../assets/images/top_kyoko.png' class="w-full">
+  </FadeInOnScroll>
+  <KyokoDetailProfiles/>
   <KyokoSchedules/>
   <KyokoBlogs/>
 </template>
 
 <script lang="ts">
-import KyokoProfile from "@/views/components/tops/KyokoProfile.vue";
+import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import KyokoSchedules from "@/views/components/kyoko/KyokoSchedules.vue";
 import KyokoBlogs from "@/views/components/kyoko/KyokoBlogs.vue";
+import KyokoDetailProfiles from "@/views/components/kyoko/KyokoDetailProfiles.vue";
+import {defineComponent} from "vue";
 
-export default {
-  components: {KyokoBlogs, KyokoSchedules, KyokoProfile}
-}
+export default defineComponent({
+  components: {KyokoDetailProfiles, KyokoBlogs, KyokoSchedules, FadeInOnScroll}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

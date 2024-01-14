@@ -15,10 +15,10 @@
     </div>
   </FadeInOnScroll>
   <FadeInOnScroll>
-    <img src='../../assets/shiho_kato_image.png' class="float-right shadow-xl w-3/4">
+    <img src='../../assets/images/toshikyon1.png' class="float-right shadow-xl w-3/4">
   </FadeInOnScroll>
   <FadeInOnScroll>
-    <img src='../../assets/kyoko_saito_image.png' class="shadow-xl w-3/4">
+    <img src='../../assets/images/toshikyon2.png' class="shadow-xl w-3/4">
   </FadeInOnScroll>
 
   <SchedulesPage/>
