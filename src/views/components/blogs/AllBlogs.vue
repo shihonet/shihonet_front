@@ -4,9 +4,14 @@
 
 <script lang="ts">
 import axios from 'axios';
-import {defineComponent} from "vue";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
+  props: {
+    member: {
+      type: String as PropType<string>
+    },
+  },
   data() {
     return {
       blogs: [] as any[]
@@ -17,7 +22,7 @@ export default defineComponent({
     axios.defaults.baseURL = 'https://shihonet-api-29ca225d2dcb.herokuapp.com/';
     axios.get('/api/blogs', {
       params: {
-        member: 'shiho',
+        member: this.member,
         page: 1,
         limit: 15
       }
@@ -34,7 +39,5 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-p {
-  color: #42b983;
-}
+
 </style>

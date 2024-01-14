@@ -1,13 +1,19 @@
 <template>
-  <ShihoAllBlogs/>
+  <AllBlogs :member="member"/>
 </template>
 
 <script lang="ts">
-import ShihoAllBlogs from "@/views/components/blogs/ShihoAllBlogs.vue";
+import {defineComponent} from "vue";
+import AllBlogs from "@/views/components/blogs/AllBlogs.vue";
 
-export default {
-  components: {ShihoAllBlogs}
-}
+export default defineComponent({
+  components: {AllBlogs},
+  data() {
+    return {
+      member: 'shiho'
+    }
+  }
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
