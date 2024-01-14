@@ -1,8 +1,8 @@
 <template>
   <FadeInOnScroll>
     <div class="mx-4 py-8 bg-kyoko rounded-md">
-      <img src='../../../assets/kyoko_saito_name.png' class="mx-auto">
-      <img src='../../../assets/kyoko_saito_image.png' class="mx-auto mt-6 w-2/3">
+      <img src='../../../assets/images/kyoko_saito_name.png' class="mx-auto">
+      <img src='../../../assets/images/kyoko_saito_image.png' class="mx-auto mt-6 w-2/3">
       <div class="mx-4 mt-6 mb-14">
         <p>日向坂46一期生。</p>
         <p>グループのお姉さん的存在。</p>
