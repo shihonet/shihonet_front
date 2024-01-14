@@ -1,18 +1,21 @@
 <template>
-  <nav class="sticky top-0 header">
+  <div class="fixed z-50 w-full top-0">
     <div class="p-4 bg-white">
-      <p class="text-center font-semibold text-white text-3xl text-site-base-pink">
+      <span class="ml-2 font-semibold text-white text-3xl text-site-base-pink">
         <router-link to="/">としきょんのーと</router-link>
-      </p>
+      </span>
+      <span class="">
+        <!-- TODO: ハンバーガーメニュー-->
+      </span>
     </div>
     <div class="border-b-2 border-site-base-pink"></div>
-  </nav>
+  </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: 'PageHeader'
-}
+import {defineComponent} from "vue";
+
+export default  defineComponent({})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
