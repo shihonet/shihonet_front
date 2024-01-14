@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-40 mb-10 mx-10">
-      <title-for-shiho :title="pageTitle"/>
+      <title-part :title="title" :border-class="borderClass" :textColorClass="textColorClass"/>
     </div>
   </FadeInOnScroll>
   <div class="mx-2 mt-2">
@@ -30,15 +30,17 @@
 import axios from 'axios';
 import {defineComponent} from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import TitleForShiho from "@/views/components/common/TitleForShiho.vue";
+import TitlePart from "@/views/components/common/TitlePart.vue";
 import MoreView from "@/views/components/common/MoreView.vue";
 
 export default defineComponent({
-  components: {MoreView, TitleForShiho, FadeInOnScroll},
+  components: {MoreView, TitlePart, FadeInOnScroll},
   data() {
     return {
       blogs: [] as any[],
-      pageTitle: "BLOG"
+      title: "BLOG",
+      borderClass: "border-shiho-color",
+      textColorClass: "shiho-color"
     }
   },
   created() {
@@ -62,7 +64,5 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-p {
-  color: #42b983;
-}
+
 </style>

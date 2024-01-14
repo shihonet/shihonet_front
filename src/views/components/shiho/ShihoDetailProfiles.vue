@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-40 mb-10 mx-10">
-      <title-for-shiho :title="pageTitle"/>
+      <title-part :title="title" :border-class="borderClass" :textColorClass="textColorClass"/>
     </div>
     <p class="text-center text-[20px] mb-4 font-light">加藤 史帆</p>
     <img src='../../../assets/images/artist_image_shiho.png' class="mx-auto w-[180px]">
@@ -53,14 +53,17 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import TitleForShiho from "@/views/components/common/TitleForShiho.vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import TitlePart from "@/views/components/common/TitlePart.vue";
 
 export default defineComponent({
-  components: {FadeInOnScroll, TitleForShiho},
+  components: {TitlePart, FadeInOnScroll},
   data() {
     return {
-      pageTitle: "PROFILE"
+      pageTitle: "PROFILE",
+      title: "BLOG",
+      borderClass: "border-shiho-color",
+      textColorClass: "shiho-color"
     }
   },
 })

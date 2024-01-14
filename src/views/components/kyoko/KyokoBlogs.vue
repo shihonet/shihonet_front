@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-40 mb-10 mx-10">
-      <title-for-kyoko :title="pageTitle"/>
+      <title-part :title="title" :border-class="borderClass" :textColorClass="textColorClass"/>
     </div>
   </FadeInOnScroll>
   <div class="mx-2 mt-2">
@@ -30,15 +30,18 @@
 import axios from 'axios';
 import {defineComponent} from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import TitleForKyoko from "@/views/components/common/TitleForKyoko.vue";
 import MoreView from "@/views/components/common/MoreView.vue";
+import TitlePart from "@/views/components/common/TitlePart.vue";
 
 export default defineComponent({
-  components: {MoreView, TitleForKyoko, FadeInOnScroll},
+  components: {TitlePart, MoreView, FadeInOnScroll},
   data() {
     return {
       blogs: [] as any[],
-      pageTitle: "BLOG"
+      pageTitle: "BLOG",
+      title: "BLOG",
+      borderClass: "border-kyoko-color",
+      textColorClass: "kyoko-color"
     }
   },
   created() {
