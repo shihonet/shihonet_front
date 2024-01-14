@@ -49,9 +49,6 @@
       </table>
     </div>
   </FadeInOnScroll>
-  <FadeInOnScroll>
-    <div class="text-[20px] text-center mx-4 ">Instagram</div>
-  </FadeInOnScroll>
 </template>
 
 <script lang="ts">
