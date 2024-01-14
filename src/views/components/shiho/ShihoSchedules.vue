@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="my-40 mx-10">
-      <title-for-shiho :title="pageTitle"/>
+      <title-part :title="title" :border-class="borderClass" :textColorClass="textColorClass"/>
       <div class="mt-4">
         <div v-if="isSchedulePresent">
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
@@ -26,14 +26,16 @@
 import axios from 'axios';
 import {defineComponent} from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import TitleForShiho from "@/views/components/common/TitleForShiho.vue";
+import TitlePart from "@/views/components/common/TitlePart.vue";
 
 export default defineComponent({
-  components: {FadeInOnScroll, TitleForShiho},
+  components: {TitlePart, FadeInOnScroll},
   data() {
     return {
       schedules: [] as any[],
-      pageTitle: "SCHEDULE"
+      title: "SCHEDULE",
+      borderClass: "border-shiho-color",
+      textColorClass: "shiho-color"
     }
   },
   created() {
