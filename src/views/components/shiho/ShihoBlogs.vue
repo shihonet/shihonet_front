@@ -3,8 +3,22 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios';
 import {defineComponent} from "vue";
+import api from '../../../api/$api.ts';
+
+export const getBlogs = async () => {
+  try {
+    const res = await api.api.blogs.get(
+        {
+          body: {
+            member: 'shiho'
+          }
+        });
+    return {res, error: null};
+  } catch (e) {
+    return {res: null, error: e};
+  }
+};
 
 export default defineComponent({
   data() {
@@ -13,19 +27,7 @@ export default defineComponent({
     }
   },
   created() {
-    axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = 'https://shihonet-api-29ca225d2dcb.herokuapp.com/';
-    axios.get('/api/blogs', {
-      params: {
-        member: 'shiho'
-      }
-    })
-        .then(response => {
-          this.blogs = response.data;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
+    this.blogs = getBlogs;
   }
 });
 </script>
