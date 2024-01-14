@@ -1,8 +1,7 @@
 <template>
-  <div class="flex items-center justify-center">
-    <span class="flex-1 border-b-2 border-shiho-color"></span>
-    <p class="text-[32px] text-center mx-4 shiho-color">{{ title }}</p>
-    <span class="flex-1 border-b-2 border-shiho-color"></span>
+  <div class="flex flex-col items-center justify-center">
+    <p class="text-[20px]">もっと見る</p>
+    <div :class="borderClass" class="border-b-4 w-[120px] "></div>
   </div>
 </template>
 
@@ -11,9 +10,9 @@ import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   props: {
-    title: {
+    borderClass: {
       type: String as PropType<string>,
-      required: true,
+      default: "border-site-base-pink",
     },
   },
 });
