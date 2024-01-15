@@ -1,5 +1,5 @@
 <template>
-  <AllBlogs :member="member" />
+  <AllBlogs :member="member" :page="page"/>
 </template>
 
 <script lang="ts">
@@ -11,6 +11,7 @@ export default defineComponent({
   data() {
     return {
       member: "shiho",
+      page: 1
     };
   },
 });
