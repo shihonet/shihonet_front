@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import axios from "axios";
-
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
