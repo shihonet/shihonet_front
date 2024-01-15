@@ -18,8 +18,7 @@
       <div class="mt-4 text-[8px] text-center">
         <p>© 2024 #shihonet, developing by @toshikyon_net.</p>
         <p>
-          このサイトはSeed &
-          Flower、SMEその他各種権利者から許諾等を得ているものではありません。
+          このサイトはSeed & Flowerその他各種権利者から許諾等を得ているものではありません。
         </p>
       </div>
     </div>
