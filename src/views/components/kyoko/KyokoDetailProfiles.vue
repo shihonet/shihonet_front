@@ -1,10 +1,17 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-40 mb-10 mx-10">
-      <title-part :title="title" :border-class="borderClass" :textColorClass="textColorClass"/>
+      <title-part
+        :title="title"
+        :border-class="borderClass"
+        :textColorClass="textColorClass"
+      />
     </div>
     <p class="text-center text-[20px] mb-4 font-light">齊藤 京子</p>
-    <img src='../../../assets/images/artist_image_kyoko.png' class="mx-auto w-[180px]">
+    <img
+      src="../../../assets/images/artist_image_kyoko.png"
+      class="mx-auto w-[180px]"
+    />
   </FadeInOnScroll>
   <FadeInOnScroll>
     <div class="flex items-center justify-center mt-14 mx-6 mb-16">
@@ -52,20 +59,20 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
 
 export default defineComponent({
-  components: {TitlePart, FadeInOnScroll},
+  components: { TitlePart, FadeInOnScroll },
   data() {
     return {
       title: "PROFILE",
       borderClass: "border-kyoko-color",
-      textColorClass: "kyoko-color"
-    }
+      textColorClass: "kyoko-color",
+    };
   },
-})
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
