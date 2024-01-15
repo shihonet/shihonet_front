@@ -7,7 +7,8 @@
             <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <a :href="'https://www.hinatazaka46.com' + blog.url_path">
               <div
-                class="absolute bottom-0 left-0 right-0 bg-shiho-color bg-opacity-50 text-white px-4 py-2 rounded-lg"
+                class="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white px-4 py-2 rounded-lg"
+                :class="bgBlogColor"
               >
                 <div class="text-[12px] font-extrabold">
                   {{ blog.published_at }}
@@ -25,7 +26,7 @@
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
               v-if="page > 2"
               @click="setPage(page > skipPages ? page - skipPages : 1 - page)"
-              >{{ page > skipPages ? - skipPages : 1 - page }}</span
+              >{{ page > skipPages ? -skipPages : 1 - page }}</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
@@ -71,6 +72,10 @@ export default defineComponent({
   props: {
     member: {
       type: String as PropType<string>,
+    },
+    bgBlogColor: {
+      type: String as PropType<string>,
+      // default: "gb-site-base-pink",
     },
   },
   data() {
