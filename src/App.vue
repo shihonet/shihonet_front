@@ -35,6 +35,7 @@ export default {
 
 .gb-site-base-pink {
   background-color: #ff61dc;
+  opacity: 0.8;
 }
 
 .border-site-base-pink {
@@ -46,6 +47,10 @@ export default {
 }
 
 .bg-shiho-color {
+  background-color: #6197ff;
+}
+
+.bg-shiho-blog-color {
   background-color: #6197ff;
   opacity: 0.8;
 }
@@ -60,6 +65,11 @@ export default {
 
 .bg-kyoko-color {
   background-color: #ff61dc;
+}
+
+.bg-kyoko-blog-color {
+  background-color: #ff61dc;
+  opacity: 0.8;
 }
 
 .border-kyoko-color {
