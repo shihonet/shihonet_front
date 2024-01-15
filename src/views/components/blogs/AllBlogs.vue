@@ -22,10 +22,12 @@
         <div class="flex justify-center items-center text-[20px] font-bold">
           <span
             class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white"
+            @click="setPage(1)"
             >＜＜</span
           >
           <span
             class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white"
+            @click="setPage(this.page - 1)"
             >＜</span
           >
           <span
@@ -34,10 +36,12 @@
           >
           <span
             class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white"
+            @click="setPage(this.page + 1)"
             >＞</span
           >
           <span
             class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white"
+            @click="setPage(this.page + 20)"
             >＞＞</span
           >
         </div>
@@ -57,33 +61,43 @@ export default defineComponent({
     member: {
       type: String as PropType<string>,
     },
-    page: {
-      type: Number,
-      default: 1,
-      required: true,
-    }
   },
   data() {
     return {
       blogs: [] as any[],
-      limit: 1,
+      page: 1,
+      limit: 20,
     };
   },
   created() {
-    axios
-      .get("/api/blogs", {
-        params: {
-          member: this.member,
-          page: this.page,
-          limit: this.limit,
-        },
-      })
-      .then((response) => {
-        this.blogs = response.data.blogs;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    this.fetchData();
+  },
+  watch: {
+    page() {
+      this.setPage(this.page);
+      this.fetchData();
+    },
+  },
+  methods: {
+    fetchData() {
+      axios
+        .get("/api/blogs", {
+          params: {
+            member: this.member,
+            page: this.page,
+            limit: this.limit,
+          },
+        })
+        .then((response) => {
+          this.blogs = response.data.blogs;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    },
+    setPage(page: number) {
+      this.page = page;
+    },
   },
 });
 </script>
