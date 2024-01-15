@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center">
     <p class="text-[20px]">もっと見る</p>
-    <div :class="borderClass" class="border-b-4 w-[120px] "></div>
+    <div :class="borderClass" class="border-b-4 w-[120px]"></div>
   </div>
 </template>
 
@@ -19,6 +19,4 @@ export default defineComponent({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>

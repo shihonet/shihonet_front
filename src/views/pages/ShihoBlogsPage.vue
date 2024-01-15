@@ -1,22 +1,20 @@
 <template>
-  <AllBlogs :member="member"/>
+  <AllBlogs :member="member" />
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import AllBlogs from "@/views/components/blogs/AllBlogs.vue";
 
 export default defineComponent({
-  components: {AllBlogs},
+  components: { AllBlogs },
   data() {
     return {
-      member: 'shiho'
-    }
-  }
+      member: "shiho",
+    };
+  },
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>
