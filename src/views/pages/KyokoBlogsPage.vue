@@ -22,7 +22,7 @@ export default defineComponent({
   data() {
     return {
       member: "kyoko",
-      title: "#kyonkoblog",
+      title: "#Kyonkoblog",
       borderClass: "border-kyoko-color",
       textColorClass: "kyoko-color",
       bgBlogColor: "bg-kyoko-blog-color"
