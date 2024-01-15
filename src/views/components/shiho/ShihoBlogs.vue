@@ -54,8 +54,6 @@ export default defineComponent({
     };
   },
   created() {
-    axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = "https://shihonet-api-29ca225d2dcb.herokuapp.com/";
     axios
       .get("/api/blogs", {
         params: {
