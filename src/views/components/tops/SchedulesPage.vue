@@ -59,7 +59,7 @@ export default defineComponent({
 
     axios
       .get(
-        "/api/schedules",
+        "https://shihonet-api-29ca225d2dcb.herokuapp.com/api/schedules",
         {
           withCredentials: true,
           params: {
