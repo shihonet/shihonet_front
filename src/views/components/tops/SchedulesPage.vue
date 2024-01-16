@@ -58,13 +58,17 @@ export default defineComponent({
     const formattedEndDate = endDate.toISOString().split("T")[0];
 
     axios
-      .get("/api/schedules", {
-        params: {
-          member_pattern_number: 3,
-          started_date: startDate,
-          ended_date: formattedEndDate,
-        },
-      })
+      .get(
+        "/api/schedules",
+        {
+          withCredentials: true,
+          params: {
+            member_pattern_number: 3,
+            started_date: startDate,
+            ended_date: formattedEndDate,
+          },
+        }
+      )
       .then((response: AxiosResponse) => {
         this.schedules = response.data.schedules;
       })
