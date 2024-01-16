@@ -1,10 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Vue アプリケーションのビルドファイルが存在するディレクトリを指定
+// CORS を有効にする
+app.use(cors());
+
 const distPath = path.join(__dirname, 'dist');
 
 // express.static で dist ディレクトリを静的ファイルとして提供
