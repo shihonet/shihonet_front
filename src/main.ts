@@ -6,6 +6,7 @@ import axios from "axios";
 createApp(App).use(router).mount("#app");
 
 axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = "X-CSRF-Token";
 axios.defaults.baseURL =
     // prod
     "https://shihonet-api-29ca225d2dcb.herokuapp.com/";
