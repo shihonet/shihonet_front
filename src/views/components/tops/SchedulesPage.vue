@@ -64,6 +64,9 @@ export default defineComponent({
           started_date: startDate,
           ended_date: formattedEndDate,
         },
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
       })
       .then((response: AxiosResponse) => {
         this.schedules = response.data.schedules;
