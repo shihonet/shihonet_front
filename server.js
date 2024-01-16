@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 // CORS を有効にする
 app.use(cors({
     origin: 'https://toshikyon-fansite-9a0912894d4b.herokuapp.com/',  // クライアントのオリジン
-    credentials: true,  // 認証情報（Cookieなど）の送信を許可
 }));
 
 const distPath = path.join(__dirname, 'dist');
