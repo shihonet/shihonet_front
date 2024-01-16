@@ -6,7 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // CORS を有効にする
-app.use(cors());
+app.use(cors({
+    origin: 'https://shihonet-api-29ca225d2dcb.herokuapp.com/',  // クライアントのオリジン
+    credentials: true,  // 認証情報（Cookieなど）の送信を許可
+}));
 
 const distPath = path.join(__dirname, 'dist');
 
