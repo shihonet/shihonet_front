@@ -10,15 +10,14 @@ app.use(cors({
     origin: 'https://toshikyon-fansite-9a0912894d4b.herokuapp.com/',  // クライアントのオリジン
 }));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 const distPath = path.join(__dirname, 'dist');
 
 // express.static で dist ディレクトリを静的ファイルとして提供
 app.use(express.static(distPath));
-
-// ルートへのリクエストに対するレスポンス
-app.get('/', (req, res) => {
-    // index.html は静的ファイルとして提供されるため、ここでは何もしなくて良い
-});
 
 // サーバーの起動
 app.listen(PORT, () => {
