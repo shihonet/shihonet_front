@@ -1,14 +1,10 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-10 mb-10 mx-6">
-      <title-part
-        :title="title"
-        :border-class="borderClass"
-        :textColorClass="textColorClass"
-      />
+      <TitlePart :title="title" />
     </div>
   </FadeInOnScroll>
-  <all-blogs :member="member" :bgBlogColor="bgBlogColor" />
+  <AllBlogs />
 </template>
 
 <script lang="ts">
@@ -21,11 +17,8 @@ export default defineComponent({
   components: { TitlePart, FadeInOnScroll, AllBlogs },
   data() {
     return {
-      member: "kyoko",
-      title: "#Kyonkoblog",
-      borderClass: "border-kyoko-color",
-      textColorClass: "kyoko-color",
-      bgBlogColor: "bg-kyoko-blog-color"
+      member: "top",
+      title: "#shihoblog",
     };
   },
 });

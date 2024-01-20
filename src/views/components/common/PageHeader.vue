@@ -1,14 +1,14 @@
 <template>
   <div class="sticky z-50 w-full top-0">
     <div class="p-4 bg-white">
-      <span class="ml-2 font-semibold text-white text-3xl text-site-base-pink">
-        <router-link to="/">としきょんのーと</router-link>
+      <span class="ml-2 font-semibold text-white text-3xl text-site-color">
+        <router-link to="/">#shihonet</router-link>
       </span>
       <span class="">
         <!-- TODO: ハンバーガーメニュー-->
       </span>
     </div>
-    <div class="border-b-2 border-site-base-pink"></div>
+    <div class="border-b-2 border-site-color"></div>
   </div>
 </template>
 

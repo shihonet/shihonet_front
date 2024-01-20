@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="my-40 mx-10">
-      <title-part
+      <TitlePart
         :title="title"
         :border-class="borderClass"
         :textColorClass="textColorClass"
@@ -9,7 +9,7 @@
       <div class="mt-4">
         <div v-if="isSchedulePresent">
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
-            <span class="shiho-color mr-2">◆{{ schedule.members }}</span>
+            <span class="text-site-color mr-2">◆{{ schedule.members }}</span>
             <span
               >{{ schedule.started_date }}【{{ schedule.category_name }}】</span
             >
@@ -40,8 +40,8 @@ export default defineComponent({
     return {
       schedules: [] as any[],
       title: "SCHEDULE",
-      borderClass: "border-shiho-color",
-      textColorClass: "shiho-color",
+      borderClass: "border-top-color",
+      textColorClass: "top-color",
     };
   },
   created() {

@@ -1,47 +1,26 @@
 <template>
   <FadeInOnScroll>
-    <div class="">
-      <div
-        class="w-3/4 px-4 py-8 text-[20px] border-t-2 border-b-2 border-r-2 border-site-base-pink shadow-lg mt-8"
-      >
-        <div class="text-[24px] text-site-base-pink font-semibold">
-          としきょんのーと
-        </div>
-        <div class="text-[16px] mt-4">
-          <p>日向坂46一期生の最強シンメの</p>
-          <p>加藤史帆さん、齊藤京子さん。</p>
-          <p>「としきょん」というコンビの</p>
-          <p>おふたりを末長く応援したい</p>
-          <p>という想いから開設された</p>
-          <p>非公式ファンサイトです。</p>
-        </div>
-      </div>
-    </div>
+    <img src="../../assets/images/top_shiho.png" class="w-full" />
   </FadeInOnScroll>
-  <FadeInOnScroll>
-    <img
-      src="../../assets/images/toshikyon1.png"
-      class="float-right shadow-xl w-3/4"
-    />
-  </FadeInOnScroll>
-  <FadeInOnScroll>
-    <img src="../../assets/images/toshikyon2.png" class="shadow-xl w-3/4" />
-  </FadeInOnScroll>
-
-  <SchedulesPage />
-  <ShihoProfile class="mb-16" />
-  <KyokoProfile />
+  <DetailProfiles />
+  <Schedules />
+  <Blogs />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import SchedulesPage from "@/views/components/tops/SchedulesPage.vue";
-import ShihoProfile from "@/views/components/tops/ShihoProfile.vue";
-import KyokoProfile from "@/views/components/tops/KyokoProfile.vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import Schedules from "@/views/components/top/TopSchedules.vue";
+import Blogs from "@/views/components/top/TopBlogs.vue";
+import DetailProfiles from "@/views/components/top/ToplProfiles.vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: { FadeInOnScroll, KyokoProfile, ShihoProfile, SchedulesPage },
+  components: {
+    DetailProfiles,
+    Blogs,
+    Schedules,
+    FadeInOnScroll,
+  },
 });
 </script>
 

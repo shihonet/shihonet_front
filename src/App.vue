@@ -29,50 +29,21 @@ export default {
   color: #333;
 }
 
-.text-site-base-pink {
-  color: #ff61dc;
-}
-
-.gb-site-base-pink {
-  background-color: #ff61dc;
-  opacity: 0.8;
-}
-
-.border-site-base-pink {
-  border-color: #ff61dc;
-}
-
-.shiho-color {
+.text-site-color {
   color: #6197ff;
 }
 
-.bg-shiho-color {
+.bg-site-color {
   background-color: #6197ff;
 }
 
-.bg-shiho-blog-color {
+.bg-site-blog-color {
   background-color: #6197ff;
   opacity: 0.8;
 }
 
-.border-shiho-color {
+.border-site-color {
   border-color: #6197ff;
 }
 
-.kyoko-color {
-  color: #ff61dc;
-}
-
-.bg-kyoko-color {
-  background-color: #ff61dc;
-}
-
-.bg-kyoko-blog-color {
-  background-color: #ff61dc;
-  opacity: 0.8;
-}
-
-.border-kyoko-color {
-  border-color: #ff61dc;
-}
 </style>

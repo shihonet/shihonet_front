@@ -1,10 +1,10 @@
 <template>
   <div class="flex items-center justify-center">
-    <span :class="borderClass" class="flex-1 border-b-2"></span>
-    <p :class="textColorClass" class="text-[32px] text-center mx-4">
+    <span class="flex-1 border-b-2 border-site-color"></span>
+    <p class="text-[32px] text-center mx-4 text-site-color">
       {{ title }}
     </p>
-    <span :class="borderClass" class="flex-1 border-b-2"></span>
+    <span class="flex-1 border-b-2 border-site-color"></span>
   </div>
 </template>
 
@@ -17,14 +17,6 @@ export default defineComponent({
       type: String as PropType<string>,
       default: "TITLE",
       required: true,
-    },
-    borderClass: {
-      type: String as PropType<string>,
-      default: "border-site-base-pink",
-    },
-    textColorClass: {
-      type: String as PropType<string>,
-      default: "text-site-base-pink",
     },
   },
 });
