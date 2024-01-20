@@ -28,6 +28,7 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
+  background-color: #F4FAFF;
 }
 
 .text-site-color {
