@@ -6,13 +6,14 @@
 
 <script lang="ts">
 import "./index.css";
+import { defineComponent } from "vue";
 import PageHeader from "@/views/components/common/PageHeader.vue";
 import PageFooter from "@/views/components/common/PageFooter.vue";
 
-export default {
+export default defineComponent({
   name: "App",
   components: { PageHeader, PageFooter },
-};
+});
 </script>
 
 <style>
