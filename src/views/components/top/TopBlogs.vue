@@ -1,21 +1,21 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-40 mb-10 mx-10">
-      <title-part
+      <TitlePart
         :title="title"
         :border-class="borderClass"
         :textColorClass="textColorClass"
       />
     </div>
   </FadeInOnScroll>
-  <div class="mx-2 mt-2">
+  <div class="mx-4 mt-2">
     <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
       <FadeInOnScroll>
         <div class="relative">
           <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
           <a :href="'https://www.hinatazaka46.com' + blog.url_path">
             <div
-              class="absolute bottom-0 left-0 right-0 bg-shiho-blog-color bg-opacity-50 text-white px-4 py-2 rounded-lg"
+              class="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white px-4 py-2 rounded-lg bg-site-blog-color"
             >
               <div class="text-[12px] font-extrabold">
                 {{ blog.published_at }}
@@ -29,8 +29,8 @@
   </div>
   <FadeInOnScroll>
     <div class="mt-10">
-      <router-link to="/shiho/blogs">
-        <MoreView :borderClass="'border-shiho-color'" />
+      <router-link to="/blogs">
+        <MoreView :borderClass="'border-site-color'" />
       </router-link>
     </div>
   </FadeInOnScroll>
@@ -49,15 +49,15 @@ export default defineComponent({
     return {
       blogs: [] as any[],
       title: "BLOG",
-      borderClass: "border-shiho-color",
-      textColorClass: "shiho-color",
+      borderClass: "border-site--color",
+      textColorClass: "top-color",
     };
   },
   created() {
     axios
       .get("/api/blogs", {
         params: {
-          member: "shiho",
+          member: 'shiho',
           limit: 3,
         },
       })

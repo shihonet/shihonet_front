@@ -1,16 +1,22 @@
 <template>
   <FadeInOnScroll>
-    <div class="w-full gb-site-base-pink px-6 py-6">
+    <div class="w-full bg-site-color px-6 py-6 text-white">
       <ul class="text-[20px]">
-        <li class="pb-1">
-          <router-link to="/shiho">Shiho Kato</router-link>
+        <li class="pb-2">
+          <router-link to="/about">#shihonetとは</router-link>
         </li>
-        <li class="pb-1">
-          <router-link to="/kyoko">Kyoko Saito</router-link>
+        <li class="pb-2">
+          <router-link to="/profiles">Profile</router-link>
         </li>
-        <li class="pb-1">
+        <li class="pb-2">
+          <router-link to="/blogs">Blogs</router-link>
+        </li>
+        <li class="pb-2">
+          <router-link to="/histories">Histories</router-link>
+        </li>
+        <li class="pb-2">
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000"
-            >日向坂46オフィシャルサイト</a
+          >日向坂46 Official Web Site</a
           >
         </li>
       </ul>

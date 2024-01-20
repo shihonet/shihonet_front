@@ -7,8 +7,7 @@
             <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <a :href="'https://www.hinatazaka46.com' + blog.url_path">
               <div
-                class="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white px-4 py-2 rounded-lg"
-                :class="bgBlogColor"
+                class="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white px-4 py-2 rounded-lg bg-site-blog-color"
               >
                 <div class="text-[12px] font-extrabold">
                   {{ blog.published_at }}
@@ -64,20 +63,11 @@
 
 <script lang="ts">
 import axios from "axios";
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 
 export default defineComponent({
   components: { FadeInOnScroll },
-  props: {
-    member: {
-      type: String as PropType<string>,
-    },
-    bgBlogColor: {
-      type: String as PropType<string>,
-      // default: "gb-site-base-pink",
-    },
-  },
   data() {
     return {
       blogs: [] as any[],
@@ -103,7 +93,7 @@ export default defineComponent({
       axios
         .get("/api/blogs", {
           params: {
-            member: this.member,
+            member: 'shiho',
             page: this.page,
             limit: this.limit,
           },

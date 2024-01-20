@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="mt-40 mb-10 mx-10">
-      <title-part
+      <TitlePart
         :title="title"
         :border-class="borderClass"
         :textColorClass="textColorClass"
@@ -68,8 +68,8 @@ export default defineComponent({
   data() {
     return {
       title: "PROFILE",
-      borderClass: "border-shiho-color",
-      textColorClass: "shiho-color",
+      borderClass: "border-top-color",
+      textColorClass: "top-color",
     };
   },
 });
