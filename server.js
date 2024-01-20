@@ -1,26 +1,23 @@
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
+const history = require('connect-history-api-fallback');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// CORS を有効にする
-app.use(cors({
-    origin: 'https://toshikyon-fansite-9a0912894d4b.herokuapp.com/',  // クライアントのオリジン
+const staticFileMiddleware = express.static(path.join(__dirname + '/dist'));
+
+app.use(staticFileMiddleware);
+app.use(history({
+    disableDotRule: true,
+    verbose: true
 }));
+app.use(staticFileMiddleware);
 
-const distPath = path.join(__dirname, 'dist');
-
-// express.static で dist ディレクトリを静的ファイルとして提供
-app.use(express.static(distPath));
-
-// ルートへのリクエストに対するレスポンス
-app.get('/', (req, res) => {
-    // index.html は静的ファイルとして提供されるため、ここでは何もしなくて良い
+app.get('/', function (req, res) {
+    res.render(path.join(__dirname + '/dist/index.html'));
 });
 
-// サーバーの起動
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
 });
