@@ -39,7 +39,7 @@ export default defineComponent({
   data() {
     return {
       schedules: [] as any[],
-      title: "SCHEDULE",
+      title: "Schedules",
       borderClass: "border-top-color",
       textColorClass: "top-color",
     };
