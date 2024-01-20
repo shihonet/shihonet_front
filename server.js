@@ -1,20 +1,23 @@
 const express = require('express');
 const path = require('path');
+const history = require('connect-history-api-fallback');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-const distPath = path.join(__dirname, 'dist');
+const staticFileMiddleware = express.static(path.join(__dirname + '/dist'));
 
-// express.static で dist ディレクトリを静的ファイルとして提供
-app.use(express.static(distPath));
+app.use(staticFileMiddleware);
+app.use(history({
+    disableDotRule: true,
+    verbose: true
+}));
+app.use(staticFileMiddleware);
 
-// ルートへのリクエストに対するレスポンス
 app.get('/', function (req, res) {
     res.render(path.join(__dirname + '/dist/index.html'));
 });
 
-// サーバーの起動
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
 });
