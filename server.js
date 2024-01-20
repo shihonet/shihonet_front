@@ -10,8 +10,8 @@ const distPath = path.join(__dirname, 'dist');
 app.use(express.static(distPath));
 
 // ルートへのリクエストに対するレスポンス
-app.get('/', (req, res) => {
-    // index.html は静的ファイルとして提供されるため、ここでは何もしなくて良い
+app.get('/', function (req, res) {
+    res.render(path.join(__dirname + '/dist/index.html'));
 });
 
 // サーバーの起動
