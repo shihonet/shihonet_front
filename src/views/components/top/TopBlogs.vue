@@ -48,7 +48,7 @@ export default defineComponent({
   data() {
     return {
       blogs: [] as any[],
-      title: "BLOG",
+      title: "Blogs",
       borderClass: "border-site--color",
       textColorClass: "top-color",
     };

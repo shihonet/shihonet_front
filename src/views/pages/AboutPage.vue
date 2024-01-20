@@ -17,7 +17,7 @@ export default defineComponent({
   components: { TitlePart, FadeInOnScroll, AllAbout },
   data() {
     return {
-      title: "About",
+      title: "about #shihonet",
     };
   },
 });

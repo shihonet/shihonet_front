@@ -67,7 +67,7 @@ export default defineComponent({
   components: { TitlePart, FadeInOnScroll },
   data() {
     return {
-      title: "PROFILE",
+      title: "Profiles",
       borderClass: "border-top-color",
       textColorClass: "top-color",
     };
