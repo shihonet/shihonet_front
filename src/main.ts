@@ -9,6 +9,6 @@ axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRF-Token";
 axios.defaults.baseURL =
     // prod
-    "https://shihonet-fb174c860c38.herokuapp.com/";
+    "https://shihonet-api-29ca225d2dcb.herokuapp.com";
     // local
     // "http://localhost:3001/";
