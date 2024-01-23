@@ -93,7 +93,6 @@ export default defineComponent({
       axios
         .get("/api/blogs", {
           params: {
-            member: 'shiho',
             page: this.page,
             limit: this.limit,
           },
