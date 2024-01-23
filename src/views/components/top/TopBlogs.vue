@@ -15,12 +15,12 @@
           <a :href="'https://www.hinatazaka46.com' + blog.url_path">
             <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <div
-              class="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white px-4 py-2 rounded-lg bg-site-blog-color"
+                class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
             >
-              <div class="text-[12px] font-bold text-white opacity-100">
+              <div class="text-[12px] font-bold">
                 {{ blog.published_at }}
               </div>
-              <div class="text-[16px] font-extrabold text-white opacity-100">
+              <div class="text-[16px] font-extrabold">
                 {{ blog.title }}
               </div>
             </div>
