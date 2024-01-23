@@ -52,11 +52,7 @@ export default defineComponent({
   },
   created() {
     axios
-      .get("/api/histories", {
-        params: {
-          year: 2019,
-        },
-      })
+      .get("/api/histories")
       .then((response) => {
         this.histories = response.data.histories;
       })
