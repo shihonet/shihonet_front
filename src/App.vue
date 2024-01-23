@@ -40,8 +40,7 @@ export default defineComponent({
 }
 
 .bg-site-blog-color {
-  background-color: #6197ff;
-  opacity: 0.8;
+  background-color: rgba(97, 151, 255, 0.8);
 }
 
 .border-site-color {

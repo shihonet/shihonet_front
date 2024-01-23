@@ -12,15 +12,17 @@
     <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
       <FadeInOnScroll>
         <div class="relative">
-          <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
           <a :href="'https://www.hinatazaka46.com' + blog.url_path">
+            <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <div
-              class="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white px-4 py-2 rounded-lg bg-site-blog-color"
+                class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
             >
-              <div class="text-[12px] font-extrabold">
+              <div class="text-[12px] font-bold">
                 {{ blog.published_at }}
               </div>
-              <div class="text-[16px] font-extrabold">{{ blog.title }}</div>
+              <div class="text-[16px] font-extrabold">
+                {{ blog.title }}
+              </div>
             </div>
           </a>
         </div>
@@ -57,7 +59,6 @@ export default defineComponent({
     axios
       .get("/api/blogs", {
         params: {
-          member: 'shiho',
           limit: 3,
         },
       })

@@ -9,7 +9,7 @@
       <div class="mt-4">
         <div v-if="isSchedulePresent">
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
-            <span class="text-site-color mr-2">◆{{ schedule.members }}</span>
+            <span class="text-site-color mr-2">◆</span>
             <span
               >{{ schedule.started_date }}【{{ schedule.category_name }}】</span
             >
@@ -51,7 +51,6 @@ export default defineComponent({
     axios
       .get("/api/schedules", {
         params: {
-          member_pattern_number: 1,
           started_date: startDate,
           ended_date: "2100-01-01",
           limit: 5,
