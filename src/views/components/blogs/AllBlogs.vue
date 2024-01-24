@@ -1,13 +1,16 @@
 <template>
   <div class="mx-6">
-    <div v-if="!isLoading">
+    <div v-if="isLoading">
+      <WaitingForLoading />
+    </div>
+    <div v-else>
       <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
         <FadeInOnScroll>
           <div class="relative">
             <a :href="'https://www.hinatazaka46.com' + blog.url_path">
               <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
               <div
-                  class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
+                class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
               >
                 <div class="text-[12px] font-bold">
                   {{ blog.published_at }}
@@ -67,9 +70,10 @@
 import axios from "axios";
 import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
-  components: { FadeInOnScroll },
+  components: { WaitingForLoading, FadeInOnScroll },
   data() {
     return {
       blogs: [] as any[],
@@ -81,16 +85,16 @@ export default defineComponent({
     };
   },
   created() {
-    this.fetchData();
+    this.requestGetBlogs();
   },
   watch: {
     page() {
       this.setPage(this.page);
-      this.fetchData();
+      this.requestGetBlogs();
     },
   },
   methods: {
-    fetchData() {
+    requestGetBlogs() {
       this.isLoading = true;
       axios
         .get("/api/blogs", {
@@ -103,12 +107,10 @@ export default defineComponent({
           this.blogs = response.data.blogs;
           this.totalPage = response.data.pagination.pages;
           window.scrollTo(0, 0);
+          this.isLoading = false;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          this.isLoading = false;
         });
     },
     setPage(page: number) {

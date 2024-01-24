@@ -2,10 +2,10 @@
   <div class="mx-6">
     <FadeInOnScroll>
       <h1 class="text-[20px] font-extrabold text-site-color">
-        ◆<span class="mx-2 font-bold">Activities of</span>
+        ◆<span class="mx-2 font-bold">Histories of</span>
         <select
           v-model="selectedYear"
-          @change="handleYearChange"
+          @change="requestGetHistories"
           id="year"
           class="w-24"
         >
@@ -16,7 +16,7 @@
       </h1>
     </FadeInOnScroll>
 
-    <div v-if="loading">
+    <div v-if="isLoading">
       <WaitingForLoading />
     </div>
 
@@ -54,18 +54,18 @@ export default defineComponent({
   components: { WaitingForLoading, FadeInOnScroll },
   data() {
     return {
-      loading: false,
+      isLoading: false,
       histories: [] as any[],
       availableYears: [2024, 2023, 2022, 2021, 2020, 2019],
       selectedYear: 2024,
     };
   },
   created() {
-    this.handleYearChange();
+    this.requestGetHistories();
   },
   methods: {
-    handleYearChange() {
-      this.loading = true;
+    requestGetHistories() {
+      this.isLoading = true;
       axios
         .get("/api/histories", {
           params: {
@@ -74,7 +74,7 @@ export default defineComponent({
         })
         .then((response) => {
           this.histories = response.data.histories;
-          this.loading = false;
+          this.isLoading = false;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);

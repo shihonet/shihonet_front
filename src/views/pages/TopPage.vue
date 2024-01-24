@@ -1,6 +1,6 @@
 <template>
   <FadeInOnScroll>
-    <img src="../../assets/images/top_shiho.png" class="w-full" />
+    <img src="../../assets/images/top_image.png" />
   </FadeInOnScroll>
   <DetailProfiles />
   <Schedules />

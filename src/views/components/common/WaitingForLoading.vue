@@ -1,5 +1,5 @@
 <template>
-  <div class="my-20 text-center text-site-color">
+  <div class="mt-20 text-center text-site-color text-[24px]">
     <FadeInOnScroll>
       Loading...
     </FadeInOnScroll>

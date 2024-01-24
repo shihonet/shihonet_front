@@ -8,14 +8,19 @@
       />
     </div>
   </FadeInOnScroll>
-  <div class="mx-4 mt-2">
+
+  <div v-if="isLoading">
+    <WaitingForLoading />
+  </div>
+
+  <div v-else class="mx-4 mt-2">
     <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
       <FadeInOnScroll>
         <div class="relative">
           <a :href="'https://www.hinatazaka46.com' + blog.url_path">
             <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <div
-                class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
+              class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
             >
               <div class="text-[12px] font-bold text-white opacity-100">
                 {{ blog.published_at }}
@@ -44,11 +49,13 @@ import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
 import MoreView from "@/views/components/common/MoreView.vue";
+import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
-  components: { MoreView, TitlePart, FadeInOnScroll },
+  components: { WaitingForLoading, MoreView, TitlePart, FadeInOnScroll },
   data() {
     return {
+      isLoading: false,
       blogs: [] as any[],
       title: "Blogs",
       borderClass: "border-site--color",
@@ -56,18 +63,25 @@ export default defineComponent({
     };
   },
   created() {
-    axios
-      .get("/api/blogs", {
-        params: {
-          limit: 3,
-        },
-      })
-      .then((response) => {
-        this.blogs = response.data.blogs;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    this.requestGetBlogs();
+  },
+  methods: {
+    requestGetBlogs() {
+      this.isLoading = true;
+      axios
+        .get("/api/blogs", {
+          params: {
+            limit: 3,
+          },
+        })
+        .then((response) => {
+          this.blogs = response.data.blogs;
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    },
   },
 });
 </script>
