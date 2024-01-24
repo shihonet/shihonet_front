@@ -6,7 +6,12 @@
         :border-class="borderClass"
         :textColorClass="textColorClass"
       />
-      <div class="mt-4">
+
+      <div v-if="isLoading">
+        <WaitingForLoading />
+      </div>
+
+      <div v-else class="mt-4">
         <div v-if="isSchedulePresent">
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
             <span class="text-site-color mr-2">◆</span>
@@ -33,11 +38,13 @@ import axios from "axios";
 import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
+import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
-  components: { TitlePart, FadeInOnScroll },
+  components: { WaitingForLoading, TitlePart, FadeInOnScroll },
   data() {
     return {
+      isLoading: false,
       schedules: [] as any[],
       title: "Schedules",
       borderClass: "border-top-color",
@@ -45,23 +52,30 @@ export default defineComponent({
     };
   },
   created() {
-    // 開始日を今日に設定
-    const startDate = new Date().toISOString().split("T")[0];
+    this.requestGetSchedules();
+  },
+  methods: {
+    requestGetSchedules() {
+      this.isLoading = true;
+      // 開始日を今日に設定
+      const startDate = new Date().toISOString().split("T")[0];
 
-    axios
-      .get("/api/schedules", {
-        params: {
-          started_date: startDate,
-          ended_date: "2100-01-01",
-          limit: 5,
-        },
-      })
-      .then((response) => {
-        this.schedules = response.data.schedules;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      axios
+          .get("/api/schedules", {
+            params: {
+              started_date: startDate,
+              ended_date: "2100-01-01",
+              limit: 5,
+            },
+          })
+          .then((response) => {
+            this.schedules = response.data.schedules;
+            this.isLoading = false;
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+    },
   },
   computed: {
     isSchedulePresent(): boolean {
