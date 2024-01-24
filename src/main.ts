@@ -11,4 +11,4 @@ axios.defaults.baseURL =
     // prod
     "https://shihonet-api-29ca225d2dcb.herokuapp.com";
     // local
-    // "http://localhost:3001/";
+    // "http://localhost:3001";

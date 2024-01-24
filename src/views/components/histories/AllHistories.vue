@@ -2,16 +2,25 @@
   <div class="mx-6">
     <FadeInOnScroll>
       <h1 class="text-[20px] font-extrabold text-site-color">
-        ◆
-        <select v-model="selectedYear" @change="handleYearChange" id="year" class="w-24">
-        <option v-for="year in availableYears" :key="year" :value="year">
-          {{ year }}年
-        </option>
-      </select>の活動
+        ◆<span class="mx-2 font-bold">Activities of</span>
+        <select
+          v-model="selectedYear"
+          @change="handleYearChange"
+          id="year"
+          class="w-24"
+        >
+          <option v-for="year in availableYears" :key="year" :value="year">
+            {{ year }}
+          </option>
+        </select>
       </h1>
     </FadeInOnScroll>
 
-    <div class="flex mt-2">
+    <div v-if="loading">
+      <WaitingForLoading />
+    </div>
+
+    <div v-else class="flex mt-2">
       <div class="w-5">
         <div
           class="w-1 mx-auto h-full rounded-lg bg-gradient-to-b from-blue-200 to-green-200"
@@ -39,13 +48,15 @@
 import axios from "axios";
 import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
-  components: { FadeInOnScroll },
+  components: { WaitingForLoading, FadeInOnScroll },
   data() {
     return {
+      loading: false,
       histories: [] as any[],
-      availableYears: [2019, 2020, 2021, 2022, 2023, 2024],
+      availableYears: [2024, 2023, 2022, 2021, 2020, 2019],
       selectedYear: 2024,
     };
   },
@@ -54,6 +65,7 @@ export default defineComponent({
   },
   methods: {
     handleYearChange() {
+      this.loading = true;
       axios
         .get("/api/histories", {
           params: {
@@ -62,6 +74,7 @@ export default defineComponent({
         })
         .then((response) => {
           this.histories = response.data.histories;
+          this.loading = false;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
