@@ -2,13 +2,13 @@
   <div v-show="isModalOpen">
     <div id="base_modal" class="fixed z-50 inset-0 overflow-y-auto">
       <FadeInOnScroll>
-        <div class="flex items-center justify-center min-h-screen" @click="closeModal">
+        <div class="flex items-center justify-center min-h-screen">
           <div class="flex flex-col w-80">
             <div class="w-full mb-2 text-white text-[32px] text-right">
               <span @click="closeModal" class="hover:cursor-pointer">×</span>
             </div>
             <div class="w-full h-[540px]">
-              <img src="@/assets/images/happy_birthday_modal.png" class="h-full w-full rounded-[40px] shadow-2xl"/>
+              <slot></slot>
             </div>
           </div>
         </div>

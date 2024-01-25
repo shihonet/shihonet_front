@@ -1,6 +1,8 @@
 <template>
   <!-- 生誕モーダル-->
-  <BaseModal :is-open="true"/>
+  <BaseModal>
+    <img src="@/assets/images/happy_birthday_modal.png" class="h-full w-full rounded-[40px] shadow-2xl"/>
+  </BaseModal>
 
   <FadeInOnScroll>
     <img src="@/assets/images/top_image.png" />
