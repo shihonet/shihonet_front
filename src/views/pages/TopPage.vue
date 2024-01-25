@@ -1,6 +1,9 @@
 <template>
+  <!-- 生誕モーダル-->
+  <BaseModal :is-open="true"/>
+
   <FadeInOnScroll>
-    <img src="../../assets/images/top_image.png" />
+    <img src="@/assets/images/top_image.png" />
   </FadeInOnScroll>
   <DetailProfiles />
   <Schedules />
@@ -13,9 +16,11 @@ import Schedules from "@/views/components/top/TopSchedules.vue";
 import Blogs from "@/views/components/top/TopBlogs.vue";
 import DetailProfiles from "@/views/components/top/ToplProfiles.vue";
 import { defineComponent } from "vue";
+import BaseModal from "@/views/components/common/BaseModal.vue";
 
 export default defineComponent({
   components: {
+    BaseModal,
     DetailProfiles,
     Blogs,
     Schedules,
