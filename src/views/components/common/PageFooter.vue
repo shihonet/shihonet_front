@@ -1,20 +1,17 @@
 <template>
   <FadeInOnScroll>
-    <div class="w-full bg-site-color px-6 pt-6 pb-10 text-white">
+    <div class="w-full bg-site-color px-8 pt-10 pb-10 text-white">
       <ul class="text-[20px] font-bold">
-        <li class="pb-2">
-          <router-link to="/profiles">Profile</router-link>
-        </li>
-        <li class="pb-2">
+        <li class="pb-4">
           <router-link to="/blogs">Blogs</router-link>
         </li>
-        <li class="pb-2">
+        <li class="pb-4">
           <router-link to="/histories">Histories</router-link>
         </li>
-        <li class="pb-2">
+        <li class="pb-4">
           <router-link to="/about">About "#shihonet"</router-link>
         </li>
-        <li class="pb-2">
+        <li class="pb-4">
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000"
           >日向坂46 Official Web Site</a
           >

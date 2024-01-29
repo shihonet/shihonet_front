@@ -9,7 +9,7 @@
     </div>
     <p class="text-center text-[20px] mb-4 font-light">加藤 史帆</p>
     <img
-      src="../../../assets/images/artist_image_shiho.png"
+      src="@/assets/images/artist_image_shiho.png"
       class="mx-auto w-[180px]"
     />
   </FadeInOnScroll>
@@ -47,13 +47,52 @@
         </tr>
         <tr class="mb-2">
           <td>特技</td>
-          <td>ソフトテニス</td>
+          <td>イラスト、運動</td>
         </tr>
         <tr class="mb-2">
           <td>趣味</td>
           <td>アニメ、ディズニー</td>
         </tr>
+        <div class="h-6"></div>
+        <tr>
+          <td>ＳＮＳ</td>
+          <td>
+            <a
+              href="https://www.instagram.com/katoshi.official/"
+              target="_blank"
+            >
+              <img
+                src="@/assets/images/Instagram_Glyph_Gradient.png"
+                class="w-8"
+              />
+            </a>
+          </td>
+        </tr>
       </table>
+    </div>
+  </FadeInOnScroll>
+  <FadeInOnScroll>
+    <div class="text-center font-light">
+      <p>
+        2016年5月8日、けやき坂46の<br />
+        オーディションに合格し、<br />
+        一期生として活動をスタート。<br />
+        <br />
+        2019年3月27日に<br />
+        日向坂46としてデビューを果たす。<br />
+        5枚目シングルでは、<br />
+        表題曲「君しか勝たん」で<br />
+        センターを務める。<br />
+        <br />
+        仲間想い、後輩想いな、<br />
+        グループの頼れるお姉さん的存在。<br />
+        個人としてもチームとしても、<br />
+        モデルやバラエティを中心に<br />
+        活躍の幅を広げている。<br />
+        <br />
+        今年もさらにたくさんの<br />
+        新しい景色が見れますように。<br />
+      </p>
     </div>
   </FadeInOnScroll>
 </template>
