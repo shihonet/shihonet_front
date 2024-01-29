@@ -20,6 +20,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import confetti from "canvas-confetti";
 
 export default defineComponent({
   components: { FadeInOnScroll },
@@ -32,7 +33,20 @@ export default defineComponent({
     closeModal() {
       this.isModalOpen = false;
     }
-  }
+  },
+  mounted() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js';
+    script.onload = () => {
+      // @ts-ignore
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+    };
+    document.head.appendChild(script);
+  },
 });
 </script>
 
