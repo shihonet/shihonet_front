@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <p class="text-[20px]">もっと見る</p>
-    <div :class="borderClass" class="border-b-4 w-[120px]"></div>
+    <p class="text-[20px] text-gray-400">See more...</p>
+    <div :class="borderClass" class="border-b-2 w-[120px]"></div>
   </div>
 </template>
 
