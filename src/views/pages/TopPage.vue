@@ -12,6 +12,8 @@ import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import Schedules from "@/views/components/top/TopSchedules.vue";
 import Blogs from "@/views/components/top/TopBlogs.vue";
 import DetailProfiles from "@/views/components/top/TopProfiles.vue";
+import BaseModal from "@/views/components/common/BaseModal.vue";
+import confetti from 'canvas-confetti';
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -20,6 +22,19 @@ export default defineComponent({
     Blogs,
     Schedules,
     FadeInOnScroll,
+  },
+  mounted() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js';
+    script.onload = () => {
+      // @ts-ignore
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+    };
+    document.head.appendChild(script);
   },
 });
 </script>
