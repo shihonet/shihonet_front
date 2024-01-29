@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import TopPage from "@/views/pages/TopPage.vue";
 import BlogsPage from "@/views/pages/BlogsPage.vue";
-import ProfilesPage from "@/views/pages/ProfilesPage.vue";
 import AboutPage from "@/views/pages/AboutPage.vue";
 import HistoriesPage from "@/views/pages/HistoriesPage.vue";
 
@@ -25,11 +24,6 @@ const routes = [
     path: "/histories",
     name: "histories",
     component: HistoriesPage,
-  },
-  {
-    path: "/profiles",
-    name: "profiles",
-    component: ProfilesPage,
   },
   {
     // 未定義のURLをルートにリダイレクト
