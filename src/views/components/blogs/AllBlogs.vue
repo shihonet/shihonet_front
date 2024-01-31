@@ -4,11 +4,14 @@
       <WaitingForLoading />
     </div>
     <div v-else>
+      <div class="text-right">
+        <p>PAGE：{{ page }} / {{ totalPage }}</p>
+      </div>
       <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
         <FadeInOnScroll>
           <div class="relative">
+            <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <a :href="'https://www.hinatazaka46.com' + blog.url_path">
-              <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
               <div
                 class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
               >
@@ -36,7 +39,7 @@
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
               v-if="page > 1"
               @click="setPage(page - 1)"
-              >-1</span
+              >＜</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center items-center rounded-full border-2 border-blue-200 text-blue-200"
@@ -46,7 +49,7 @@
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
               v-if="page < totalPage"
               @click="setPage(page + 1)"
-              >+1</span
+              >＞</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"

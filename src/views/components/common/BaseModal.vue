@@ -3,8 +3,8 @@
     <div id="base_modal" class="fixed z-50 inset-0 overflow-y-auto">
       <FadeInOnScroll>
         <div class="flex items-center justify-center min-h-screen">
-          <div class="flex flex-col w-80">
-            <div class="w-full mb-2 text-white text-[32px] text-right">
+          <div class="flex flex-col mx-8">
+            <div class="w-full text-white text-[40px] text-right">
               <span @click="closeModal" class="hover:cursor-pointer">×</span>
             </div>
             <div class="w-full h-[540px]">

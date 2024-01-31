@@ -13,12 +13,12 @@
     <WaitingForLoading />
   </div>
 
-  <div v-else class="mx-4 mt-2">
+  <div v-else class="mx-6 mt-2">
     <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
       <FadeInOnScroll>
         <div class="relative">
+          <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
           <a :href="'https://www.hinatazaka46.com' + blog.url_path">
-            <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
             <div
               class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
             >
