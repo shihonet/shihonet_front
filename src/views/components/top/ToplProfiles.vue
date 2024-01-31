@@ -62,7 +62,7 @@
               target="_blank"
             >
               <img
-                src="@/assets/images/Instagram_Glyph_Gradient.png"
+                src="@/assets/images/Instagram_Glyph_Gradient.svg"
                 class="w-8"
               />
             </a>

@@ -3,7 +3,7 @@
     <div class="flex pl-4 bg-white">
       <div class="ml-2 my-1">
         <router-link to="/">
-          <img src="../../../assets/images/header_logo.png" class="w-[160px]"/>
+          <img src="@/assets/images/header_logo.svg" class="w-[160px]"/>
         </router-link>
       </div>
       <div class="">
