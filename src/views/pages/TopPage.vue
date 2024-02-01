@@ -1,7 +1,7 @@
 <template>
   <!-- 生誕モーダル-->
   <BaseModal>
-    <img src="@/assets/images/happy_birthday_modal.svg" class="w-full rounded-[40px] shadow-2xl"/>
+    <img src="@/assets/images/happy_birthday_modal.png" class="w-full rounded-[40px] shadow-2xl"/>
   </BaseModal>
 
   <FadeInOnScroll>
