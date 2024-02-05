@@ -17,7 +17,6 @@ import BaseModal from "@/views/components/common/BaseModal.vue";
 
 export default defineComponent({
   components: {
-    BaseModal,
     DetailProfiles,
     Blogs,
     Schedules,
