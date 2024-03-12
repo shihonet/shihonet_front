@@ -35,7 +35,7 @@
     </div>
   </div>
   <FadeInOnScroll>
-    <div class="mt-10">
+    <div class="mt-10 flex flex-col items-center justify-center">
       <router-link to="/blogs">
         <MoreView :borderClass="'border-site-color'" />
       </router-link>

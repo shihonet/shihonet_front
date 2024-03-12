@@ -24,9 +24,7 @@
           </div>
         </div>
         <div v-else>
-          <div>
-            <p>今週のスケジュールはありません</p>
-          </div>
+          <p class="text-center mt-10 text-gray-400">今週のスケジュールはありません</p>
         </div>
       </div>
     </div>
