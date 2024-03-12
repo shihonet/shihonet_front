@@ -11,7 +11,7 @@
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import Schedules from "@/views/components/top/TopSchedules.vue";
 import Blogs from "@/views/components/top/TopBlogs.vue";
-import DetailProfiles from "@/views/components/top/ToplProfiles.vue";
+import DetailProfiles from "@/views/components/top/TopProfiles.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({

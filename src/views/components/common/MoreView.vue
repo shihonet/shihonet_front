@@ -1,7 +1,8 @@
 <template>
-  <div id="MoreView" class="flex flex-col items-center justify-center">
-    <p class="text-[32px] text-gray-400">See more...</p>
-    <div :class="borderClass" class="border-b-2 w-[144px]"></div>
+  <div id="MoreView">
+    <div class="mt-4 bg-site-color bg-site-color-hover text-white text-[24px] font-bold rounded-lg px-4 py-1">
+      See more…
+    </div>
   </div>
 </template>
 
@@ -25,5 +26,9 @@ export default defineComponent({
 #MoreView {
   /* Google fontsで導入したいfontsからfont-familyを取ってくる */
   font-family: "Caveat", sans-serif;
+}
+
+.bg-site-color-hover:hover {
+  background-color: rgba(97, 151, 255, 0.8);
 }
 </style>
