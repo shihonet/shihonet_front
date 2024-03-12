@@ -7,10 +7,11 @@
         :textColorClass="textColorClass"
       />
     </div>
-    <p class="text-center text-[20px] mb-4 font-light">加藤 史帆</p>
+    <p class="text-center text-[12px] mb-1 font-light">Shiho Kato</p>
+    <p class="text-center text-[20px] mb-4">加藤 史帆</p>
     <img
-      src="@/assets/images/artist_image_shiho.png"
-      class="mx-auto w-[180px]"
+      src="@/assets/images/11th_shiho.png"
+      class="mx-auto w-[220px]"
     />
   </FadeInOnScroll>
   <FadeInOnScroll>
