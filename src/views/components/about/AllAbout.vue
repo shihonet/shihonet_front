@@ -79,11 +79,11 @@
         <p>
           &nbsp;&nbsp;&nbsp;&nbsp;開発、運用は、ともに
           <a
-            href="https://twitter.com/cool_champon"
+            href="https://twitter.com/shihonet2422"
             target="_blank"
             class="font-medium text-blue-500 underline"
           >
-            @cool_champon
+            @shihonet2422
           </a>
           が行っております。ご連絡はDMまでお願いいたします。
         </p>

@@ -17,9 +17,8 @@
           >
         </li>
       </ul>
-<!--      <img src="../../../assets/images/x-logo-black.png" class="mt-10 w-10" />-->
       <div class="mt-14 text-[8px] text-center">
-        <p>© 2024 #shihonet, developing by @cool_champon.</p>
+        <p>© 2024 #shihonet, developing by @shihonet.</p>
         <p>
           このサイトはSeed & Flowerその他各種権利者から許諾等を得ているものではありません。
         </p>
