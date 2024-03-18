@@ -12,7 +12,9 @@
   >
     <div class="flex justify-between pl-4 bg-white">
       <div class="ml-2 my-1">
-        <img src="@/assets/images/header_logo.svg" class="w-[160px]" />
+        <router-link to="/" @click="toggleSidebar">
+          <img src="@/assets/images/header_logo.svg" class="w-[160px]" />
+        </router-link>
       </div>
       <div class="flex items-center mr-4" @click="toggleSidebar">
         <img src="@/assets/images/close_FILL0_wght400_GRAD0_opsz24.svg" />
