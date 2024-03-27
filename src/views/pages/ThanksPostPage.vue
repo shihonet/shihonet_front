@@ -4,20 +4,20 @@
       <TitlePart :title="title" />
     </div>
   </FadeInOnScroll>
-  <AllBlogs />
+  <AllThanksPost />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AllBlogs from "@/views/components/blogs/AllBlogs.vue";
+import AllThanksPost from "@/views/components/thanksPost/AllThanksPost.vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
 
 export default defineComponent({
-  components: { TitlePart, FadeInOnScroll, AllBlogs },
+  components: { TitlePart, FadeInOnScroll, AllThanksPost },
   data() {
     return {
-      title: "#shihoblog",
+      title: "Generator",
     };
   },
 });
