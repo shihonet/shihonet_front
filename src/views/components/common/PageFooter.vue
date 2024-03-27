@@ -12,6 +12,9 @@
           <router-link to="/about">About "#shihonet"</router-link>
         </li>
         <li class="pb-4">
+          <router-link to="/thanks_post">Thanks Generator</router-link>
+        </li>
+        <li class="pb-4">
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000"
           >日向坂46 Official Web Site</a
           >

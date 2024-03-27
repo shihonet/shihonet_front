@@ -3,7 +3,7 @@
     <p>今日もアイドルでいてくれてありがとう</p>
     <p>ジェネレーター</p>
   </div>
-  <div class="mt-6 text-gray-400 font-light text-center text-[12px]">
+  <div class="mt-6 text-gray-500 font-light text-center text-[12px]">
     <p>懐かしい過去のブログから加藤史帆ちゃん画像が厳選され、</p>
     <p>毎日加藤史帆ちゃんへの感謝をポストできます！</p>
   </div>
@@ -14,7 +14,7 @@
     <div v-else class="flex items-center justify-center">
       <button
         v-if="!isClickedButton"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-10"
         @click="requestGetBlogImage()"
       >
         画像ガチャを回す
@@ -27,7 +27,7 @@
         <div class="flex justify-center mt-4 mx-6">
           <a :href="blog.url" target="_blank">
             <div class="border-2 border-site-color hover:text-gray-400 py-2 px-4 rounded-lg">
-              <p class="text-[12px]">{{ blog.publishedAt }}</p>
+              <p class="text-[12px] text-gray-500">{{ blog.publishedAt }}</p>
               <p class="text-[16px]">{{ blog.title }}</p>
             </div>
           </a>

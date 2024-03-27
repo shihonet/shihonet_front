@@ -42,6 +42,12 @@
           </router-link>
         </li>
         <li>
+          <router-link to="/thanks_post" @click="toggleSidebar" class="flex items-center mb-5">
+            <img src="@/assets/images/folded_hands_FILL0_wght100_GRAD0_opsz48.svg" />
+            <span class="ml-2">Thanks Generator</span>
+          </router-link>
+        </li>
+        <li>
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000" class="flex items-center mb-5">
             <img src="@/assets/images/clear_day_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">日向坂46 Official Web Site</span>
