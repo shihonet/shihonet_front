@@ -17,7 +17,6 @@ export default defineComponent({
   components: { TitlePart, FadeInOnScroll, AllBlogs },
   data() {
     return {
-      member: "top",
       title: "#shihoblog",
     };
   },
