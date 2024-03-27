@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
 import TopPage from "@/views/pages/TopPage.vue";
 import BlogsPage from "@/views/pages/BlogsPage.vue";
 import AboutPage from "@/views/pages/AboutPage.vue";
@@ -50,6 +50,14 @@ const router = createRouter({
       };
     }
   },
+});
+
+// Google Analyticsへのページビュー送信を設定
+router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+  // Google Analyticsページビューを送信
+  gtag('config', 'G-SKEEGTRD4W', {
+    page_path: to.path,
+  });
 });
 
 export default router;
