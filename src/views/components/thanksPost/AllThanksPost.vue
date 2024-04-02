@@ -15,7 +15,7 @@
       <button
         v-if="!isClickedButton"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-10"
-        @click="requestGetBlogImage()"
+        @click="requestGetRandomBlogs"
       >
         画像ガチャを回す
       </button>
@@ -25,7 +25,7 @@
           <img :src="blog.imageUrl" class="w-[300px]" />
         </div>
         <div class="flex justify-center mt-4 mx-6">
-          <a :href="blog.url" target="_blank">
+          <a :href="blog.blogUrl" target="_blank">
             <div class="border-2 border-site-color hover:text-gray-400 py-2 px-4 rounded-lg">
               <p class="text-[12px] text-gray-500">{{ blog.publishedAt }}</p>
               <p class="text-[16px]">{{ blog.title }}</p>
@@ -44,56 +44,23 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 import PostX from "@/views/components/common/PostX.vue";
-
-interface BlogImageRandom {
-  title: string;
-  publishedAt: string;
-  memberName: string;
-  url: string;
-  imageUrl: string;
-}
+import { useRandomBlogsStore } from "@/stores/randomBlogsStore";
 
 export default defineComponent({
-  components: { PostX, WaitingForLoading },
-  data() {
+  components: { WaitingForLoading, PostX },
+  setup() {
+    const randomBlogsStore = useRandomBlogsStore();
+
     return {
-      blog: {
-        title: "",
-        publishedAt: "",
-        memberName: "",
-        url: "",
-        imageUrl: "",
-      } as BlogImageRandom,
-      isLoading: false,
-      isClickedButton: false,
+      blog: computed(() => randomBlogsStore.getBlog),
+      isLoading: computed(() => randomBlogsStore.getIsLoading),
+      isClickedButton: computed(() => randomBlogsStore.getIsClickedButton),
+      requestGetRandomBlogs: randomBlogsStore.requestGetRandomBlogs,
     };
-  },
-  methods: {
-    requestGetBlogImage() {
-      this.isLoading = true;
-      axios
-        .get("/api/blog_random")
-        .then((response) => {
-          const data = response.data;
-          this.blog = {
-            title: data.title,
-            publishedAt: data.published_at,
-            memberName: data.member_name,
-            url: data.url,
-            imageUrl: data.image_url,
-          };
-          this.isLoading = false;
-          this.isClickedButton = true;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    },
-  },
+  }
 });
 </script>
 
