@@ -17,13 +17,13 @@
     <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
       <FadeInOnScroll>
         <div class="relative">
-          <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
-          <a :href="'https://www.hinatazaka46.com' + blog.url_path">
+          <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
+          <a :href="'https://www.hinatazaka46.com' + blog.urlPath">
             <div
               class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
             >
               <div class="text-[12px] font-bold text-white opacity-100">
-                {{ blog.published_at }}
+                {{ blog.publishedAt }}
               </div>
               <div class="text-[16px] font-extrabold text-white opacity-100">
                 {{ blog.title }}
@@ -44,45 +44,30 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import { defineComponent, onMounted, computed } from "vue";
+import { useTopBlogsStore } from '@/stores/topBlogsStore';
 import TitlePart from "@/views/components/common/TitlePart.vue";
-import MoreView from "@/views/components/common/MoreView.vue";
+import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
-  components: { WaitingForLoading, MoreView, TitlePart, FadeInOnScroll },
-  data() {
+  components: { TitlePart, WaitingForLoading, FadeInOnScroll },
+  setup() {
+    const topBlogsStore = useTopBlogsStore();
+
+    onMounted(() => {
+      topBlogsStore.requestGetTopBlogs();
+    });
+
     return {
-      isLoading: false,
-      blogs: [] as any[],
-      title: "Blogs",
-      borderClass: "border-site--color",
+      title: 'Blogs',
+      borderClass: "border-top-color",
       textColorClass: "top-color",
+      blogs: computed(() => topBlogsStore.getBlogs),
+      limit: computed(() => topBlogsStore.getLimit),
+      isLoading: computed(() => topBlogsStore.getIsLoading),
     };
-  },
-  created() {
-    this.requestGetBlogs();
-  },
-  methods: {
-    requestGetBlogs() {
-      this.isLoading = true;
-      axios
-        .get("/api/blogs", {
-          params: {
-            limit: 3,
-          },
-        })
-        .then((response) => {
-          this.blogs = response.data.blogs;
-          this.isLoading = false;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    },
-  },
+  }
 });
 </script>
 
