@@ -49,9 +49,10 @@ import { useTopBlogsStore } from '@/stores/topBlogsStore';
 import TitlePart from "@/views/components/common/TitlePart.vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
+import MoreView from "@/views/components/common/MoreView.vue"
 
 export default defineComponent({
-  components: { TitlePart, WaitingForLoading, FadeInOnScroll },
+  components: { TitlePart, WaitingForLoading, FadeInOnScroll, MoreView },
   setup() {
     const topBlogsStore = useTopBlogsStore();
 
