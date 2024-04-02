@@ -70,7 +70,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed } from "vue";
+import { defineComponent, onMounted, computed } from "vue";
 import { useBlogsStore } from '@/stores/blogsStore';
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
@@ -78,41 +78,20 @@ import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 export default defineComponent({
   components: { WaitingForLoading, FadeInOnScroll },
   setup() {
-    const isLoading = ref(true);
-    const skipPages = 20; // 定数
     const blogsStore = useBlogsStore();
-    const blogs = computed(() => blogsStore.getBlogs);
-    const currentPage = computed(() => blogsStore.getCurrentPage);
-    const limit = computed(() => blogsStore.getLimit);
-    const totalPage = computed(() => blogsStore.getTotalPage);
-
-    const requestGetBlogs = async () => {
-      await blogsStore.requestGetBlogs().finally(() => {
-        isLoading.value = false;
-      });
-    };
-
-    // NOTE: ページネーションをクリックすると呼び出される
-    const setPage = async (newPage: number) => {
-      isLoading.value = true;
-      window.scrollTo(0, 0);
-      await blogsStore.setPage(newPage);
-      isLoading.value = false;
-    };
 
     onMounted(() => {
-      requestGetBlogs();
+      blogsStore.requestGetBlogs();
     });
 
     return {
-      blogs,
-      currentPage,
-      totalPage,
-      limit,
-      isLoading,
-      skipPages,
-      setPage,
-      requestGetBlogs,
+      blogs: computed(() => blogsStore.getBlogs),
+      currentPage: computed(() => blogsStore.getCurrentPage),
+      totalPage: computed(() => blogsStore.getTotalPage),
+      limit: computed(() => blogsStore.getLimit),
+      isLoading: computed(() => blogsStore.getIsLoading),
+      setPage: blogsStore.setPage,
+      skipPages: 20, // 定数
     };
   }
 });

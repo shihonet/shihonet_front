@@ -8,6 +8,7 @@ export const useBlogsStore = defineStore('blogs', {
     currentPage: 1,
     limit: 20,
     totalPage: 3,
+    isLoading: false,
   }),
 
   getters: {
@@ -18,10 +19,14 @@ export const useBlogsStore = defineStore('blogs', {
     getLimit: (state) => state.limit,
 
     getTotalPage: (state) => state.totalPage,
+
+    getIsLoading: (state) => state.isLoading,
   },
 
   actions: {
     async requestGetBlogs() {
+      window.scrollTo(0, 0);
+      this.isLoading = true; // 読み込み開始
       try {
         const response = await axios.get("/api/blogs", {
           params: {
@@ -38,10 +43,11 @@ export const useBlogsStore = defineStore('blogs', {
             urlPath: blog.url_path,
           };
         });
-        console.log(this.blogs)
         this.totalPage = response.data.pagination.pages;
+        this.isLoading = false; // 読み込み終了
       } catch (error) {
         console.error("Error fetching data:", error);
+        this.isLoading = false; // 読み込み終了
       }
     },
 
