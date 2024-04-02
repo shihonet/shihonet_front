@@ -2,35 +2,26 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { Blog, ApiResponseBlog } from '@/types/blogsTypes';
 
-export const useBlogsStore = defineStore('blogs', {
+export const useTopBlogsStore = defineStore('topBlogs', {
   state: () => ({
     blogs: [] as Blog[],
-    currentPage: 1,
-    limit: 20,
-    totalPage: 3,
+    limit: 3,
     isLoading: false,
   }),
 
   getters: {
     getBlogs: (state): Blog[] => state.blogs,
 
-    getCurrentPage: (state) => state.currentPage,
-
     getLimit: (state) => state.limit,
-
-    getTotalPage: (state) => state.totalPage,
 
     getIsLoading: (state) => state.isLoading,
   },
 
   actions: {
-    async requestGetBlogs() {
-      window.scrollTo(0, 0);
-      this.isLoading = true; // 読み込み開始
+    async requestGetTopBlogs() {
       try {
         const response = await axios.get("/api/blogs", {
           params: {
-            page: this.currentPage,
             limit: this.limit,
           },
         });
@@ -43,17 +34,9 @@ export const useBlogsStore = defineStore('blogs', {
             thumbnailImageUrl: blog.thumbnail_image_url,
           };
         });
-        this.totalPage = response.data.pagination.pages;
-        this.isLoading = false; // 読み込み終了
       } catch (error) {
         console.error("Error fetching data:", error);
-        this.isLoading = false; // 読み込み終了
       }
-    },
-
-    async setPage(page: number) {
-      this.currentPage = page;
-      await this.requestGetBlogs();
     },
   },
 });
