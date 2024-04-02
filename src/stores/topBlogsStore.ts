@@ -30,8 +30,8 @@ export const useTopBlogsStore = defineStore('topBlogs', {
             title: blog.title,
             memberName: blog.member_name,
             publishedAt: blog.published_at,
+            blogUrl: blog.blog_url,
             thumbnailImageUrl: blog.thumbnail_image_url,
-            urlPath: blog.url_path,
           };
         });
       } catch (error) {

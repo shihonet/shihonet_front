@@ -39,8 +39,8 @@ export const useBlogsStore = defineStore('blogs', {
             title: blog.title,
             memberName: blog.member_name,
             publishedAt: blog.published_at,
+            blogUrl: blog.blog_url,
             thumbnailImageUrl: blog.thumbnail_image_url,
-            urlPath: blog.url_path,
           };
         });
         this.totalPage = response.data.pagination.pages;
