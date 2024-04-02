@@ -5,18 +5,18 @@
     </div>
     <div v-else>
       <div class="text-right">
-        <p>PAGE：{{ page }} / {{ totalPage }}</p>
+        <p>PAGE：{{ currentPage }} / {{ totalPage }}</p>
       </div>
       <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
         <FadeInOnScroll>
           <div class="relative">
-            <img :src="blog.thumbnail_image_url" class="rounded-lg w-full" />
-            <a :href="'https://www.hinatazaka46.com' + blog.url_path">
+            <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
+            <a :href="'https://www.hinatazaka46.com' + blog.urlPath">
               <div
                 class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
               >
                 <div class="text-[12px] font-bold">
-                  {{ blog.published_at }}
+                  {{ blog.publishedAt }}
                 </div>
                 <div class="text-[16px] font-extrabold">
                   {{ blog.title }}
@@ -31,36 +31,36 @@
           <div class="flex justify-center items-center text-[20px] font-bold">
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
-              v-if="page > 2"
-              @click="setPage(page > skipPages ? page - skipPages : 1 - page)"
-              >{{ page > skipPages ? -skipPages : 1 - page }}</span
+              v-if="currentPage > 2"
+              @click="setPage(currentPage > skipPages ? currentPage - skipPages : 1 - currentPage)"
+              >{{ currentPage > skipPages ? -skipPages : 1 - currentPage }}</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
-              v-if="page > 1"
-              @click="setPage(page - 1)"
+              v-if="currentPage > 1"
+              @click="setPage(currentPage - 1)"
               >＜</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center items-center rounded-full border-2 border-blue-200 text-blue-200"
-              >{{ page }}</span
+              >{{ currentPage }}</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
-              v-if="page < totalPage"
-              @click="setPage(page + 1)"
+              v-if="currentPage < totalPage"
+              @click="setPage(currentPage + 1)"
               >＞</span
             >
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
-              v-if="page + 1 < totalPage"
+              v-if="currentPage + 1 < totalPage"
               @click="
                 setPage(
-                  page + skipPages < totalPage ? page + skipPages : totalPage
+                  currentPage + skipPages < totalPage ? currentPage + skipPages : totalPage
                 )
               "
             >
-              +{{ page + skipPages < totalPage ? skipPages : totalPage - page }}
+              +{{ currentPage + skipPages < totalPage ? skipPages : totalPage - currentPage }}
             </span>
           </div>
         </div>
@@ -70,58 +70,50 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref, computed } from "vue";
+import { useBlogsStore } from '@/stores/blogsStore';
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
   components: { WaitingForLoading, FadeInOnScroll },
-  data() {
-    return {
-      blogs: [] as any[],
-      page: 1,
-      limit: 20,
-      totalPage: 1,
-      isLoading: true,
-      skipPages: 20,
+  setup() {
+    const isLoading = ref(true);
+    const skipPages = 20; // 定数
+    const blogsStore = useBlogsStore();
+    const blogs = computed(() => blogsStore.getBlogs);
+    const currentPage = computed(() => blogsStore.getCurrentPage);
+    const limit = computed(() => blogsStore.getLimit);
+    const totalPage = computed(() => blogsStore.getTotalPage);
+
+    const requestGetBlogs = async () => {
+      await blogsStore.requestGetBlogs().finally(() => {
+        isLoading.value = false;
+      });
     };
-  },
-  created() {
-    this.requestGetBlogs();
-  },
-  watch: {
-    page() {
-      this.setPage(this.page);
-      this.requestGetBlogs();
-    },
-  },
-  methods: {
-    requestGetBlogs() {
-      this.isLoading = true;
-      axios
-        .get("/api/blogs", {
-          params: {
-            page: this.page,
-            limit: this.limit,
-          },
-        })
-        .then((response) => {
-          this.blogs = response.data.blogs;
-          this.totalPage = response.data.pagination.pages;
-          window.scrollTo(0, 0);
-          this.isLoading = false;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    },
-    setPage(page: number) {
-      this.page = page;
-    },
-  },
+
+    // NOTE: ページネーションをクリックすると呼び出される
+    const setPage = async (newPage: number) => {
+      isLoading.value = true;
+      window.scrollTo(0, 0);
+      await blogsStore.setPage(newPage);
+      isLoading.value = false;
+    };
+
+    onMounted(() => {
+      requestGetBlogs();
+    });
+
+    return {
+      blogs,
+      currentPage,
+      totalPage,
+      limit,
+      isLoading,
+      skipPages,
+      setPage,
+      requestGetBlogs,
+    };
+  }
 });
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
