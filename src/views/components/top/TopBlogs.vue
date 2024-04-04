@@ -65,7 +65,6 @@ export default defineComponent({
       borderClass: "border-top-color",
       textColorClass: "top-color",
       blogs: computed(() => topBlogsStore.getBlogs),
-      limit: computed(() => topBlogsStore.getLimit),
       isLoading: computed(() => topBlogsStore.getIsLoading),
     };
   }
