@@ -5,14 +5,11 @@ import { Blog, ApiResponseBlog } from '@/types/blogsTypes';
 export const useTopBlogsStore = defineStore('topBlogs', {
   state: () => ({
     blogs: [] as Blog[],
-    limit: 3,
     isLoading: false,
   }),
 
   getters: {
     getBlogs: (state): Blog[] => state.blogs,
-
-    getLimit: (state) => state.limit,
 
     getIsLoading: (state) => state.isLoading,
   },
@@ -22,7 +19,7 @@ export const useTopBlogsStore = defineStore('topBlogs', {
       try {
         const response = await axios.get("/api/blogs", {
           params: {
-            limit: this.limit,
+            limit: 3, // 表示件数
           },
         });
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {

@@ -16,9 +16,9 @@
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
             <span class="text-site-color mr-2">◆</span>
             <span
-              >{{ schedule.started_date }}【{{ schedule.category_name }}】</span
+              >{{ schedule.scheduleDate }}【{{ schedule.categoryName }}】</span
             >
-            <a :href="'https://www.hinatazaka46.com' + schedule.url_path">
+            <a :href="'https://www.hinatazaka46.com' + schedule.urlPath">
               <p class="mt-2">{{ schedule.name }}</p>
             </a>
           </div>
@@ -32,56 +32,29 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import { defineComponent, onMounted, computed } from "vue";
+import { useTopSchedulesStore } from '@/stores/topSchedulesStore';
 import TitlePart from "@/views/components/common/TitlePart.vue";
+import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
-  components: { WaitingForLoading, TitlePart, FadeInOnScroll },
-  data() {
+  components: { TitlePart, WaitingForLoading, FadeInOnScroll },
+  setup() {
+    const topSchedulesStore = useTopSchedulesStore();
+
+    onMounted(() => {
+      topSchedulesStore.requestGetTopSchedules();
+    });
+
     return {
-      isLoading: false,
-      schedules: [] as any[],
-      title: "Schedules",
+      title: 'Schedules',
       borderClass: "border-top-color",
       textColorClass: "top-color",
+      schedules: computed(() => topSchedulesStore.getSchedules),
+      isSchedulePresent: computed(() => topSchedulesStore.getIsSchedulePresent),
+      isLoading: computed(() => topSchedulesStore.getIsLoading),
     };
-  },
-  created() {
-    this.requestGetSchedules();
-  },
-  methods: {
-    requestGetSchedules() {
-      this.isLoading = true;
-      // 開始日を今日に設定
-      const startDate = new Date().toISOString().split("T")[0];
-
-      axios
-          .get("/api/schedules", {
-            params: {
-              started_date: startDate,
-              ended_date: "2100-01-01",
-              limit: 5,
-            },
-          })
-          .then((response) => {
-            this.schedules = response.data.schedules;
-            this.isLoading = false;
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
-    },
-  },
-  computed: {
-    isSchedulePresent(): boolean {
-      return !!this.schedules && this.schedules.length > 0;
-    },
-  },
+  }
 });
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
