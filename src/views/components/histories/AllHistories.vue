@@ -3,12 +3,7 @@
     <FadeInOnScroll>
       <h1 class="text-[20px] font-extrabold text-site-color">
         ◆<span class="mx-2 font-bold">Histories of</span>
-        <select
-          v-model="selectedYear"
-          @change="requestGetHistories"
-          id="year"
-          class="w-24"
-        >
+        <select v-model="selectedYear" @change="setYear($event.target.value)" class="w-24">
           <option v-for="year in availableYears" :key="year" :value="year">
             {{ year }}
           </option>
@@ -30,9 +25,9 @@
       <div class="w-full ml-2">
         <div v-for="(history, index) in histories" :key="index" class="mb-2">
           <FadeInOnScroll>
-            <a :href="'https://www.hinatazaka46.com' + history.url_path">
+            <a :href="'https://www.hinatazaka46.com' + history.urlPath">
               <p class="font-light text-site-color">
-                {{ history.started_date }}【{{ history.category_name }}】
+                {{ history.startedDate }}【{{ history.categoryName }}】
               </p>
               <p class="font-normal">{{ history.name }}</p>
             </a>
@@ -45,41 +40,27 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import { defineComponent } from "vue";
+import { computed, defineComponent, onMounted } from "vue";
+import { useHistoriesStore } from "@/stores/historiesStore";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 
 export default defineComponent({
   components: { WaitingForLoading, FadeInOnScroll },
-  data() {
+  setup() {
+    const historiesStore = useHistoriesStore();
+
+    onMounted(() => {
+      historiesStore.requestGetHistories();
+    });
+
     return {
-      isLoading: false,
-      histories: [] as any[],
-      availableYears: [2024, 2023, 2022, 2021, 2020, 2019],
-      selectedYear: 2024,
+      histories: computed(() => historiesStore.getHistories),
+      isLoading: computed(() => historiesStore.getIsLoading),
+      availableYears: computed(() => historiesStore.getAvailableYears),
+      selectedYear: computed(() => historiesStore.getSelectedYear),
+      setYear: historiesStore.setYear,
     };
-  },
-  created() {
-    this.requestGetHistories();
-  },
-  methods: {
-    requestGetHistories() {
-      this.isLoading = true;
-      axios
-        .get("/api/histories", {
-          params: {
-            year: this.selectedYear,
-          },
-        })
-        .then((response) => {
-          this.histories = response.data.histories;
-          this.isLoading = false;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    },
   },
 });
 </script>

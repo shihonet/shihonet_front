@@ -31,7 +31,7 @@ export const useTopSchedulesStore = defineStore("topSchedules", {
           return {
             name: schedule.name,
             urlPath: schedule.url_path,
-            scheduleDate: schedule.schedule_date,
+            startedDate: schedule.started_date,
             categoryName: schedule.category_name,
           };
         });
