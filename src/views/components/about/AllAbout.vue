@@ -115,7 +115,7 @@ import TitlePart from "@/views/components/common/TitlePart.vue";
 
 export default defineComponent({
   components: { TitlePart, FadeInOnScroll },
-  data() {
+  setup() {
     return {
       title: "about #shihonet",
     };
