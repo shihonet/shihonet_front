@@ -16,7 +16,7 @@
           <div v-for="(schedule, index) in schedules" :key="index" class="mt-6">
             <span class="text-site-color mr-2">◆</span>
             <span
-              >{{ schedule.scheduleDate }}【{{ schedule.categoryName }}】</span
+              >{{ schedule.startedDate }}【{{ schedule.categoryName }}】</span
             >
             <a :href="'https://www.hinatazaka46.com' + schedule.urlPath">
               <p class="mt-2">{{ schedule.name }}</p>

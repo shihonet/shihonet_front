@@ -1,13 +1,13 @@
 export interface Schedule {
   name: string;
   urlPath: string;
-  scheduleDate: string;
+  startedDate: string;
   categoryName: string;
 }
 
 export interface ApiResponseSchedule {
   name: string;
   url_path: string;
-  schedule_date: string;
+  started_date: string;
   category_name: string;
 }
