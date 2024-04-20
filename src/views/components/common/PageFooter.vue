@@ -3,7 +3,7 @@
     <div class="w-full bg-site-color px-8 pt-10 pb-10 text-white">
       <ul class="text-[20px] font-normal">
         <li class="pb-4">
-          <RouterLink to="/profile">Profile</RouterLink>
+          <RouterLink to="/profiles">Profiles</RouterLink>
         </li>
         <li class="pb-4">
           <RouterLink to="/blogs">Blogs</RouterLink>

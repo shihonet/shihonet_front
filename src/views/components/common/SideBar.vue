@@ -24,9 +24,9 @@
     <FadeInOnScroll>
       <ul class="mt-10 mx-6 text-[24px]">
         <li>
-          <RouterLink to="/profile" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/profiles" @click="toggleSidebar" class="flex items-center mb-5">
             <img src="@/assets/images/photo_camera_front_FILL0_wght100_GRAD-25_opsz48.svg" />
-            <span class="ml-2">Profile</span>
+            <span class="ml-2">Profiles</span>
           </RouterLink>
         </li>
         <li>

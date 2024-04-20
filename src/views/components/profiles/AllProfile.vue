@@ -38,13 +38,13 @@ import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
 import ProfileTable from "@/views/components/common/ProfileTable.vue";
-import ContentIntroduction from "@/views/components/profile/ContentIntroduction.vue";
+import ContentIntroduction from "@/views/components/profiles/ContentIntroduction.vue";
 
 export default defineComponent({
   components: { ContentIntroduction, ProfileTable, TitlePart, FadeInOnScroll },
   setup() {
     return {
-      title: "Profile",
+      title: "Profiles",
       isNeededDetailProf: true,
     };
   },

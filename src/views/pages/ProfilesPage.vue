@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AllProfile from "@/views/components/profile/AllProfile.vue";
+import AllProfile from "@/views/components/profiles/AllProfile.vue";
 
 export default defineComponent({
   components: { AllProfile },
