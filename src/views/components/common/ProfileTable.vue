@@ -61,7 +61,7 @@
       <tbody v-if="isNeededDetailProf">
         <tr class="h-6"></tr>
         <tr>
-          <td class="p-2 pr-5">好きなアニメ</td>
+          <td class="p-2 pr-2">好きなアニメ</td>
           <td class="p-2">
             『名探偵コナン』、<br />『新世紀エヴァンゲリオン』、<br />『進撃の巨人』、<br />『SPY
             × FAMILY』、<br />
@@ -69,22 +69,22 @@
           </td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">好きな映画</td>
+          <td class="p-2 pr-2">好きな映画</td>
           <td class="p-2">
             『スター・ウォーズ』、<br />『スパイダーマン』、<br />『ハリー・ポッター』シリーズ、<br />
             『クレヨンしんちゃん』、<br />マーベル作品<br />
           </td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">口癖</td>
+          <td class="p-2 pr-2">口癖</td>
           <td class="p-2">しし</td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">好きな食べ物</td>
+          <td class="p-2 pr-2">好きな食べ物</td>
           <td class="p-2">辛いもの、プリッツ、<br />母の作るハンバーグ</td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">好きな言葉</td>
+          <td class="p-2 pr-2">好きな言葉</td>
           <td class="p-2">クリスマス</td>
         </tr>
       </tbody>
