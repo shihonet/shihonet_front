@@ -58,8 +58,6 @@ export default defineComponent({
   setup() {
     return {
       title: "Profiles",
-      borderClass: "border-top-color",
-      textColorClass: "top-color",
       seeMoreText: "See more profile…",
       isNeededDetailProf: false,
     };
