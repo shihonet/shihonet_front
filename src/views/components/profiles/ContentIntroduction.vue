@@ -26,7 +26,7 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2018年8月15日</p>
         <div class="mt-2 mx-4">
-          <p class="text-[20px] text-site-color">
+          <p class="text-[20px] text-site-color font-bold">
             初センター『ハッピーオーラ』発売
           </p>
           <iframe
@@ -65,7 +65,7 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2021年5月26日</p>
         <div class="mt-2 mx-4">
-          <p class="text-[20px] text-site-color">
+          <p class="text-[20px] text-site-color font-bold">
             5thSG『君しか勝たん』でセンターに
           </p>
           <iframe
@@ -78,7 +78,7 @@
           ></iframe>
           <p class="mt-2">
             日向坂46に改名してから初となるセンター楽曲。<br />
-            5thシングルに収録されている個人PVにて、加藤史帆の個人PV
+            5thシングルに収録されている個人PVでは、加藤史帆の個人PV
             <a
               href="https://youtu.be/d4V0nAhncMg?si=s09C4C_u-kE6GIAv"
               target="_blank"
@@ -94,8 +94,9 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2023年6月17日</p>
         <div class="mt-2 mx-4">
-          <p class="text-[20px] text-site-color">
-            かとし×こさかなユニバデート【Vlog】
+          <p>
+            【日向坂ちゃんねる】<br/>
+            『【お忍び】かとし×こさかなユニバデート【Vlog】』
           </p>
           <iframe
             src="https://www.youtube.com/embed/-gRzsVn5AzM?si=gjg9ScYbu0A97LRL"
@@ -113,20 +114,54 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2023年6月20日</p>
         <div class="mt-2 mx-4">
-          <p>
-            加藤史帆1st写真集「#会いたい」発売。<br />
-            撮影場所は本人が昔から切望していたハワイ・オアフ島。
+          <p class="text-[20px] text-site-color font-bold">
+            加藤史帆1st写真集「#会いたい」発売。
           </p>
+          <p class="mt-2">
+            撮影場所は本人が昔から切望していたハワイ・オアフ島！<br />
+            写真集公式Xアカウントは <a href="https://twitter.com/katoshi_aloha" target="_blank" class="text-blue-500 underline">こちら</a> 。
+          </p>
+          <div class="mt-2 mx-10">
+            <img src="https://cdn.hinatazaka46.com/files/14/tsujo.jpg" class="mt-4">
+          </div>
+          <div class="mt-4 flex flex-col">
+            <p class="text-center">ご購入はこちらから！</p>
+            <div class="mt-4 flex space-x-4 justify-center">
+              <a href="https://amzn.asia/d/8VKrKAb" target="_blank" class="text-blue-500">
+                <div class="py-2 w-[160px] border border-blue-500 rounded-lg text-center hover:bg-blue-100">
+                  アマゾン
+                </div>
+              </a>
+              <a href="https://books.rakuten.co.jp/rb/17495252/" target="_blank" class="text-blue-500">
+                <div class="py-2 w-[160px] border border-blue-500 rounded-lg text-center hover:bg-blue-100">
+                  楽天
+                </div>
+              </a>
+            </div>
+            <div class="mt-4 flex space-x-4 justify-center">
+              <a href="https://bit.ly/3GZ0VMw" target="_blank" class="text-blue-500">
+                <div class="py-2 w-[160px] border border-blue-500 rounded-lg text-center hover:bg-blue-100">
+                  HMV
+                </div>
+              </a>
+              <a href="https://bit.ly/40qgOT1" target="_blank" class="text-blue-500">
+                <div class="py-2 w-[160px] border border-blue-500 rounded-lg text-center hover:bg-blue-100">
+                  紀伊國屋
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </FadeInOnScroll>
 
     <FadeInOnScroll>
       <div class="mx-2 mb-10">
-        <p class="text-sm text-gray-400">2023年6月17日</p>
+        <p class="text-sm text-gray-400">2023年12月3日</p>
         <div class="mt-2 mx-4">
-          <p class="text-[20px] text-site-color">
-            不幸が続くのでお祓い行ってきた【ハッピー開運ツアー】
+          <p>
+            【日向坂ちゃんねる】<br/>
+            『【緊急招集】不幸が続くのでお祓い行ってきた【ハッピー開運ツアー】』
           </p>
           <iframe
             src="https://www.youtube.com/embed/sSWjfvUNDF4?si=v9di53trMeHwz1iy"
@@ -144,8 +179,9 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2024年2月11日</p>
         <div class="mt-2 mx-4">
-          <p class="text-[20px] text-site-color">
-            日向坂のリトルトゥースがリアル脱出ゲームに挑戦してみた
+          <p>
+            【日向坂ちゃんねる】<br/>
+            『日向坂のリトルトゥースがリアル脱出ゲームに挑戦してみた【オードリーANN】』
           </p>
           <iframe
             src="https://www.youtube.com/embed/vlWcVTOFyMw?si=ORPrJx6K7I3Ant7h"
@@ -163,15 +199,18 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2024年3月8日</p>
         <div class="mt-2 mx-4">
+          <p class="text-[20px] text-site-color font-bold">
+            初主演ドラマ「これから配信はじめます」
+          </p>
           <p class="mt-2">
             加藤史帆 初主演ドラマ
             <a
               href="https://www.tv-tokyo.co.jp/haihaji/"
               target="_blank"
               class="font-medium text-blue-500 underline"
-            >「これから配信始めます」</a
+            >「これから配信はじめます」</a
             > 放送開始。（テレビ東京）<br />
-            全四話のオムニバスドラマで、かすみ役として、第二話では主演を務めた。
+            全四話のオムニバスドラマ。かすみ役として、第二話（2024/3/15放送）では主演を務めた。
           </p>
         </div>
       </div>

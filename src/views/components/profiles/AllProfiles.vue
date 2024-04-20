@@ -3,9 +3,10 @@
     <div class="mt-10 mb-10 mx-8">
       <TitlePart :title="title" />
     </div>
-    <p class="text-center text-[12px] mb-1 font-light">Shiho Kato</p>
-    <p class="text-center text-[20px] mb-4">加藤 史帆</p>
-    <img src="@/assets/images/11th_shiho.png" class="mx-auto w-[220px]" />
+    <p class="text-center text-[12px] font-light">Shiho Kato</p>
+    <p class="mt-1 text-center text-[20px]">加藤 史帆</p>
+    <p class="mt-4 text-center text-light text-site-color text-sm">日向坂46 一期生</p>
+    <img src="@/assets/images/11th_shiho.png" class="mt-4 mx-auto w-[220px]" />
   </FadeInOnScroll>
 
   <FadeInOnScroll>
@@ -13,16 +14,16 @@
   </FadeInOnScroll>
 
   <FadeInOnScroll>
-    <div class="mt-16 bg-yellow-100 rounded-lg py-4">
+    <div class="mt-16 bg-yellow-100 rounded-lg py-4 px-2">
       <p class="text-[14px] font-light text-center">
-        リアルタイムで加藤史帆ちゃんの近況を知りたい方は、 <br />
+        リアルタイムで加藤史帆ちゃんの近況を知りたい方は、
         <a
           href="https://www.hinatazaka46.com/s/h46app/page_common/app_guide"
           target="_blank"
           class="font-medium text-blue-500 underline"
-          >公式アプリ「日向坂46メッセージ」</a
+          >日向坂46公式アプリ「日向坂46メッセージ」</a
         >
-        （月額300円）で<br />チェックできます！！
+        （月額300円）でチェックできます！！
       </p>
     </div>
   </FadeInOnScroll>
@@ -37,13 +38,13 @@ import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
 import ProfileTable from "@/views/components/common/ProfileTable.vue";
-import ContentIntroduction from "@/views/components/profile/ContentIntroduction.vue";
+import ContentIntroduction from "@/views/components/profiles/ContentIntroduction.vue";
 
 export default defineComponent({
   components: { ContentIntroduction, ProfileTable, TitlePart, FadeInOnScroll },
   setup() {
     return {
-      title: "Profile",
+      title: "Profiles",
       isNeededDetailProf: true,
     };
   },

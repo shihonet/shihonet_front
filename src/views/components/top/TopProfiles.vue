@@ -13,7 +13,7 @@
     <FadeInOnScroll>
       <ProfileTable :isNeededDetailProf="isNeededDetailProf" />
       <div class="mt-10 flex justify-end">
-        <RouterLink to="/profile">
+        <RouterLink to="/profiles">
           <MoreView :text="seeMoreText" />
         </RouterLink>
       </div>
@@ -58,7 +58,7 @@ export default defineComponent({
   setup() {
     return {
       title: "Profiles",
-      seeMoreText: "See more profile…",
+      seeMoreText: "See more profiles…",
       isNeededDetailProf: false,
     };
   },
