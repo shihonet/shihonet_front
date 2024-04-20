@@ -9,10 +9,7 @@
     </div>
     <p class="text-center text-[12px] mb-1 font-light">Shiho Kato</p>
     <p class="text-center text-[20px] mb-4">加藤 史帆</p>
-    <img
-      src="@/assets/images/11th_shiho.png"
-      class="mx-auto w-[220px]"
-    />
+    <img src="@/assets/images/11th_shiho.png" class="mx-auto w-[220px]" />
   </FadeInOnScroll>
   <FadeInOnScroll>
     <div class="flex items-center justify-center mt-14 mx-6">
@@ -52,15 +49,23 @@
         </tr>
         <tr>
           <td class="p-1.5 pr-5">趣味</td>
-          <td class="p-1.5">テーマパーク、映画、アニメ、<br />小さいフィギュア集め</td>
+          <td class="p-1.5">
+            テーマパーク、映画、アニメ、<br />小さいフィギュア集め
+          </td>
         </tr>
         <div class="h-6"></div>
         <tr>
           <td class="p-1.5 pr-5">ＳＮＳ</td>
           <td class="p-1.5">
             <div class="w-6">
-              <a href="https://www.instagram.com/katoshi.official/" target="_blank">
-                <img src="@/assets/images/Instagram_Glyph_Gradient.png" class="w-6" />
+              <a
+                href="https://www.instagram.com/katoshi.official/"
+                target="_blank"
+              >
+                <img
+                  src="@/assets/images/Instagram_Glyph_Gradient.png"
+                  class="w-6"
+                />
               </a>
             </div>
           </td>
@@ -69,7 +74,8 @@
         <tr>
           <td class="p-2 pr-5">好きなアニメ</td>
           <td class="p-2">
-            『名探偵コナン』、<br />『新世紀エヴァンゲリオン』、<br />『進撃の巨人』、<br />『SPY × FAMILY』、<br />
+            『名探偵コナン』、<br />『新世紀エヴァンゲリオン』、<br />『進撃の巨人』、<br />『SPY
+            × FAMILY』、<br />
             『ジョジョの奇妙な冒険』、<br />『HUNTER × HUNTER』
           </td>
         </tr>
@@ -93,6 +99,13 @@
           <td class="p-2">クリスマス</td>
         </tr>
       </table>
+    </div>
+  </FadeInOnScroll>
+  <FadeInOnScroll>
+    <div class="mt-10 flex flex-col items-center justify-center">
+      <router-link to="/profile">
+        <MoreView :borderClass="'border-site-color'" />
+      </router-link>
     </div>
   </FadeInOnScroll>
   <FadeInOnScroll>
@@ -125,9 +138,10 @@
 import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
+import MoreView from "@/views/components/common/MoreView.vue";
 
 export default defineComponent({
-  components: { TitlePart, FadeInOnScroll },
+  components: { MoreView, TitlePart, FadeInOnScroll },
   setup() {
     return {
       title: "Profiles",
