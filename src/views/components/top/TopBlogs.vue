@@ -33,9 +33,9 @@
     </div>
     <FadeInOnScroll>
       <div class="mt-10 flex justify-end">
-        <router-link to="/blogs">
+        <RouterLink to="/blogs">
           <MoreView :text="seeMoreText" />
-        </router-link>
+        </RouterLink>
       </div>
     </FadeInOnScroll>
   </div>

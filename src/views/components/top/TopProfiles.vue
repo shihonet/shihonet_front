@@ -13,9 +13,9 @@
     <FadeInOnScroll>
       <ProfileTable :isNeededDetailProf="isNeededDetailProf" />
       <div class="mt-10 flex justify-end">
-        <router-link to="/profile">
+        <RouterLink to="/profile">
           <MoreView :text="seeMoreText" />
-        </router-link>
+        </RouterLink>
       </div>
     </FadeInOnScroll>
 

@@ -12,9 +12,9 @@
   >
     <div class="flex justify-between pl-4 bg-white">
       <div class="ml-2 my-1">
-        <router-link to="/" @click="toggleSidebar">
+        <RouterLink to="/" @click="toggleSidebar">
           <img src="@/assets/images/header_logo.svg" class="w-[160px]" />
-        </router-link>
+        </RouterLink>
       </div>
       <div class="flex items-center mr-4" @click="toggleSidebar">
         <img src="@/assets/images/close_FILL0_wght400_GRAD0_opsz24.svg" />
@@ -24,28 +24,34 @@
     <FadeInOnScroll>
       <ul class="mt-10 mx-6 text-[24px]">
         <li>
-          <router-link to="/blogs" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/profile" @click="toggleSidebar" class="flex items-center mb-5">
+            <img src="@/assets/images/photo_camera_front_FILL0_wght100_GRAD-25_opsz48.svg" />
+            <span class="ml-2">Profile</span>
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/blogs" @click="toggleSidebar" class="flex items-center mb-5">
             <img src="@/assets/images/stylus_note_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">Blogs</span>
-          </router-link>
+          </RouterLink>
         </li>
         <li>
-          <router-link to="/histories" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/histories" @click="toggleSidebar" class="flex items-center mb-5">
             <img src="@/assets/images/history_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">Histories</span>
-          </router-link>
+          </RouterLink>
         </li>
         <li>
-          <router-link to="/about" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/about" @click="toggleSidebar" class="flex items-center mb-5">
             <img src="@/assets/images/indeterminate_question_box_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">About "#shihonet"</span>
-          </router-link>
+          </RouterLink>
         </li>
         <li>
-          <router-link to="/thanks_post" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/thanks_post" @click="toggleSidebar" class="flex items-center mb-5">
             <img src="@/assets/images/folded_hands_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">Thanks Generator</span>
-          </router-link>
+          </RouterLink>
         </li>
         <li>
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000" class="flex items-center mb-5">
@@ -77,7 +83,6 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #sidebar {
   /* Google fontsで導入したいfontsからfont-familyを取ってくる */
