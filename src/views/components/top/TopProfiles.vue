@@ -11,7 +11,7 @@
     </FadeInOnScroll>
 
     <FadeInOnScroll>
-      <ProfileTable />
+      <ProfileTable :isNeededDetailProf="isNeededDetailProf" />
       <div class="mt-10 flex justify-end">
         <router-link to="/profile">
           <MoreView :text="seeMoreText" />
@@ -61,6 +61,7 @@ export default defineComponent({
       borderClass: "border-top-color",
       textColorClass: "top-color",
       seeMoreText: "See more profile…",
+      isNeededDetailProf: false,
     };
   },
 });

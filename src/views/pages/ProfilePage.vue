@@ -1,5 +1,7 @@
 <template>
-  <AllProfile />
+  <div class="mx-6">
+    <AllProfile />
+  </div>
 </template>
 
 <script lang="ts">

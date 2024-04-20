@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center mt-14 mx-6">
+  <div class="flex items-center justify-center mt-14">
     <table class="text-sm font-light">
       <tr class="py-1">
         <td class="p-1.5 pr-5">生年月日</td>
@@ -21,7 +21,7 @@
         <td class="p-1.5 pr-5">血液型</td>
         <td class="p-1.5">A型</td>
       </tr>
-      <div class="h-6"></div>
+      <tr class="h-6"></tr>
       <tr>
         <td class="p-1.5 pr-5">カラー</td>
         <td class="p-1.5">青 × 青</td>
@@ -40,7 +40,7 @@
           テーマパーク、映画、アニメ、<br />小さいフィギュア集め
         </td>
       </tr>
-      <div class="h-6"></div>
+      <tr class="h-6"></tr>
       <tr>
         <td class="p-1.5 pr-5">ＳＮＳ</td>
         <td class="p-1.5">
@@ -57,34 +57,51 @@
           </div>
         </td>
       </tr>
-      <div class="h-6"></div>
-      <tr>
-        <td class="p-2 pr-5">好きなアニメ</td>
-        <td class="p-2">
-          『名探偵コナン』、<br />『新世紀エヴァンゲリオン』、<br />『進撃の巨人』、<br />『SPY
-          × FAMILY』、<br />
-          『ジョジョの奇妙な冒険』、<br />『HUNTER × HUNTER』
-        </td>
-      </tr>
-      <tr>
-        <td class="p-2 pr-5">好きな映画</td>
-        <td class="p-2">
-          『スター・ウォーズ』、<br />『スパイダーマン』、<br />『ハリー・ポッター』シリーズ、<br />
-          『クレヨンしんちゃん』、<br />マーベル作品<br />
-        </td>
-      </tr>
-      <tr>
-        <td class="p-2 pr-5">口癖</td>
-        <td class="p-2">しし</td>
-      </tr>
-      <tr>
-        <td class="p-2 pr-5">好きな食べ物</td>
-        <td class="p-2">辛いもの、プリッツ、<br />母の作るハンバーグ</td>
-      </tr>
-      <tr>
-        <td class="p-2 pr-5">好きな言葉</td>
-        <td class="p-2">クリスマス</td>
-      </tr>
+
+      <tbody v-if="isNeededDetailProf">
+        <tr class="h-6"></tr>
+        <tr>
+          <td class="p-2 pr-5">好きなアニメ</td>
+          <td class="p-2">
+            『名探偵コナン』、<br />『新世紀エヴァンゲリオン』、<br />『進撃の巨人』、<br />『SPY
+            × FAMILY』、<br />
+            『ジョジョの奇妙な冒険』、<br />『HUNTER × HUNTER』
+          </td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">好きな映画</td>
+          <td class="p-2">
+            『スター・ウォーズ』、<br />『スパイダーマン』、<br />『ハリー・ポッター』シリーズ、<br />
+            『クレヨンしんちゃん』、<br />マーベル作品<br />
+          </td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">口癖</td>
+          <td class="p-2">しし</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">好きな食べ物</td>
+          <td class="p-2">辛いもの、プリッツ、<br />母の作るハンバーグ</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">好きな言葉</td>
+          <td class="p-2">クリスマス</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
+  props: {
+    isNeededDetailProf: {
+      type: Boolean as PropType<boolean>,
+      default: true,
+      required: true,
+    },
+  },
+});
+</script>
