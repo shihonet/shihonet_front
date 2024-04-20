@@ -58,14 +58,8 @@
         <tr>
           <td>ＳＮＳ</td>
           <td>
-            <a
-              href="https://www.instagram.com/katoshi.official/"
-              target="_blank"
-            >
-              <img
-                src="@/assets/images/Instagram_Glyph_Gradient.svg"
-                class="w-8"
-              />
+            <a href="https://www.instagram.com/katoshi.official/" target="_blank">
+              <img src="@/assets/images/Instagram_Glyph_Gradient.png" class="w-8" />
             </a>
           </td>
         </tr>
