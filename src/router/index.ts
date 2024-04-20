@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
 import TopPage from "@/views/pages/TopPage.vue";
 import BlogsPage from "@/views/pages/BlogsPage.vue";
+import ProfilePage from "@/views/pages/ProfilePage.vue";
 import AboutPage from "@/views/pages/AboutPage.vue";
 import HistoriesPage from "@/views/pages/HistoriesPage.vue";
 import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
@@ -15,6 +16,11 @@ const routes = [
     path: "/blogs",
     name: "blogs",
     component: BlogsPage,
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: ProfilePage,
   },
   {
     path: "/about",

@@ -2,9 +2,9 @@
   <div class="sticky z-50 w-full top-0">
     <div class="flex justify-between pl-4 bg-white">
       <div class="ml-2 my-1">
-        <router-link to="/">
+        <RouterLink to="/">
           <img src="@/assets/images/header_logo.svg" class="w-[160px]" />
-        </router-link>
+        </RouterLink>
       </div>
       <SideBar />
     </div>

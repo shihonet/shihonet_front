@@ -1,11 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="my-40 mx-10">
-      <TitlePart
-        :title="title"
-        :border-class="borderClass"
-        :textColorClass="textColorClass"
-      />
+      <TitlePart :title="title" />
 
       <div v-if="isLoading">
         <WaitingForLoading />

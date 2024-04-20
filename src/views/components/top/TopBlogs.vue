@@ -1,46 +1,44 @@
 <template>
-  <FadeInOnScroll>
-    <div class="mt-40 mb-10 mx-10">
-      <TitlePart
-        :title="title"
-        :border-class="borderClass"
-        :textColorClass="textColorClass"
-      />
-    </div>
-  </FadeInOnScroll>
+  <div class="mx-6">
+    <FadeInOnScroll>
+      <div class="mt-40 mb-10 mx-10">
+        <TitlePart :title="title" />
+      </div>
+    </FadeInOnScroll>
 
-  <div v-if="isLoading">
-    <WaitingForLoading />
-  </div>
+    <div v-if="isLoading">
+      <WaitingForLoading />
+    </div>
 
-  <div v-else class="mx-6 mt-2">
-    <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
-      <FadeInOnScroll>
-        <div class="relative">
-          <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
-          <a :href="blog.blogUrl">
-            <div
-              class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
-            >
-              <div class="text-[12px] font-bold text-white opacity-100">
-                {{ blog.publishedAt }}
+    <div v-else class="mt-2">
+      <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
+        <FadeInOnScroll>
+          <div class="relative">
+            <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
+            <a :href="blog.blogUrl">
+              <div
+                class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color hover:opacity-90"
+              >
+                <div class="text-[12px] font-bold text-white opacity-100">
+                  {{ blog.publishedAt }}
+                </div>
+                <div class="text-[16px] font-extrabold text-white opacity-100">
+                  {{ blog.title }}
+                </div>
               </div>
-              <div class="text-[16px] font-extrabold text-white opacity-100">
-                {{ blog.title }}
-              </div>
-            </div>
-          </a>
-        </div>
-      </FadeInOnScroll>
+            </a>
+          </div>
+        </FadeInOnScroll>
+      </div>
     </div>
+    <FadeInOnScroll>
+      <div class="mt-10 flex justify-end">
+        <RouterLink to="/blogs">
+          <MoreView :text="seeMoreText" />
+        </RouterLink>
+      </div>
+    </FadeInOnScroll>
   </div>
-  <FadeInOnScroll>
-    <div class="mt-10 flex flex-col items-center justify-center">
-      <router-link to="/blogs">
-        <MoreView :borderClass="'border-site-color'" />
-      </router-link>
-    </div>
-  </FadeInOnScroll>
 </template>
 
 <script lang="ts">
@@ -64,6 +62,7 @@ export default defineComponent({
       title: 'Blogs',
       borderClass: "border-top-color",
       textColorClass: "top-color",
+      seeMoreText: 'See more blogs…',
       blogs: computed(() => topBlogsStore.getBlogs),
       isLoading: computed(() => topBlogsStore.getIsLoading),
     };

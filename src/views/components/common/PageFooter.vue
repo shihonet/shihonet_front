@@ -3,16 +3,19 @@
     <div class="w-full bg-site-color px-8 pt-10 pb-10 text-white">
       <ul class="text-[20px] font-normal">
         <li class="pb-4">
-          <router-link to="/blogs">Blogs</router-link>
+          <RouterLink to="/profile">Profile</RouterLink>
         </li>
         <li class="pb-4">
-          <router-link to="/histories">Histories</router-link>
+          <RouterLink to="/blogs">Blogs</RouterLink>
         </li>
         <li class="pb-4">
-          <router-link to="/about">About "#shihonet"</router-link>
+          <RouterLink to="/histories">Histories</RouterLink>
         </li>
         <li class="pb-4">
-          <router-link to="/thanks_post">Thanks Generator</router-link>
+          <RouterLink to="/about">About "#shihonet"</RouterLink>
+        </li>
+        <li class="pb-4">
+          <RouterLink to="/thanks_post">Thanks Generator</RouterLink>
         </li>
         <li class="pb-4">
           <a href="https://www.hinatazaka46.com/s/official/?ima=0000"
