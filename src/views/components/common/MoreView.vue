@@ -1,6 +1,6 @@
 <template>
   <div id="MoreView">
-    <div class="flex flex-col items-center mr-6">
+    <div class="flex flex-col items-center">
       <div class="text-site-color hover:opacity-70 text-[24px] font-normal">
         {{ text }}
       </div>
