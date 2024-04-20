@@ -20,7 +20,7 @@
           <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
           <a :href="blog.blogUrl">
             <div
-              class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color"
+              class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color hover:opacity-90"
             >
               <div class="text-[12px] font-bold text-white opacity-100">
                 {{ blog.publishedAt }}
@@ -35,9 +35,9 @@
     </div>
   </div>
   <FadeInOnScroll>
-    <div class="mt-10 flex flex-col items-center justify-center">
+    <div class="mt-10 flex justify-end">
       <router-link to="/blogs">
-        <MoreView :borderClass="'border-site-color'" />
+        <MoreView :text="seeMoreText" />
       </router-link>
     </div>
   </FadeInOnScroll>
@@ -64,6 +64,7 @@ export default defineComponent({
       title: 'Blogs',
       borderClass: "border-top-color",
       textColorClass: "top-color",
+      seeMoreText: 'See more blogs…',
       blogs: computed(() => topBlogsStore.getBlogs),
       isLoading: computed(() => topBlogsStore.getIsLoading),
     };

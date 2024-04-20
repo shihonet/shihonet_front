@@ -100,16 +100,14 @@
         </tr>
       </table>
     </div>
-  </FadeInOnScroll>
-  <FadeInOnScroll>
-    <div class="mt-10 flex flex-col items-center justify-center">
-      <router-link to="/profile">
-        <MoreView :borderClass="'border-site-color'" />
+    <div class="mt-10 flex justify-end">
+      <router-link to="/blogs">
+        <MoreView :text="seeMoreText" />
       </router-link>
     </div>
   </FadeInOnScroll>
   <FadeInOnScroll>
-    <div class="text-[16px] text-center font-light mt-[100px]">
+    <div class="text-[16px] text-center font-light mt-[120px]">
       <p>
         2016年5月8日、けやき坂46の<br />
         オーディションに合格し、<br />
@@ -147,6 +145,7 @@ export default defineComponent({
       title: "Profiles",
       borderClass: "border-top-color",
       textColorClass: "top-color",
+      seeMoreText: "See more profile…",
     };
   },
 });

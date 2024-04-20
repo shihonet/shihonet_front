@@ -1,7 +1,10 @@
 <template>
   <div id="MoreView">
-    <div class="mt-4 bg-site-blog-color hover:bg-blue-300 text-white text-[24px] font-bold rounded-lg px-4 py-1">
-      See more…
+    <div class="flex flex-col items-center mr-6">
+      <div class="text-site-color hover:opacity-70 text-[24px] font-normal">
+        {{ text }}
+      </div>
+      <span class="block w-40 border-b border-gray-300"></span>
     </div>
   </div>
 </template>
@@ -11,9 +14,10 @@ import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   props: {
-    borderClass: {
+    text: {
       type: String as PropType<string>,
-      default: "border-site-base-pink",
+      default: "TITLE",
+      required: true,
     },
   },
 });
