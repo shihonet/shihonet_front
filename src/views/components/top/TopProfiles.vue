@@ -18,46 +18,46 @@
     <div class="flex items-center justify-center mt-14 mx-6">
       <table class="text-sm font-light">
         <tr class="py-1">
-          <td class="p-2 pr-5">生年月日</td>
-          <td class="p-2">1998年2月2日</td>
+          <td class="p-1.5 pr-5">生年月日</td>
+          <td class="p-1.5">1998年2月2日</td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">星座</td>
-          <td class="p-2">みずがめ座</td>
+          <td class="p-1.5 pr-5">星座</td>
+          <td class="p-1.5">みずがめ座</td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">身長</td>
-          <td class="p-2">160.5cm</td>
+          <td class="p-1.5 pr-5">身長</td>
+          <td class="p-1.5">160.5cm</td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">出身地</td>
-          <td class="p-2">東京都</td>
+          <td class="p-1.5 pr-5">出身地</td>
+          <td class="p-1.5">東京都</td>
         </tr>
         <tr>
-          <td class="p-2 pr-5">血液型</td>
-          <td class="p-2">A型</td>
-        </tr>
-        <div class="h-6"></div>
-        <tr>
-          <td class="p-2 pr-5">カラー</td>
-          <td class="p-2">青 × 青</td>
-        </tr>
-        <tr>
-          <td class="p-2 pr-5">愛称</td>
-          <td class="p-2">かとし、としちゃん</td>
-        </tr>
-        <tr>
-          <td class="p-2 pr-5">特技</td>
-          <td class="p-2">イラスト、運動</td>
-        </tr>
-        <tr>
-          <td class="p-2 pr-5">趣味</td>
-          <td class="p-2">テーマパーク、映画、アニメ、<br />小さいフィギュア集め</td>
+          <td class="p-1.5 pr-5">血液型</td>
+          <td class="p-1.5">A型</td>
         </tr>
         <div class="h-6"></div>
         <tr>
-          <td class="p-2 pr-5">ＳＮＳ</td>
-          <td class="p-2">
+          <td class="p-1.5 pr-5">カラー</td>
+          <td class="p-1.5">青 × 青</td>
+        </tr>
+        <tr>
+          <td class="p-1.5 pr-5">愛称</td>
+          <td class="p-1.5">かとし、としちゃん</td>
+        </tr>
+        <tr>
+          <td class="p-1.5 pr-5">特技</td>
+          <td class="p-1.5">イラスト、運動</td>
+        </tr>
+        <tr>
+          <td class="p-1.5 pr-5">趣味</td>
+          <td class="p-1.5">テーマパーク、映画、アニメ、<br />小さいフィギュア集め</td>
+        </tr>
+        <div class="h-6"></div>
+        <tr>
+          <td class="p-1.5 pr-5">ＳＮＳ</td>
+          <td class="p-1.5">
             <a href="https://www.instagram.com/katoshi.official/" target="_blank">
               <img src="@/assets/images/Instagram_Glyph_Gradient.png" class="w-6" />
             </a>
