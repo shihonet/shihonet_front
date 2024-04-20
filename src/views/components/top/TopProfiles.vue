@@ -15,59 +15,86 @@
     />
   </FadeInOnScroll>
   <FadeInOnScroll>
-    <div class="flex items-center justify-center mt-14 mx-6 mb-16">
-      <table class="text-[20px] font-light table-spacing">
-        <tr class="mb-2">
-          <td>生年月日</td>
-          <td>1998年2月2日</td>
+    <div class="flex items-center justify-center mt-14 mx-6">
+      <table class="text-sm font-light">
+        <tr class="py-1">
+          <td class="p-2 pr-5">生年月日</td>
+          <td class="p-2">1998年2月2日</td>
         </tr>
-        <tr class="mb-2">
-          <td>星座</td>
-          <td>みずがめ座</td>
+        <tr>
+          <td class="p-2 pr-5">星座</td>
+          <td class="p-2">みずがめ座</td>
         </tr>
-        <tr class="mb-2">
-          <td>身長</td>
-          <td>160.5cm</td>
+        <tr>
+          <td class="p-2 pr-5">身長</td>
+          <td class="p-2">160.5cm</td>
         </tr>
-        <tr class="mb-2">
-          <td>出身地</td>
-          <td>東京都</td>
+        <tr>
+          <td class="p-2 pr-5">出身地</td>
+          <td class="p-2">東京都</td>
         </tr>
-        <tr class="mb-2">
-          <td>血液型</td>
-          <td>A型</td>
-        </tr>
-        <div class="h-6"></div>
-        <tr class="mb-2">
-          <td>カラー</td>
-          <td>青 × 青</td>
-        </tr>
-        <tr class="mb-2">
-          <td>愛称</td>
-          <td>かとし、としちゃん</td>
-        </tr>
-        <tr class="mb-2">
-          <td>特技</td>
-          <td>イラスト、運動</td>
-        </tr>
-        <tr class="mb-2">
-          <td>趣味</td>
-          <td>アニメ、ディズニー</td>
+        <tr>
+          <td class="p-2 pr-5">血液型</td>
+          <td class="p-2">A型</td>
         </tr>
         <div class="h-6"></div>
         <tr>
-          <td>ＳＮＳ</td>
-          <td>
+          <td class="p-2 pr-5">カラー</td>
+          <td class="p-2">青 × 青</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">愛称</td>
+          <td class="p-2">かとし、としちゃん</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">特技</td>
+          <td class="p-2">イラスト、運動</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">趣味</td>
+          <td class="p-2">テーマパーク、映画、アニメ、<br />小さいフィギュア集め</td>
+        </tr>
+        <div class="h-6"></div>
+        <tr>
+          <td class="p-2 pr-5">ＳＮＳ</td>
+          <td class="p-2">
             <a href="https://www.instagram.com/katoshi.official/" target="_blank">
-              <img src="@/assets/images/Instagram_Glyph_Gradient.png" class="w-8" />
+              <img src="@/assets/images/Instagram_Glyph_Gradient.png" class="w-6" />
             </a>
           </td>
+        </tr>
+        <div class="h-6"></div>
+        <tr>
+          <td class="p-2 pr-5">好きなアニメ</td>
+          <td class="p-2">
+            『名探偵コナン』、<br />『新世紀エヴァンゲリオン』、<br />『進撃の巨人』、<br />『SPY × FAMILY』、<br />
+            『ジョジョの奇妙な冒険』、<br />『HUNTER × HUNTER』
+          </td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">好きな映画</td>
+          <td class="p-2">
+            『スター・ウォーズ』、<br />『スパイダーマン』、<br />『ハリー・ポッター』シリーズ、<br />
+            『クレヨンしんちゃん』、<br />マーベル作品<br />
+          </td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">口癖</td>
+          <td class="p-2">しし</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">好きな食べ物</td>
+          <td class="p-2">辛いもの、プリッツ、<br />母の作るハンバーグ</td>
+        </tr>
+        <tr>
+          <td class="p-2 pr-5">好きな言葉</td>
+          <td class="p-2">クリスマス</td>
         </tr>
       </table>
     </div>
   </FadeInOnScroll>
   <FadeInOnScroll>
-    <div class="text-center font-light">
+    <div class="text-[16px] text-center font-light mt-[100px]">
       <p>
         2016年5月8日、けやき坂46の<br />
         オーディションに合格し、<br />
@@ -85,8 +112,8 @@
         モデルやバラエティを中心に<br />
         活躍の幅を広げている。<br />
         <br />
-        今年もさらにたくさんの<br />
-        新しい景色が見れますように。<br />
+        これからも、さらにたくさんの<br />
+        素晴らしい景色が見れますように。<br />
       </p>
     </div>
   </FadeInOnScroll>
@@ -108,10 +135,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.table-spacing td:first-child {
-  padding-right: 20px;
-}
-</style>

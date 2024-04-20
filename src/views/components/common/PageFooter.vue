@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="w-full bg-site-color px-8 pt-10 pb-10 text-white">
-      <ul class="text-[20px] font-bold">
+      <ul class="text-[20px] font-normal">
         <li class="pb-4">
           <router-link to="/blogs">Blogs</router-link>
         </li>
@@ -23,7 +23,7 @@
       <div class="mt-14 text-[8px] text-center">
         <p>© 2024 #shihonet, developing by @shihonet.</p>
         <p>
-          このサイトはSeed & Flowerその他各種権利者から許諾等を得ているものではありません。
+          このサイトは、Seed & Flower合同会社その他各種権利者から許諾等を得ているものではありません。
         </p>
       </div>
     </div>

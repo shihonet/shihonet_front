@@ -1,6 +1,6 @@
 <template>
   <div id="MoreView">
-    <div class="mt-4 bg-site-color bg-site-color-hover text-white text-[24px] font-bold rounded-lg px-4 py-1">
+    <div class="mt-4 bg-site-blog-color hover:bg-blue-300 text-white text-[24px] font-bold rounded-lg px-4 py-1">
       See more…
     </div>
   </div>
