@@ -7,25 +7,36 @@
       <div class="text-right">
         <p>PAGE：{{ currentPage }} / {{ totalPage }}</p>
       </div>
-      <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
-        <FadeInOnScroll>
-          <div class="relative">
-            <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
-            <a :href="blog.blogUrl">
-              <div
-                class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color hover:opacity-90"
-              >
-                <div class="text-[12px] font-bold">
-                  {{ blog.publishedAt }}
-                </div>
-                <div class="text-[16px] font-extrabold">
-                  {{ blog.title }}
-                </div>
-              </div>
-            </a>
+      <div class="mt-6 flex">
+        <!-- 左列 -->
+        <div class="w-1/2 mr-1.5">
+          <div v-for="(blog, index) in blogs" :key="index">
+            <div v-if="index % 2 === 0">
+              <BlogCard
+                :title="blog.title"
+                :blogUrl="blog.blogUrl"
+                :publishedAt="blog.publishedAt"
+                :thumbnailImageUrl="blog.thumbnailImageUrl"
+              />
+            </div>
           </div>
-        </FadeInOnScroll>
+        </div>
+
+        <!-- 右列 -->
+        <div class="w-1/2 ml-1.5 mt-8">
+          <div v-for="(blog, index) in blogs" :key="index">
+            <div v-if="index % 2 === 1">
+              <BlogCard
+                :title="blog.title"
+                :blogUrl="blog.blogUrl"
+                :publishedAt="blog.publishedAt"
+                :thumbnailImageUrl="blog.thumbnailImageUrl"
+              />
+            </div>
+          </div>
+        </div>
       </div>
+
       <FadeInOnScroll>
         <div class="mt-20">
           <div class="flex justify-center items-center text-[20px] font-bold">
@@ -71,12 +82,13 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, computed } from "vue";
-import { useBlogsStore } from '@/stores/blogsStore';
+import { useBlogsStore } from "@/stores/blogsStore";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
+import BlogCard from "@/views/components/blogs/BlogCard.vue";
 
 export default defineComponent({
-  components: { WaitingForLoading, FadeInOnScroll },
+  components: { BlogCard, WaitingForLoading, FadeInOnScroll },
   setup() {
     const blogsStore = useBlogsStore();
 
@@ -93,6 +105,6 @@ export default defineComponent({
       setPage: blogsStore.setPage,
       skipPages: 20, // 定数
     };
-  }
+  },
 });
 </script>
