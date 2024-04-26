@@ -10,7 +10,7 @@
       <WaitingForLoading />
     </div>
 
-    <div v-else class="mt-2">
+    <div v-else class="mt-2 mx-4">
       <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
         <FadeInOnScroll>
           <div class="relative">
