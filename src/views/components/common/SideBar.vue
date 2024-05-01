@@ -24,37 +24,37 @@
     <FadeInOnScroll>
       <ul class="mt-10 mx-6 text-[24px]">
         <li>
-          <RouterLink to="/profiles" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/profiles" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
             <img src="@/assets/images/photo_camera_front_FILL0_wght100_GRAD-25_opsz48.svg" />
             <span class="ml-2">Profiles</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/blogs" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/blogs" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
             <img src="@/assets/images/stylus_note_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">Blogs</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/histories" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/histories" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
             <img src="@/assets/images/history_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">Histories</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/about" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/about" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
             <img src="@/assets/images/indeterminate_question_box_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">About "#shihonet"</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/thanks_post" @click="toggleSidebar" class="flex items-center mb-5">
+          <RouterLink to="/thanks_post" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
             <img src="@/assets/images/folded_hands_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">Thanks Generator</span>
           </RouterLink>
         </li>
         <li>
-          <a href="https://www.hinatazaka46.com/s/official/?ima=0000" class="flex items-center mb-5">
+          <a href="https://www.hinatazaka46.com/s/official/?ima=0000" class="flex items-center mb-5 hover:opacity-80" target="_blank">
             <img src="@/assets/images/clear_day_FILL0_wght100_GRAD0_opsz48.svg" />
             <span class="ml-2">日向坂46 Official Web Site</span>
           </a>
