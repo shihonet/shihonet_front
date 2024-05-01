@@ -24,13 +24,13 @@
         </li>
       </ul>
       <div class="mt-10 text-[16px]">
-        <div class="">〜他ファンサイト〜</div>
-        <ul class="ml-2">
-          <li class="mt-1 underline hover:opacity-80">
-            <a href="https://nibuparu2286.wixsite.com/mysite" target="_blank">#nibupage（丹生明里さん/日向坂46）</a>
+        <p>〜他ファンサイト〜</p>
+        <ul>
+          <li class="mt-1">
+            - <a href="https://nibuparu2286.wixsite.com/mysite" target="_blank" class="hover:opacity-80">#nibupage（丹生明里さん/日向坂46）</a>
           </li>
-          <li class="mt-1 underline hover:opacity-80">
-            <a href="https://ruinu6446.wixsite.com/my-site-3" target="_blank">#kyonkosite（齊藤京子さん/日向坂46OG）</a>
+          <li class="mt-1">
+            - <a href="https://ruinu6446.wixsite.com/my-site-3" target="_blank" class="hover:opacity-80">#kyonkosite（齊藤京子さん/日向坂46OG）</a>
           </li>
         </ul>
       </div>
