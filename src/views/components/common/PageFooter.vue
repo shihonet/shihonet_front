@@ -30,7 +30,7 @@
             <a href="https://nibuparu2286.wixsite.com/mysite" target="_blank">#nibupage（丹生明里さん/日向坂46）</a>
           </li>
           <li class="mt-1 underline hover:opacity-80">
-            <a href="https://ruinu6446.wixsite.com/my-site-3" target="_blank">#kyonkosite（齊藤京子さん）</a>
+            <a href="https://ruinu6446.wixsite.com/my-site-3" target="_blank">#kyonkosite（齊藤京子さん/日向坂46OG）</a>
           </li>
         </ul>
       </div>
