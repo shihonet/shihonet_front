@@ -52,3 +52,14 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+#base_modal {
+  max-width: 480px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
-  <BaseModal>
-    <InitialModal />
-  </BaseModal>
+<!--  <BaseModal>-->
+<!--    <InitialModal />-->
+<!--  </BaseModal>-->
 
   <FadeInOnScroll>
     <img src="@/assets/images/top_image.png" />

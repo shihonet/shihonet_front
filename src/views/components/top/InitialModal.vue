@@ -1,7 +1,5 @@
 <template>
-  あああああああ
+  <div>
+    モーダル表示内容
+  </div>
 </template>
-
-<script lang="ts">
-
-</script>
