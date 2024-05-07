@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isModalOpen">
+  <div v-if="isModalOpen">
     <div id="base_modal" class="fixed z-50 inset-0 overflow-y-auto">
       <FadeInOnScroll>
         <div class="flex items-center justify-center min-h-screen">
@@ -18,51 +18,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, onMounted } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import { useBaseModalStore } from "@/stores/common/baseModalStore";
 import confetti from "canvas-confetti";
 
 export default defineComponent({
   components: { FadeInOnScroll },
-  data() {
+  setup() {
+    const baseModalStore = useBaseModalStore();
+
+    onMounted(() => {
+      if(!baseModalStore.isModalOpen) return;
+
+      // INFO: confetti ライブラリを使用した、クラッカーのアニメーション
+      const script = document.createElement("script");
+      script.src =
+        "https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js";
+      script.onload = () => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      };
+      document.head.appendChild(script);
+    });
+
     return {
-      isModalOpen: true,
+      closeModal: computed(() => baseModalStore.closeModal()),
+      isModalOpen: computed(()=>baseModalStore.getIsModalOpen),
     };
-  },
-  methods: {
-    closeModal() {
-      this.isModalOpen = false;
-    }
-  },
-  mounted() {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js';
-    script.onload = () => {
-      // @ts-ignore
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
-    };
-    document.head.appendChild(script);
   },
 });
 </script>
-
-<style scoped>
-/* Google fontsで導入したいfonts から@importのコードを取得 */
-/* → https://fonts.google.com/specimen/M+PLUS+Rounded+1c?query=rounded */
-@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap");
-
-#base_modal {
-  /* Google fontsで導入したいfontsからfont-familyを取ってくる */
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  max-width: 480px;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-</style>
