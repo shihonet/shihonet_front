@@ -7,7 +7,7 @@
     <div class="absolute inset-0 flex items-end justify-center">
       <div class="mb-16 text-sky-400 font-bold text-center bg-white p-1">
         <p class="text-xl">~Happy Anniversary~</p>
-        <p class="text-3xl">#けやき坂46結成8周年</p>
+        <p class="text-2xl">#けやき坂46結成8周年</p>
       </div>
     </div>
   </div>
