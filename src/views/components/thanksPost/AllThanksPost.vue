@@ -22,13 +22,13 @@
       <div v-else>
         <p class="text-center text-[16px]">↓ 本日感謝を捧げる加藤史帆ちゃんはこちら ↓</p>
         <div class="flex justify-center mt-8">
-          <img :src="blog.imageUrl" class="w-[300px]" />
+          <img :src="imageUrl" class="w-[300px]" />
         </div>
         <div class="flex justify-center mt-4 mx-6">
-          <a :href="blog.blogUrl" target="_blank">
+          <a :href="blogUrl" target="_blank">
             <div class="border-2 border-site-color hover:text-gray-400 py-2 px-4 rounded-lg">
-              <p class="text-[12px] text-gray-500">{{ blog.publishedAt }}</p>
-              <p class="text-[16px]">{{ blog.title }}</p>
+              <p class="text-[12px] text-gray-500">{{ publishedAt }}</p>
+              <p class="text-[16px]">{{ title }}</p>
             </div>
           </a>
         </div>
@@ -52,20 +52,15 @@ export default defineComponent({
   setup() {
     const randomBlogsStore = useRandomBlogsStore();
 
-    const blog = computed(() => randomBlogsStore.getBlog);
-    const postLink = computed(() => {
-      if (blog.value && blog.value.blogUrl) {
-        return `https://x.com/intent/post?text=%E4%BB%8A%E6%97%A5%E3%82%82%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A7%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%A6%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%F0%9F%AB%B6%0A%23%E6%97%A5%E5%90%91%E5%9D%8246%20%23%E5%8A%A0%E8%97%A4%E5%8F%B2%E5%B8%86%20%E3%81%A1%E3%82%83%E3%82%93%20%F0%9F%90%BB%0A%23shihonet%0A${blog.value.blogUrl}`;
-      }
-      return `https://x.com/intent/post?text=%E4%BB%8A%E6%97%A5%E3%82%82%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A7%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%A6%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%F0%9F%AB%B6%0A%23%E6%97%A5%E5%90%91%E5%9D%8246%20%23%E5%8A%A0%E8%97%A4%E5%8F%B2%E5%B8%86%20%E3%81%A1%E3%82%83%E3%82%93%20%F0%9F%90%BB%0A%23shihonet%0A`;
-    });
-
     return {
-      blog,
-      postLink,
+      title: computed(() => randomBlogsStore.getTitle),
+      publishedAt: computed(() => randomBlogsStore.getPublishedUrl),
+      blogUrl: computed(() => randomBlogsStore.getBlogUrl),
+      imageUrl: computed(() => randomBlogsStore.getImageUrl),
       isLoading: computed(() => randomBlogsStore.getIsLoading),
       isClickedButton: computed(() => randomBlogsStore.getIsClickedButton),
-      requestGetRandomBlogs: randomBlogsStore.requestGetRandomBlogs,
+      requestGetRandomBlogs: randomBlogsStore.requestGetRandomBlogs, // NOTE: 関数そのものを取得している
+      postLink: computed(() => randomBlogsStore.getPostLink()), // NOTE: 関数を呼び出して値を返している
     };
   }
 });
