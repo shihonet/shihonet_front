@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useBaseModalStore = defineStore("baseModal", {
   state: () => ({
-    isModalOpen: true,
+    isModalOpen: false,
   }),
 
   getters: {
@@ -10,9 +10,8 @@ export const useBaseModalStore = defineStore("baseModal", {
   },
 
   actions: {
-    closeModal() {
-      console.log(this.isModalOpen)
-      this.isModalOpen = false;
-    }
+    setIsModalOpen(isModalOpen: boolean) {
+      this.isModalOpen = isModalOpen;
+    },
   },
 });

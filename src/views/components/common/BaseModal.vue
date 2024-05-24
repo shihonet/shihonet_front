@@ -29,6 +29,14 @@ export default defineComponent({
     const baseModalStore = useBaseModalStore();
 
     onMounted(() => {
+      const today = new Date();
+      const currentMonth = today.getMonth() + 1; // getMonth()メソッドは0から11の整数を返す。1月は0、2月は1、…、12月は11。
+      const currentDate = today.getDate();
+      // TODO: ここでモーダルを表示させる日付を指定する。
+      if (currentMonth === 5 && (currentDate === 26 || currentDate === 27)) {
+        baseModalStore.setIsModalOpen(true);
+      }
+
       if(!baseModalStore.isModalOpen) return;
 
       // INFO: confetti ライブラリを使用した、クラッカーのアニメーション
@@ -46,7 +54,7 @@ export default defineComponent({
     });
 
     return {
-      closeModal: computed(() => baseModalStore.closeModal()),
+      closeModal: computed(() => baseModalStore.setIsModalOpen(false)),
       isModalOpen: computed(()=>baseModalStore.getIsModalOpen),
     };
   },
