@@ -16,7 +16,7 @@ export default defineComponent({
   props: {
     link: {
       type: String as PropType<string>,
-      default: "https://twitter.com/intent/tweet?text=",
+      default: "https://x.com/intent/tweet?text=",
     },
   },
 });

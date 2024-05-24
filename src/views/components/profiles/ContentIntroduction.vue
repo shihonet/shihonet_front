@@ -119,7 +119,7 @@
           </p>
           <p class="mt-2">
             撮影場所は本人が昔から切望していたハワイ・オアフ島！<br />
-            写真集公式Xアカウントは <a href="https://twitter.com/katoshi_aloha" target="_blank" class="text-blue-500 underline">こちら</a> 。
+            写真集公式Xアカウントは <a href="https://x.com/katoshi_aloha" target="_blank" class="text-blue-500 underline">こちら</a> 。
           </p>
           <div class="mt-2 mx-10">
             <img src="https://cdn.hinatazaka46.com/files/14/tsujo.jpg" class="mt-4">
