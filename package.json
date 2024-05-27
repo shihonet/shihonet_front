@@ -16,6 +16,7 @@
     "express": "^4.18.2",
     "path": "^0.12.7",
     "pinia": "^2.0.0-rc.10",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.0-0"
