@@ -29,7 +29,7 @@ export const useSignupStore = defineStore("signup", {
     // NOTE: 認証コード再送の場合は、再び password を送信しなくて良い。
     async requestSignup(email: string, password: string | null) {
       try {
-        await axios.post<null>("/api/signup", {
+        await axios.post<null>("/api/users/signup", {
           email: email,
           password: password,
         });
@@ -41,7 +41,7 @@ export const useSignupStore = defineStore("signup", {
     // 認証コードを送信して、サインアップを完了する。
     async requestVerify(verifyCode: string) {
       try {
-        await axios.patch<null>("/api/signup", {
+        await axios.patch<null>("/api/users/signup", {
           verifyCode: verifyCode,
         });
       } catch (error) {
