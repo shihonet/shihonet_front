@@ -21,16 +21,20 @@
               placeholder="メールアドレス"
               v-model="email"
             />
+            <p v-if="email && !isEmailValid" class="text-red-500 text-sm">無効なメールアドレスです。</p>
             <input
               class="mt-2 h-12 px-4 border rounded-lg w-full"
               type="password"
               placeholder="パスワード"
               v-model="password"
             />
+            <p v-if="password && !isPasswordValid" class="text-red-500 text-sm">
+              パスワードは8文字以上で、アルファベットと数字を含む必要があります。
+            </p>
           </div>
-          <BaseButton @click="receiveVerifyEmail" class="mt-10"
-            >新規登録する</BaseButton
-          >
+          <BaseButton @click="receiveVerifyEmail" class="mt-10" :disabled="!isEmailValid || !isPasswordValid">
+            新規登録する
+          </BaseButton>
         </div>
 
         <div v-else class="mt-5 text-center text-[14px]">
@@ -48,7 +52,7 @@
               placeholder="認証コード"
               v-model="verifyCode"
             />
-            <BaseButton @click="sendVerifyCode" class="mt-10" theme="primary">認証コードを送信</BaseButton>
+            <BaseButton @click="sendVerifyCode" class="mt-10" theme="primary" :disabled="!verifyCode">認証コードを送信</BaseButton>
             <BaseButton @click="backToSignup" class="mt-10" theme="white">＜戻る</BaseButton>
           </div>
           <div class="mt-20 border-[1px] border-gray-400 bg-white rounded-lg py-4 px-2">
@@ -87,10 +91,24 @@ export default defineComponent({
      * email と password を送信して、認証コードを含めメールを受け取る。
      */
     const receiveVerifyEmail = async () => {
+      if (!isEmailValid.value && !isPasswordValid.value) {
+        return;
+      }
+
       signupStore.setEmail(email.value);
       signupStore.setHasReceivedEmail(true);
       await signupStore.requestSignup(email.value, password.value);
     };
+
+    const isEmailValid = computed(() => {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email.value);
+    });
+
+    const isPasswordValid = computed(() => {
+      const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      return passwordPattern.test(password.value);
+    });
 
     /**
      * サインアップ最初の画面へ戻る。
@@ -125,6 +143,8 @@ export default defineComponent({
       email,
       password,
       verifyCode,
+      isEmailValid,
+      isPasswordValid,
       receiveVerifyEmail,
       backToSignup,
       sendVerifyCode,

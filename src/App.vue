@@ -46,4 +46,8 @@ export default defineComponent({
 .border-site-color {
   border-color: #6197ff;
 }
+
+.bg-disabled-color {
+  background-color: rgb(227, 227, 227);
+}
 </style>
