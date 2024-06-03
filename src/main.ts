@@ -12,12 +12,22 @@ pinia.use(createPersistedState());
 const app = createApp(App);
 app.use(router);
 app.use(pinia);
-app.mount("#app");
 
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRF-Token";
-axios.defaults.baseURL =
-    // prod
-    // "https://shihonet-api-29ca225d2dcb.herokuapp.com";
-    // local
-    "http://localhost:3001";
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
+
+// CSRFトークンをメタタグから取得してAxiosに設定
+const metaTag = document.querySelector('meta[name="csrf-token"]');
+if (metaTag) {
+    const csrfToken = metaTag.getAttribute('content');
+    if (csrfToken) {
+        axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
+    } else {
+        console.error("CSRF token meta tag found, but content attribute is missing.");
+    }
+} else {
+    console.error("CSRF token meta tag is missing.");
+}
+
+app.mount("#app");

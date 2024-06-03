@@ -14,6 +14,7 @@
       <div class="mt-10">
         <p class="font-bold">メールアドレスで登録</p>
         <div v-if="!hasReceivedEmail">
+          <p class="my-1 text-error-color text-sm">{{ error }}</p>
           <div class="mt-5">
             <input
               class="h-12 px-4 border rounded-lg w-full"
@@ -21,18 +22,18 @@
               placeholder="メールアドレス"
               v-model="email"
             />
-            <p v-if="email && !isEmailValid" class="text-red-500 text-sm">無効なメールアドレスです。</p>
+            <p v-if="email && !isEmailValid" class="text-error-color text-sm">無効なメールアドレスです。</p>
             <input
               class="mt-2 h-12 px-4 border rounded-lg w-full"
               type="password"
               placeholder="パスワード"
               v-model="password"
             />
-            <p v-if="password && !isPasswordValid" class="text-red-500 text-sm">
+            <p v-if="password && !isPasswordValid" class="text-error-color text-sm">
               パスワードは8文字以上で、アルファベットと数字を含む必要があります。
             </p>
           </div>
-          <BaseButton @click="receiveVerifyEmail" class="mt-10" :disabled="!isEmailValid || !isPasswordValid">
+          <BaseButton @click="receiveVerifyEmail" class="mt-10" :disabled="isDisableSignupButton">
             新規登録する
           </BaseButton>
         </div>
@@ -41,7 +42,7 @@
           <p>{{ email }}</p>
           <p class="mt-5">
             上記メールアドレスへ、確認メールを送信しました。<br />
-            メールに記載された4桁の認証コードを入力して、<br />
+            メールに記載された認証コードを入力して、<br />
             登録を完了してください。
           </p>
           <div class="mt-10">
@@ -52,7 +53,9 @@
               placeholder="認証コード"
               v-model="verifyCode"
             />
-            <BaseButton @click="sendVerifyCode" class="mt-10" theme="primary" :disabled="!verifyCode">認証コードを送信</BaseButton>
+            <BaseButton @click="sendVerifyCode" class="mt-10" theme="primary" :disabled="isDisableVerifyCodeButton">
+              認証コードを送信
+            </BaseButton>
             <BaseButton @click="backToSignup" class="mt-10" theme="white">＜戻る</BaseButton>
           </div>
           <div class="mt-20 border-[1px] border-gray-400 bg-white rounded-lg py-4 px-2">
@@ -74,7 +77,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { useSignupStore } from "@/stores/signupStore";
@@ -83,9 +86,10 @@ export default defineComponent({
   components: { BaseButton, FadeInOnScroll },
   setup() {
     const signupStore = useSignupStore();
-    const email = ref("");
+    const email = ref(signupStore.getEmail);
     const password = ref("");
     const verifyCode = ref("");
+    const isLoading = computed(() => signupStore.getIsLoading);
 
     /**
      * email と password を送信して、認証コードを含めメールを受け取る。
@@ -95,8 +99,6 @@ export default defineComponent({
         return;
       }
 
-      signupStore.setEmail(email.value);
-      signupStore.setHasReceivedEmail(true);
       await signupStore.requestSignup(email.value, password.value);
     };
 
@@ -133,18 +135,36 @@ export default defineComponent({
      * 認証コードを再受信する。
      */
     const reReceiveEmail = async () => {
-      const confirmed = confirm("もう一度メールを受信しますか？");
+      const confirmed = confirm(`${email.value} でもう一度メールを受信しますか？`);
       if (confirmed) {
         await signupStore.requestSignup(email.value, null);
       }
     };
 
+    const isDisableSignupButton = computed(() => {
+      return !isEmailValid.value || !isPasswordValid.value || isLoading.value;
+    });
+
+    const isDisableVerifyCodeButton = computed(() => {
+      return !verifyCode.value || isLoading.value;
+    });
+
+    onMounted(() => {
+      // NOTE: email が残っていなかったら初期画面に戻る
+      if(!email.value) {
+        signupStore.setHasReceivedEmail(false);
+      }
+    });
+
     return {
       email,
       password,
+      error: computed(() => signupStore.getError),
       verifyCode,
       isEmailValid,
       isPasswordValid,
+      isDisableSignupButton,
+      isDisableVerifyCodeButton,
       receiveVerifyEmail,
       backToSignup,
       sendVerifyCode,

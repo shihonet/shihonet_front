@@ -50,4 +50,8 @@ export default defineComponent({
 .bg-disabled-color {
   background-color: rgb(227, 227, 227);
 }
+
+.text-error-color {
+  color: rgb(241, 35, 35);
+}
 </style>
