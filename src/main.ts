@@ -11,8 +11,4 @@ app.use(createPinia());
 
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRF-Token";
-axios.defaults.baseURL =
-    // prod
-    "https://shihonet-api-29ca225d2dcb.herokuapp.com";
-    // local
-    // "http://localhost:3001";
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL
