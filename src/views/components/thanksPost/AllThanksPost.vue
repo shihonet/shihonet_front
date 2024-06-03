@@ -11,14 +11,10 @@
     <div v-if="isLoading">
       <WaitingForLoading />
     </div>
-    <div v-else class="flex items-center justify-center">
-      <button
-        v-if="!isClickedButton"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-10"
-        @click="requestGetRandomBlogs"
-      >
+    <div v-else>
+      <BaseButton v-if="!isClickedButton" @click="requestGetRandomBlogs">
         画像ガチャを回す
-      </button>
+      </BaseButton>
       <div v-else>
         <p class="text-center text-[16px]">↓ 本日感謝を捧げる加藤史帆ちゃんはこちら ↓</p>
         <div class="flex justify-center mt-8">
@@ -46,9 +42,10 @@ import { computed, defineComponent } from "vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 import PostX from "@/views/components/common/PostX.vue";
 import { useRandomBlogsStore } from "@/stores/randomBlogsStore";
+import BaseButton from "@/views/components/common/BaseButton.vue";
 
 export default defineComponent({
-  components: { WaitingForLoading, PostX },
+  components: {BaseButton, WaitingForLoading, PostX },
   setup() {
     const randomBlogsStore = useRandomBlogsStore();
 

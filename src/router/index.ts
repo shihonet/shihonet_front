@@ -5,6 +5,7 @@ import ProfilesPage from "@/views/pages/ProfilesPage.vue";
 import AboutPage from "@/views/pages/AboutPage.vue";
 import HistoriesPage from "@/views/pages/HistoriesPage.vue";
 import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
+import SignupPage from "@/views/pages/SignupPage.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/thanks_post",
     name: "thanks_post",
     component: ThanksPostPage,
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: SignupPage,
   },
   {
     // 未定義のURLをルートにリダイレクト

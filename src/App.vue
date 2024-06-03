@@ -46,4 +46,12 @@ export default defineComponent({
 .border-site-color {
   border-color: #6197ff;
 }
+
+.bg-disabled-color {
+  background-color: rgb(227, 227, 227);
+}
+
+.text-error-color {
+  color: rgb(241, 35, 35);
+}
 </style>
