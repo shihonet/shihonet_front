@@ -128,7 +128,7 @@ export default defineComponent({
      * 認証コードを送信して、サインアップを完了する。
      */
     const sendVerifyCode = async () => {
-      await signupStore.requestVerify(verifyCode.value);
+      await signupStore.requestVerify(email.value, verifyCode.value);
     };
 
     /**

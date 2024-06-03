@@ -63,11 +63,12 @@ export const useSignupStore = defineStore("signup", {
     },
 
     // 認証コードを送信して、サインアップを完了する。
-    async requestVerify(verifyCode: string) {
+    async requestVerify(email: string, verifyCode: string) {
       try {
         this.setIsLoading(true);
         await axios.patch<null>("/api/users/signup", {
-          verifyCode: verifyCode,
+          email: email,
+          email_auth_code: verifyCode,
         });
       } catch (error) {
         console.error("Error request:", error);
