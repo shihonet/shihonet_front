@@ -79,7 +79,7 @@
         <p>
           &nbsp;&nbsp;&nbsp;&nbsp;開発、運用は、ともに
           <a
-            href="https://x.com/shihonet2422"
+            href="https://x.com/shihonet0202"
             target="_blank"
             class="font-medium text-blue-500 underline"
           >
