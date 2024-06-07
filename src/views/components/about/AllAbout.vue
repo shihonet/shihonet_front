@@ -83,7 +83,7 @@
             target="_blank"
             class="font-medium text-blue-500 underline"
           >
-            @shihonet2422
+            @shihonet0202
           </a>
           が行っております。ご連絡はDMまでお願いいたします。
         </p>
