@@ -199,8 +199,11 @@
       <div class="mx-2 mb-10">
         <p class="text-sm text-gray-400">2024年3月8日</p>
         <div class="mt-2 mx-4">
+          <p class="text-[14px] text-site-color font-bold">
+            初主演ドラマ
+          </p>
           <p class="text-[20px] text-site-color font-bold">
-            初主演ドラマ「これから配信はじめます」
+            「これから配信はじめます」
           </p>
           <p class="mt-2">
             加藤史帆 初主演ドラマ
@@ -211,6 +214,31 @@
             >「これから配信はじめます」</a
             > 放送開始。（テレビ東京）<br />
             全四話のオムニバスドラマ。かすみ役として、第二話（2024/3/15放送）では主演を務めた。
+          </p>
+        </div>
+      </div>
+    </FadeInOnScroll>
+
+    <FadeInOnScroll>
+      <div class="mx-2 mb-10">
+        <p class="text-sm text-gray-400">2024年7月4日</p>
+        <div class="mt-2 mx-4">
+          <p class="text-[14px] text-site-color font-bold">
+            連続ドラマ初主演
+          </p>
+          <p class="text-[20px] text-site-color font-bold">
+            「彩香ちゃんは弘子先輩に恋してる」
+          </p>
+          <img src="https://www.mbs.jp/ayahiro/images/head.webp" class="mt-4">
+          <p class="mt-2">
+            連続ドラマ初主演を務める
+            <a
+                href="https://www.mbs.jp/ayahiro/"
+                target="_blank"
+                class="font-medium text-blue-500 underline"
+            >「彩香ちゃんは弘子先輩に恋してる」</a
+            > （MBSテレビ系列）放送開始予定！！<br />
+            ラブコメディドラマ。主人公・彩香役として、弘子先輩（演：森カンナさん）を一途に想う、不器用ながらも真っ直ぐで可愛らしい役を演じる。
           </p>
         </div>
       </div>

@@ -52,6 +52,6 @@ export default defineComponent({
 }
 
 .text-error-color {
-  color: rgb(241, 35, 35);
+  color: rgb(255, 0, 0);
 }
 </style>
