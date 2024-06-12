@@ -21,7 +21,7 @@
     </p>
   </div>
   <BaseButton
-    @click="receiveVerifyEmail"
+    @click="requestSignup"
     class="mt-10"
     :disabled="isDisableSignupButton"
   >
@@ -43,7 +43,7 @@ const error = computed(() => signupStore.getError);
 /**
  * メールアドレスとパスワードを使って、サインアップをリクエストする。
  */
-const receiveVerifyEmail = async () => {
+const requestSignup = async () => {
   if (!isEmailValid.value || !isPasswordValid.value) {
     return;
   }

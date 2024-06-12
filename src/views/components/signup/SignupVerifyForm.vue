@@ -18,7 +18,7 @@
       {{ error }}
     </p>
     <BaseButton
-      @click="sendVerifyCode"
+      @click="requestVerify"
       class="mt-10"
       theme="primary"
       :disabled="isDisableVerifyCodeButton"
@@ -58,7 +58,7 @@ const isLoading = computed(() => signupStore.getIsLoading);
 /**
  * 認証コードを送信して、サインアップを完了する。
  */
-const sendVerifyCode = async () => {
+const requestVerify = async () => {
   await signupStore.requestVerify(email.value, verifyCode.value);
 };
 
@@ -80,7 +80,10 @@ const backToSignup = async () => {
  * パスワードはそのまま。
  */
 const reReceiveEmail = async () => {
-  await signupStore.requestSignup(email.value, "");
+  const confirmed = confirm("認証コードを再度送信しますか？");
+  if (confirmed) {
+    await signupStore.requestSignup(email.value, '');
+  }
 };
 
 /**
