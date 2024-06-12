@@ -68,7 +68,7 @@ export const useSignupStore = defineStore("signup", {
     async requestVerify(email: string, verifyCode: string) {
       try {
         this.setIsLoading(true);
-        await axios.patch<null>("/api/users/signup", {
+        await axios.post<null>("/api/users/verify", {
           email: email,
           email_auth_code: verifyCode,
         });
