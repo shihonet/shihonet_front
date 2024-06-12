@@ -17,7 +17,7 @@
       v-model="password"
     />
     <p v-if="password && !isPasswordValid" class="text-error-color text-sm">
-      パスワードは8文字以上で、アルファベットと数字を含む必要があります。
+      パスワードは8文字以上で、アルファベットと数字を含む必要があります。使用できる特殊文字は「!@#$%^&*」です。
     </p>
   </div>
   <BaseButton
@@ -62,7 +62,7 @@ const isEmailValid = computed(() => {
  * パスワードのバリデーション
  */
 const isPasswordValid = computed(() => {
-  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
   return passwordPattern.test(password.value);
 });
 
