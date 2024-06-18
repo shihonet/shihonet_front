@@ -33,7 +33,7 @@ export default defineComponent({
       const currentMonth = today.getMonth() + 1; // getMonth()メソッドは0から11の整数を返す。1月は0、2月は1、…、12月は11。
       const currentDate = today.getDate();
       // TODO: ここでモーダルを表示させる日付を指定する。
-      if (currentMonth === 5 && (currentDate === 26 || currentDate === 27)) {
+      if (currentMonth === 6 && (currentDate === 20 || currentDate === 21)) {
         baseModalStore.setIsModalOpen(true);
       }
 
@@ -53,8 +53,12 @@ export default defineComponent({
       document.head.appendChild(script);
     });
 
+    const closeModal = () => {
+      baseModalStore.setIsModalOpen(false);
+    };
+
     return {
-      closeModal: computed(() => baseModalStore.setIsModalOpen(false)),
+      closeModal: closeModal,
       isModalOpen: computed(()=>baseModalStore.getIsModalOpen),
     };
   },
