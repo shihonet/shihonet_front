@@ -2,7 +2,7 @@
   <div class="mx-8">
     <FadeInOnScroll>
       <div class="mt-6 text-[14px] text-center">
-        <p>「#shihonet CLUB」へログインすると、</p>
+        <p>「#shihonet club」へログインすると、</p>
         <p class="mt-2">・ブログをお気に入りにできる</p>
         <p>・寄せ書きを投稿できる</p>
         <p class="mt-2">以上の機能をご利用いただくことができます。</p>
