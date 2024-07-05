@@ -10,7 +10,7 @@ export const useSignupStore = defineStore("signup", {
   }),
   persist: {
     paths: ["email", "hasGotEmailAuthCode"],
-    storage: window.localStorage,
+    storage: window.sessionStorage,
   },
 
   getters: {
@@ -42,36 +42,19 @@ export const useSignupStore = defineStore("signup", {
      * 認証コード再送の場合は、再び password を送信しなくて良い。（パスワードはそのまま）
      * @param email
      * @param password
+     * @param passwordConfirmation
      */
-    async requestSignup(email: string, password: string | null) {
+    async requestSignup(email: string, password: string, passwordConfirmation: string) {
       try {
         this.setIsLoading(true);
         await axios.post<null>("/api/users/signup", {
           email: email,
           password: password,
+          password_confirmation: passwordConfirmation,
         });
         this.setError("");
         this.setEmail(email);
         this.setHasGotEmailAuthCode(true);
-      } catch (error: any) {
-        this.setError(error.response?.data.errors);
-      } finally {
-        this.setIsLoading(false);
-      }
-    },
-
-    /**
-     * 認証コードをリクエストする。
-     * @param email
-     * @param verifyCode
-     */
-    async requestVerify(email: string, verifyCode: string) {
-      try {
-        this.setIsLoading(true);
-        await axios.post<null>("/api/users/verify", {
-          email: email,
-          email_auth_code: verifyCode,
-        });
       } catch (error: any) {
         this.setError(error.response?.data.errors);
       } finally {
