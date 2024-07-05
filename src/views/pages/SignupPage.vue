@@ -1,6 +1,6 @@
 <template>
   <FadeInOnScroll>
-    <div class="mt-10 mb-10 mx-6">
+    <div class="mt-10">
       <TitlePart :title="title" />
     </div>
   </FadeInOnScroll>
@@ -17,7 +17,7 @@ export default defineComponent({
   components: { TitlePart, FadeInOnScroll, AllSignup },
   data() {
     return {
-      title: "#shihonet CLUB",
+      title: "#shihonet club",
     };
   },
 });
