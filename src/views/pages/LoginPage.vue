@@ -1,23 +1,23 @@
 <template>
   <FadeInOnScroll>
-    <div class="mt-10 mb-10 mx-6">
+    <div class="mt-10">
       <TitlePart :title="title" />
     </div>
   </FadeInOnScroll>
-  <AllSignup />
+  <AllLogin />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
-import AllSignup from "@/views/components/signup/AllSignup.vue";
+import AllLogin from "@/views/components/login/AllLogin.vue";
 
 export default defineComponent({
-  components: { TitlePart, FadeInOnScroll, AllSignup },
+  components: { AllLogin, TitlePart, FadeInOnScroll },
   data() {
     return {
-      title: "#shihonet CLUB",
+      title: "#shihonet club",
     };
   },
 });

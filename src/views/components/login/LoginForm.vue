@@ -7,53 +7,34 @@
       placeholder="メールアドレス"
       v-model="email"
     />
-    <p v-if="email && !isEmailValid" class="text-error-color text-sm">
-      無効なメールアドレスです。
-    </p>
     <input
       class="mt-4 h-12 px-4 border rounded-lg w-full"
       type="password"
       placeholder="パスワード"
       v-model="password"
     />
-    <p v-if="password && !isPasswordValid" class="text-error-color text-sm">
-      パスワードは8文字以上で、アルファベットと数字を含む必要があります。使用できる特殊文字は「!@#$%^&*」です。
-    </p>
-    <input
-      class="mt-4 h-12 px-4 border rounded-lg w-full"
-      type="password"
-      placeholder="パスワード（確認用）"
-      v-model="passwordConfirmation"
-    />
-    <p
-      v-if="passwordConfirmation && !isPasswordConfirmationValid"
-      class="text-error-color text-sm"
-    >
-      パスワードが一致しません
-    </p>
   </div>
   <BaseButton
-    @click="requestSignup"
+    @click="requestLogin"
     class="mt-10"
-    :disabled="isDisableSignupButton"
+    :disabled="isDisableLoginButton"
   >
-    新規登録する
+    ログイン
   </BaseButton>
 </template>
 
 <script setup lang="ts">
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
-import { useSignupStore } from "@/stores/signupStore";
+import { useLoginStore } from "@/stores/loginStore";
 
 const email = ref("");
 const password = ref("");
-const passwordConfirmation = ref("");
-const signupStore = useSignupStore();
-const isLoading = computed(() => signupStore.getIsLoading);
-const error = computed(() => signupStore.getError);
+const loginStore = useLoginStore();
+const isLoading = computed(() => loginStore.getIsLoading);
+const error = computed(() => loginStore.getError);
 
-const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
+const passwordPattern = /^.{4,}$/;
 
 /**
  * メールアドレスのバリデーション
@@ -71,20 +52,12 @@ const isPasswordValid = computed(() => {
 });
 
 /**
- * 確認用パスワードのバリデーション
- */
-const isPasswordConfirmationValid = computed(() => {
-  return passwordPattern.test(passwordConfirmation.value);
-});
-
-/**
  * 新規登録ボタンが無効かどうか
  */
-const isDisableSignupButton = computed(() => {
+const isDisableLoginButton = computed(() => {
   return (
     !isEmailValid.value ||
     !isPasswordValid.value ||
-    !isPasswordConfirmationValid.value ||
     isLoading.value
   );
 });
@@ -92,14 +65,13 @@ const isDisableSignupButton = computed(() => {
 /**
  * メールアドレスとパスワードを使って、サインアップをリクエストする。
  */
-const requestSignup = async () => {
-  if (isDisableSignupButton.value) {
+const requestLogin = async () => {
+  if (isDisableLoginButton.value) {
     return;
   }
-  await signupStore.requestSignup(
+  await loginStore.requestLogin(
     email.value,
-    password.value,
-    passwordConfirmation.value
+    password.value
   );
 };
 </script>
