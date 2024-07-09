@@ -6,6 +6,7 @@ import AboutPage from "@/views/pages/AboutPage.vue";
 import HistoriesPage from "@/views/pages/HistoriesPage.vue";
 import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
 import SignupPage from "@/views/pages/SignupPage.vue";
+import LoginPage from "@/views/pages/LoginPage.vue";
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     component: SignupPage,
   },
   {
+    path: "/login",
+    name: "login",
+    component: LoginPage,
+  },
+  {
     // 未定義のURLをルートにリダイレクト
     path: "/:catchAll(.*)",
     redirect: { name: "main" },
@@ -65,7 +71,7 @@ const router = createRouter({
 });
 
 // Google Analyticsへのページビュー送信を設定
-router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+router.afterEach((to: RouteLocationNormalized) => {
   // Google Analyticsページビューを送信
   gtag('config', 'G-SKEEGTRD4W', {
     page_path: to.path,

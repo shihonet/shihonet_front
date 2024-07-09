@@ -4,18 +4,18 @@ import axios from "axios";
 export const useSignupStore = defineStore("signup", {
   state: () => ({
     email: "",
-    hasGotEmailAuthCode: false,
+    hasRequested: false,
     error: "",
     isLoading: false,
   }),
   persist: {
-    paths: ["email", "hasGotEmailAuthCode"],
+    paths: ["email", "hasRequested"],
     storage: window.sessionStorage,
   },
 
   getters: {
     getEmail: (state) => state.email,
-    getHasGotEmailAuthCode: (state) => state.hasGotEmailAuthCode,
+    getHasRequested: (state) => state.hasRequested,
     getError: (state) => state.error,
     getIsLoading: (state) => state.isLoading,
   },
@@ -25,8 +25,8 @@ export const useSignupStore = defineStore("signup", {
       this.$patch({ email: email });
     },
 
-    setHasGotEmailAuthCode(hasGotEmailAuthCode: boolean) {
-      this.$patch({ hasGotEmailAuthCode: hasGotEmailAuthCode });
+    setHasRequested(hasRequested: boolean) {
+      this.$patch({ hasRequested: hasRequested });
     },
 
     setError(error: string) {
@@ -54,7 +54,7 @@ export const useSignupStore = defineStore("signup", {
         });
         this.setError("");
         this.setEmail(email);
-        this.setHasGotEmailAuthCode(true);
+        this.setHasRequested(true);
       } catch (error: any) {
         this.setError(error.response?.data.errors);
       } finally {
