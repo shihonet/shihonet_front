@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
+import router from "@/router";
 
 export const useBlogShowStore = defineStore("blogShow", {
   state: () => ({
@@ -19,7 +20,7 @@ export const useBlogShowStore = defineStore("blogShow", {
       window.scrollTo(0, 0);
       this.isLoading = true; // 読み込み開始
       try {
-        const response = await axios.get(`/api/blogs/${id}`, {
+        const response = await axios.get<ApiResponseBlog>(`/api/blogs/${id}`, {
           params: { id: id },
         });
         this.blog = {
@@ -33,6 +34,7 @@ export const useBlogShowStore = defineStore("blogShow", {
           thumbnailImageUrl: "",
         };
       } catch (error) {
+        await router.push('/blogs');
         console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false; // 読み込み終了

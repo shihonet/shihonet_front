@@ -10,6 +10,7 @@ import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
 const routes = [
   {
     path: "/",
+    name: "main",
     component: TopPage,
   },
   {
