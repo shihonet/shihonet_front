@@ -13,8 +13,8 @@
           <div v-for="(blog, index) in blogs" :key="index">
             <div v-if="index % 2 === 0">
               <BlogCard
+                :id="blog.id"
                 :title="blog.title"
-                :blogUrl="blog.blogUrl"
                 :publishedAt="blog.publishedAt"
                 :thumbnailImageUrl="blog.thumbnailImageUrl"
               />
@@ -27,8 +27,8 @@
           <div v-for="(blog, index) in blogs" :key="index">
             <div v-if="index % 2 === 1">
               <BlogCard
+                :id="blog.id"
                 :title="blog.title"
-                :blogUrl="blog.blogUrl"
                 :publishedAt="blog.publishedAt"
                 :thumbnailImageUrl="blog.thumbnailImageUrl"
               />
@@ -85,7 +85,7 @@ import { defineComponent, onMounted, computed } from "vue";
 import { useBlogsStore } from "@/stores/blogsStore";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
-import BlogCard from "@/views/components/blogs/BlogCard.vue";
+import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
 
 export default defineComponent({
   components: { BlogCard, WaitingForLoading, FadeInOnScroll },

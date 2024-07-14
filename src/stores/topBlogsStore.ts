@@ -24,11 +24,14 @@ export const useTopBlogsStore = defineStore('topBlogs', {
         });
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
           return {
+            id: blog.id,
             title: blog.title,
             memberName: blog.member_name,
             publishedAt: blog.published_at,
             blogUrl: blog.blog_url,
             thumbnailImageUrl: blog.thumbnail_image_url,
+            content: "",
+            imageUrls: [""],
           };
         });
       } catch (error) {

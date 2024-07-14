@@ -1,7 +1,9 @@
 <template>
-  <PageHeader />
-  <RouterView></RouterView>
-  <PageFooter class="mt-40" />
+  <div id="app">
+    <PageHeader />
+    <RouterView></RouterView>
+    <PageFooter class="mt-40" />
+  </div>
 </template>
 
 <script lang="ts">

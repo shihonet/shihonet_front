@@ -14,13 +14,13 @@ export const useBlogsStore = defineStore('blogs', {
   getters: {
     getBlogs: (state): Blog[] => state.blogs,
 
-    getCurrentPage: (state) => state.currentPage,
+    getCurrentPage: (state): number => state.currentPage,
 
-    getLimit: (state) => state.limit,
+    getLimit: (state): number => state.limit,
 
-    getTotalPage: (state) => state.totalPage,
+    getTotalPage: (state): number => state.totalPage,
 
-    getIsLoading: (state) => state.isLoading,
+    getIsLoading: (state): boolean => state.isLoading,
   },
 
   actions: {
@@ -36,17 +36,20 @@ export const useBlogsStore = defineStore('blogs', {
         });
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
           return {
+            id: blog.id,
             title: blog.title,
             memberName: blog.member_name,
             publishedAt: blog.published_at,
             blogUrl: blog.blog_url,
             thumbnailImageUrl: blog.thumbnail_image_url,
+            content: "",
+            imageUrls: [""],
           };
         });
         this.totalPage = response.data.pagination.pages;
-        this.isLoading = false; // 読み込み終了
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
         this.isLoading = false; // 読み込み終了
       }
     },
