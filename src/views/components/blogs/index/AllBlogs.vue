@@ -85,7 +85,7 @@ import { defineComponent, onMounted, computed } from "vue";
 import { useBlogsStore } from "@/stores/blogsStore";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
-import BlogCard from "@/views/components/blogs/BlogCard.vue";
+import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
 
 export default defineComponent({
   components: { BlogCard, WaitingForLoading, FadeInOnScroll },

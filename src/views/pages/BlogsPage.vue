@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AllBlogs from "@/views/components/blogs/AllBlogs.vue";
+import AllBlogs from "@/views/components/blogs/index/AllBlogs.vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import TitlePart from "@/views/components/common/TitlePart.vue";
 
