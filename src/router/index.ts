@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
 import TopPage from "@/views/pages/TopPage.vue";
 import BlogsPage from "@/views/pages/BlogsPage.vue";
+import BlogsShowPage from "@/views/pages/BlogsShowPage.vue";
 import ProfilesPage from "@/views/pages/ProfilesPage.vue";
 import AboutPage from "@/views/pages/AboutPage.vue";
 import HistoriesPage from "@/views/pages/HistoriesPage.vue";
@@ -9,32 +10,31 @@ import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
 const routes = [
   {
     path: "/",
-    name: "main",
     component: TopPage,
   },
   {
     path: "/blogs",
-    name: "blogs",
     component: BlogsPage,
   },
   {
+    path: "/blogs/:id(\\d+)", // MEMO: (\\d+)を付ければパラメータには数字しか入らない正規表現となる
+    component: BlogsShowPage,
+    props: (route: { params: { id: string } }) => ({ id: Number(route.params.id) }),
+  },
+  {
     path: "/profiles",
-    name: "profiles",
     component: ProfilesPage,
   },
   {
     path: "/about",
-    name: "about",
     component: AboutPage,
   },
   {
     path: "/histories",
-    name: "histories",
     component: HistoriesPage,
   },
   {
     path: "/thanks_post",
-    name: "thanks_post",
     component: ThanksPostPage,
   },
   {
