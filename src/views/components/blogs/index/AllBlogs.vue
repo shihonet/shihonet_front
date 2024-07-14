@@ -15,7 +15,6 @@
               <BlogCard
                 :id="blog.id"
                 :title="blog.title"
-                :blogUrl="blog.blogUrl"
                 :publishedAt="blog.publishedAt"
                 :thumbnailImageUrl="blog.thumbnailImageUrl"
               />
@@ -30,7 +29,6 @@
               <BlogCard
                 :id="blog.id"
                 :title="blog.title"
-                :blogUrl="blog.blogUrl"
                 :publishedAt="blog.publishedAt"
                 :thumbnailImageUrl="blog.thumbnailImageUrl"
               />

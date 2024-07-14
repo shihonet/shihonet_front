@@ -1,6 +1,9 @@
 <template>
   <div class="pb-20">
-    <img :src="thumbnailImageUrl" class="rounded-lg h-[240px] w-full object-cover object-center shadow-xl" />
+    <img
+      :src="thumbnailImageUrl"
+      class="rounded-lg h-[240px] w-full object-cover object-center shadow-xl"
+    />
     <RouterLink :to="`/blogs/${id}`">
       <div class="hover:opacity-70">
         <div class="mt-6 mx-4">
@@ -34,10 +37,6 @@ export default defineComponent({
       required: true,
     },
     title: {
-      type: String as PropType<string>,
-      required: true,
-    },
-    blogUrl: {
       type: String as PropType<string>,
       required: true,
     },
