@@ -13,6 +13,7 @@
           <div v-for="(blog, index) in blogs" :key="index">
             <div v-if="index % 2 === 0">
               <BlogCard
+                :id="blog.id"
                 :title="blog.title"
                 :blogUrl="blog.blogUrl"
                 :publishedAt="blog.publishedAt"
@@ -27,6 +28,7 @@
           <div v-for="(blog, index) in blogs" :key="index">
             <div v-if="index % 2 === 1">
               <BlogCard
+                :id="blog.id"
                 :title="blog.title"
                 :blogUrl="blog.blogUrl"
                 :publishedAt="blog.publishedAt"
