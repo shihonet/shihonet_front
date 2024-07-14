@@ -53,7 +53,7 @@ export default defineComponent({
     const formatContent = (content: string): string => {
       if (!content) return '';
       const urlRegex = /((https?:\/\/[^\s]+))/g;
-      return content.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-500 underline">$1</a>');
+      return content.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-500 underline break-all">$1</a>');
     };
 
     return {
