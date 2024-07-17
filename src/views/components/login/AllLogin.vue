@@ -2,7 +2,7 @@
   <div class="mt-6 mx-8">
     <FadeInOnScroll>
       <ChangeFontToCaveat
-        :text="subTitle"
+        text="~ Login ~"
         class="text-[38px] font-bold text-center"
       />
 
@@ -25,22 +25,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import ChangeFontToCaveat from "@/views/components/common/ChangeFontToCaveat.vue";
-import LoginForm from "@/views/components/login/LoginForm.vue";
-
-export default defineComponent({
-  components: {
-    LoginForm,
-    ChangeFontToCaveat,
-    FadeInOnScroll,
-  },
-  setup() {
-    return {
-      subTitle: "~ Login ~",
-    };
-  },
-});
+<script setup lang="ts">
+import { FadeInOnScroll, ChangeFontToCaveat } from "@/views/components/common";
+import { LoginForm } from "@/views/components/login";
 </script>
