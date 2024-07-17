@@ -58,7 +58,7 @@
         </td>
       </tr>
 
-      <tbody v-if="isNeededDetailProf">
+      <tbody v-if="props.isNeededDetailProf">
         <tr class="h-6"></tr>
         <tr>
           <td class="p-2 pr-2">好きなアニメ</td>
@@ -92,16 +92,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { withDefaults, defineProps } from "vue";
 
-export default defineComponent({
-  props: {
-    isNeededDetailProf: {
-      type: Boolean as PropType<boolean>,
-      default: true,
-      required: true,
-    },
-  },
+const props = withDefaults(defineProps<{
+  isNeededDetailProf: boolean;
+}>(), {
+  isNeededDetailProf: true
 });
 </script>

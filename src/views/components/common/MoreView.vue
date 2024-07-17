@@ -2,25 +2,19 @@
   <div id="MoreView">
     <div class="flex flex-col items-center">
       <div class="text-site-color hover:opacity-70 text-[24px] font-normal">
-        {{ text }}
+        {{ props.text }}
       </div>
       <span class="block w-40 border-b border-gray-300"></span>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { defineProps } from "vue";
 
-export default defineComponent({
-  props: {
-    text: {
-      type: String as PropType<string>,
-      default: "TITLE",
-      required: true,
-    },
-  },
-});
+const props = defineProps<{
+  text: string;
+}>();
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

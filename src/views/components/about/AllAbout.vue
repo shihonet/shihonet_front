@@ -2,7 +2,7 @@
   <div id="About">
     <FadeInOnScroll>
       <div class="mt-10 mb-10 mx-8">
-        <TitlePart :title="title" />
+        <TitlePart title="about #shihonet" />
       </div>
 
       <div class="mx-8 mb-12 font-bold text-site-color">

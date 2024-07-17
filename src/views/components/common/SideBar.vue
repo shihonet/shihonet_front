@@ -64,23 +64,12 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+<script setup lang="ts">
+import { FadeInOnScroll } from "@/views/components/common";
 
-export default defineComponent({
-  components: { FadeInOnScroll },
-  data() {
-    return {
-      isSidebarOpen: false, // サイドバーの開閉状態
-    };
-  },
-  methods: {
-    toggleSidebar() {
-      this.isSidebarOpen = !this.isSidebarOpen;
-    },
-  },
-});
+const toggleSidebar = () => {
+  return this.isSidebarOpen = !this.isSidebarOpen;
+}
 </script>
 
 <style scoped>

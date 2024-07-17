@@ -10,40 +10,29 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { withDefaults, defineProps, computed } from "vue";
 
-export default defineComponent({
-  props: {
-    theme: {
-      type: String as PropType<string>,
-      default: "primary",
-    },
-    disabled: {
-      type: Boolean as PropType<boolean>,
-      default: false,
-    },
-  },
+const props = withDefaults(defineProps<{
+  theme: string;
+  disabled: boolean;
+}>(), {
+  theme: "primary",
+  disabled: false,
+});
 
-  setup(props) {
-    const themeCss = computed(() => {
-      if (props.disabled) {
-        return "bg-disabled-color text-white";
-      }
+const themeCss = computed(() => {
+  if (props.disabled) {
+    return "bg-disabled-color text-white";
+  }
 
-      const commonCss = "hover:opacity-70";
-      switch (props.theme) {
-        case "white":
-          return `${commonCss} bg-white border-[1px] border-gray-400`;
-        case "primary":
-        default:
-          return `${commonCss} bg-site-color text-white`;
-      }
-    });
-
-    return {
-      themeCss,
-    };
-  },
+  const commonCss = "hover:opacity-70";
+  switch (props.theme) {
+    case "white":
+      return `${commonCss} bg-white border-[1px] border-gray-400`;
+    case "primary":
+    default:
+      return `${commonCss} bg-site-color text-white`;
+  }
 });
 </script>
