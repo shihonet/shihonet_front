@@ -1,6 +1,5 @@
-import InitialModal from './InitialModal';
-import TopProfiles from "@/views/components/top/TopProfiles.vue";
-import TopBlogs from "@/views/components/top/TopBlogs.vue";
-import TopSchedules from "@/views/components/top/TopSchedules.vue";
+import TopProfiles from "./TopProfiles.vue";
+import TopBlogs from "./TopBlogs.vue";
+import TopSchedules from "./TopSchedules.vue";
 
-export { InitialModal, TopProfiles, TopBlogs, TopSchedules };
+export { TopProfiles, TopBlogs, TopSchedules };

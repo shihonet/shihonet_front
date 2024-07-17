@@ -1,6 +1,6 @@
 <template>
   <BaseModal>
-    <InitialModal />
+    <!-- モーダル内部の要素 -->
   </BaseModal>
 
   <FadeInOnScroll>
@@ -12,6 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { FadeInOnScroll } from "@/views/components/common";
-import { TopProfiles, TopBlogs, TopSchedules, InitialModal } from "@/views/components/top";
+import { FadeInOnScroll, BaseModal } from "@/views/components/common";
+import { TopProfiles, TopBlogs, TopSchedules } from "@/views/components/top";
 </script>

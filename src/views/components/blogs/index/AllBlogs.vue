@@ -43,7 +43,7 @@
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
               v-if="currentPage > 2"
-              @click="setPage(currentPage > skipPages ? currentPage - skipPages : 1 - currentPage)"
+              @click="setPage(currentPage > skipPages ? currentPage - skipPages : 1)"
               >{{ currentPage > skipPages ? -skipPages : 1 - currentPage }}</span
             >
             <span
