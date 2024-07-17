@@ -1,13 +1,19 @@
-import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
-import TopLayout from "@/views/layouts/TopLayout.vue";
-import BlogsLayout from "@/views/layouts/BlogsLayout.vue";
-import BlogsShowLayout from "@/views/layouts/BlogsShowLayout.vue";
-import ProfilesLayout from "@/views/layouts/ProfilesLayout.vue";
-import AboutLayout from "@/views/layouts/AboutLayout.vue";
-import HistoriesLayout from "@/views/layouts/HistoriesLayout.vue";
-import ThanksPostLayout from "@/views/layouts/ThanksPostLayout.vue";
-import SignupLayout from "@/views/layouts/SignupLayout.vue";
-import LoginLayout from "@/views/layouts/LoginLayout.vue";
+import {
+  createRouter,
+  createWebHistory,
+  RouteLocationNormalized,
+} from "vue-router";
+import {
+  TopLayout,
+  AboutLayout,
+  HistoriesLayout,
+  ProfilesLayout,
+  SignupLayout,
+  BlogsLayout,
+  BlogsShowLayout,
+  LoginLayout,
+  ThanksPostLayout,
+} from "@/views/layouts";
 
 const routes = [
   {
@@ -22,7 +28,9 @@ const routes = [
   {
     path: "/blogs/:id(\\d+)", // MEMO: (\\d+)を付ければパラメータには数字しか入らない正規表現となる
     component: BlogsShowLayout,
-    props: (route: { params: { id: string } }) => ({ id: Number(route.params.id) }),
+    props: (route: { params: { id: string } }) => ({
+      id: Number(route.params.id),
+    }),
   },
   {
     path: "/profiles",
@@ -74,7 +82,7 @@ const router = createRouter({
 // Google Analyticsへのページビュー送信を設定
 router.afterEach((to: RouteLocationNormalized) => {
   // Google Analyticsページビューを送信
-  gtag('config', 'G-SKEEGTRD4W', {
+  gtag("config", "G-SKEEGTRD4W", {
     page_path: to.path,
   });
 });

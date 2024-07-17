@@ -9,8 +9,7 @@
 <script lang="ts">
 import "./index.css";
 import { defineComponent } from "vue";
-import PageHeader from "@/views/components/common/PageHeader.vue";
-import PageFooter from "@/views/components/common/PageFooter.vue";
+import { PageHeader, PageFooter } from "@/views/components/common";
 
 export default defineComponent({
   name: "App",
