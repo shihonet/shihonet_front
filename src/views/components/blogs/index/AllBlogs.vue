@@ -43,7 +43,7 @@
             <span
               class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
               v-if="currentPage > 2"
-              @click="setPage(currentPage > skipPages ? currentPage - skipPages : 1 - currentPage)"
+              @click="setPage(currentPage > skipPages ? currentPage - skipPages : 1)"
               >{{ currentPage > skipPages ? -skipPages : 1 - currentPage }}</span
             >
             <span
@@ -80,31 +80,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, computed } from "vue";
+<script setup lang="ts">
+import { onMounted, computed } from "vue";
 import { useBlogsStore } from "@/stores/blogsStore";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
+import { FadeInOnScroll, WaitingForLoading } from "@/views/components/common";
 import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
 
-export default defineComponent({
-  components: { BlogCard, WaitingForLoading, FadeInOnScroll },
-  setup() {
-    const blogsStore = useBlogsStore();
+// FIXME: 定数の定義
+const skipPages = 20;
 
-    onMounted(() => {
-      blogsStore.requestGetBlogs();
-    });
+const blogsStore = useBlogsStore();
 
-    return {
-      blogs: computed(() => blogsStore.getBlogs),
-      currentPage: computed(() => blogsStore.getCurrentPage),
-      totalPage: computed(() => blogsStore.getTotalPage),
-      limit: computed(() => blogsStore.getLimit),
-      isLoading: computed(() => blogsStore.getIsLoading),
-      setPage: blogsStore.setPage,
-      skipPages: 20, // 定数
-    };
-  },
+onMounted(() => {
+  blogsStore.requestGetBlogs();
 });
+
+const blogs = computed(() => blogsStore.getBlogs);
+
+const currentPage = computed(() => blogsStore.getCurrentPage);
+
+const totalPage = computed(() => blogsStore.getTotalPage);
+
+const isLoading = computed(() => blogsStore.getIsLoading);
+
+const setPage = blogsStore.setPage;
 </script>

@@ -39,31 +39,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted } from "vue";
+<script setup lang="ts">
+import { computed, onMounted } from "vue";
 import { useHistoriesStore } from "@/stores/historiesStore";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
+import { FadeInOnScroll, WaitingForLoading } from "@/views/components/common";
 
-export default defineComponent({
-  components: { WaitingForLoading, FadeInOnScroll },
-  setup() {
-    const historiesStore = useHistoriesStore();
+const historiesStore = useHistoriesStore();
 
-    onMounted(() => {
-      historiesStore.requestGetHistories();
-    });
-
-    return {
-      histories: computed(() => historiesStore.getHistories),
-      isLoading: computed(() => historiesStore.getIsLoading),
-      availableYears: computed(() => historiesStore.getAvailableYears),
-      selectedYear: computed(() => historiesStore.getSelectedYear),
-      setYear: historiesStore.setYear,
-    };
-  },
+onMounted(() => {
+  historiesStore.requestGetHistories();
 });
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+const histories = computed(() => historiesStore.getHistories);
+
+const isLoading = computed(() => historiesStore.getIsLoading);
+
+const availableYears = computed(() => historiesStore.getAvailableYears);
+
+const selectedYear = computed(() => historiesStore.getSelectedYear);
+
+const setYear = historiesStore.setYear;
+</script>

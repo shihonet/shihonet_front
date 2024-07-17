@@ -37,28 +37,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from "vue";
-import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
-import PostX from "@/views/components/common/PostX.vue";
+<script setup lang="ts">
+import { computed } from "vue";
+import { BaseButton, WaitingForLoading, PostX } from "@/views/components/common";
 import { useRandomBlogsStore } from "@/stores/randomBlogsStore";
-import BaseButton from "@/views/components/common/BaseButton.vue";
 
-export default defineComponent({
-  components: {BaseButton, WaitingForLoading, PostX },
-  setup() {
-    const randomBlogsStore = useRandomBlogsStore();
+const randomBlogsStore = useRandomBlogsStore();
 
-    return {
-      title: computed(() => randomBlogsStore.getTitle),
-      publishedAt: computed(() => randomBlogsStore.getPublishedUrl),
-      blogUrl: computed(() => randomBlogsStore.getBlogUrl),
-      imageUrl: computed(() => randomBlogsStore.getImageUrl),
-      isLoading: computed(() => randomBlogsStore.getIsLoading),
-      isClickedButton: computed(() => randomBlogsStore.getIsClickedButton),
-      requestGetRandomBlogs: randomBlogsStore.requestGetRandomBlogs, // NOTE: 関数そのものを取得している
-      postLink: computed(() => randomBlogsStore.getPostLink()), // NOTE: 関数を呼び出して値を返している
-    };
-  }
-});
+const title = computed(() => randomBlogsStore.getTitle);
+const publishedAt = computed(() => randomBlogsStore.getPublishedUrl);
+const blogUrl = computed(() => randomBlogsStore.getBlogUrl);
+const imageUrl = computed(() => randomBlogsStore.getImageUrl);
+const isLoading = computed(() => randomBlogsStore.getIsLoading);
+const isClickedButton = computed(() => randomBlogsStore.getIsClickedButton);
+const requestGetRandomBlogs = randomBlogsStore.requestGetRandomBlogs; // NOTE: 関数そのものを取得している
+const postLink = computed(() => randomBlogsStore.getPostLink()); // NOTE: 関数を呼び出して値を返している
 </script>

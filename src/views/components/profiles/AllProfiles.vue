@@ -1,6 +1,6 @@
 <template>
   <div class="mt-10 mb-10 mx-8">
-    <TitlePart :title="title" />
+    <TitlePart title="Profiles" />
   </div>
   <p class="text-center text-[12px] font-light">Shiho Kato</p>
   <p class="mt-1 text-center text-[20px]">加藤 史帆</p>
@@ -8,7 +8,7 @@
     日向坂46 一期生
   </p>
   <img src="@/assets/images/11th_shiho.png" class="mt-4 mx-auto w-[220px]" />
-  <ProfileTable :isNeededDetailProf="isNeededDetailProf" />
+  <ProfileTable :isNeededDetailProf="true" />
 
   <FadeInOnScroll>
     <div class="mt-16 bg-yellow-100 rounded-lg py-4 px-2">
@@ -30,20 +30,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import TitlePart from "@/views/components/common/TitlePart.vue";
-import ProfileTable from "@/views/components/common/ProfileTable.vue";
-import ContentIntroduction from "@/views/components/profiles/ContentIntroduction.vue";
-
-export default defineComponent({
-  components: { ContentIntroduction, ProfileTable, TitlePart, FadeInOnScroll },
-  setup() {
-    return {
-      title: "Profiles",
-      isNeededDetailProf: true,
-    };
-  },
-});
+<script setup lang="ts">
+import { FadeInOnScroll, TitlePart, ProfileTable } from "@/views/components/common";
+import { ContentIntroduction } from "@/views/components/profiles";
 </script>

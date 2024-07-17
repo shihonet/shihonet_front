@@ -2,7 +2,7 @@
   <div id="About">
     <FadeInOnScroll>
       <div class="mt-10 mb-10 mx-8">
-        <TitlePart :title="title" />
+        <TitlePart title="about #shihonet" />
       </div>
 
       <div class="mx-8 mb-12 font-bold text-site-color">
@@ -108,22 +108,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import { defineComponent } from "vue";
-import TitlePart from "@/views/components/common/TitlePart.vue";
-
-export default defineComponent({
-  components: { TitlePart, FadeInOnScroll },
-  setup() {
-    return {
-      title: "about #shihonet",
-    };
-  },
-});
+<script setup lang="ts">
+import { FadeInOnScroll, TitlePart } from "@/views/components/common";
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #About {
   p {

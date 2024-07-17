@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+import { FadeInOnScroll } from "@/views/components/common";
 </script>
