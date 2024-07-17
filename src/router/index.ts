@@ -1,54 +1,54 @@
 import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
-import TopPage from "@/views/pages/TopPage.vue";
-import BlogsPage from "@/views/pages/BlogsPage.vue";
-import BlogsShowPage from "@/views/pages/BlogsShowPage.vue";
-import ProfilesPage from "@/views/pages/ProfilesPage.vue";
-import AboutPage from "@/views/pages/AboutPage.vue";
-import HistoriesPage from "@/views/pages/HistoriesPage.vue";
-import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
-import SignupPage from "@/views/pages/SignupPage.vue";
-import LoginPage from "@/views/pages/LoginPage.vue";
+import TopLayout from "@/views/layouts/TopLayout.vue";
+import BlogsLayout from "@/views/layouts/BlogsLayout.vue";
+import BlogsShowLayout from "@/views/layouts/BlogsShowLayout.vue";
+import ProfilesLayout from "@/views/layouts/ProfilesLayout.vue";
+import AboutLayout from "@/views/layouts/AboutLayout.vue";
+import HistoriesLayout from "@/views/layouts/HistoriesLayout.vue";
+import ThanksPostLayout from "@/views/layouts/ThanksPostLayout.vue";
+import SignupLayout from "@/views/layouts/SignupLayout.vue";
+import LoginLayout from "@/views/layouts/LoginLayout.vue";
 
 const routes = [
   {
     path: "/",
     name: "main",
-    component: TopPage,
+    component: TopLayout,
   },
   {
     path: "/blogs",
-    component: BlogsPage,
+    component: BlogsLayout,
   },
   {
     path: "/blogs/:id(\\d+)", // MEMO: (\\d+)を付ければパラメータには数字しか入らない正規表現となる
-    component: BlogsShowPage,
+    component: BlogsShowLayout,
     props: (route: { params: { id: string } }) => ({ id: Number(route.params.id) }),
   },
   {
     path: "/profiles",
-    component: ProfilesPage,
+    component: ProfilesLayout,
   },
   {
     path: "/about",
-    component: AboutPage,
+    component: AboutLayout,
   },
   {
     path: "/histories",
-    component: HistoriesPage,
+    component: HistoriesLayout,
   },
   {
     path: "/thanks_post",
-    component: ThanksPostPage,
+    component: ThanksPostLayout,
   },
   {
     path: "/signup",
     name: "signup",
-    component: SignupPage,
+    component: SignupLayout,
   },
   {
     path: "/login",
     name: "login",
-    component: LoginPage,
+    component: LoginLayout,
   },
   {
     // 未定義のURLをルートにリダイレクト

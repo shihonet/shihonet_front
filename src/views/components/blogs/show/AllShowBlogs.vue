@@ -27,40 +27,33 @@
   </FadeInOnScroll>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted, PropType } from "vue";
+<script setup lang="ts">
+import { computed, defineProps, onMounted } from "vue";
 import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import { useBlogShowStore } from "@/stores/blogShowStore";
 
-export default defineComponent({
-  components: { WaitingForLoading, FadeInOnScroll },
-  props: {
-    id: {
-      type: Number as PropType<number>,
-      default: 0,
-      required: true,
-    },
-  },
-  setup(props) {
-    const blogShowStore = useBlogShowStore();
+const blogShowStore = useBlogShowStore();
 
-    onMounted(() => {
-      blogShowStore.requestFetchBlog(props.id);
-    });
+const props = defineProps<{
+  id: number;
+  disabled: boolean;
+}>();
 
-    // テキスト中のURLをリンクに変換する
-    const formatContent = (content: string): string => {
-      if (!content) return '';
-      const urlRegex = /((https?:\/\/[^\s]+))/g;
-      return content.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-500 underline break-all">$1</a>');
-    };
-
-    return {
-      blog: computed(() => blogShowStore.getBlog),
-      isLoading: computed(() => blogShowStore.getIsLoading),
-      formattedContent: computed(() => formatContent(blogShowStore.getBlog.content)),
-    };
-  },
+onMounted(() => {
+  blogShowStore.requestFetchBlog(props.id);
 });
+
+// テキスト中のURLをリンクに変換する
+const formatContent = (content: string): string => {
+  if (!content) return '';
+  const urlRegex = /((https?:\/\/[^\s]+))/g;
+  return content.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-500 underline break-all">$1</a>');
+};
+
+const blog = computed(() => blogShowStore.getBlog);
+
+const isLoading = computed(() => blogShowStore.getIsLoading);
+
+const formattedContent = computed(() => formatContent(blogShowStore.getBlog.content));
 </script>
