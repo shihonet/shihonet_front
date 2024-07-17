@@ -15,7 +15,7 @@
         <FadeInOnScroll>
           <div class="relative">
             <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
-            <a :href="blog.blogUrl">
+            <RouterLink :to="`/blogs/${blog.id}`">
               <div
                 class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color hover:opacity-90"
               >
@@ -26,7 +26,7 @@
                   {{ blog.title }}
                 </div>
               </div>
-            </a>
+            </RouterLink>
           </div>
         </FadeInOnScroll>
       </div>
