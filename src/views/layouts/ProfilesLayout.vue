@@ -1,17 +1,9 @@
 <template>
   <div class="mx-6">
-    <AllProfile />
+    <AllProfiles />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import AllProfile from "@/views/components/profiles/AllProfiles.vue";
-
-export default defineComponent({
-  components: { AllProfile },
-});
+<script setup lang="ts">
+import { AllProfiles } from "@/views/components/profiles";
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>

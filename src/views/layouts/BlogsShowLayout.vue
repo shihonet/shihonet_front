@@ -1,12 +1,14 @@
 <template>
-  <AllShowBlogs :id="id" />
+  <AllShowBlogs :id="props.id" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import AllShowBlogs from "@/views/components/blogs/show/AllShowBlogs.vue";
-export default defineComponent({
-  components: { AllShowBlogs },
-  props: { id: Number },
+<script setup lang="ts">
+import { defineProps, withDefaults } from "vue";
+import { AllShowBlogs } from "@/views/components/blogs";
+
+const props = withDefaults(defineProps<{
+  id: number;
+}>(), {
+  id: 0,
 });
 </script>
