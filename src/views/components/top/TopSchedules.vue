@@ -1,7 +1,7 @@
 <template>
   <FadeInOnScroll>
     <div class="my-40 mx-10">
-      <TitlePart :title="title" />
+      <TitlePart title="Schedules" />
 
       <div v-if="isLoading">
         <WaitingForLoading />
@@ -27,30 +27,18 @@
   </FadeInOnScroll>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, computed } from "vue";
+<script setup lang="ts">
+import { onMounted, computed } from "vue";
 import { useTopSchedulesStore } from '@/stores/topSchedulesStore';
-import TitlePart from "@/views/components/common/TitlePart.vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
+import { TitlePart, FadeInOnScroll, WaitingForLoading } from "@/views/components/common";
 
-export default defineComponent({
-  components: { TitlePart, WaitingForLoading, FadeInOnScroll },
-  setup() {
-    const topSchedulesStore = useTopSchedulesStore();
+const topSchedulesStore = useTopSchedulesStore();
 
-    onMounted(() => {
-      topSchedulesStore.requestGetTopSchedules();
-    });
+const schedules = computed(() => topSchedulesStore.getSchedules);
+const isSchedulePresent = computed(() => topSchedulesStore.getIsSchedulePresent);
+const isLoading = computed(() => topSchedulesStore.getIsLoading);
 
-    return {
-      title: 'Schedules',
-      borderClass: "border-top-color",
-      textColorClass: "top-color",
-      schedules: computed(() => topSchedulesStore.getSchedules),
-      isSchedulePresent: computed(() => topSchedulesStore.getIsSchedulePresent),
-      isLoading: computed(() => topSchedulesStore.getIsLoading),
-    };
-  }
+onMounted(() => {
+  topSchedulesStore.requestGetTopSchedules();
 });
 </script>

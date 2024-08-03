@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import ChangeFontToCaveat from "@/views/components/common/ChangeFontToCaveat.vue";
+import { ChangeFontToCaveat } from "@/views/components/common";
 
 const props = defineProps<{
   title: string;

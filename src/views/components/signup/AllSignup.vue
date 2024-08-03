@@ -2,7 +2,7 @@
   <div class="mt-6 mx-8">
     <FadeInOnScroll>
       <ChangeFontToCaveat
-        :text="subTitle"
+        text="~ Signup ~"
         class="text-[38px] font-bold text-center"
       />
 
@@ -30,28 +30,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+<script setup lang="ts">
+import { computed } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
-import SignupForm from "@/views/components/signup/SignupForm.vue";
-import SignupVerifyForm from "@/views/components/signup/SignupVerifyForm.vue";
-import ChangeFontToCaveat from "@/views/components/common/ChangeFontToCaveat.vue";
+import { FadeInOnScroll, ChangeFontToCaveat } from "@/views/components/common";
+import { SignupForm, SignupVerifyForm } from "@/views/components/signup";
 
-export default defineComponent({
-  components: {
-    ChangeFontToCaveat,
-    FadeInOnScroll,
-    SignupForm,
-    SignupVerifyForm,
-  },
-  setup() {
-    const signupStore = useSignupStore();
-
-    return {
-      subTitle: "~ Signup ~",
-      hasRequested: computed(() => signupStore.hasRequested),
-    };
-  },
-});
+const signupStore = useSignupStore();
+const hasRequested = computed(() => signupStore.hasRequested);
 </script>

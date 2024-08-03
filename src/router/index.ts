@@ -1,54 +1,62 @@
-import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
-import TopPage from "@/views/pages/TopPage.vue";
-import BlogsPage from "@/views/pages/BlogsPage.vue";
-import BlogsShowPage from "@/views/pages/BlogsShowPage.vue";
-import ProfilesPage from "@/views/pages/ProfilesPage.vue";
-import AboutPage from "@/views/pages/AboutPage.vue";
-import HistoriesPage from "@/views/pages/HistoriesPage.vue";
-import ThanksPostPage from "@/views/pages/ThanksPostPage.vue";
-import SignupPage from "@/views/pages/SignupPage.vue";
-import LoginPage from "@/views/pages/LoginPage.vue";
+import {
+  createRouter,
+  createWebHistory,
+  RouteLocationNormalized,
+} from "vue-router";
+import {
+  TopLayout,
+  AboutLayout,
+  HistoriesLayout,
+  ProfilesLayout,
+  SignupLayout,
+  BlogsLayout,
+  BlogsShowLayout,
+  LoginLayout,
+  ThanksPostLayout,
+} from "@/views/layouts";
 
 const routes = [
   {
     path: "/",
     name: "main",
-    component: TopPage,
+    component: TopLayout,
   },
   {
     path: "/blogs",
-    component: BlogsPage,
+    component: BlogsLayout,
   },
   {
     path: "/blogs/:id(\\d+)", // MEMO: (\\d+)を付ければパラメータには数字しか入らない正規表現となる
-    component: BlogsShowPage,
-    props: (route: { params: { id: string } }) => ({ id: Number(route.params.id) }),
+    component: BlogsShowLayout,
+    props: (route: { params: { id: string } }) => ({
+      id: Number(route.params.id),
+    }),
   },
   {
     path: "/profiles",
-    component: ProfilesPage,
+    component: ProfilesLayout,
   },
   {
     path: "/about",
-    component: AboutPage,
+    component: AboutLayout,
   },
   {
     path: "/histories",
-    component: HistoriesPage,
+    component: HistoriesLayout,
   },
   {
     path: "/thanks_post",
-    component: ThanksPostPage,
+    component: ThanksPostLayout,
   },
   {
     path: "/signup",
     name: "signup",
-    component: SignupPage,
+    component: SignupLayout,
   },
   {
     path: "/login",
     name: "login",
-    component: LoginPage,
+    component: LoginLayout,
   },
   {
     // 未定義のURLをルートにリダイレクト
@@ -74,7 +82,7 @@ const router = createRouter({
 // Google Analyticsへのページビュー送信を設定
 router.afterEach((to: RouteLocationNormalized) => {
   // Google Analyticsページビューを送信
-  gtag('config', 'G-SKEEGTRD4W', {
+  gtag("config", "G-SKEEGTRD4W", {
     page_path: to.path,
   });
 });

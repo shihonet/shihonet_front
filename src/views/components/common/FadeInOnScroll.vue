@@ -4,39 +4,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
 
-export default defineComponent({
-  setup() {
-    const fadeElement = ref(null);
-    const isVisible = ref(false);
+const fadeElement = ref(null);
+const isVisible = ref(false);
 
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting) {
-        isVisible.value = true;
-      }
-    };
+const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+  if (entries[0].isIntersecting) {
+    isVisible.value = true;
+  }
+};
 
-    onMounted(() => {
-      const observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.5,
-      });
+onMounted(() => {
+  const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.5,
+  });
 
-      if (fadeElement.value) {
-        observer.observe(fadeElement.value);
-      }
+  if (fadeElement.value) {
+    observer.observe(fadeElement.value);
+  }
 
-      // コンポーネントがアンマウントされたときにリスナーを削除する
-      return () => {
-        if (fadeElement.value) {
-          observer.unobserve(fadeElement.value);
-        }
-      };
-    });
-
-    return { fadeElement, isVisible };
-  },
+  // コンポーネントがアンマウントされたときにリスナーを削除する
+  return () => {
+    if (fadeElement.value) {
+      observer.unobserve(fadeElement.value);
+    }
+  };
 });
 </script>
 

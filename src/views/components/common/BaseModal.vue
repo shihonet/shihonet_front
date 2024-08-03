@@ -17,51 +17,43 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted } from "vue";
+<script setup lang="ts">
+import { computed, onMounted } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import { useBaseModalStore } from "@/stores/common/baseModalStore";
 import confetti from "canvas-confetti";
 
-export default defineComponent({
-  components: { FadeInOnScroll },
-  setup() {
-    const baseModalStore = useBaseModalStore();
+const baseModalStore = useBaseModalStore();
 
-    onMounted(() => {
-      const today = new Date();
-      const currentMonth = today.getMonth() + 1; // getMonth()メソッドは0から11の整数を返す。1月は0、2月は1、…、12月は11。
-      const currentDate = today.getDate();
-      // TODO: ここでモーダルを表示させる日付を指定する。
-      if (currentMonth === 6 && (currentDate === 20 || currentDate === 21)) {
-        baseModalStore.setIsModalOpen(true);
-      }
+const closeModal = () => {
+  baseModalStore.setIsModalOpen(false);
+};
 
-      if(!baseModalStore.isModalOpen) return;
+const isModalOpen = computed(()=>baseModalStore.getIsModalOpen)
 
-      // INFO: confetti ライブラリを使用した、クラッカーのアニメーション
-      const script = document.createElement("script");
-      script.src =
-        "https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js";
-      script.onload = () => {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        });
-      };
-      document.head.appendChild(script);
+onMounted(() => {
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1; // getMonth()メソッドは0から11の整数を返す。1月は0、2月は1、…、12月は11。
+  const currentDate = today.getDate();
+  // TODO: ここでモーダルを表示させる日付を指定する。
+  if (currentMonth === 6 && (currentDate === 20 || currentDate === 21)) {
+    baseModalStore.setIsModalOpen(true);
+  }
+
+  if(!baseModalStore.isModalOpen) return;
+
+  // INFO: confetti ライブラリを使用した、クラッカーのアニメーション
+  const script = document.createElement("script");
+  script.src =
+      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js";
+  script.onload = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
     });
-
-    const closeModal = () => {
-      baseModalStore.setIsModalOpen(false);
-    };
-
-    return {
-      closeModal: closeModal,
-      isModalOpen: computed(()=>baseModalStore.getIsModalOpen),
-    };
-  },
+  };
+  document.head.appendChild(script);
 });
 </script>
 

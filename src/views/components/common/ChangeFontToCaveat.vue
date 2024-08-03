@@ -1,21 +1,15 @@
 <template>
   <p id="ChangeFontToCaveat">
-    {{ text }}
+    {{ props.text }}
   </p>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { defineProps } from "vue";
 
-export default defineComponent({
-  props: {
-    text: {
-      type: String as PropType<string>,
-      default: "string",
-      required: true,
-    },
-  },
-});
+const props = defineProps<{
+  text: string;
+}>();
 </script>
 
 <style>
