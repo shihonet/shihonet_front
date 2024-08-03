@@ -7,33 +7,14 @@
       <div class="text-right">
         <p>PAGE：{{ currentPage }} / {{ totalPage }}</p>
       </div>
-      <div class="mt-6 flex">
-        <!-- 左列 -->
-        <div class="w-1/2 mr-1.5">
-          <div v-for="(blog, index) in blogs" :key="index">
-            <div v-if="index % 2 === 0">
-              <BlogCard
-                :id="blog.id"
-                :title="blog.title"
-                :publishedAt="blog.publishedAt"
-                :thumbnailImageUrl="blog.thumbnailImageUrl"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- 右列 -->
-        <div class="w-1/2 ml-1.5 mt-8">
-          <div v-for="(blog, index) in blogs" :key="index">
-            <div v-if="index % 2 === 1">
-              <BlogCard
-                :id="blog.id"
-                :title="blog.title"
-                :publishedAt="blog.publishedAt"
-                :thumbnailImageUrl="blog.thumbnailImageUrl"
-              />
-            </div>
-          </div>
+      <div class="mt-6">
+        <div v-for="(blog, index) in blogs" :key="index" class="mb-6">
+          <BlogCard
+            :id="blog.id"
+            :title="blog.title"
+            :publishedAt="blog.publishedAt"
+            :imageUrls="blog.imageUrls"
+          />
         </div>
       </div>
 
