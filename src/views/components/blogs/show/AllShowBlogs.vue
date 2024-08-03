@@ -7,10 +7,12 @@
       <p class="text-2xl font-bold">{{ blog.title }}</p>
       <p class="mt-2 text-[12px] text-gray-400 flex justify-end">{{ blog.publishedAt }}</p>
       <p class="mt-6 whitespace-break-spaces" v-html="formattedContent"></p>
-      <hr class="my-16">
-      <p class="text-[12px] text-gray-400 flex justify-center">画像一覧（{{ blog.imageUrls?.length }}枚）</p>
-      <div v-for="(image, index) in blog.imageUrls" :key="index" class="mt-2 mb-5 mx-4">
-        <img :src="image" class="w-full" />
+      <div v-if="blog.imageUrls.length !== 0">
+        <hr class="my-16">
+        <p class="text-[12px] text-gray-400 flex justify-center">画像一覧（{{ blog.imageUrls?.length }}枚）</p>
+        <div v-for="(image, index) in blog.imageUrls" :key="index" class="mt-2 mb-5 mx-4">
+          <img :src="image" class="w-full" />
+        </div>
       </div>
       <div class="mt-16 flex justify-end">
         <a :href="blog.blogUrl" class="text-blue-500 underline" target="_blank">公式ブログ ＞</a>

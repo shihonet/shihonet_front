@@ -26,12 +26,10 @@ export const useBlogShowStore = defineStore("blogShow", {
         this.blog = {
           id: response.data.id,
           title: response.data.title,
-          memberName: response.data.member_name,
           publishedAt: response.data.published_at,
           blogUrl: response.data.blog_url,
           imageUrls: response.data.image_urls,
           content: response.data.content,
-          thumbnailImageUrl: "",
         };
       } catch (error) {
         await router.push('/blogs');
