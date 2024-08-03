@@ -1,35 +1,43 @@
 <template>
-  <div class="pb-20">
-    <img
-      :src="thumbnailImageUrl"
-      class="rounded-lg h-[240px] w-full object-cover object-center shadow-xl"
-    />
-    <RouterLink :to="`/blogs/${id}`">
-      <div class="hover:opacity-70">
-        <div class="mt-6 mx-4">
-          <div class="text-[12px] font-normal text-gray-400">
-            {{ publishedAt }}
-          </div>
-          <div class="text-[16px] font-bold mt-2 h-10">
-            {{ title }}
+  <FadeInOnScroll>
+    <RouterLink
+      :to="`/blogs/${id}`"
+      class="bg-white h-min-60 flex rounded-lg object-cover overflow-hidden shadow-md hover:cursor-pointer"
+    >
+      <img :src="imageUrls[0]" class="w-36 object-cover object-center" />
+      <div class="m-4 w-full">
+        <div class="text-[16px] font-bold mt-2 line-clamp-2">
+          {{ title }}
+        </div>
+        <div class="text-[10px] text-right text-gray-400">
+          {{ publishedAt }}
+        </div>
+        <div class="flex flex-wrap mt-2 overflow-hidden">
+          <div v-for="(image, index) in imageUrls.slice(1)" :key="index">
+            <img
+              :src="image"
+              class="m-1 rounded-lg w-16 h-16 object-cover object-center"
+            />
           </div>
         </div>
       </div>
     </RouterLink>
-  </div>
+  </FadeInOnScroll>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 
 export default defineComponent({
+  components: { FadeInOnScroll },
   props: {
     id: {
       type: Number as PropType<number>,
       required: true,
     },
-    thumbnailImageUrl: {
-      type: String as PropType<string>,
+    imageUrls: {
+      type: Array as PropType<string[]>,
       required: true,
     },
     publishedAt: {

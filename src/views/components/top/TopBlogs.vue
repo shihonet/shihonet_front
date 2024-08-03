@@ -14,7 +14,7 @@
       <div v-for="(blog, index) in blogs" :key="index" class="mt-6">
         <FadeInOnScroll>
           <div class="relative">
-            <img :src="blog.thumbnailImageUrl" class="rounded-lg w-full" />
+            <img :src="blog.imageUrls[0]" class="rounded-lg w-full" />
             <RouterLink :to="`/blogs/${blog.id}`">
               <div
                 class="absolute bottom-0 left-0 right-0 text-white px-4 py-2 rounded-lg bg-site-blog-color hover:opacity-90"

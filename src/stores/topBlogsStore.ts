@@ -26,12 +26,10 @@ export const useTopBlogsStore = defineStore('topBlogs', {
           return {
             id: blog.id,
             title: blog.title,
-            memberName: blog.member_name,
             publishedAt: blog.published_at,
             blogUrl: blog.blog_url,
-            thumbnailImageUrl: blog.thumbnail_image_url,
             content: "",
-            imageUrls: [""],
+            imageUrls: blog.image_urls,
           };
         });
       } catch (error) {
