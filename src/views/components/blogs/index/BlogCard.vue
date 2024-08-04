@@ -5,21 +5,23 @@
     >
       <img :src="imageUrls[0]" class="w-36 object-cover object-center" />
       <div class="m-4 flex flex-col w-full">
-        <div class="text-[16px] font-bold mt-2 line-clamp-2">
-          {{ props.title }}
-        </div>
-        <div class="text-[10px] text-right text-gray-400">
-          {{ props.publishedAt }}
-        </div>
-        <div
-          v-if="props.isLoggedIn"
-          class="mt-2 mr-1 flex justify-end items-end"
-          @click="updateFavorite"
-        >
-          <div class="w-6 h-6 hover:cursor-pointer">
-            <img v-if="props.isFavorite" src="@/assets/images/favorite.svg" />
-            <img v-else src="@/assets/images/unfavorite.svg" />
+        <div class="flex justify-between">
+          <div class="flex justify-center items-center text-sm font-bold">
+            <p class="line-clamp-2">{{ props.title }}</p>
           </div>
+          <div
+            v-if="props.isLoggedIn"
+            class="flex justify-center items-center ml-2"
+            @click="updateFavorite"
+          >
+            <div class="w-6 h-6 hover:cursor-pointer">
+              <img v-if="props.isFavorite" src="@/assets/images/favorite.svg" />
+              <img v-else src="@/assets/images/unfavorite.svg" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 text-[10px] text-right text-gray-400">
+          {{ props.publishedAt }}
         </div>
         <div class="flex flex-wrap mt-2 overflow-hidden">
           <div v-for="(image, index) in props.imageUrls.slice(1)" :key="index">
