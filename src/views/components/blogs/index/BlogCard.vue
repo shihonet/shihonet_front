@@ -12,12 +12,9 @@
         <div class="text-[10px] text-right text-gray-400">
           {{ props.publishedAt }}
         </div>
-        <div v-if="props.isLoggedIn" class="flex justify-end items-end">
-          <div
-            :style="{ color: !props.isFavorite ? 'red' : '#5f6368' }"
-            v-html="svgContent"
-            class="w-4 h-4"
-          />
+        <div v-if="props.isLoggedIn" class="mt-2 mr-1 flex justify-end items-end">
+          <img v-if="props.isFavorite" src="@/assets/images/favorite.svg" class="w-6 h-6" />
+          <img v-else src="@/assets/images/unfavorite.svg" class="w-6 h-6" />
         </div>
         <div class="flex flex-wrap mt-2 overflow-hidden">
           <div v-for="(image, index) in props.imageUrls.slice(1)" :key="index">
@@ -34,7 +31,7 @@
 
 <script setup lang="ts">
 import { FadeInOnScroll } from "@/views/components/common";
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps } from "vue";
 
 const props = defineProps<{
   id: number;
@@ -44,17 +41,4 @@ const props = defineProps<{
   isFavorite: boolean;
   isLoggedIn: boolean;
 }>();
-
-const svgContent = ref("");
-
-onMounted(async () => {
-  try {
-    const response = await fetch(
-      require("@/assets/images/favorite_24dp_B7B7B7_FILL1_wght400_GRAD0_opsz24.svg")
-    );
-    svgContent.value = await response.text();
-  } catch (error) {
-    console.error("Error loading SVG:", error);
-  }
-});
 </script>
