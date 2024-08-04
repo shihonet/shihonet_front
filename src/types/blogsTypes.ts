@@ -5,6 +5,8 @@ export interface Blog {
   blogUrl: string;
   content: string;
   imageUrls: string[];
+  isFavorite: boolean;
+  isLoggedIn: boolean;
 }
 
 export interface ApiResponseBlog {
@@ -14,6 +16,8 @@ export interface ApiResponseBlog {
   blog_url: string;
   content: string;
   image_urls: string[];
+  is_favorite: boolean;
+  is_logged_in: boolean;
 }
 
 export interface RandomBlog {

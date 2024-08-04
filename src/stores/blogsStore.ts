@@ -42,6 +42,8 @@ export const useBlogsStore = defineStore('blogs', {
             blogUrl: blog.blog_url,
             content: "",
             imageUrls: blog.image_urls,
+            isFavorite: blog.is_favorite,
+            isLoggedIn: blog.is_logged_in,
           };
         });
         this.totalPage = response.data.pagination.pages;

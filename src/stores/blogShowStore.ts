@@ -30,6 +30,8 @@ export const useBlogShowStore = defineStore("blogShow", {
           blogUrl: response.data.blog_url,
           imageUrls: response.data.image_urls,
           content: response.data.content,
+          isFavorite: response.data.is_favorite,
+          isLoggedIn: response.data.is_logged_in,
         };
       } catch (error) {
         await router.push('/blogs');

@@ -14,6 +14,8 @@
             :title="blog.title"
             :publishedAt="blog.publishedAt"
             :imageUrls="blog.imageUrls"
+            :isFavorite="blog.isFavorite"
+            :isLoggedIn="blog.isLoggedIn"
           />
         </div>
       </div>

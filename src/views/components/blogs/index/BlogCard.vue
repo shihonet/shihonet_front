@@ -12,6 +12,11 @@
         <div class="text-[10px] text-right text-gray-400">
           {{ props.publishedAt }}
         </div>
+        <div class="text-end">
+          <img src="@/assets/images/favorite_24dp_5F6368_FILL0_wght400_GRAD-25_opsz40.svg" class="text-red-600 w-4 h-4" />
+          {{props.isFavorite}}
+          {{props.isLoggedIn}}
+        </div>
         <div class="flex flex-wrap mt-2 overflow-hidden">
           <div v-for="(image, index) in props.imageUrls.slice(1)" :key="index">
             <img
@@ -34,5 +39,7 @@ const props = defineProps<{
   imageUrls: Array<string>;
   publishedAt: string;
   title: string;
+  isFavorite: boolean;
+  isLoggedIn: boolean;
 }>();
 </script>
