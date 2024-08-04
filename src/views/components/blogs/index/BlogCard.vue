@@ -47,6 +47,7 @@
 import { FadeInOnScroll } from "@/views/components/common";
 import { defineProps } from "vue";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
+import { useBlogsStore } from "@/stores/blogsStore";
 
 const props = defineProps<{
   id: number;
@@ -58,8 +59,10 @@ const props = defineProps<{
 }>();
 
 const favoriteBlogsStore = useFavoriteBlogsStore();
+const blogsStore = useBlogsStore();
 
 const updateFavorite = () => {
   favoriteBlogsStore.requestPutFavoriteBlog(props.id);
+  blogsStore.updateIsFavoriteState(props.id);
 };
 </script>

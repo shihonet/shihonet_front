@@ -40,5 +40,9 @@ export const useBlogShowStore = defineStore("blogShow", {
         this.isLoading = false; // 読み込み終了
       }
     },
+
+    updateIsFavoriteState() {
+      this.blog.isFavorite = !this.blog.isFavorite;
+    },
   },
 });

@@ -8,11 +8,27 @@
       <p class="mt-2 text-[12px] text-gray-400 flex justify-end">
         {{ blog.publishedAt }}
       </p>
+      <div
+        v-if="blog.isLoggedIn"
+        class="mt-2 mr-1 flex justify-end items-end"
+        @click="updateFavorite"
+      >
+        <div class="w-6 h-6 hover:cursor-pointer">
+          <img v-if="blog.isFavorite" src="@/assets/images/favorite.svg" />
+          <img v-else src="@/assets/images/unfavorite.svg" />
+        </div>
+      </div>
       <p class="mt-6 whitespace-break-spaces" v-html="formattedContent"></p>
       <div v-if="blog.imageUrls?.length !== 0">
-        <hr class="my-16">
-        <p class="text-[12px] text-gray-400 flex justify-center">画像一覧（{{ blog.imageUrls?.length }}枚）</p>
-        <div v-for="(image, index) in blog.imageUrls" :key="index" class="mt-2 mb-5 mx-4">
+        <hr class="my-16" />
+        <p class="text-[12px] text-gray-400 flex justify-center">
+          画像一覧（{{ blog.imageUrls?.length }}枚）
+        </p>
+        <div
+          v-for="(image, index) in blog.imageUrls"
+          :key="index"
+          class="mt-2 mb-5 mx-4"
+        >
           <img :src="image" class="w-full" />
         </div>
       </div>
@@ -37,12 +53,13 @@
 import { computed, defineProps, onMounted } from "vue";
 import { useBlogShowStore } from "@/stores/blogShowStore";
 import { WaitingForLoading } from "@/views/components/common";
+import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
 
 const blogShowStore = useBlogShowStore();
+const favoriteBlogsStore = useFavoriteBlogsStore();
 
 const props = defineProps<{
   id: number;
-  disabled: boolean;
 }>();
 
 onMounted(() => {
@@ -51,14 +68,24 @@ onMounted(() => {
 
 // テキスト中のURLをリンクに変換する
 const formatContent = (content: string): string => {
-  if (!content) return '';
+  if (!content) return "";
   const urlRegex = /((https?:\/\/[^\s]+))/g;
-  return content.replace(urlRegex, '<a href="$1" target="_blank" class="text-blue-500 underline break-all">$1</a>');
+  return content.replace(
+    urlRegex,
+    '<a href="$1" target="_blank" class="text-blue-500 underline break-all">$1</a>'
+  );
 };
 
 const blog = computed(() => blogShowStore.getBlog);
 
 const isLoading = computed(() => blogShowStore.getIsLoading);
 
-const formattedContent = computed(() => formatContent(blogShowStore.getBlog.content));
+const formattedContent = computed(() =>
+  formatContent(blogShowStore.getBlog.content)
+);
+
+const updateFavorite = () => {
+  favoriteBlogsStore.requestPutFavoriteBlog(props.id);
+  blogShowStore.updateIsFavoriteState();
+};
 </script>
