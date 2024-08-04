@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia';
-import axios from 'axios';
-import { Blog, ApiResponseBlog } from '@/types/blogsTypes';
+import { defineStore } from "pinia";
+import axios from "axios";
+import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 
-export const useBlogsStore = defineStore('blogs', {
+export const useBlogsStore = defineStore("blogs", {
   state: () => ({
     blogs: [] as Blog[],
     currentPage: 1,
@@ -55,6 +55,13 @@ export const useBlogsStore = defineStore('blogs', {
     async setPage(page: number) {
       this.currentPage = page;
       await this.requestGetBlogs();
+    },
+
+    updateIsFavoriteState(blogId: number) {
+      const blog = this.blogs.find((blog) => blog.id === blogId);
+      if (blog) {
+        blog.isFavorite = !blog.isFavorite;
+      }
     },
   },
 });
