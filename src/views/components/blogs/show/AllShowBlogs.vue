@@ -8,16 +8,6 @@
       <p class="mt-2 text-[12px] text-gray-400 flex justify-end">
         {{ blog.publishedAt }}
       </p>
-      <div
-        v-if="blog.isLoggedIn"
-        class="mt-2 mr-1 flex justify-end items-end"
-        @click="updateFavorite"
-      >
-        <div class="w-6 h-6 hover:cursor-pointer">
-          <img v-if="blog.isFavorite" src="@/assets/images/favorite.svg" />
-          <img v-else src="@/assets/images/unfavorite.svg" />
-        </div>
-      </div>
       <p class="mt-6 whitespace-break-spaces" v-html="formattedContent"></p>
       <div v-if="blog.imageUrls?.length !== 0">
         <hr class="my-16" />
@@ -47,6 +37,7 @@
       </RouterLink>
     </div>
   </div>
+  <FloatingActionButton :show="blog.isLoggedIn && !isLoading" :isFavorite="blog.isFavorite" @click="updateFavorite()" />
 </template>
 
 <script setup lang="ts">
@@ -54,6 +45,7 @@ import { computed, defineProps, onMounted } from "vue";
 import { useBlogShowStore } from "@/stores/blogShowStore";
 import { WaitingForLoading } from "@/views/components/common";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
+import FloatingActionButton from "@/views/components/blogs/show/FloatingActionButton.vue";
 
 const blogShowStore = useBlogShowStore();
 const favoriteBlogsStore = useFavoriteBlogsStore();
