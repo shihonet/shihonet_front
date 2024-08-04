@@ -16,8 +16,6 @@ export const useBlogsStore = defineStore('blogs', {
 
     getCurrentPage: (state): number => state.currentPage,
 
-    getLimit: (state): number => state.limit,
-
     getTotalPage: (state): number => state.totalPage,
 
     getIsLoading: (state): boolean => state.isLoading,
