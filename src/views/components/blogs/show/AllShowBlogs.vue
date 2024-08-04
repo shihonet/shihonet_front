@@ -1,8 +1,6 @@
 <template>
   <div class="mt-10 mx-6">
-    <div v-if="isLoading">
-      <WaitingForLoading />
-    </div>
+    <WaitingForLoading v-if="isLoading" />
     <div v-else>
       <p class="text-2xl font-bold">{{ blog.title }}</p>
       <p class="mt-2 text-[12px] text-gray-400 flex justify-end">
@@ -37,15 +35,18 @@
       </RouterLink>
     </div>
   </div>
-  <FloatingActionButton :show="blog.isLoggedIn && !isLoading" :isFavorite="blog.isFavorite" @click="updateFavorite()" />
+  <FavoriteFloatingActionButton
+    :show="blog.isLoggedIn && !isLoading"
+    :isFavorite="blog.isFavorite"
+    @click="updateFavorite()"
+  />
 </template>
 
 <script setup lang="ts">
 import { computed, defineProps, onMounted } from "vue";
 import { useBlogShowStore } from "@/stores/blogShowStore";
-import { WaitingForLoading } from "@/views/components/common";
+import { WaitingForLoading, FavoriteFloatingActionButton } from "@/views/components/common";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
-import FloatingActionButton from "@/views/components/blogs/show/FloatingActionButton.vue";
 
 const blogShowStore = useBlogShowStore();
 const favoriteBlogsStore = useFavoriteBlogsStore();
@@ -69,7 +70,6 @@ const formatContent = (content: string): string => {
 };
 
 const blog = computed(() => blogShowStore.getBlog);
-
 const isLoading = computed(() => blogShowStore.getIsLoading);
 
 const formattedContent = computed(() =>

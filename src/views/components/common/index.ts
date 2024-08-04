@@ -10,6 +10,7 @@ import ProfileTable from './ProfileTable.vue';
 import SideBar from './SideBar.vue';
 import TitlePart from './TitlePart.vue';
 import WaitingForLoading from './WaitingForLoading.vue';
+import FavoriteFloatingActionButton from './FavoriteFloatingActionButton.vue';
 
 export {
   BaseButton,
@@ -24,4 +25,5 @@ export {
   SideBar,
   TitlePart,
   WaitingForLoading,
+  FavoriteFloatingActionButton
 };

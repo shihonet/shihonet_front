@@ -3,7 +3,7 @@
     <div v-if="props.show" :style="fabStyle">
       <Button
         :icon="props.isFavorite ? 'pi pi-heart-fill' : 'pi pi-heart'"
-        severity="danger"
+        severity="info"
         raised
         rounded
         size="large"
