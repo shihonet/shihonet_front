@@ -1,6 +1,6 @@
 <template>
   <div class="mx-6">
-    <div v-if="isLoggedIn" class="flex justify-between w-full mb-6">
+    <div class="flex justify-between w-full mb-6">
       <Button
         label="すべて"
         :severity="currentViewType === 'all' ? 'info' : 'secondary'"
@@ -12,7 +12,7 @@
         label="お気に入り"
         :severity="currentViewType === 'favorite' ? 'info' : 'secondary'"
         class="flex-grow"
-        @click="changeViewTypeToFavorite()"
+        @click="isLoggedIn ? changeViewTypeToFavorite() : openSignupModal()"
       />
     </div>
 
@@ -46,14 +46,19 @@
       <p>お気に入りのブログはありません</p>
     </FadeInOnScroll>
   </div>
+  <SignupModal :isOpen="isSignupModalOpen" @update:isOpen="handleSignupModalUpdate" />
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed } from "vue";
-import { FadeInOnScroll, WaitingForLoading } from "@/views/components/common";
+import { onMounted, computed, ref } from "vue";
+import {
+  FadeInOnScroll,
+  WaitingForLoading,
+} from "@/views/components/common";
 import Button from "primevue/button";
-import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
 import { useBlogsStore } from "@/stores/blogsStore";
+import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
+import SignupModal from "@/views/components/blogs/index/SignupModal.vue";
 import PaginationButton from "@/views/components/blogs/index/PaginationButton.vue";
 
 const blogsStore = useBlogsStore();
@@ -82,5 +87,14 @@ const changeViewTypeToFavorite = () => {
 
   blogsStore.setCurrentViewType("favorite");
   blogsStore.requestGetBlogs(1, true);
+};
+
+const isSignupModalOpen = ref(false);
+const openSignupModal = () => {
+  isSignupModalOpen.value = true;
+};
+
+const handleSignupModalUpdate = (newVal: boolean) => {
+  isSignupModalOpen.value = newVal;
 };
 </script>
