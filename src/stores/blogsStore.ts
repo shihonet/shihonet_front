@@ -2,34 +2,50 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 
+type State = {
+  blogs: Blog[];
+  isLoggedIn: boolean;
+  currentPage: number;
+  totalPage: number;
+  isLoading: boolean;
+  currentViewType: "all" | "favorite";
+}
+
 export const useBlogsStore = defineStore("blogs", {
-  state: () => ({
+  state: (): State => ({
     blogs: [] as Blog[],
+    isLoggedIn: false,
     currentPage: 1,
-    limit: 20,
     totalPage: 3,
     isLoading: false,
+    currentViewType: "all",
   }),
 
   getters: {
     getBlogs: (state): Blog[] => state.blogs,
+
+    getIsLoggedIn: (state): boolean => state.isLoggedIn,
 
     getCurrentPage: (state): number => state.currentPage,
 
     getTotalPage: (state): number => state.totalPage,
 
     getIsLoading: (state): boolean => state.isLoading,
+
+    getCurrentViewType: (state): "all" | "favorite" => state.currentViewType,
   },
 
   actions: {
-    async requestGetBlogs() {
+    async requestGetBlogs(page: number, isFavoriteOnly: boolean = false) {
       window.scrollTo(0, 0);
-      this.isLoading = true; // 読み込み開始
+      this.currentPage = page;
+      this.isLoading = true;
       try {
         const response = await axios.get("/api/blogs", {
           params: {
             page: this.currentPage,
-            limit: this.limit,
+            limit: 15,
+            is_favorite_only: isFavoriteOnly,
           },
         });
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
@@ -41,20 +57,15 @@ export const useBlogsStore = defineStore("blogs", {
             content: "",
             imageUrls: blog.image_urls,
             isFavorite: blog.is_favorite,
-            isLoggedIn: blog.is_logged_in,
           };
         });
         this.totalPage = response.data.pagination.pages;
+        this.isLoggedIn = response.data.is_logged_in;
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        this.isLoading = false; // 読み込み終了
+        this.isLoading = false;
       }
-    },
-
-    async setPage(page: number) {
-      this.currentPage = page;
-      await this.requestGetBlogs();
     },
 
     updateIsFavoriteState(blogId: number) {
@@ -63,5 +74,9 @@ export const useBlogsStore = defineStore("blogs", {
         blog.isFavorite = !blog.isFavorite;
       }
     },
+
+    setCurrentViewType(viewType: "all" | "favorite") {
+      this.currentViewType = viewType;
+    }
   },
 });

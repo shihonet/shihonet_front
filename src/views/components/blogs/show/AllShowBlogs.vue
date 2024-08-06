@@ -44,8 +44,11 @@
 
 <script setup lang="ts">
 import { computed, defineProps, onMounted } from "vue";
+import {
+  WaitingForLoading,
+  FavoriteFloatingActionButton,
+} from "@/views/components/common";
 import { useBlogShowStore } from "@/stores/blogShowStore";
-import { WaitingForLoading, FavoriteFloatingActionButton } from "@/views/components/common";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
 
 const blogShowStore = useBlogShowStore();
@@ -76,8 +79,7 @@ const formattedContent = computed(() =>
   formatContent(blogShowStore.getBlog.content)
 );
 
-const updateFavorite = () => {
-  favoriteBlogsStore.requestPutFavoriteBlog(props.id);
-  blogShowStore.updateIsFavoriteState();
+const updateFavorite = async () => {
+  await favoriteBlogsStore.requestPutFavoriteBlogInShow(props.id);
 };
 </script>
