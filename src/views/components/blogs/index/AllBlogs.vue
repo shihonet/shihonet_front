@@ -1,6 +1,5 @@
 <template>
   <div class="mx-6">
-    <!-- FIXME: blogs が 0 件の場合、表示されなくなってしまう。API から修正したい。 -->
     <div v-if="isLoggedIn" class="flex justify-between w-full mb-6">
       <Button
         label="すべて"
@@ -21,7 +20,7 @@
       <WaitingForLoading />
     </div>
 
-    <div v-else>
+    <div v-else-if="blogs.length !== 0">
       <div class="text-right">
         <p>PAGE：{{ currentPage }} / {{ totalPage }}</p>
       </div>
@@ -42,6 +41,10 @@
         <PaginationButton />
       </FadeInOnScroll>
     </div>
+
+    <FadeInOnScroll v-else class="my-24 text-center text-site-color text-sm">
+      <p>お気に入りのブログはありません</p>
+    </FadeInOnScroll>
   </div>
 </template>
 
