@@ -45,21 +45,21 @@
       <p>お気に入りのブログはありません</p>
     </FadeInOnScroll>
   </div>
-  <SignupModal :isOpen="isSignupModalOpen" @update:isOpen="handleSignupModalUpdate" />
+  <SignupModal
+    :isOpen="isSignupModalOpen"
+    @update:isOpen="handleSignupModalUpdate"
+  />
 </template>
 
 <script setup lang="ts">
 import { onMounted, computed, ref } from "vue";
-import {
-  FadeInOnScroll,
-  WaitingForLoading,
-} from "@/views/components/common";
+import { FadeInOnScroll, WaitingForLoading } from "@/views/components/common";
 import Button from "primevue/button";
 import { useBlogsStore } from "@/stores/blogsStore";
 import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
 import SignupModal from "@/views/components/blogs/index/SignupModal.vue";
 import PaginationButton from "@/views/components/blogs/index/PaginationButton.vue";
-import {useUserSessionsStore} from "@/stores/userSessionsStore";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 const blogsStore = useBlogsStore();
 const userSessionsStore = useUserSessionsStore();
