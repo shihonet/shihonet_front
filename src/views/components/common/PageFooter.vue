@@ -57,13 +57,11 @@
         </li>
       </ul>
     </div>
-    <a
-      href="https://x.com/shihonet0202"
-      class="mt-16 flex items-center justify-center"
-    >
-      <img src="@/assets/images/x_logo.svg" class="p-1 h-8 bg-black" />
-      <p class="ml-2 underline hover:opacity-80">@shihonet0202</p>
-    </a>
+    <div class="mt-16 flex items-center justify-center">
+      <a href="https://x.com/shihonet0202" target="_blank">
+        <i class="pi pi-twitter" style="color: black; font-size: 32px"></i>
+      </a>
+    </div>
     <div class="mt-16 text-[8px] text-center">
       <p>© 2024 #shihonet, developing by @shihonet.</p>
       <p>
@@ -73,3 +71,5 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+</script>

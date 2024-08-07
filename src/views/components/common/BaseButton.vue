@@ -14,7 +14,7 @@
 import { withDefaults, defineProps, computed } from "vue";
 
 const props = withDefaults(defineProps<{
-  theme: string;
+  theme?: string;
   disabled: boolean;
 }>(), {
   theme: "primary",

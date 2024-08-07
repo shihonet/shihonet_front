@@ -49,10 +49,7 @@
                 href="https://www.instagram.com/katoshi.official/"
                 target="_blank"
             >
-              <img
-                  src="@/assets/images/Instagram_Glyph_Gradient.png"
-                  class="w-6"
-              />
+              <i class="mr-2 pi pi-instagram" style="color: black; font-size: 28px"></i>
             </a>
           </div>
         </td>
