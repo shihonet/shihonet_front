@@ -32,7 +32,6 @@
             :publishedAt="blog.publishedAt"
             :imageUrls="blog.imageUrls"
             :isFavorite="blog.isFavorite"
-            :isLoggedIn="isLoggedIn"
           />
         </div>
       </div>
@@ -60,8 +59,10 @@ import { useBlogsStore } from "@/stores/blogsStore";
 import BlogCard from "@/views/components/blogs/index/BlogCard.vue";
 import SignupModal from "@/views/components/blogs/index/SignupModal.vue";
 import PaginationButton from "@/views/components/blogs/index/PaginationButton.vue";
+import {useUserSessionsStore} from "@/stores/userSessionsStore";
 
 const blogsStore = useBlogsStore();
+const userSessionsStore = useUserSessionsStore();
 
 onMounted(() => {
   blogsStore.requestGetBlogs(currentPage.value);
@@ -70,10 +71,10 @@ onMounted(() => {
 const currentViewType = computed(() => blogsStore.getCurrentViewType);
 
 const blogs = computed(() => blogsStore.getBlogs);
-const isLoggedIn = computed(() => blogsStore.getIsLoggedIn);
 const currentPage = computed(() => blogsStore.getCurrentPage);
 const totalPage = computed(() => blogsStore.getTotalPage);
 const isLoading = computed(() => blogsStore.getIsLoading);
+const isLoggedIn = userSessionsStore.getIsLoggedIn;
 
 const changeViewTypeToAll = () => {
   if (currentViewType.value === "all") return;

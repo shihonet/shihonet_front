@@ -31,7 +31,6 @@ export const useTopBlogsStore = defineStore('topBlogs', {
             content: "",
             imageUrls: blog.image_urls,
             isFavorite: blog.is_favorite,
-            isLoggedIn: blog.is_logged_in,
           };
         });
       } catch (error) {

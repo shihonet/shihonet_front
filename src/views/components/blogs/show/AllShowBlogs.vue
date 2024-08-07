@@ -36,7 +36,7 @@
     </div>
   </div>
   <FavoriteFloatingActionButton
-    :show="blog.isLoggedIn && !isLoading"
+    :show="isLoggedIn && !isLoading"
     :isFavorite="blog.isFavorite"
     @click="updateFavorite()"
   />
@@ -50,9 +50,11 @@ import {
 } from "@/views/components/common";
 import { useBlogShowStore } from "@/stores/blogShowStore";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 const blogShowStore = useBlogShowStore();
 const favoriteBlogsStore = useFavoriteBlogsStore();
+const userSessionsStore = useUserSessionsStore();
 
 const props = defineProps<{
   id: number;
@@ -61,6 +63,8 @@ const props = defineProps<{
 onMounted(() => {
   blogShowStore.requestFetchBlog(props.id);
 });
+
+const isLoggedIn = userSessionsStore.getIsLoggedIn;
 
 // テキスト中のURLをリンクに変換する
 const formatContent = (content: string): string => {
