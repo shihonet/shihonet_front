@@ -5,8 +5,9 @@ import axios from "axios";
 import { createPinia } from "pinia";
 import { createPersistedState } from "pinia-plugin-persistedstate";
 import PrimeVue from "primevue/config";
-import Aura from '@primevue/themes/aura';
-import 'primeicons/primeicons.css';
+import Aura from "@primevue/themes/aura";
+import "primeicons/primeicons.css";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRF-Token";
@@ -40,3 +41,9 @@ createApp(App)
     },
   })
   .mount("#app");
+
+// ログインユーザーの情報を取得
+const userSessionsStore = useUserSessionsStore();
+if (!userSessionsStore.getIsLoggedIn) {
+  userSessionsStore.requestGetUserSessions();
+}

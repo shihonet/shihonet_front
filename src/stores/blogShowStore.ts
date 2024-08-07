@@ -41,7 +41,7 @@ export const useBlogShowStore = defineStore("blogShow", {
           isLoggedIn: response.data.is_logged_in,
         };
       } catch (error) {
-        await router.push('/blogs');
+        router.push('/blogs');
         console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;

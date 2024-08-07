@@ -12,7 +12,8 @@ export const useUserSessionsStore = defineStore("userSessions", {
   }),
 
   getters: {
-    getIsLoggedIn: (state) => state.id !== undefined,
+    getIsLoggedIn: (state) => state.isLoggedIn,
+    getEmail: (state) => state.email,
   },
 
   actions: {
