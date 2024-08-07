@@ -10,7 +10,7 @@
             <p class="line-clamp-2">{{ props.title }}</p>
           </div>
           <div
-            v-if="props.isLoggedIn"
+            v-if="isLoggedIn"
             class="flex justify-center items-center ml-2"
             @click="updateFavorite"
           >
@@ -47,8 +47,9 @@
 
 <script setup lang="ts">
 import { FadeInOnScroll } from "@/views/components/common";
-import { defineProps } from "vue";
+import { defineProps, computed } from "vue";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 const props = defineProps<{
   id: number;
@@ -56,10 +57,12 @@ const props = defineProps<{
   publishedAt: string;
   title: string;
   isFavorite: boolean;
-  isLoggedIn: boolean;
 }>();
 
 const favoriteBlogsStore = useFavoriteBlogsStore();
+const userSessionsStore = useUserSessionsStore();
+
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 const updateFavorite = async () => {
   await favoriteBlogsStore.requestPutFavoriteBlogInList(props.id);

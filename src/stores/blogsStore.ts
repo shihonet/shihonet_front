@@ -4,7 +4,6 @@ import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 
 type State = {
   blogs: Blog[];
-  isLoggedIn: boolean;
   currentPage: number;
   totalPage: number;
   isLoading: boolean;
@@ -14,7 +13,6 @@ type State = {
 export const useBlogsStore = defineStore("blogs", {
   state: (): State => ({
     blogs: [] as Blog[],
-    isLoggedIn: false,
     currentPage: 1,
     totalPage: 3,
     isLoading: false,
@@ -23,8 +21,6 @@ export const useBlogsStore = defineStore("blogs", {
 
   getters: {
     getBlogs: (state): Blog[] => state.blogs,
-
-    getIsLoggedIn: (state): boolean => state.isLoggedIn,
 
     getCurrentPage: (state): number => state.currentPage,
 
@@ -60,7 +56,6 @@ export const useBlogsStore = defineStore("blogs", {
           };
         });
         this.totalPage = response.data.pagination.pages;
-        this.isLoggedIn = response.data.is_logged_in;
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {

@@ -12,7 +12,6 @@ export const useBlogShowStore = defineStore("blogShow", {
       content: '',
       imageUrls: [],
       blogUrl: '',
-      isLoggedIn: false,
       isFavorite: false,
     } as Blog,
     isLoading: false,
@@ -38,10 +37,9 @@ export const useBlogShowStore = defineStore("blogShow", {
           imageUrls: response.data.image_urls,
           content: response.data.content,
           isFavorite: response.data.is_favorite,
-          isLoggedIn: response.data.is_logged_in,
         };
       } catch (error) {
-        await router.push('/blogs');
+        router.push('/blogs');
         console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;

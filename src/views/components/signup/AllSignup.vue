@@ -16,8 +16,8 @@
         </p>
         <p class="mt-2">
           すでにアカウントをお持ちの方は
-          <RouterLink to="/login" class="text-site-color underline">
-            ログイン
+          <RouterLink to="/login" class="text-site-color underline"
+            >ログイン
           </RouterLink>
           をしてください。
         </p>
