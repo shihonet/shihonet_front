@@ -14,6 +14,13 @@
         <p class="underline">
           （サイト内にて、一切の費用がかかることはございません）
         </p>
+        <p class="mt-2">
+          すでにアカウントをお持ちの方は
+          <RouterLink to="/login" class="text-site-color underline">
+            ログイン
+          </RouterLink>
+          をしてください。
+        </p>
       </div>
 
       <div class="mt-10">

@@ -29,7 +29,7 @@
             @click="toggleSidebar"
             class="flex items-center mb-5"
           >
-            <i class="mr-2 pi pi-user" style="color: black; font-size: 28px"></i>
+            <i class="mr-2 pi pi-user" style="color: #333333; font-size: 28px"></i>
             <span class="ml-2">Profiles</span>
           </RouterLink>
         </li>
@@ -39,7 +39,7 @@
             @click="toggleSidebar"
             class="flex items-center mb-5"
           >
-            <i class="mr-2 pi pi-pencil" style="color: black; font-size: 28px"></i>
+            <i class="mr-2 pi pi-pencil" style="color: #333333; font-size: 28px"></i>
             <span class="ml-2">Blogs</span>
           </RouterLink>
         </li>
@@ -49,7 +49,7 @@
             @click="toggleSidebar"
             class="flex items-center mb-5"
           >
-            <i class="mr-2 pi pi-history" style="color: black; font-size: 28px"></i>
+            <i class="mr-2 pi pi-history" style="color: #333333; font-size: 28px"></i>
             <span class="ml-2">Histories</span>
           </RouterLink>
         </li>
@@ -59,7 +59,7 @@
             @click="toggleSidebar"
             class="flex items-center mb-5"
           >
-            <i class="mr-2 pi pi-question-circle" style="color: black; font-size: 28px"></i>
+            <i class="mr-2 pi pi-question-circle" style="color: #333333; font-size: 28px"></i>
             <span class="ml-2">About "#shihonet"</span>
           </RouterLink>
         </li>
@@ -69,7 +69,7 @@
             @click="toggleSidebar"
             class="flex items-center mb-5"
           >
-            <i class="mr-2 pi pi-star" style="color: black; font-size: 28px"></i>
+            <i class="mr-2 pi pi-star" style="color: #333333; font-size: 28px"></i>
             <span class="ml-2">Thanks Generator</span>
           </RouterLink>
         </li>
@@ -79,9 +79,19 @@
             class="flex items-center mb-5"
             target="_blank"
           >
-            <i class="mr-2 pi pi-sun" style="color: black; font-size: 28px"></i>
+            <i class="mr-2 pi pi-sun" style="color: #333333; font-size: 28px"></i>
             <span class="ml-2">日向坂46 Official Web Site</span>
           </a>
+        </li>
+        <li>
+          <RouterLink
+            to="/login"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i class="mr-2 pi pi-sign-in" style="color: #333333; font-size: 28px"></i>
+            <span class="ml-2">Login / Signup</span>
+          </RouterLink>
         </li>
       </ul>
     </FadeInOnScroll>
