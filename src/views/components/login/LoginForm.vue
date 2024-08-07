@@ -27,6 +27,7 @@
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import { useLoginStore } from "@/stores/loginStore";
+import router from "@/router";
 
 const email = ref("");
 const password = ref("");
@@ -73,5 +74,8 @@ const requestLogin = async () => {
     email.value,
     password.value
   );
+  if (!error.value) {
+    router.push("/blogs");
+  }
 };
 </script>

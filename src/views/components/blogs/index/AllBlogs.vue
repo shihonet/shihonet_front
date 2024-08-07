@@ -4,14 +4,14 @@
       <Button
         label="すべて"
         :severity="currentViewType === 'all' ? 'info' : 'secondary'"
-        class="flex-grow"
+        class="flex-grow w-1/2"
         @click="changeViewTypeToAll()"
       />
       <div class="w-4"></div>
       <Button
         label="お気に入り"
         :severity="currentViewType === 'favorite' ? 'info' : 'secondary'"
-        class="flex-grow"
+        class="flex-grow w-1/2"
         @click="isLoggedIn ? changeViewTypeToFavorite() : openSignupModal()"
       />
     </div>

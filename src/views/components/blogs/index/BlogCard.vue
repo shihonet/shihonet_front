@@ -14,9 +14,9 @@
             class="flex justify-center items-center ml-2"
             @click="updateFavorite"
           >
-            <div class="w-6 h-6 hover:cursor-pointer">
-              <img v-if="props.isFavorite" src="@/assets/images/favorite.svg" />
-              <img v-else src="@/assets/images/unfavorite.svg" />
+            <div class="w-6 h-6 flex justify-center items-center hover:cursor-pointer">
+              <i v-if="props.isFavorite" class="pi pi-heart-fill hover:cursor-pointer" style="color: #94c8ff"></i>
+              <i v-else class="pi pi-heart hover:cursor-pointer" style="color: #cccccc"></i>
             </div>
           </div>
         </div>
