@@ -28,6 +28,9 @@ import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import { useLoginStore } from "@/stores/loginStore";
 import router from "@/router";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
+
+const userSessionsStore = useUserSessionsStore();
 
 const email = ref("");
 const password = ref("");
@@ -56,11 +59,7 @@ const isPasswordValid = computed(() => {
  * 新規登録ボタンが無効かどうか
  */
 const isDisableLoginButton = computed(() => {
-  return (
-    !isEmailValid.value ||
-    !isPasswordValid.value ||
-    isLoading.value
-  );
+  return !isEmailValid.value || !isPasswordValid.value || isLoading.value;
 });
 
 /**
@@ -70,10 +69,8 @@ const requestLogin = async () => {
   if (isDisableLoginButton.value) {
     return;
   }
-  await loginStore.requestLogin(
-    email.value,
-    password.value
-  );
+  await loginStore.requestLogin(email.value, password.value);
+  await userSessionsStore.requestGetUserSessions();
   if (!error.value) {
     router.push("/blogs");
   }

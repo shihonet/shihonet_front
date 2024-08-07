@@ -45,6 +45,9 @@
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
+
+const userSessionsStore = useUserSessionsStore();
 
 const email = ref("");
 const password = ref("");
@@ -101,5 +104,6 @@ const requestSignup = async () => {
     password.value,
     passwordConfirmation.value
   );
+  await userSessionsStore.requestGetUserSessions();
 };
 </script>
