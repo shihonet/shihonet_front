@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { FadeInOnScroll } from "@/views/components/common";
-import { defineProps } from "vue";
+import { defineProps, computed } from "vue";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
@@ -62,7 +62,7 @@ const props = defineProps<{
 const favoriteBlogsStore = useFavoriteBlogsStore();
 const userSessionsStore = useUserSessionsStore();
 
-const isLoggedIn = userSessionsStore.getIsLoggedIn;
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 const updateFavorite = async () => {
   await favoriteBlogsStore.requestPutFavoriteBlogInList(props.id);

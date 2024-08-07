@@ -44,6 +44,4 @@ createApp(App)
 
 // ログインユーザーの情報を取得
 const userSessionsStore = useUserSessionsStore();
-if (!userSessionsStore.getIsLoggedIn) {
-  userSessionsStore.requestGetUserSessions();
-}
+userSessionsStore.requestGetUserSessions();

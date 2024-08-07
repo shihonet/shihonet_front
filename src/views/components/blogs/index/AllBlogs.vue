@@ -74,7 +74,7 @@ const blogs = computed(() => blogsStore.getBlogs);
 const currentPage = computed(() => blogsStore.getCurrentPage);
 const totalPage = computed(() => blogsStore.getTotalPage);
 const isLoading = computed(() => blogsStore.getIsLoading);
-const isLoggedIn = userSessionsStore.getIsLoggedIn;
+const isLoggedIn = computed(() =>userSessionsStore.getIsLoggedIn);
 
 const changeViewTypeToAll = () => {
   if (currentViewType.value === "all") return;
