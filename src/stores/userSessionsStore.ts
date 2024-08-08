@@ -12,7 +12,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
   }),
 
   getters: {
-    getIsLoggedIn: (state) => state.isLoggedIn,
+    getIsLoggedIn: (state): boolean => state.isLoggedIn,
     getEmail: (state) => state.email,
   },
 

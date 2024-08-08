@@ -1,5 +1,4 @@
 <template>
-  <p class="my-1 text-error-color text-sm">{{ error }}</p>
   <div class="mt-5">
     <input
       class="h-12 px-4 border rounded-lg w-full"
@@ -43,11 +42,14 @@
 
 <script setup lang="ts">
 import BaseButton from "@/views/components/common/BaseButton.vue";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import router from "@/router";
+import { useOpenStore } from "@/stores/open";
 
 const userSessionsStore = useUserSessionsStore();
+const openStore = useOpenStore();
 
 const email = ref("");
 const password = ref("");
@@ -55,6 +57,7 @@ const passwordConfirmation = ref("");
 const signupStore = useSignupStore();
 const isLoading = computed(() => signupStore.getIsLoading);
 const error = computed(() => signupStore.getError);
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
 
@@ -96,14 +99,26 @@ const isDisableSignupButton = computed(() => {
  * メールアドレスとパスワードを使って、サインアップをリクエストする。
  */
 const requestSignup = async () => {
-  if (isDisableSignupButton.value) {
-    return;
-  }
+  if (isDisableSignupButton.value) return;
+
   await signupStore.requestSignup(
     email.value,
     password.value,
     passwordConfirmation.value
   );
   await userSessionsStore.requestGetUserSessions();
+  if (!error.value) {
+    openStore.setToast("success", "認証メール内のリンクをクリックして認証を完了してください。");
+  } else {
+    openStore.setToast("error", error.value);
+  }
 };
+
+onMounted(async () => {
+  await userSessionsStore.requestGetUserSessions();
+  if (isLoggedIn.value) {
+    router.push("/blogs");
+    openStore.setToast("success", "すでにログインしています");
+  }
+});
 </script>
