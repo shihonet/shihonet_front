@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { watch, computed } from "vue";
 import { useToast } from "primevue/usetoast";
-import { useOpenStore } from "@/stores/open";
+import { useOpenStore } from "@/stores/openStore";
 
 const toast = useToast();
 const openStore = useOpenStore();

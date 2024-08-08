@@ -46,7 +46,7 @@ import { ref, computed, onMounted } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 import router from "@/router";
-import { useOpenStore } from "@/stores/open";
+import { useOpenStore } from "@/stores/openStore";
 
 const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();
