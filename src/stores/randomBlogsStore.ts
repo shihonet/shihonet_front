@@ -4,6 +4,7 @@ import { RandomBlog, ApiResponseRandomBlog } from "@/types/blogsTypes";
 
 export const useRandomBlogsStore = defineStore("randomBlogs", {
   state: () => ({
+    id: 0,
     title: '',
     publishedAt: '',
     blogUrl: '',
@@ -13,9 +14,9 @@ export const useRandomBlogsStore = defineStore("randomBlogs", {
   }),
 
   getters: {
+    getId: (state) => state.id,
     getTitle: (state) => state.title,
     getPublishedUrl: (state) => state.publishedAt,
-    getBlogUrl: (state) => state.blogUrl,
     getImageUrl: (state) => state.imageUrl,
 
     getIsLoading: (state) => state.isLoading,
@@ -29,6 +30,7 @@ export const useRandomBlogsStore = defineStore("randomBlogs", {
         const response = await axios.get<ApiResponseRandomBlog>("/api/blog_random");
         const data = response.data;
         this.$patch({
+          id: data.id,
           title: data.title,
           publishedAt: data.published_at,
           blogUrl: data.blog_url,
