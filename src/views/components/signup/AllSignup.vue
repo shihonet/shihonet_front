@@ -14,6 +14,13 @@
         <p class="underline">
           （サイト内にて、一切の費用がかかることはございません）
         </p>
+        <p class="mt-2">
+          すでにアカウントをお持ちの方は
+          <RouterLink to="/login" class="text-site-color underline"
+            >ログイン
+          </RouterLink>
+          をしてください。
+        </p>
       </div>
 
       <div class="mt-10">
@@ -31,11 +38,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { FadeInOnScroll, ChangeFontToCaveat } from "@/views/components/common";
 import { SignupForm, SignupVerifyForm } from "@/views/components/signup";
+import router from "@/router";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { useOpenStore } from "@/stores/openStore";
 
 const signupStore = useSignupStore();
+const userSessionsStore = useUserSessionsStore();
+const openStore = useOpenStore();
+
 const hasRequested = computed(() => signupStore.hasRequested);
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
+
+onMounted(async () => {
+  await userSessionsStore.requestGetUserSessions();
+  if (isLoggedIn.value) {
+    router.push("/blogs");
+    openStore.setToast("success", "すでにログインしています");
+  }
+});
 </script>

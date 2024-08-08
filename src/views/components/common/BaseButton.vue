@@ -3,7 +3,7 @@
     <button
       class="py-3 px-10 rounded-full text-lg font-bold"
       :class="themeCss"
-      :disabled="disabled"
+      :disabled="props.disabled"
     >
       <slot></slot>
     </button>
@@ -14,8 +14,8 @@
 import { withDefaults, defineProps, computed } from "vue";
 
 const props = withDefaults(defineProps<{
-  theme: string;
-  disabled: boolean;
+  theme?: string;
+  disabled?: boolean;
 }>(), {
   theme: "primary",
   disabled: false,

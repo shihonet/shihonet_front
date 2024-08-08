@@ -20,7 +20,9 @@
         </div>
       </div>
 
-      <LoginForm class="mt-10" />
+      <div class="mt-10">
+        <LoginForm />
+      </div>
     </FadeInOnScroll>
   </div>
 </template>
