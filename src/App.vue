@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Toast />
+    <ShowToast />
     <PageHeader />
     <RouterView></RouterView>
     <PageFooter class="mt-40" />
@@ -9,36 +9,7 @@
 
 <script setup lang="ts">
 import "./index.css";
-import { watch, computed } from "vue";
-import { useToast } from "primevue/usetoast";
-import { useOpenStore } from "@/stores/open";
-import { PageHeader, PageFooter } from "@/views/components/common";
-
-const toast = useToast();
-const openStore = useOpenStore();
-
-const showToastType = computed(() => openStore.getShowToastType);
-const toastMessage = computed(() => openStore.getToastMessage);
-
-// INFO: トーストの表示方法
-// INFO: 成功 -> openStore.setToast("success", "成功のメッセージ");
-// INFO: 成功 -> openStore.setToast("error", "エラーのメッセージ");
-const showToast = () => {
-  if (showToastType.value === "none") return;
-
-  toast.add({
-    severity: showToastType.value,
-    summary: toastMessage.value,
-    life: 3000,
-  });
-  openStore.resetToast();
-};
-
-// NOTE: このwatchは、ログイン成功時にトーストを表示するためのもの
-watch(
-  () => showToastType.value,
-  () => showToast()
-);
+import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
 </script>
 
 <style>
