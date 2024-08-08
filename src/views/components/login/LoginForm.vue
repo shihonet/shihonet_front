@@ -29,8 +29,10 @@ import { ref, computed } from "vue";
 import { useLoginStore } from "@/stores/loginStore";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { useOpenStore } from "@/stores/open";
 
 const userSessionsStore = useUserSessionsStore();
+const openStore = useOpenStore();
 
 const email = ref("");
 const password = ref("");
@@ -63,7 +65,7 @@ const isDisableLoginButton = computed(() => {
 });
 
 /**
- * メールアドレスとパスワードを使って、サインアップをリクエストする。
+ * メールアドレスとパスワードを使って、ログインをリクエストする。
  */
 const requestLogin = async () => {
   if (isDisableLoginButton.value) {
@@ -73,6 +75,7 @@ const requestLogin = async () => {
   await userSessionsStore.requestGetUserSessions();
   if (!error.value) {
     router.push("/blogs");
+    openStore.setToast("success", "ログインしました");
   }
 };
 </script>
