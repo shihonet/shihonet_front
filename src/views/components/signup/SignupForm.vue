@@ -42,10 +42,9 @@
 
 <script setup lang="ts">
 import BaseButton from "@/views/components/common/BaseButton.vue";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import router from "@/router";
 import { useOpenStore } from "@/stores/openStore";
 
 const userSessionsStore = useUserSessionsStore();
@@ -57,7 +56,6 @@ const passwordConfirmation = ref("");
 const signupStore = useSignupStore();
 const isLoading = computed(() => signupStore.getIsLoading);
 const error = computed(() => signupStore.getError);
-const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
 
@@ -80,7 +78,7 @@ const isPasswordValid = computed(() => {
  * 確認用パスワードのバリデーション
  */
 const isPasswordConfirmationValid = computed(() => {
-  return passwordPattern.test(passwordConfirmation.value);
+  return passwordPattern.test(passwordConfirmation.value) && password.value === passwordConfirmation.value;
 });
 
 /**
@@ -91,6 +89,7 @@ const isDisableSignupButton = computed(() => {
     !isEmailValid.value ||
     !isPasswordValid.value ||
     !isPasswordConfirmationValid.value ||
+    !(password.value === passwordConfirmation.value) ||
     isLoading.value
   );
 });
@@ -113,12 +112,4 @@ const requestSignup = async () => {
     openStore.setToast("error", error.value);
   }
 };
-
-onMounted(async () => {
-  await userSessionsStore.requestGetUserSessions();
-  if (isLoggedIn.value) {
-    router.push("/blogs");
-    openStore.setToast("success", "すでにログインしています");
-  }
-});
 </script>
