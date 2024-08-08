@@ -1,14 +1,22 @@
-import { defineStore } from 'pinia';
-import axios from 'axios';
-import { Blog, ApiResponseBlog } from '@/types/blogsTypes';
+import { defineStore } from "pinia";
+import axios from "axios";
+import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 
-export const useBlogsStore = defineStore('blogs', {
-  state: () => ({
+type State = {
+  blogs: Blog[];
+  currentPage: number;
+  totalPage: number;
+  isLoading: boolean;
+  currentViewType: "all" | "favorite";
+}
+
+export const useBlogsStore = defineStore("blogs", {
+  state: (): State => ({
     blogs: [] as Blog[],
     currentPage: 1,
-    limit: 20,
     totalPage: 3,
     isLoading: false,
+    currentViewType: "all",
   }),
 
   getters: {
@@ -16,22 +24,24 @@ export const useBlogsStore = defineStore('blogs', {
 
     getCurrentPage: (state): number => state.currentPage,
 
-    getLimit: (state): number => state.limit,
-
     getTotalPage: (state): number => state.totalPage,
 
     getIsLoading: (state): boolean => state.isLoading,
+
+    getCurrentViewType: (state): "all" | "favorite" => state.currentViewType,
   },
 
   actions: {
-    async requestGetBlogs() {
+    async requestGetBlogs(page: number, isFavoriteOnly: boolean = false) {
       window.scrollTo(0, 0);
-      this.isLoading = true; // 読み込み開始
+      this.currentPage = page;
+      this.isLoading = true;
       try {
         const response = await axios.get("/api/blogs", {
           params: {
             page: this.currentPage,
-            limit: this.limit,
+            limit: 15,
+            is_favorite_only: isFavoriteOnly,
           },
         });
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
@@ -42,19 +52,26 @@ export const useBlogsStore = defineStore('blogs', {
             blogUrl: blog.blog_url,
             content: "",
             imageUrls: blog.image_urls,
+            isFavorite: blog.is_favorite,
           };
         });
         this.totalPage = response.data.pagination.pages;
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        this.isLoading = false; // 読み込み終了
+        this.isLoading = false;
       }
     },
 
-    async setPage(page: number) {
-      this.currentPage = page;
-      await this.requestGetBlogs();
+    updateIsFavoriteState(blogId: number) {
+      const blog = this.blogs.find((blog) => blog.id === blogId);
+      if (blog) {
+        blog.isFavorite = !blog.isFavorite;
+      }
     },
+
+    setCurrentViewType(viewType: "all" | "favorite") {
+      this.currentViewType = viewType;
+    }
   },
 });

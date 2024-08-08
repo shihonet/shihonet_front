@@ -1,27 +1,22 @@
 <template>
   <div id="app">
+    <ShowToast />
     <PageHeader />
     <RouterView></RouterView>
     <PageFooter class="mt-40" />
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import "./index.css";
-import { defineComponent } from "vue";
-import PageHeader from "@/views/components/common/PageHeader.vue";
-import PageFooter from "@/views/components/common/PageFooter.vue";
-
-export default defineComponent({
-  name: "App",
-  components: { PageHeader, PageFooter },
-});
+import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
 </script>
 
 <style>
 /* Google fontsで導入したいfonts から@importのコードを取得 */
 /* → https://fonts.google.com/specimen/M+PLUS+Rounded+1c?query=rounded */
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap");
+
 #app {
   /* Google fontsで導入したいfontsからfont-familyを取ってくる */
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -30,7 +25,7 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
-  background-color: #F4FAFF;
+  background-color: #f4faff;
 }
 
 .text-site-color {
@@ -47,5 +42,13 @@ export default defineComponent({
 
 .border-site-color {
   border-color: #6197ff;
+}
+
+.bg-disabled-color {
+  background-color: rgb(227, 227, 227);
+}
+
+.text-error-color {
+  color: rgb(255, 0, 0);
 }
 </style>

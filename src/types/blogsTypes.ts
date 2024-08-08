@@ -5,6 +5,7 @@ export interface Blog {
   blogUrl: string;
   content: string;
   imageUrls: string[];
+  isFavorite: boolean;
 }
 
 export interface ApiResponseBlog {
@@ -14,9 +15,11 @@ export interface ApiResponseBlog {
   blog_url: string;
   content: string;
   image_urls: string[];
+  is_favorite: boolean;
 }
 
 export interface RandomBlog {
+  id: number;
   title: string;
   publishedAt: string;
   blogUrl: string;
@@ -24,8 +27,8 @@ export interface RandomBlog {
 }
 
 export interface ApiResponseRandomBlog {
+  id: number;
   title: string;
-  member_name: string;
   published_at: string;
   blog_url: string;
   image_url: string;

@@ -1,13 +1,23 @@
 <template>
   <!-- サイドバー開封前 -->
-  <div class="flex items-center mr-4" @click="toggleSidebar">
-    <img src="@/assets/images/menu_FILL0_wght400_GRAD0_opsz24.svg" />
+  <div class="flex items-center mr-4">
+    <i
+      v-if="!isLoggedIn"
+      class="pi pi-sign-in mr-6 hover:cursor-pointer"
+      style="color: black"
+      @click="redirectToLogin"
+    ></i>
+    <i
+      class="pi pi-bars hover:cursor-pointer"
+      style="color: black"
+      @click="toggleSidebar"
+    ></i>
   </div>
 
   <!-- サイドバー開封後 -->
   <div
     id="sidebar"
-    v-if="this.isSidebarOpen"
+    v-if="isSidebarOpen"
     class="fixed z-50 inset-0 overflow-y-auto"
   >
     <div class="flex justify-between pl-4 bg-white">
@@ -16,71 +26,142 @@
           <img src="@/assets/images/header_logo.svg" class="w-[160px]" />
         </RouterLink>
       </div>
-      <div class="flex items-center mr-4" @click="toggleSidebar">
-        <img src="@/assets/images/close_FILL0_wght400_GRAD0_opsz24.svg" />
+      <div class="flex items-center mr-4">
+        <i
+          v-if="!isLoggedIn"
+          class="pi pi-sign-in mr-6 hover:cursor-pointer"
+          style="color: black"
+          @click="redirectToLogin"
+        ></i>
+        <i
+          class="pi pi-times hover:cursor-pointer"
+          style="color: black"
+          @click="toggleSidebar"
+        ></i>
       </div>
     </div>
     <div class="border-b-2 border-site-color"></div>
     <FadeInOnScroll>
       <ul class="mt-10 mx-6 text-[24px]">
         <li>
-          <RouterLink to="/profiles" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
-            <img src="@/assets/images/photo_camera_front_FILL0_wght100_GRAD-25_opsz48.svg" />
+          <RouterLink
+            to="/profiles"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i
+              class="mr-2 pi pi-user"
+              style="color: #333333; font-size: 28px"
+            ></i>
             <span class="ml-2">Profiles</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/blogs" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
-            <img src="@/assets/images/stylus_note_FILL0_wght100_GRAD0_opsz48.svg" />
+          <RouterLink
+            to="/blogs"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i
+              class="mr-2 pi pi-pencil"
+              style="color: #333333; font-size: 28px"
+            ></i>
             <span class="ml-2">Blogs</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/histories" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
-            <img src="@/assets/images/history_FILL0_wght100_GRAD0_opsz48.svg" />
+          <RouterLink
+            to="/histories"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i
+              class="mr-2 pi pi-history"
+              style="color: #333333; font-size: 28px"
+            ></i>
             <span class="ml-2">Histories</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/about" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
-            <img src="@/assets/images/indeterminate_question_box_FILL0_wght100_GRAD0_opsz48.svg" />
+          <RouterLink
+            to="/about"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i
+              class="mr-2 pi pi-question-circle"
+              style="color: #333333; font-size: 28px"
+            ></i>
             <span class="ml-2">About "#shihonet"</span>
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/thanks_post" @click="toggleSidebar" class="flex items-center mb-5 hover:opacity-80">
-            <img src="@/assets/images/folded_hands_FILL0_wght100_GRAD0_opsz48.svg" />
+          <RouterLink
+            to="/thanks_post"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i
+              class="mr-2 pi pi-star"
+              style="color: #333333; font-size: 28px"
+            ></i>
             <span class="ml-2">Thanks Generator</span>
           </RouterLink>
         </li>
         <li>
-          <a href="https://www.hinatazaka46.com/s/official/?ima=0000" class="flex items-center mb-5 hover:opacity-80" target="_blank">
-            <img src="@/assets/images/clear_day_FILL0_wght100_GRAD0_opsz48.svg" />
+          <a
+            href="https://www.hinatazaka46.com/s/official/?ima=0000"
+            class="flex items-center mb-5"
+            target="_blank"
+          >
+            <i
+              class="mr-2 pi pi-sun"
+              style="color: #333333; font-size: 28px"
+            ></i>
             <span class="ml-2">日向坂46 Official Web Site</span>
           </a>
+        </li>
+        <li v-if="!isLoggedIn" >
+          <RouterLink
+            to="/login"
+            @click="toggleSidebar"
+            class="flex items-center mb-5"
+          >
+            <i
+              class="mr-2 pi pi-sign-in"
+              style="color: #333333; font-size: 28px"
+            ></i>
+            <span class="ml-2">Login / Signup</span>
+          </RouterLink>
+        </li>
+        <li v-else class="font-normal text-sm">
+          <p>{{ userEmail }} でログインしています</p>
         </li>
       </ul>
     </FadeInOnScroll>
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
+<script setup lang="ts">
+import { FadeInOnScroll } from "@/views/components/common";
+import { computed, ref } from "vue";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import router from "@/router";
 
-export default defineComponent({
-  components: { FadeInOnScroll },
-  data() {
-    return {
-      isSidebarOpen: false, // サイドバーの開閉状態
-    };
-  },
-  methods: {
-    toggleSidebar() {
-      this.isSidebarOpen = !this.isSidebarOpen;
-    },
-  },
-});
+const isSidebarOpen = ref(false);
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+
+const userSessionsStore = useUserSessionsStore();
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
+const userEmail = computed(() => userSessionsStore.getEmail);
+
+const redirectToLogin = () => {
+  isSidebarOpen.value = false;
+  router.push("/login");
+};
 </script>
 
 <style scoped>

@@ -11,26 +11,22 @@
     <div v-if="isLoading">
       <WaitingForLoading />
     </div>
-    <div v-else class="flex items-center justify-center">
-      <button
-        v-if="!isClickedButton"
-        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full mt-10"
-        @click="requestGetRandomBlogs"
-      >
+    <div v-else>
+      <BaseButton v-if="!isClickedButton" @click="requestGetRandomBlogs">
         画像ガチャを回す
-      </button>
+      </BaseButton>
       <div v-else>
         <p class="text-center text-[16px]">↓ 本日感謝を捧げる加藤史帆ちゃんはこちら ↓</p>
         <div class="flex justify-center mt-8">
           <img :src="imageUrl" class="w-[300px]" />
         </div>
         <div class="flex justify-center mt-4 mx-6">
-          <a :href="blogUrl" target="_blank">
+          <RouterLink :to="`/blogs/${id}`">
             <div class="border-2 border-site-color hover:text-gray-400 py-2 px-4 rounded-lg">
               <p class="text-[12px] text-gray-500">{{ publishedAt }}</p>
               <p class="text-[16px]">{{ title }}</p>
             </div>
-          </a>
+          </RouterLink>
         </div>
         <p class="text-center mt-10 text-[12px]">上の画像をコピーまたは保存して、ポストしよう！</p>
         <div class="flex justify-center mt-4">
@@ -41,27 +37,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from "vue";
-import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
-import PostX from "@/views/components/common/PostX.vue";
+<script setup lang="ts">
+import { computed } from "vue";
+import { BaseButton, WaitingForLoading, PostX } from "@/views/components/common";
 import { useRandomBlogsStore } from "@/stores/randomBlogsStore";
 
-export default defineComponent({
-  components: { WaitingForLoading, PostX },
-  setup() {
-    const randomBlogsStore = useRandomBlogsStore();
+const randomBlogsStore = useRandomBlogsStore();
 
-    return {
-      title: computed(() => randomBlogsStore.getTitle),
-      publishedAt: computed(() => randomBlogsStore.getPublishedUrl),
-      blogUrl: computed(() => randomBlogsStore.getBlogUrl),
-      imageUrl: computed(() => randomBlogsStore.getImageUrl),
-      isLoading: computed(() => randomBlogsStore.getIsLoading),
-      isClickedButton: computed(() => randomBlogsStore.getIsClickedButton),
-      requestGetRandomBlogs: randomBlogsStore.requestGetRandomBlogs, // NOTE: 関数そのものを取得している
-      postLink: computed(() => randomBlogsStore.getPostLink()), // NOTE: 関数を呼び出して値を返している
-    };
-  }
-});
+const id = computed(() => randomBlogsStore.getId);
+const title = computed(() => randomBlogsStore.getTitle);
+const publishedAt = computed(() => randomBlogsStore.getPublishedUrl);
+const imageUrl = computed(() => randomBlogsStore.getImageUrl);
+const isLoading = computed(() => randomBlogsStore.getIsLoading);
+const isClickedButton = computed(() => randomBlogsStore.getIsClickedButton);
+const requestGetRandomBlogs = randomBlogsStore.requestGetRandomBlogs; // NOTE: 関数そのものを取得している
+const postLink = computed(() => randomBlogsStore.getPostLink()); // NOTE: 関数を呼び出して値を返している
 </script>

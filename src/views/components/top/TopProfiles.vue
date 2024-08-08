@@ -2,7 +2,7 @@
   <div class="mx-6">
     <FadeInOnScroll>
       <div class="mt-40 mb-10 mx-10">
-        <TitlePart :title="title" />
+        <TitlePart title="Profiles" />
       </div>
       <p class="text-center text-[12px] font-light">Shiho Kato</p>
       <p class="mt-1 text-center text-[20px]">加藤 史帆</p>
@@ -11,10 +11,10 @@
     </FadeInOnScroll>
 
     <FadeInOnScroll>
-      <ProfileTable :isNeededDetailProf="isNeededDetailProf" />
+      <ProfileTable :isNeededDetailProf="false" />
       <div class="mt-10 flex justify-end">
         <RouterLink to="/profiles">
-          <MoreView :text="seeMoreText" />
+          <MoreView text="See more profiles…" />
         </RouterLink>
       </div>
     </FadeInOnScroll>
@@ -46,21 +46,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import TitlePart from "@/views/components/common/TitlePart.vue";
-import MoreView from "@/views/components/common/MoreView.vue";
-import ProfileTable from "@/views/components/common/ProfileTable.vue";
-
-export default defineComponent({
-  components: { ProfileTable, MoreView, TitlePart, FadeInOnScroll },
-  setup() {
-    return {
-      title: "Profiles",
-      seeMoreText: "See more profiles…",
-      isNeededDetailProf: false,
-    };
-  },
-});
+<script setup lang="ts">
+import { FadeInOnScroll, TitlePart, MoreView, ProfileTable } from "@/views/components/common";
 </script>

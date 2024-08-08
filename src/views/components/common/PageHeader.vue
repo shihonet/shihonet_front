@@ -12,14 +12,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import SideBar from "@/views/components/common/SideBar.vue";
-
-export default defineComponent({
-  components: { SideBar }
-});
+<script setup lang="ts">
+import { SideBar } from "@/views/components/common";
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>

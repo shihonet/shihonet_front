@@ -2,7 +2,7 @@
   <div class="mx-6">
     <FadeInOnScroll>
       <div class="mt-40 mb-10 mx-10">
-        <TitlePart :title="title" />
+        <TitlePart title="Blogs" />
       </div>
     </FadeInOnScroll>
 
@@ -34,41 +34,24 @@
     <FadeInOnScroll>
       <div class="mt-10 flex justify-end">
         <RouterLink to="/blogs">
-          <MoreView :text="seeMoreText" />
+          <MoreView text="See more blogs…" />
         </RouterLink>
       </div>
     </FadeInOnScroll>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, computed } from "vue";
+<script setup lang="ts">
+import { onMounted, computed } from "vue";
 import { useTopBlogsStore } from '@/stores/topBlogsStore';
-import TitlePart from "@/views/components/common/TitlePart.vue";
-import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
-import WaitingForLoading from "@/views/components/common/WaitingForLoading.vue";
-import MoreView from "@/views/components/common/MoreView.vue"
+import { TitlePart, FadeInOnScroll, WaitingForLoading, MoreView } from "@/views/components/common";
 
-export default defineComponent({
-  components: { TitlePart, WaitingForLoading, FadeInOnScroll, MoreView },
-  setup() {
-    const topBlogsStore = useTopBlogsStore();
+const topBlogsStore = useTopBlogsStore();
 
-    onMounted(() => {
-      topBlogsStore.requestGetTopBlogs();
-    });
+const blogs= computed(() => topBlogsStore.getBlogs);
+const isLoading = computed(() => topBlogsStore.getIsLoading);
 
-    return {
-      title: 'Blogs',
-      borderClass: "border-top-color",
-      textColorClass: "top-color",
-      seeMoreText: 'See more blogs…',
-      blogs: computed(() => topBlogsStore.getBlogs),
-      isLoading: computed(() => topBlogsStore.getIsLoading),
-    };
-  }
+onMounted(() => {
+  topBlogsStore.requestGetTopBlogs();
 });
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
