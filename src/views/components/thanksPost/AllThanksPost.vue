@@ -21,12 +21,12 @@
           <img :src="imageUrl" class="w-[300px]" />
         </div>
         <div class="flex justify-center mt-4 mx-6">
-          <a :href="blogUrl" target="_blank">
+          <RouterLink :to="`/blogs/${id}`">
             <div class="border-2 border-site-color hover:text-gray-400 py-2 px-4 rounded-lg">
               <p class="text-[12px] text-gray-500">{{ publishedAt }}</p>
               <p class="text-[16px]">{{ title }}</p>
             </div>
-          </a>
+          </RouterLink>
         </div>
         <p class="text-center mt-10 text-[12px]">上の画像をコピーまたは保存して、ポストしよう！</p>
         <div class="flex justify-center mt-4">
@@ -44,9 +44,9 @@ import { useRandomBlogsStore } from "@/stores/randomBlogsStore";
 
 const randomBlogsStore = useRandomBlogsStore();
 
+const id = computed(() => randomBlogsStore.getId);
 const title = computed(() => randomBlogsStore.getTitle);
 const publishedAt = computed(() => randomBlogsStore.getPublishedUrl);
-const blogUrl = computed(() => randomBlogsStore.getBlogUrl);
 const imageUrl = computed(() => randomBlogsStore.getImageUrl);
 const isLoading = computed(() => randomBlogsStore.getIsLoading);
 const isClickedButton = computed(() => randomBlogsStore.getIsClickedButton);

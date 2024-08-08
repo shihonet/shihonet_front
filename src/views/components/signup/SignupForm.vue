@@ -1,5 +1,4 @@
 <template>
-  <p class="my-1 text-error-color text-sm">{{ error }}</p>
   <div class="mt-5">
     <input
       class="h-12 px-4 border rounded-lg w-full"
@@ -46,8 +45,10 @@ import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { useOpenStore } from "@/stores/openStore";
 
 const userSessionsStore = useUserSessionsStore();
+const openStore = useOpenStore();
 
 const email = ref("");
 const password = ref("");
@@ -77,7 +78,7 @@ const isPasswordValid = computed(() => {
  * 確認用パスワードのバリデーション
  */
 const isPasswordConfirmationValid = computed(() => {
-  return passwordPattern.test(passwordConfirmation.value);
+  return passwordPattern.test(passwordConfirmation.value) && password.value === passwordConfirmation.value;
 });
 
 /**
@@ -88,6 +89,7 @@ const isDisableSignupButton = computed(() => {
     !isEmailValid.value ||
     !isPasswordValid.value ||
     !isPasswordConfirmationValid.value ||
+    !(password.value === passwordConfirmation.value) ||
     isLoading.value
   );
 });
@@ -96,14 +98,18 @@ const isDisableSignupButton = computed(() => {
  * メールアドレスとパスワードを使って、サインアップをリクエストする。
  */
 const requestSignup = async () => {
-  if (isDisableSignupButton.value) {
-    return;
-  }
+  if (isDisableSignupButton.value) return;
+
   await signupStore.requestSignup(
     email.value,
     password.value,
     passwordConfirmation.value
   );
   await userSessionsStore.requestGetUserSessions();
+  if (!error.value) {
+    openStore.setToast("success", "認証メール内のリンクをクリックして認証を完了してください。");
+  } else {
+    openStore.setToast("error", error.value);
+  }
 };
 </script>

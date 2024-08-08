@@ -19,6 +19,7 @@ export interface ApiResponseBlog {
 }
 
 export interface RandomBlog {
+  id: number;
   title: string;
   publishedAt: string;
   blogUrl: string;
@@ -26,6 +27,7 @@ export interface RandomBlog {
 }
 
 export interface ApiResponseRandomBlog {
+  id: number;
   title: string;
   published_at: string;
   blog_url: string;

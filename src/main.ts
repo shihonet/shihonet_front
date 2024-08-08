@@ -6,6 +6,8 @@ import { createPinia } from "pinia";
 import { createPersistedState } from "pinia-plugin-persistedstate";
 import PrimeVue from "primevue/config";
 import Aura from "@primevue/themes/aura";
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
 import "primeicons/primeicons.css";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
@@ -40,6 +42,8 @@ createApp(App)
       preset: Aura,
     },
   })
+  .use(ToastService)
+  .component('Toast', Toast)
   .mount("#app");
 
 // ログインユーザーの情報を取得

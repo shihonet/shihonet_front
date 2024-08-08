@@ -1,20 +1,15 @@
 <template>
   <div id="app">
+    <ShowToast />
     <PageHeader />
     <RouterView></RouterView>
     <PageFooter class="mt-40" />
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import "./index.css";
-import { defineComponent } from "vue";
-import { PageHeader, PageFooter } from "@/views/components/common";
-
-export default defineComponent({
-  name: "App",
-  components: { PageHeader, PageFooter },
-});
+import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
 </script>
 
 <style>

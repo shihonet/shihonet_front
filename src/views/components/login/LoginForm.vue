@@ -1,5 +1,4 @@
 <template>
-  <p class="my-1 text-error-color text-sm">{{ error }}</p>
   <div class="mt-5">
     <input
       class="h-12 px-4 border rounded-lg w-full"
@@ -25,18 +24,21 @@
 
 <script setup lang="ts">
 import BaseButton from "@/views/components/common/BaseButton.vue";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useLoginStore } from "@/stores/loginStore";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { useOpenStore } from "@/stores/openStore";
 
 const userSessionsStore = useUserSessionsStore();
+const openStore = useOpenStore();
 
 const email = ref("");
 const password = ref("");
 const loginStore = useLoginStore();
 const isLoading = computed(() => loginStore.getIsLoading);
 const error = computed(() => loginStore.getError);
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 const passwordPattern = /^.{4,}$/;
 
@@ -63,16 +65,26 @@ const isDisableLoginButton = computed(() => {
 });
 
 /**
- * メールアドレスとパスワードを使って、サインアップをリクエストする。
+ * メールアドレスとパスワードを使って、ログインをリクエストする。
  */
 const requestLogin = async () => {
-  if (isDisableLoginButton.value) {
-    return;
-  }
+  if (isDisableLoginButton.value) return;
+
   await loginStore.requestLogin(email.value, password.value);
   await userSessionsStore.requestGetUserSessions();
   if (!error.value) {
     router.push("/blogs");
+    openStore.setToast("success", "ログインしました");
+  } else {
+    openStore.setToast("error", error.value);
   }
 };
+
+onMounted(async () => {
+  await userSessionsStore.requestGetUserSessions();
+  if (isLoggedIn.value) {
+    router.push("/blogs");
+    openStore.setToast("success", "すでにログインしています");
+  }
+});
 </script>
