@@ -2,12 +2,6 @@
   <!-- サイドバー開封前 -->
   <div class="flex items-center mr-4">
     <i
-      v-if="!isLoggedIn"
-      class="pi pi-sign-in mr-6 hover:cursor-pointer"
-      style="color: black"
-      @click="redirectToLogin"
-    ></i>
-    <i
       class="pi pi-bars hover:cursor-pointer"
       style="color: black"
       @click="toggleSidebar"
@@ -27,12 +21,6 @@
         </RouterLink>
       </div>
       <div class="flex items-center mr-4">
-        <i
-          v-if="!isLoggedIn"
-          class="pi pi-sign-in mr-6 hover:cursor-pointer"
-          style="color: black"
-          @click="redirectToLogin"
-        ></i>
         <i
           class="pi pi-times hover:cursor-pointer"
           style="color: black"
@@ -121,22 +109,6 @@
             <span class="ml-2">日向坂46 Official Web Site</span>
           </a>
         </li>
-        <li v-if="!isLoggedIn" >
-          <RouterLink
-            to="/login"
-            @click="toggleSidebar"
-            class="flex items-center mb-5"
-          >
-            <i
-              class="mr-2 pi pi-sign-in"
-              style="color: #333333; font-size: 28px"
-            ></i>
-            <span class="ml-2">Login / Signup</span>
-          </RouterLink>
-        </li>
-        <li v-else class="font-normal text-sm">
-          <p>{{ userEmail }} でログインしています</p>
-        </li>
       </ul>
     </FadeInOnScroll>
   </div>
@@ -144,23 +116,12 @@
 
 <script setup lang="ts">
 import { FadeInOnScroll } from "@/views/components/common";
-import { computed, ref } from "vue";
-import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import router from "@/router";
+import { ref } from "vue";
 
 const isSidebarOpen = ref(false);
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
-};
-
-const userSessionsStore = useUserSessionsStore();
-const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
-const userEmail = computed(() => userSessionsStore.getEmail);
-
-const redirectToLogin = () => {
-  isSidebarOpen.value = false;
-  router.push("/login");
 };
 </script>
 
