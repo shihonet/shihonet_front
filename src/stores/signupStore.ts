@@ -46,11 +46,16 @@ export const useSignupStore = defineStore("signup", {
      */
     async requestSignup(email: string, password: string, passwordConfirmation: string) {
       try {
+        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         this.setIsLoading(true);
         await axios.post<null>("/api/users/signup", {
           email: email,
           password: password,
           password_confirmation: passwordConfirmation,
+        }, {
+          headers: {
+            'X-CSRF-Token': token || '',
+          }
         });
         this.setError("");
         this.setEmail(email);
