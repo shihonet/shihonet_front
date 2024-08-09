@@ -4,6 +4,7 @@ import { User, ApiResponseUser } from "@/types/userSessionsTypes";
 
 export const useUserSessionsStore = defineStore("userSessions", {
   state: (): User => ({
+    csrfToken: "",
     isLoggedIn: false,
     id: undefined,
     email: undefined,
@@ -12,6 +13,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
   }),
 
   getters: {
+    getCsrfToken: (state): string => state.csrfToken,
     getIsLoggedIn: (state): boolean => false,
     getEmail: (state) => state.email,
   },
@@ -20,6 +22,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
     async requestGetUserSessions() {
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
+        this.csrfToken = response.data.csrf_token;
         this.isLoggedIn = response.data.is_logged_in;
         this.id = response.data.id;
         this.email = response.data.email;
