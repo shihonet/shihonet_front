@@ -28,7 +28,7 @@ createApp(App)
   .mount("#app");
 
 axios.defaults.withCredentials = true;
-axios.defaults.xsrfHeaderName = "X-CSRF-Token";
+axios.defaults.xsrfHeaderName = "X-Csrf-Token";
 axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 
 // ログインユーザーの情報を取得
@@ -38,5 +38,5 @@ await userSessionsStore.requestGetUserSessions();
 const csrfToken = userSessionsStore.getCsrfToken;
 axios.defaults.headers.common = {
   "X-Requested-With": "XMLHttpRequest",
-  "X-CSRF-TOKEN": csrfToken,
+  "X-Csrf-Token": csrfToken,
 };
