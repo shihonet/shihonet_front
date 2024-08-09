@@ -36,6 +36,7 @@ const userSessionsStore = useUserSessionsStore();
 await userSessionsStore.requestGetUserSessions();
 
 const csrfToken = userSessionsStore.getCsrfToken;
+console.log("csrfToken:", csrfToken);
 axios.defaults.headers.common = {
   "X-Requested-With": "XMLHttpRequest",
   "X-CSRF-TOKEN": csrfToken,
