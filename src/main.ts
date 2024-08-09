@@ -11,33 +11,32 @@ import Toast from "primevue/toast";
 import "primeicons/primeicons.css";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
+// INFO: store 永続化の persist の追加
 const pinia = createPinia();
 pinia.use(createPersistedState());
 
+createApp(App)
+  .use(router)
+  .use(pinia)
+  .use(PrimeVue, {
+    theme: {
+      preset: Aura,
+    },
+  })
+  .use(ToastService)
+  .component("Toast", Toast)
+  .mount("#app");
+
 axios.defaults.withCredentials = true;
-axios.defaults.xsrfHeaderName = "X-CSRF-TOKEN";
-axios.defaults.baseURL =
-  process.env.VUE_APP_API_BASE_URL || "http://localhost:3001";
+axios.defaults.xsrfHeaderName = "X-CSRF-Token";
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 
-initializeApp();
+// ログインユーザーの情報を取得
+const userSessionsStore = useUserSessionsStore();
+await userSessionsStore.requestGetUserSessions();
 
-async function initializeApp() {
-  const userSessionsStore = useUserSessionsStore();
-  await userSessionsStore.requestGetUserSessions();
-
-  const csrfToken = userSessionsStore.getCsrfToken;
-  axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-  axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
-
-  createApp(App)
-    .use(router)
-    .use(pinia)
-    .use(PrimeVue, {
-      theme: {
-        preset: Aura,
-      },
-    })
-    .use(ToastService)
-    .component("Toast", Toast)
-    .mount("#app");
-}
+const csrfToken = userSessionsStore.getCsrfToken;
+axios.defaults.headers.common = {
+  "X-Requested-With": "XMLHttpRequest",
+  "X-CSRF-TOKEN": csrfToken,
+};
