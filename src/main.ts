@@ -16,16 +16,16 @@ const pinia = createPinia();
 pinia.use(createPersistedState());
 
 createApp(App)
-    .use(router)
-    .use(pinia)
-    .use(PrimeVue, {
-      theme: {
-        preset: Aura,
-      },
-    })
-    .use(ToastService)
-    .component("Toast", Toast)
-    .mount("#app");
+  .use(router)
+  .use(pinia)
+  .use(PrimeVue, {
+    theme: {
+      preset: Aura,
+    },
+  })
+  .use(ToastService)
+  .component("Toast", Toast)
+  .mount("#app");
 
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRF-Token";
