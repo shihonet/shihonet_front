@@ -44,10 +44,8 @@
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
-import { useUserSessionsStore } from "@/stores/userSessionsStore";
 import { useOpenStore } from "@/stores/openStore";
 
-const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();
 
 const email = ref("");
@@ -105,7 +103,6 @@ const requestSignup = async () => {
     password.value,
     passwordConfirmation.value
   );
-  await userSessionsStore.requestGetUserSessions();
   if (!error.value) {
     openStore.setToast("success", "認証メール内のリンクをクリックして認証を完了してください。");
   } else {
