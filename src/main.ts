@@ -35,8 +35,16 @@ axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 const userSessionsStore = useUserSessionsStore();
 await userSessionsStore.requestGetUserSessions();
 
-const csrfToken = userSessionsStore.getCsrfToken;
-axios.defaults.headers.common = {
-  "X-Requested-With": "XMLHttpRequest",
-  "X-Csrf-Token": csrfToken,
-};
+// Axiosのインターセプターを設定
+axios.interceptors.request.use(
+  (config) => {
+    const token = userSessionsStore.getJwtToken;
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);

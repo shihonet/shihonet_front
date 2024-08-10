@@ -50,7 +50,7 @@ const signupStore = useSignupStore();
 const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();
 
-const hasRequested = computed(() => signupStore.hasRequested);
+const hasRequested = computed(() => signupStore.getHasRequested);
 const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 onMounted(async () => {
