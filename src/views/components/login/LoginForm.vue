@@ -25,7 +25,6 @@
 <script setup lang="ts">
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
-import { useLoginStore } from "@/stores/loginStore";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 import { useOpenStore } from "@/stores/openStore";
@@ -35,9 +34,8 @@ const openStore = useOpenStore();
 
 const email = ref("");
 const password = ref("");
-const loginStore = useLoginStore();
-const isLoading = computed(() => loginStore.getIsLoading);
-const error = computed(() => loginStore.getError);
+const isLoading = computed(() => userSessionsStore.getIsLoading);
+const error = computed(() => userSessionsStore.getError);
 
 const passwordPattern = /^.{4,}$/;
 
@@ -69,8 +67,7 @@ const isDisableLoginButton = computed(() => {
 const requestLogin = async () => {
   if (isDisableLoginButton.value) return;
 
-  await loginStore.requestLogin(email.value, password.value);
-  await userSessionsStore.requestGetUserSessions();
+  await userSessionsStore.requestLogin(email.value, "password.value");
   if (!error.value) {
     router.push("/blogs");
     openStore.setToast("success", "ログインしました");
