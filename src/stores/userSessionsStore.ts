@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { User, ApiResponseUser } from "@/types/userSessionsTypes";
+import { useCookies } from "vue3-cookies";
 
 interface UserSession extends User {
   isLoggedIn: boolean;
@@ -8,7 +9,6 @@ interface UserSession extends User {
   email: string | undefined;
   displayName: string | undefined;
   lastLoggedInAt: string | undefined;
-  jwtToken: string | undefined;
   error: string;
   isLoading: boolean;
 }
@@ -20,28 +20,22 @@ export const useUserSessionsStore = defineStore("userSessions", {
     email: undefined,
     displayName: undefined,
     lastLoggedInAt: undefined,
-    jwtToken: undefined,
     error: "",
     isLoading: false,
   }),
-  persist: [
-    {
-      paths: ["jwtToken"],
-      storage: window.localStorage,
-    },
-  ],
 
   getters: {
     getIsLoggedIn: (state): boolean => state.isLoggedIn,
     getEmail: (state) => state.email,
-    getJwtToken: (state): string | undefined => state.jwtToken,
     getError: (state): string => state.error,
     getIsLoading: (state): boolean => state.isLoading,
   },
 
   actions: {
     async requestGetUserSessions() {
-      if (!this.getJwtToken) return;
+      const { cookies } = useCookies();
+      const token = cookies.get("jwt_token");
+      if (!token) return;
 
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
@@ -78,7 +72,6 @@ export const useUserSessionsStore = defineStore("userSessions", {
       this.email = user.email;
       this.displayName = user.display_name;
       this.lastLoggedInAt = user.last_logged_in_at;
-      this.jwtToken = user.jwt_token;
     },
   },
 });
