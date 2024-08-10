@@ -42,22 +42,22 @@ import { computed, onMounted } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { FadeInOnScroll, ChangeFontToCaveat } from "@/views/components/common";
 import { SignupForm, SignupVerifyForm } from "@/views/components/signup";
-// import router from "@/router";
-// import { useUserSessionsStore } from "@/stores/userSessionsStore";
-// import { useOpenStore } from "@/stores/openStore";
+import router from "@/router";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { useOpenStore } from "@/stores/openStore";
 
 const signupStore = useSignupStore();
-// const userSessionsStore = useUserSessionsStore();
-// const openStore = useOpenStore();
+const userSessionsStore = useUserSessionsStore();
+const openStore = useOpenStore();
 
 const hasRequested = computed(() => signupStore.hasRequested);
-// const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
+const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 onMounted(async () => {
-  // await userSessionsStore.requestGetUserSessions();
-  // if (isLoggedIn.value) {
-  //   router.push("/blogs");
-  //   openStore.setToast("success", "すでにログインしています");
-  // }
+  await userSessionsStore.requestGetUserSessions();
+  if (isLoggedIn.value) {
+    router.push("/blogs");
+    openStore.setToast("success", "すでにログインしています");
+  }
 });
 </script>
