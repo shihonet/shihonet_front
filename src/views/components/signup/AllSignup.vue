@@ -55,9 +55,9 @@ const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 onMounted(async () => {
   await userSessionsStore.requestGetUserSessions();
-  if (isLoggedIn.value) {
-    router.push("/blogs");
-    openStore.setToast("success", "すでにログインしています");
-  }
+  if (!isLoggedIn.value) return;
+
+  router.push("/blogs");
+  openStore.setToast("success", "すでにログインしています");
 });
 </script>

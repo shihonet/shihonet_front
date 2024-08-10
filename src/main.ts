@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp, onMounted } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
@@ -33,7 +33,6 @@ axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 
 // ログインユーザーの情報を取得
 const userSessionsStore = useUserSessionsStore();
-await userSessionsStore.requestGetUserSessions();
 
 // Axiosのインターセプターを設定
 axios.interceptors.request.use(
