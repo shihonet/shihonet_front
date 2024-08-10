@@ -116,16 +116,13 @@
 
 <script setup lang="ts">
 import { FadeInOnScroll } from "@/views/components/common";
-import { computed, ref } from "vue";
-import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { ref } from "vue";
 
 const isSidebarOpen = ref(false);
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
 };
-
-const userSessionsStore = useUserSessionsStore();
 </script>
 
 <style scoped>
