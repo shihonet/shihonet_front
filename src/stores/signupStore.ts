@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 export const useSignupStore = defineStore("signup", {
   state: () => ({
@@ -9,10 +8,10 @@ export const useSignupStore = defineStore("signup", {
     error: "",
     isLoading: false,
   }),
-  persist: {
-    paths: ["email", "hasRequested"],
-    storage: window.sessionStorage,
-  },
+  // persist: {
+  //   paths: ["email", "hasRequested"],
+  //   storage: window.sessionStorage,
+  // },
 
   getters: {
     getEmail: (state) => state.email,
@@ -52,14 +51,6 @@ export const useSignupStore = defineStore("signup", {
     ) {
       try {
         this.setIsLoading(true);
-        const userSessionsStore = useUserSessionsStore();
-        const csrfToken = userSessionsStore.getCsrfToken;
-        axios.defaults.headers.common = {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-CSRF-Token": csrfToken,
-        };
         await axios.post<null>("/api/users/signup", {
           email: email,
           password: password,

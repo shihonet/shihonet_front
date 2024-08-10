@@ -99,7 +99,7 @@ const isDisableSignupButton = computed(() => {
  */
 const requestSignup = async () => {
   if (isDisableSignupButton.value) return;
-
+  console.log(userSessionsStore.getCsrfToken);
   await signupStore.requestSignup(
     email.value,
     password.value,
