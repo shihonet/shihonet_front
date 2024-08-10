@@ -20,6 +20,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
 
   actions: {
     async requestGetUserSessions() {
+      console.log("requestGetUserSessions start");
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
         this.isLoggedIn = response.data.is_logged_in;

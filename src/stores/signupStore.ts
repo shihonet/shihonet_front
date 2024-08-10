@@ -8,10 +8,6 @@ export const useSignupStore = defineStore("signup", {
     error: "",
     isLoading: false,
   }),
-  persist: {
-    paths: ["email", "hasRequested"],
-    storage: window.sessionStorage,
-  },
 
   getters: {
     getEmail: (state) => state.email,

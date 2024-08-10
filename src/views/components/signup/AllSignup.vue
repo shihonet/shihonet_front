@@ -30,7 +30,14 @@
         </div>
 
         <div v-else class="mt-5 text-center text-[14px]">
-          <SignupVerifyForm />
+          <div class="mx-5 py-4 px-2 bg-white border rounded-lg">
+            <p>{{ email }}</p>
+          </div>
+          <p class="mt-5">
+            上記メールアドレスへ、認証メールを送信しました。<br />
+            メールに記載されたリンクをタップして、<br />
+            登録を完了してください。
+          </p>
         </div>
       </div>
     </FadeInOnScroll>
@@ -41,7 +48,7 @@
 import { computed, onMounted } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
 import { FadeInOnScroll, ChangeFontToCaveat } from "@/views/components/common";
-import { SignupForm, SignupVerifyForm } from "@/views/components/signup";
+import { SignupForm } from "@/views/components/signup";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 import { useOpenStore } from "@/stores/openStore";
@@ -50,11 +57,11 @@ const signupStore = useSignupStore();
 const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();
 
+const email = computed(() => signupStore.getEmail);
 const hasRequested = computed(() => signupStore.getHasRequested);
 const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
-onMounted(async () => {
-  await userSessionsStore.requestGetUserSessions();
+onMounted(() => {
   if (!isLoggedIn.value) return;
 
   router.push("/blogs");
