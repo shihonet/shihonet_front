@@ -34,12 +34,12 @@ axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 // ログインユーザーの情報を取得
 const userSessionsStore = useUserSessionsStore();
 await userSessionsStore.requestGetUserSessions();
-
-const csrfToken = userSessionsStore.getCsrfToken;
-axios.defaults.headers.common = {
-  "Accept": "application/json",
-  "Content-Type": "application/json",
-  "X-Requested-With": "XMLHttpRequest",
-  "X-CSRF-Token": csrfToken,
-};
-console.log(axios.defaults.headers.common);
+//
+// const csrfToken = userSessionsStore.getCsrfToken;
+// axios.defaults.headers.common = {
+//   "Accept": "application/json",
+//   "Content-Type": "application/json",
+//   "X-Requested-With": "XMLHttpRequest",
+//   "X-CSRF-Token": csrfToken,
+// };
+// console.log(axios.defaults.headers.common);
