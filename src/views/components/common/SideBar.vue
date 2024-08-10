@@ -157,7 +157,7 @@ const toggleSidebar = () => {
 const userSessionsStore = useUserSessionsStore();
 const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 const userEmail = computed(() => userSessionsStore.getEmail);
-
+console.log(userEmail.value);
 const redirectToLogin = () => {
   isSidebarOpen.value = false;
   router.push("/login");
