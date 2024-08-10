@@ -22,7 +22,8 @@ export const useUserSessionsStore = defineStore("userSessions", {
     async requestGetUserSessions() {
       console.log("requestGetUserSessions start");
       try {
-        const response = await axios.get<ApiResponseUser>("/api/user_sessions");
+        const response = await axios.get("/api/user_sessions");
+        console.log("response:", response);
         console.log("response.data:", response.data);
         this.isLoggedIn = response.data.is_logged_in;
         this.id = response.data.id;

@@ -13,5 +13,5 @@ export interface ApiResponseUser {
   email: string | undefined;
   display_name: string | undefined;
   last_logged_in_at: string | undefined;
-  jwt_token: string;
+  jwt_token: string | undefined;
 }
