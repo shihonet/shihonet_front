@@ -3,7 +3,7 @@
     <FadeInOnScroll>
       <h1 class="text-[20px] font-extrabold text-site-color">
         ◆<span class="mx-2 font-bold">Histories of</span>
-        <select v-model="selectedYear" @change="setYear($event.target.value)" class="w-24">
+        <select v-model="selectedYear" @change="setYear($event.target.value)" class="w-24 bg-white">
           <option v-for="year in availableYears" :key="year" :value="year">
             {{ year }}
           </option>

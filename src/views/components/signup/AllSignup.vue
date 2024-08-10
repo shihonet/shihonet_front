@@ -16,9 +16,7 @@
         </p>
         <p class="mt-2">
           すでにアカウントをお持ちの方は
-          <RouterLink to="/login" class="text-site-color underline"
-            >ログイン
-          </RouterLink>
+          <RouterLink to="/login" class="text-site-color underline">ログイン</RouterLink>
           をしてください。
         </p>
       </div>
@@ -61,7 +59,8 @@ const email = computed(() => signupStore.getEmail);
 const hasRequested = computed(() => signupStore.getHasRequested);
 const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
-onMounted(() => {
+onMounted(async () => {
+  await userSessionsStore.requestGetUserSessions();
   if (!isLoggedIn.value) return;
 
   router.push("/blogs");

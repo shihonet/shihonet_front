@@ -1,13 +1,13 @@
 <template>
   <div class="mt-5">
     <input
-      class="h-12 px-4 border rounded-lg w-full"
+      class="h-12 px-4 border rounded-lg w-full bg-white"
       type="text"
       placeholder="メールアドレス"
       v-model="email"
     />
     <input
-      class="mt-4 h-12 px-4 border rounded-lg w-full"
+      class="mt-4 h-12 px-4 border rounded-lg w-full bg-white"
       type="password"
       placeholder="パスワード"
       v-model="password"

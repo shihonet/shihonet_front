@@ -12,9 +12,7 @@
           <p>お持ちのアカウントでログインしてください。</p>
           <p>
             アカウントをお持ちでない方は
-            <RouterLink to="/signup" class="text-site-color underline"
-              >新規登録
-            </RouterLink>
+            <RouterLink to="/signup" class="text-site-color underline">新規登録</RouterLink>
             をしてください。
           </p>
         </div>
@@ -40,7 +38,8 @@ const openStore = useOpenStore();
 
 const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
-onMounted(() => {
+onMounted(async () => {
+  await userSessionsStore.requestGetUserSessions();
   if (!isLoggedIn.value) return;
 
   router.push("/blogs");
