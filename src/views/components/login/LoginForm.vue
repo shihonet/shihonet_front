@@ -67,7 +67,7 @@ const isDisableLoginButton = computed(() => {
 const requestLogin = async () => {
   if (isDisableLoginButton.value) return;
 
-  await userSessionsStore.requestLogin(email.value, "password.value");
+  await userSessionsStore.requestLogin(email.value, password.value);
   if (!error.value) {
     router.push("/blogs");
     openStore.setToast("success", "ログインしました");
