@@ -23,7 +23,6 @@
     <div v-else-if="blogs.length !== 0">
       <div class="text-right">
         <p>PAGE：{{ currentPage }} / {{ totalPage }}</p>
-        {{isLoggedIn}}
       </div>
       <div class="mt-6">
         <div v-for="(blog, index) in blogs" :key="index" class="mb-6">

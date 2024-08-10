@@ -23,6 +23,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
       console.log("requestGetUserSessions start");
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
+        console.log("response.data:", response.data);
         this.isLoggedIn = response.data.is_logged_in;
         this.id = response.data.id;
         this.email = response.data.email;
@@ -31,6 +32,9 @@ export const useUserSessionsStore = defineStore("userSessions", {
         this.jwtToken = response.data.jwt_token;
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        console.log(this);
+        console.log("requestGetUserSessions end");
       }
     },
   },
