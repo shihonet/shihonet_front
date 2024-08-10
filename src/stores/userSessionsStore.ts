@@ -27,7 +27,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
   persist: [
     {
       paths: ["jwtToken"],
-      storage: window.sessionStorage,
+      storage: window.localStorage,
     },
   ],
 
