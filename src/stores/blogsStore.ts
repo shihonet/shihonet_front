@@ -8,7 +8,7 @@ type State = {
   totalPage: number;
   isLoading: boolean;
   currentViewType: "all" | "favorite";
-}
+};
 
 export const useBlogsStore = defineStore("blogs", {
   state: (): State => ({
@@ -37,13 +37,15 @@ export const useBlogsStore = defineStore("blogs", {
       this.currentPage = page;
       this.isLoading = true;
       try {
-        const response = await axios.get("/api/blogs", {
-          params: {
-            page: this.currentPage,
-            limit: 15,
-            is_favorite_only: isFavoriteOnly,
-          },
-        });
+        const response = await axios.get(
+          isFavoriteOnly ? "/api/favorite_blogs" : "/api/blogs",
+          {
+            params: {
+              page: this.currentPage,
+              limit: 15,
+            },
+          }
+        );
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
           return {
             id: blog.id,
@@ -72,6 +74,6 @@ export const useBlogsStore = defineStore("blogs", {
 
     setCurrentViewType(viewType: "all" | "favorite") {
       this.currentViewType = viewType;
-    }
+    },
   },
 });
