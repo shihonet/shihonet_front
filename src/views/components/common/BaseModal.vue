@@ -22,6 +22,7 @@ import { computed, onMounted } from "vue";
 import FadeInOnScroll from "@/views/components/common/FadeInOnScroll.vue";
 import { useBaseModalStore } from "@/stores/common/baseModalStore";
 import confetti from "canvas-confetti";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 const baseModalStore = useBaseModalStore();
 
@@ -29,23 +30,27 @@ const closeModal = () => {
   baseModalStore.setIsModalOpen(false);
 };
 
-const isModalOpen = computed(()=>baseModalStore.getIsModalOpen)
+const isModalOpen = computed(() => baseModalStore.getIsModalOpen);
 
 onMounted(() => {
+  const userSessionsStore = useUserSessionsStore();
+  const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
+
+  // INFO: 以下全ては、表示する条件文内のみ変更して良い。基本的に触らない。
   const today = new Date();
   const currentMonth = today.getMonth() + 1; // getMonth()メソッドは0から11の整数を返す。1月は0、2月は1、…、12月は11。
-  const currentDate = today.getDate();
+  // const currentDate = today.getDate();
   // TODO: ここでモーダルを表示させる日付を指定する。
-  if (currentMonth === 6 && (currentDate === 20 || currentDate === 21)) {
+  if (currentMonth === 8 && !isLoggedIn.value) {
     baseModalStore.setIsModalOpen(true);
   }
 
-  if(!baseModalStore.isModalOpen) return;
+  if (!baseModalStore.isModalOpen) return;
 
   // INFO: confetti ライブラリを使用した、クラッカーのアニメーション
   const script = document.createElement("script");
   script.src =
-      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js";
+    "https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js";
   script.onload = () => {
     confetti({
       particleCount: 100,
