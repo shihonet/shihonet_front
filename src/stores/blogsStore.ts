@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
+import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
 type State = {
   blogs: Blog[];
@@ -21,13 +22,9 @@ export const useBlogsStore = defineStore("blogs", {
 
   getters: {
     getBlogs: (state): Blog[] => state.blogs,
-
     getCurrentPage: (state): number => state.currentPage,
-
     getTotalPage: (state): number => state.totalPage,
-
     getIsLoading: (state): boolean => state.isLoading,
-
     getCurrentViewType: (state): "all" | "favorite" => state.currentViewType,
   },
 
@@ -36,16 +33,21 @@ export const useBlogsStore = defineStore("blogs", {
       window.scrollTo(0, 0);
       this.currentPage = page;
       this.isLoading = true;
+      const userSessionsStore = useUserSessionsStore();
+      const isLoggedIn = userSessionsStore.getIsLoggedIn;
+      let url = "/api/blogs"; // isFavoriteなしのブログ一覧
+      if (isFavoriteOnly) {
+        url = "/api/favorite_blogs"; // isFavoriteありのお気に入りブログ一覧
+      } else if (isLoggedIn) {
+        url = "/api/blogs_with_login"; // isFavoriteありのブログ一覧
+      }
       try {
-        const response = await axios.get(
-          isFavoriteOnly ? "/api/favorite_blogs" : "/api/blogs",
-          {
-            params: {
-              page: this.currentPage,
-              limit: 15,
-            },
-          }
-        );
+        const response = await axios.get(url, {
+          params: {
+            page: this.currentPage,
+            limit: 15,
+          },
+        });
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
           return {
             id: blog.id,
