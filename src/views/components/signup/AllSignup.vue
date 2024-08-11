@@ -63,7 +63,7 @@ onMounted(async () => {
   await userSessionsStore.requestGetUserSessions();
   if (!isLoggedIn.value) return;
 
-  router.push("/blogs");
+  await router.push("/blogs");
   openStore.setToast("success", "すでにログインしています");
 });
 </script>
