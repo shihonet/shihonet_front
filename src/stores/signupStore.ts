@@ -5,7 +5,7 @@ export const useSignupStore = defineStore("signup", {
   state: () => ({
     email: "",
     hasRequested: false,
-    error: "",
+    error: undefined,
     isLoading: false,
   }),
 
@@ -17,22 +17,6 @@ export const useSignupStore = defineStore("signup", {
   },
 
   actions: {
-    setEmail(email: string) {
-      this.$patch({ email: email });
-    },
-
-    setHasRequested(hasRequested: boolean) {
-      this.$patch({ hasRequested: hasRequested });
-    },
-
-    setError(error: string) {
-      this.$patch({ error: error });
-    },
-
-    setIsLoading(isLoading: boolean) {
-      this.$patch({ isLoading: isLoading });
-    },
-
     /**
      * サインアップリクエストを送信する。
      * 認証コード再送の場合は、再び password を送信しなくて良い。（パスワードはそのまま）
@@ -42,19 +26,19 @@ export const useSignupStore = defineStore("signup", {
      */
     async requestSignup(email: string, password: string, passwordConfirmation: string) {
       try {
-        this.setIsLoading(true);
+        this.isLoading = true;
         await axios.post<null>("/api/users/signup", {
           email: email,
           password: password,
           password_confirmation: passwordConfirmation,
         });
-        this.setError("");
-        this.setEmail(email);
-        this.setHasRequested(true);
+        this.error = undefined;
+        this.email = email;
+        this.hasRequested = true;
       } catch (error: any) {
-        this.setError(error.response?.data.errors);
+        this.error = error.response?.data.error;
       } finally {
-        this.setIsLoading(false);
+        this.isLoading = false;
       }
     },
   },

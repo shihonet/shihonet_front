@@ -9,7 +9,7 @@ interface UserSession extends User {
   email: string | undefined;
   displayName: string | undefined;
   lastLoggedInAt: string | undefined;
-  error: string;
+  error: string | undefined;
   isLoading: boolean;
 }
 
@@ -20,14 +20,14 @@ export const useUserSessionsStore = defineStore("userSessions", {
     email: undefined,
     displayName: undefined,
     lastLoggedInAt: undefined,
-    error: "",
+    error: undefined,
     isLoading: false,
   }),
 
   getters: {
     getIsLoggedIn: (state): boolean => state.isLoggedIn,
     getEmail: (state) => state.email,
-    getError: (state): string => state.error,
+    getError: (state): string | undefined => state.error,
     getIsLoading: (state): boolean => state.isLoading,
   },
 
@@ -58,9 +58,9 @@ export const useUserSessionsStore = defineStore("userSessions", {
           password: password,
         });
         this.setSessionUserData(response.data);
-        this.error = "";
+        this.error = undefined;
       } catch (error: any) {
-        this.error = error.response?.data.errors;
+        this.error = error.response?.data.error;
       } finally {
         this.isLoading = false;
       }

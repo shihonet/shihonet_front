@@ -69,7 +69,7 @@ const requestLogin = async () => {
 
   await userSessionsStore.requestLogin(email.value, password.value);
   if (!error.value) {
-    router.push("/blogs");
+    await router.push("/blogs");
     openStore.setToast("success", "ログインしました");
   } else {
     openStore.setToast("error", error.value);
