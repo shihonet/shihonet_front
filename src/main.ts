@@ -31,16 +31,12 @@ axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-Csrf-Token";
 axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 
-// ログインユーザーの情報を取得
-const userSessionsStore = useUserSessionsStore();
-await userSessionsStore.requestGetUserSessions();
-
 // Axiosのインターセプターを設定
 axios.interceptors.request.use(
   (config) => {
-    const token = userSessionsStore.getJwtToken;
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
+    const jwtToken = localStorage.getItem("shihonet-token");
+    if (jwtToken) {
+      config.headers["Authorization"] = `Bearer ${jwtToken}`;
     }
     return config;
   },
@@ -48,3 +44,7 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+// ログインユーザーの情報を取得
+const userSessionsStore = useUserSessionsStore();
+await userSessionsStore.requestGetUserSessions();

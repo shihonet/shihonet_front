@@ -4,7 +4,6 @@ export interface User {
   email: string | undefined;
   displayName: string | undefined;
   lastLoggedInAt: string | undefined;
-  jwtToken: string | undefined;
 }
 
 export interface ApiResponseUser {
@@ -13,5 +12,4 @@ export interface ApiResponseUser {
   email: string | undefined;
   display_name: string | undefined;
   last_logged_in_at: string | undefined;
-  jwt_token: string;
 }

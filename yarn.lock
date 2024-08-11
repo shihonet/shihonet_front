@@ -1210,7 +1210,7 @@
 
 "@primevue/themes@^4.0.4":
   version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@primevue/themes/-/themes-4.0.4.tgz#2d885b39a1496d08e2e6741442b58a48225d0724"
+  resolved "https://registry.npmjs.org/@primevue/themes/-/themes-4.0.4.tgz"
   integrity sha512-eknRgSo1KQY+r7LEtb/jERhVHq4/Vlu5BKBQ8/Sc/G3DBDHaeJTDqYHWWoTxdaTJkXbC2pJMKFaJ/Vs7LuoIOw==
   dependencies:
     "@primeuix/styled" "^0.0.5"

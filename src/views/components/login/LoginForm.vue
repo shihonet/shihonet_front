@@ -1,13 +1,13 @@
 <template>
   <div class="mt-5">
     <input
-      class="h-12 px-4 border rounded-lg w-full"
+      class="h-12 px-4 border rounded-lg w-full bg-white"
       type="text"
       placeholder="メールアドレス"
       v-model="email"
     />
     <input
-      class="mt-4 h-12 px-4 border rounded-lg w-full"
+      class="mt-4 h-12 px-4 border rounded-lg w-full bg-white"
       type="password"
       placeholder="パスワード"
       v-model="password"
@@ -24,8 +24,7 @@
 
 <script setup lang="ts">
 import BaseButton from "@/views/components/common/BaseButton.vue";
-import { ref, computed, onMounted } from "vue";
-import { useLoginStore } from "@/stores/loginStore";
+import { ref, computed } from "vue";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 import { useOpenStore } from "@/stores/openStore";
@@ -35,10 +34,8 @@ const openStore = useOpenStore();
 
 const email = ref("");
 const password = ref("");
-const loginStore = useLoginStore();
-const isLoading = computed(() => loginStore.getIsLoading);
-const error = computed(() => loginStore.getError);
-const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
+const isLoading = computed(() => userSessionsStore.getIsLoading);
+const error = computed(() => userSessionsStore.getError);
 
 const passwordPattern = /^.{4,}$/;
 
@@ -70,21 +67,12 @@ const isDisableLoginButton = computed(() => {
 const requestLogin = async () => {
   if (isDisableLoginButton.value) return;
 
-  await loginStore.requestLogin(email.value, password.value);
-  await userSessionsStore.requestGetUserSessions();
+  await userSessionsStore.requestLogin(email.value, password.value);
   if (!error.value) {
-    router.push("/blogs");
+    await router.push("/blogs");
     openStore.setToast("success", "ログインしました");
   } else {
     openStore.setToast("error", error.value);
   }
 };
-
-onMounted(async () => {
-  await userSessionsStore.requestGetUserSessions();
-  if (isLoggedIn.value) {
-    router.push("/blogs");
-    openStore.setToast("success", "すでにログインしています");
-  }
-});
 </script>

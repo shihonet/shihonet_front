@@ -2,16 +2,17 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 import router from "@/router";
+import { useOpenStore } from "@/stores/openStore";
 
 export const useBlogShowStore = defineStore("blogShow", {
   state: () => ({
     blog: {
       id: 0,
-      title: '',
-      publishedAt: '',
-      content: '',
+      title: "",
+      publishedAt: "",
+      content: "",
       imageUrls: [],
-      blogUrl: '',
+      blogUrl: "",
       isFavorite: false,
     } as Blog,
     isLoading: false,
@@ -39,7 +40,7 @@ export const useBlogShowStore = defineStore("blogShow", {
           isFavorite: response.data.is_favorite,
         };
       } catch (error) {
-        router.push('/blogs');
+        router.push("/blogs");
         console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;
@@ -48,6 +49,13 @@ export const useBlogShowStore = defineStore("blogShow", {
 
     updateIsFavoriteState() {
       this.blog.isFavorite = !this.blog.isFavorite;
+      const openStore = useOpenStore();
+      openStore.setToast(
+        "success",
+        this.blog.isFavorite
+          ? "お気に入りに登録しました。"
+          : "お気に入りを解除しました。"
+      );
     },
   },
 });

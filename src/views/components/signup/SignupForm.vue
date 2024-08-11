@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <input
-      class="h-12 px-4 border rounded-lg w-full"
+      class="h-12 px-4 border rounded-lg w-full bg-white"
       type="text"
       placeholder="メールアドレス"
       v-model="email"
@@ -10,7 +10,7 @@
       無効なメールアドレスです。
     </p>
     <input
-      class="mt-4 h-12 px-4 border rounded-lg w-full"
+      class="mt-4 h-12 px-4 border rounded-lg w-full bg-white"
       type="password"
       placeholder="パスワード"
       v-model="password"
@@ -19,7 +19,7 @@
       パスワードは8文字以上で、アルファベットと数字を含む必要があります。使用できる特殊文字は「!@#$%^&*」です。
     </p>
     <input
-      class="mt-4 h-12 px-4 border rounded-lg w-full"
+      class="mt-4 h-12 px-4 border rounded-lg w-full bg-white"
       type="password"
       placeholder="パスワード（確認用）"
       v-model="passwordConfirmation"

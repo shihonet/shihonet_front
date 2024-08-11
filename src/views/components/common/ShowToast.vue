@@ -1,5 +1,5 @@
 <template>
-  <Toast position="top-center" />
+  <Toast position="top-center" class="max-w-[320px]" />
 </template>
 
 <script setup lang="ts">
