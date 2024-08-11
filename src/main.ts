@@ -11,13 +11,10 @@ import Toast from "primevue/toast";
 import "primeicons/primeicons.css";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 import VueCookies from "vue3-cookies";
-import { useCookies } from "vue3-cookies";
 
 // INFO: store 永続化の persist の追加
 const pinia = createPinia();
 pinia.use(createPersistedState());
-
-const { cookies } = useCookies();
 
 createApp(App)
   .use(router)
@@ -42,7 +39,7 @@ const userSessionsStore = useUserSessionsStore();
 // Axiosのインターセプターを設定
 axios.interceptors.request.use(
   (config) => {
-    const token = cookies.get("shihonet_jwt_token");
+    const token = getCookieValue("shihonet_jwt_token");
     console.log("token: ", token);
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
@@ -55,3 +52,12 @@ axios.interceptors.request.use(
 );
 
 await userSessionsStore.requestGetUserSessions();
+
+const getCookieValue = (name: string): string | undefined => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) {
+    return parts.pop()?.split(";").shift();
+  }
+  return undefined;
+};
