@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import { computed } from "vue";
+import { useOpenStore } from "@/stores/openStore";
 
 type State = {
   blogs: Blog[];
@@ -74,8 +74,15 @@ export const useBlogsStore = defineStore("blogs", {
 
     updateIsFavoriteState(blogId: number) {
       const blog = this.blogs.find((blog) => blog.id === blogId);
+      const openStore = useOpenStore();
       if (blog) {
         blog.isFavorite = !blog.isFavorite;
+        openStore.setToast(
+          "success",
+          blog.isFavorite
+            ? "お気に入りに登録しました。"
+            : "お気に入りを解除しました。"
+        );
       }
     },
 
