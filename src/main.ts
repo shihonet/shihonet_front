@@ -1,4 +1,4 @@
-import { createApp, onMounted } from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
@@ -10,10 +10,14 @@ import ToastService from "primevue/toastservice";
 import Toast from "primevue/toast";
 import "primeicons/primeicons.css";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import VueCookies from "vue3-cookies";
+import { useCookies } from "vue3-cookies";
 
 // INFO: store 永続化の persist の追加
 const pinia = createPinia();
 pinia.use(createPersistedState());
+
+const { cookies } = useCookies();
 
 createApp(App)
   .use(router)
@@ -23,6 +27,7 @@ createApp(App)
       preset: Aura,
     },
   })
+  .use(VueCookies)
   .use(ToastService)
   .component("Toast", Toast)
   .mount("#app");
@@ -37,7 +42,7 @@ const userSessionsStore = useUserSessionsStore();
 // Axiosのインターセプターを設定
 axios.interceptors.request.use(
   (config) => {
-    const token = userSessionsStore.getJwtToken;
+    const token = cookies.get("shihonet_jwt_token");
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }

@@ -34,7 +34,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
   actions: {
     async requestGetUserSessions() {
       const { cookies } = useCookies();
-      const token = cookies.get("jwt_token");
+      const token = cookies.get("shihonet_jwt_token");
       if (!token) return;
 
       try {
