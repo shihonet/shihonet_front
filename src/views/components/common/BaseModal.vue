@@ -33,6 +33,11 @@ const closeModal = () => {
 const isModalOpen = computed(() => baseModalStore.getIsModalOpen);
 
 onMounted(() => {
+  const hasVisited = computed(() => baseModalStore.getHasVisited);
+  if (hasVisited.value) return;
+
+  baseModalStore.setHasVisited(true);
+
   const userSessionsStore = useUserSessionsStore();
   const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
