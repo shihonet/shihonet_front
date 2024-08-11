@@ -35,7 +35,9 @@ export const useUserSessionsStore = defineStore("userSessions", {
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
         this.setSessionUserData(response.data);
+        this.isLoggedIn = true;
       } catch (error) {
+        this.isLoggedIn = false;
         console.error("Error fetching data:", error);
       }
     },
@@ -55,6 +57,7 @@ export const useUserSessionsStore = defineStore("userSessions", {
         const jwtToken = response.headers['authorization'].split(' ')[1];
         localStorage.setItem('shihonet-token', jwtToken);
         this.setSessionUserData(response.data);
+        this.isLoggedIn = true;
         this.error = undefined;
       } catch (error: any) {
         this.error = error.response?.data.error;

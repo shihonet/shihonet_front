@@ -39,7 +39,6 @@ await userSessionsStore.requestGetUserSessions();
 axios.interceptors.request.use(
   (config) => {
     const jwtToken = localStorage.getItem("shihonet-token");
-    console.log("jwtToken: ", jwtToken);
     if (jwtToken) {
       config.headers["Authorization"] = `Bearer ${jwtToken}`;
     }
