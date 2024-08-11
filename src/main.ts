@@ -43,6 +43,7 @@ const userSessionsStore = useUserSessionsStore();
 axios.interceptors.request.use(
   (config) => {
     const token = cookies.get("shihonet_jwt_token");
+    console.log("token: ", token);
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
