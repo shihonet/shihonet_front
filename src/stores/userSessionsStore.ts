@@ -32,11 +32,6 @@ export const useUserSessionsStore = defineStore("userSessions", {
 
   actions: {
     async requestGetUserSessions() {
-      // TODO: ここでクッキーを使ってトークンを取得する処理を書く（useCookies()を使わないで）
-      // const { cookies } = useCookies();
-      // const token = cookies.get("shihonet_jwt_token");
-      // if (!token) return;
-
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
         this.setSessionUserData(response.data);
@@ -57,6 +52,8 @@ export const useUserSessionsStore = defineStore("userSessions", {
           email: email,
           password: password,
         });
+        const jwtToken = response.headers['authorization'].split(' ')[1];
+        localStorage.setItem('shihonet-token', jwtToken);
         this.setSessionUserData(response.data);
         this.error = undefined;
       } catch (error: any) {

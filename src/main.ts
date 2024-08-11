@@ -33,14 +33,14 @@ axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 
 // ログインユーザーの情報を取得
 const userSessionsStore = useUserSessionsStore();
+await userSessionsStore.requestGetUserSessions();
 
 // Axiosのインターセプターを設定
 axios.interceptors.request.use(
   (config) => {
-    const token = getCookieValue("shihonet_jwt_token");
-    console.log("token: ", token);
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
+    const jwtToken = localStorage.getItem("shihonet-token");
+    if (jwtToken) {
+      config.headers["Authorization"] = `Bearer ${jwtToken}`;
     }
     return config;
   },
@@ -48,14 +48,3 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-await userSessionsStore.requestGetUserSessions();
-
-const getCookieValue = (name: string): string | undefined => {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) {
-    return parts.pop()?.split(";").shift();
-  }
-  return undefined;
-};
