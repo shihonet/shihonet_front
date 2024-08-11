@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { User, ApiResponseUser } from "@/types/userSessionsTypes";
-import { useCookies } from "vue3-cookies";
 
 interface UserSession extends User {
   isLoggedIn: boolean;
@@ -33,9 +32,10 @@ export const useUserSessionsStore = defineStore("userSessions", {
 
   actions: {
     async requestGetUserSessions() {
-      const { cookies } = useCookies();
-      const token = cookies.get("shihonet_jwt_token");
-      if (!token) return;
+      // TODO: ここでクッキーを使ってトークンを取得する処理を書く（useCookies()を使わないで）
+      // const { cookies } = useCookies();
+      // const token = cookies.get("shihonet_jwt_token");
+      // if (!token) return;
 
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
