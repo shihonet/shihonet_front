@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
+import { computed } from "vue";
 
 type State = {
   blogs: Blog[];
@@ -34,20 +35,24 @@ export const useBlogsStore = defineStore("blogs", {
       this.currentPage = page;
       this.isLoading = true;
       const userSessionsStore = useUserSessionsStore();
-      const isLoggedIn = userSessionsStore.getIsLoggedIn;
-      let url = "/api/blogs"; // isFavoriteなしのブログ一覧
-      if (isFavoriteOnly) {
-        url = "/api/favorite_blogs"; // isFavoriteありのお気に入りブログ一覧
-      } else if (isLoggedIn) {
-        url = "/api/blogs_with_login"; // isFavoriteありのブログ一覧
-      }
       try {
+        await userSessionsStore.requestGetUserSessions();
+        const isLoggedIn = userSessionsStore.getIsLoggedIn;
+
+        let url = "/api/blogs"; // isFavoriteなしのブログ一覧
+        if (isFavoriteOnly) {
+          url = "/api/favorite_blogs"; // isFavoriteありのお気に入りブログ一覧
+        } else if (isLoggedIn) {
+          url = "/api/blogs_with_login"; // isFavoriteありのブログ一覧
+        }
+
         const response = await axios.get(url, {
           params: {
             page: this.currentPage,
             limit: 15,
           },
         });
+
         this.blogs = response.data.blogs.map((blog: ApiResponseBlog): Blog => {
           return {
             id: blog.id,

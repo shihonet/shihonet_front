@@ -54,8 +54,8 @@ export const useUserSessionsStore = defineStore("userSessions", {
           email: email,
           password: password,
         });
-        const jwtToken = response.headers['authorization'].split(' ')[1];
-        localStorage.setItem('shihonet-token', jwtToken);
+        const jwtToken = response.headers["authorization"].split(" ")[1];
+        localStorage.setItem("shihonet-token", jwtToken);
         this.setSessionUserData(response.data);
         this.isLoggedIn = true;
         this.error = undefined;
