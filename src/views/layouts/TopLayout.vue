@@ -1,6 +1,7 @@
 <template>
   <BaseModal>
     <!-- モーダル内部の要素 -->
+    <img src="@/assets/images/20240812_release_info.png" />
   </BaseModal>
 
   <FadeInOnScroll>

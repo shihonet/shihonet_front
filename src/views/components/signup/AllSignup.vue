@@ -9,7 +9,7 @@
       <div class="mt-6 text-[14px] text-left">
         <p>「#shihonet club」へログインすると、</p>
         <p class="mt-2">・ブログをお気に入りにできる</p>
-        <p>・寄せ書きを投稿できる</p>
+        <p>・寄せ書きを投稿できる（絶賛実装予定）</p>
         <p class="mt-2">以上の機能をご利用いただくことができます。</p>
         <p class="underline">
           （サイト内にて、一切の費用がかかることはございません）
