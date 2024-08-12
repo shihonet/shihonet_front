@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, onMounted } from "vue";
+import { computed, defineProps, onMounted, ref, withDefaults } from "vue";
 import {
   WaitingForLoading,
   FavoriteFloatingActionButton,
@@ -52,19 +52,26 @@ import { useBlogShowStore } from "@/stores/blogShowStore";
 import { useFavoriteBlogsStore } from "@/stores/favoriteBlogsStore";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
 
+const props = withDefaults(
+  defineProps<{
+    id: number;
+  }>(),
+  {
+    id: 0,
+  }
+);
+
 const blogShowStore = useBlogShowStore();
 const favoriteBlogsStore = useFavoriteBlogsStore();
 const userSessionsStore = useUserSessionsStore();
 
-const props = defineProps<{
-  id: number;
-}>();
+const isLoggedIn = ref(false);
 
-onMounted(() => {
-  blogShowStore.requestFetchBlog(props.id);
+onMounted(async () => {
+  await userSessionsStore.requestGetUserSessions();
+  isLoggedIn.value = userSessionsStore.getIsLoggedIn;
+  await blogShowStore.requestFetchBlog(props.id, isLoggedIn.value);
 });
-
-const isLoggedIn = userSessionsStore.getIsLoggedIn;
 
 // テキスト中のURLをリンクに変換する
 const formatContent = (content: string): string => {
