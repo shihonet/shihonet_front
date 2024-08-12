@@ -35,6 +35,7 @@
         <div class="mt-3 flex justify-end items-end">
           <RouterLink
             :to="`/blogs/${props.id}`"
+            :isLoggedin="isLoggedIn"
             class="text-blue-500 text-sm underline text-right hover:cursor-pointer"
           >
             See more ＞

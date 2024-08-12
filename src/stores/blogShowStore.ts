@@ -25,11 +25,13 @@ export const useBlogShowStore = defineStore("blogShow", {
   },
 
   actions: {
-    async requestFetchBlog(id: number) {
+    async requestFetchBlog(id: number, isLoggedIn: boolean = false) {
       window.scrollTo(0, 0);
       this.isLoading = true;
       try {
-        const response = await axios.get<ApiResponseBlog>(`/api/blogs/${id}`);
+        const response = await axios.get<ApiResponseBlog>(
+          isLoggedIn ? `/api/blog_with_login/${id}` : `/api/blogs/${id}`
+        );
         this.blog = {
           id: response.data.id,
           title: response.data.title,
@@ -40,7 +42,7 @@ export const useBlogShowStore = defineStore("blogShow", {
           isFavorite: response.data.is_favorite,
         };
       } catch (error) {
-        router.push("/blogs");
+        await router.push("/blogs");
         console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;
