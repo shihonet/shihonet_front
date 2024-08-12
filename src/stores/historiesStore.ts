@@ -23,7 +23,7 @@ export const useHistoriesStore = defineStore("histories", {
 
   actions: {
     async requestGetHistories() {
-      this.isLoading = true; // 読み込み開始
+      this.isLoading = true;
       try {
         const response = await axios.get("/api/histories", {
           params: {
@@ -38,10 +38,10 @@ export const useHistoriesStore = defineStore("histories", {
             categoryName: history.category_name,
           };
         });
-        this.isLoading = false; // 読み込み終了
       } catch (error) {
-        console.error("Error fetching data:", error);
-        this.isLoading = false; // 読み込み終了
+        // error handling
+      } finally {
+        this.isLoading = false;
       }
     },
 

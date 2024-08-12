@@ -25,8 +25,8 @@ export const useSignupStore = defineStore("signup", {
      * @param passwordConfirmation
      */
     async requestSignup(email: string, password: string, passwordConfirmation: string) {
+      this.isLoading = true;
       try {
-        this.isLoading = true;
         await axios.post<null>("/api/users/signup", {
           email: email,
           password: password,

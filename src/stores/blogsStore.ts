@@ -32,8 +32,8 @@ export const useBlogsStore = defineStore("blogs", {
   actions: {
     async requestGetBlogs(page: number, isFavoriteOnly: boolean = false) {
       window.scrollTo(0, 0);
-      this.currentPage = page;
       this.isLoading = true;
+      this.currentPage = page;
       const userSessionsStore = useUserSessionsStore();
       try {
         await userSessionsStore.requestGetUserSessions();
@@ -66,7 +66,7 @@ export const useBlogsStore = defineStore("blogs", {
         });
         this.totalPage = response.data.pagination.pages;
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // error handling
       } finally {
         this.isLoading = false;
       }
@@ -74,15 +74,8 @@ export const useBlogsStore = defineStore("blogs", {
 
     updateIsFavoriteState(blogId: number) {
       const blog = this.blogs.find((blog) => blog.id === blogId);
-      const openStore = useOpenStore();
       if (blog) {
         blog.isFavorite = !blog.isFavorite;
-        openStore.setToast(
-          "success",
-          blog.isFavorite
-            ? "お気に入りに登録しました。"
-            : "お気に入りを解除しました。"
-        );
       }
     },
 

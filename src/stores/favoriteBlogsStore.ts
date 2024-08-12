@@ -18,11 +18,18 @@ export const useFavoriteBlogsStore = defineStore("favoriteBlogs", {
       const blogsStore = useBlogsStore();
       const openStore = useOpenStore();
       try {
-        await axios.put(`/api/favorite_blogs/${blogId}`);
         blogsStore.updateIsFavoriteState(blogId);
+        await axios.put(`/api/favorite_blogs/${blogId}`);
+        openStore.setToast(
+          "success",
+          blogsStore.getBlogs.find((blog) => blog.id === blogId)?.isFavorite
+            ? "お気に入りに登録しました。"
+            : "お気に入りを解除しました。"
+        );
       } catch (error) {
+        // 失敗時はお気に入り状態を元に戻す
+        blogsStore.updateIsFavoriteState(blogId);
         openStore.setToast("error", "お気に入り登録に失敗しました。");
-        console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;
       }
@@ -36,11 +43,17 @@ export const useFavoriteBlogsStore = defineStore("favoriteBlogs", {
       const blogShowStore = useBlogShowStore();
       const openStore = useOpenStore();
       try {
-        await axios.put(`/api/favorite_blogs/${blogId}`);
         blogShowStore.updateIsFavoriteState();
+        await axios.put(`/api/favorite_blogs/${blogId}`);
+        openStore.setToast(
+          "success",
+          blogShowStore.getBlog.isFavorite
+            ? "お気に入りに登録しました。"
+            : "お気に入りを解除しました。"
+        );
       } catch (error) {
+        blogShowStore.updateIsFavoriteState(); // 失敗時はお気に入り状態を元に戻す
         openStore.setToast("error", "お気に入り登録に失敗しました。");
-        console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;
       }
