@@ -43,7 +43,6 @@ export const useBlogShowStore = defineStore("blogShow", {
         };
       } catch (error) {
         await router.push("/blogs");
-        console.error("Error fetching data:", error);
       } finally {
         this.isLoading = false;
       }
@@ -51,13 +50,6 @@ export const useBlogShowStore = defineStore("blogShow", {
 
     updateIsFavoriteState() {
       this.blog.isFavorite = !this.blog.isFavorite;
-      const openStore = useOpenStore();
-      openStore.setToast(
-        "success",
-        this.blog.isFavorite
-          ? "お気に入りに登録しました。"
-          : "お気に入りを解除しました。"
-      );
     },
   },
 });

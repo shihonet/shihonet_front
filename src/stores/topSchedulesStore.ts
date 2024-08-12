@@ -19,6 +19,7 @@ export const useTopSchedulesStore = defineStore("topSchedules", {
 
   actions: {
     async requestGetTopSchedules() {
+      this.isLoading = true;
       try {
         const response = await axios.get("/api/schedules", {
           params: {
@@ -27,17 +28,21 @@ export const useTopSchedulesStore = defineStore("topSchedules", {
             limit: 5,
           },
         });
-        this.schedules = response.data.schedules.map((schedule: ApiResponseSchedule): Schedule => {
-          return {
-            name: schedule.name,
-            urlPath: schedule.url_path,
-            startedDate: schedule.started_date,
-            categoryName: schedule.category_name,
-          };
-        });
+        this.schedules = response.data.schedules.map(
+          (schedule: ApiResponseSchedule): Schedule => {
+            return {
+              name: schedule.name,
+              urlPath: schedule.url_path,
+              startedDate: schedule.started_date,
+              categoryName: schedule.category_name,
+            };
+          }
+        );
         this.isSchedulePresent = this.schedules.length > 0;
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // error handling
+      } finally {
+        this.isLoading = false;
       }
     },
   },

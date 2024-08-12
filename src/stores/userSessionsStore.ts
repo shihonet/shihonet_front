@@ -32,13 +32,15 @@ export const useUserSessionsStore = defineStore("userSessions", {
 
   actions: {
     async requestGetUserSessions() {
+      this.isLoading = true;
       try {
         const response = await axios.get<ApiResponseUser>("/api/user_sessions");
         this.setSessionUserData(response.data);
         this.isLoggedIn = true;
       } catch (error) {
         this.isLoggedIn = false;
-        console.error("Error fetching data:", error);
+      } finally {
+        this.isLoading = false;
       }
     },
 
@@ -48,8 +50,8 @@ export const useUserSessionsStore = defineStore("userSessions", {
      * @param password
      */
     async requestLogin(email: string, password: string) {
+      this.isLoading = true;
       try {
-        this.isLoading = true;
         const response = await axios.post<ApiResponseUser>("/api/users/login", {
           email: email,
           password: password,

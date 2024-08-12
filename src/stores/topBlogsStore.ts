@@ -16,6 +16,7 @@ export const useTopBlogsStore = defineStore('topBlogs', {
 
   actions: {
     async requestGetTopBlogs() {
+      this.isLoading = true;
       try {
         const response = await axios.get("/api/blogs", {
           params: {
@@ -34,7 +35,9 @@ export const useTopBlogsStore = defineStore('topBlogs', {
           };
         });
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // error handling
+      } finally {
+        this.isLoading = false;
       }
     },
   },

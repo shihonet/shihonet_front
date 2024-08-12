@@ -24,7 +24,7 @@ export const useBaseModalStore = defineStore("baseModal", {
     },
 
     setHasVisited(hasVisited: boolean) {
-      this.hasVisited = hasVisited;
+      this.$patch({ hasVisited: hasVisited }); // sessionStorage を更新する場合は $patch を使う
     },
   },
 });
