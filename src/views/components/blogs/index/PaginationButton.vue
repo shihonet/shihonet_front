@@ -54,10 +54,10 @@ const blogsStore = useBlogsStore();
 const skipPages = 20;
 
 const currentPage = computed(() => blogsStore.getCurrentPage);
-
 const totalPage = computed(() => blogsStore.getTotalPage);
+const currentViewType = computed(() => blogsStore.getCurrentViewType);
 
 const requestGetBlogs = (page: number) => {
-  blogsStore.requestGetBlogs(page);
+  blogsStore.requestGetBlogs(page, currentViewType.value === "favorite");
 }
 </script>
