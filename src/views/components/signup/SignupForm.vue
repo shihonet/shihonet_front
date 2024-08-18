@@ -1,10 +1,11 @@
 <template>
-  <div class="mt-5">
+  <form class="mt-5">
     <input
       class="h-12 px-4 border rounded-lg w-full bg-white"
       type="text"
       placeholder="メールアドレス"
       v-model="email"
+      autocomplete="email"
     />
     <p v-if="email && !isEmailValid" class="text-error-color text-sm">
       無効なメールアドレスです。
@@ -14,6 +15,7 @@
       type="password"
       placeholder="パスワード"
       v-model="password"
+      autocomplete="new-password"
     />
     <p v-if="password && !isPasswordValid" class="text-error-color text-sm">
       パスワードは8文字以上で、アルファベットと数字を含む必要があります。使用できる特殊文字は「!@#$%^&*」です。
@@ -30,7 +32,7 @@
     >
       パスワードが一致しません
     </p>
-  </div>
+  </form>
   <BaseButton
     @click="requestSignup"
     class="mt-10"
