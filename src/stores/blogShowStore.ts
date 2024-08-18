@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 import router from "@/router";
-import { useOpenStore } from "@/stores/openStore";
 
 export const useBlogShowStore = defineStore("blogShow", {
   state: () => ({

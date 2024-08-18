@@ -49,7 +49,7 @@ import { FadeInOnScroll, ChangeFontToCaveat } from "@/views/components/common";
 import { SignupForm } from "@/views/components/signup";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import { useOpenStore } from "@/stores/openStore";
+import { useOpenStore } from "@/stores/common/openStore";
 
 const signupStore = useSignupStore();
 const userSessionsStore = useUserSessionsStore();

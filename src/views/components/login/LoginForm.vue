@@ -27,7 +27,7 @@ import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import { useOpenStore } from "@/stores/openStore";
+import { useOpenStore } from "@/stores/common/openStore";
 
 const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();

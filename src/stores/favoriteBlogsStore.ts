@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { useBlogsStore } from "@/stores/blogsStore";
 import { useBlogShowStore } from "@/stores/blogShowStore";
-import { useOpenStore } from "@/stores/openStore";
+import { useOpenStore } from "@/stores/common/openStore";
 
 export const useFavoriteBlogsStore = defineStore("favoriteBlogs", {
   state: () => ({

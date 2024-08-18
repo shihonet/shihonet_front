@@ -44,7 +44,7 @@
 import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import { useSignupStore } from "@/stores/signupStore";
-import { useOpenStore } from "@/stores/openStore";
+import { useOpenStore } from "@/stores/common/openStore";
 
 const openStore = useOpenStore();
 

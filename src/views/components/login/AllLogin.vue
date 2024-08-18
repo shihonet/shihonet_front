@@ -31,7 +31,7 @@ import { LoginForm } from "@/views/components/login";
 import { computed, onMounted } from "vue";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import { useOpenStore } from "@/stores/openStore";
+import { useOpenStore } from "@/stores/common/openStore";
 
 const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();
