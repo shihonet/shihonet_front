@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { Blog, ApiResponseBlog } from "@/types/blogsTypes";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import { useOpenStore } from "@/stores/openStore";
 
 type State = {
   blogs: Blog[];

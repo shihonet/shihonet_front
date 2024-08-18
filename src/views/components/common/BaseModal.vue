@@ -44,9 +44,9 @@ onMounted(() => {
   // INFO: 以下全ては、表示する条件文内のみ変更して良い。基本的に触らない。
   const today = new Date();
   const currentMonth = today.getMonth() + 1; // getMonth()メソッドは0から11の整数を返す。1月は0、2月は1、…、12月は11。
-  // const currentDate = today.getDate();
+  const currentDate = today.getDate();
   // TODO: ここでモーダルを表示させる日付を指定する。
-  if (currentMonth === 8 && !isLoggedIn.value) {
+  if (currentMonth === 8 && currentDate <= 20 && !isLoggedIn.value) {
     baseModalStore.setIsModalOpen(true);
   }
 

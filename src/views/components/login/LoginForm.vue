@@ -1,18 +1,20 @@
 <template>
-  <div class="mt-5">
+  <form class="mt-5">
     <input
       class="h-12 px-4 border rounded-lg w-full bg-white"
       type="text"
       placeholder="メールアドレス"
       v-model="email"
+      autocomplete="email"
     />
     <input
       class="mt-4 h-12 px-4 border rounded-lg w-full bg-white"
       type="password"
       placeholder="パスワード"
       v-model="password"
+      autocomplete="current-password"
     />
-  </div>
+  </form>
   <BaseButton
     @click="requestLogin"
     class="mt-10"
@@ -27,7 +29,7 @@ import BaseButton from "@/views/components/common/BaseButton.vue";
 import { ref, computed } from "vue";
 import router from "@/router";
 import { useUserSessionsStore } from "@/stores/userSessionsStore";
-import { useOpenStore } from "@/stores/openStore";
+import { useOpenStore } from "@/stores/common/openStore";
 
 const userSessionsStore = useUserSessionsStore();
 const openStore = useOpenStore();
