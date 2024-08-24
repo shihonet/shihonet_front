@@ -40,16 +40,30 @@
           テーマパーク、映画、アニメ、<br />小さいフィギュア集め
         </td>
       </tr>
+      <tr>
+        <td class="p-1.5 pr-5">外仕事</td>
+        <td class="p-1.5">
+          <a
+            href="https://cancam.jp/archives/category/model/shihokato"
+            class="text-blue-500 hover:underline"
+            target="_blank"
+            >CanCam専属モデル</a
+          >（2019/4〜）
+        </td>
+      </tr>
       <tr class="h-6"></tr>
       <tr>
         <td class="p-1.5 pr-5">ＳＮＳ</td>
         <td class="p-1.5">
           <div class="w-6">
             <a
-                href="https://www.instagram.com/katoshi.official/"
-                target="_blank"
+              href="https://www.instagram.com/katoshi.official/"
+              target="_blank"
             >
-              <i class="mr-2 pi pi-instagram" style="color: black; font-size: 28px"></i>
+              <i
+                class="mr-2 pi pi-instagram"
+                style="color: black; font-size: 28px"
+              ></i>
             </a>
           </div>
         </td>
@@ -92,9 +106,12 @@
 <script setup lang="ts">
 import { withDefaults, defineProps } from "vue";
 
-const props = withDefaults(defineProps<{
-  isNeededDetailProf: boolean;
-}>(), {
-  isNeededDetailProf: true
-});
+const props = withDefaults(
+  defineProps<{
+    isNeededDetailProf: boolean;
+  }>(),
+  {
+    isNeededDetailProf: true,
+  }
+);
 </script>

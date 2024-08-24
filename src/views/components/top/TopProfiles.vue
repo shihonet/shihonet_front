@@ -1,13 +1,17 @@
 <template>
   <div class="mx-6">
     <FadeInOnScroll>
-      <div class="mt-40 mb-10 mx-10">
-        <TitlePart title="Profiles" />
+      <div class="mt-40 mx-10">
+        <TitlePart title="Shiho Kato" />
       </div>
-      <p class="text-center text-[12px] font-light">Shiho Kato</p>
-      <p class="mt-1 text-center text-[20px]">加藤 史帆</p>
-      <p class="mt-4 text-center text-light text-site-color text-sm">日向坂46 一期生</p>
-      <img src="@/assets/images/11th_shiho.png" class="mt-4 mx-auto w-[220px]" />
+      <p class="mt-10 text-center text-light text-site-color text-sm">
+        日向坂46 一期生
+      </p>
+      <p class="mt-4 text-center text-[20px]">加藤 史帆</p>
+      <img
+        src="https://cdn.hinatazaka46.com/images/14/610/d713c2e65eee8fa173ef6c62d0d49/800_800_102400.jpg"
+        class="mt-4 mx-auto w-[220px]"
+      />
     </FadeInOnScroll>
 
     <FadeInOnScroll>
@@ -47,5 +51,10 @@
 </template>
 
 <script setup lang="ts">
-import { FadeInOnScroll, TitlePart, MoreView, ProfileTable } from "@/views/components/common";
+import {
+  FadeInOnScroll,
+  TitlePart,
+  MoreView,
+  ProfileTable,
+} from "@/views/components/common";
 </script>
