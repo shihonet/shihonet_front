@@ -7,7 +7,7 @@
       <p class="text-center text-[12px] font-light">Shiho Kato</p>
       <p class="mt-1 text-center text-[20px]">加藤 史帆</p>
       <p class="mt-4 text-center text-light text-site-color text-sm">日向坂46 一期生</p>
-      <img src="@/assets/images/11th_shiho.png" class="mt-4 mx-auto w-[220px]" />
+      <img src="@/assets/images/12th_artist_img.png" class="mt-4 mx-auto w-[220px]" />
     </FadeInOnScroll>
 
     <FadeInOnScroll>
