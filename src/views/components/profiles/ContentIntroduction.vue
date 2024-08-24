@@ -284,12 +284,10 @@
             （MBSテレビ系列）放送開始予定！！<br />
             ラブコメディドラマ。主人公・彩香役として、弘子先輩（演：森カンナさん）を一途に想う、不器用ながらも真っ直ぐで可愛らしい役を演じる。
           </p>
-          <div class="mt-4">
+          <div class="m-4">
             <a href="https://www.mbs.jp/ayahiro/blu-ray.shtml" target="_blank">
-              <div
-                class="mx-4 py-2 bg-red-200 rounded-md text-white font-black text-center"
-              >
-                2025年2月14日<br />Blu-ray & DVD BOX 発売決定！🎉
+              <div class="p-2 bg-red-200 rounded-md text-white font-black text-center">
+                2025年2月14日<br>Blu-ray & DVD BOX 発売決定！🎉
               </div>
             </a>
           </div>
@@ -328,7 +326,8 @@
               href="https://www.hinatazaka46.com/s/official/diary/detail/56834?ima=0000&cd=member"
               class="text-site-color hover:underline"
               >日向坂46 公式ブログ</a
-            > にて、12thシングルの活動をもって卒業することを発表。
+            >
+            にて、12thシングルの活動をもって卒業することを発表。
           </p>
         </div>
       </div>
