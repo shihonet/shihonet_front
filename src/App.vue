@@ -42,7 +42,7 @@ onMounted(() => {
 }
 
 .v-enter-active, .v-leave-active {
-  transition: opacity 1s ease 1.0s; /* 2秒遅延してから1秒かけてフェードアウト */
+  transition: opacity 1s ease 1.5s; /* 遅延してから1秒かけてフェードアウト */
 }
 .v-enter-from, .v-leave-to {
   opacity: 0;
