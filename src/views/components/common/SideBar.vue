@@ -23,7 +23,7 @@
     <div class="flex justify-between pl-4 bg-white">
       <div class="ml-2 my-1">
         <RouterLink to="/" @click="toggleSidebar">
-          <img src="@/assets/images/header_logo.svg" class="w-[160px]" />
+          <img src="@/assets/images/shihonet_logo.svg" class="w-[160px]" />
         </RouterLink>
       </div>
       <div class="flex items-center mr-4">

@@ -1,8 +1,7 @@
 <template>
-  <BaseModal>
-    <!-- モーダル内部の要素 -->
-    <img src="@/assets/images/20240812_release_info.png" />
-  </BaseModal>
+  <!--  <BaseModal> -->
+  <!--    モーダル内部の要素 -->
+  <!--  </BaseModal> -->
 
   <FadeInOnScroll>
     <img src="@/assets/images/top_image.png" />
@@ -13,6 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { FadeInOnScroll, BaseModal } from "@/views/components/common";
+import { FadeInOnScroll /**BaseModal*/ } from "@/views/components/common";
 import { TopProfiles, TopBlogs, TopSchedules } from "@/views/components/top";
 </script>

@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <Transition>
+      <div v-if="show" class="fixed z-[9999] h-full bg-white flex justify-center items-center">
+        <img src="@/assets/images/shihonet_ogp.png" class="w-full" />
+      </div>
+    </Transition>
+
     <ShowToast />
     <PageHeader />
     <RouterView></RouterView>
@@ -10,6 +16,13 @@
 <script setup lang="ts">
 import "./index.css";
 import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
+import { onMounted, ref } from "vue";
+
+const show = ref(true);
+
+onMounted(() => {
+  show.value = false;
+});
 </script>
 
 <style>
@@ -26,6 +39,13 @@ import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
   -moz-osx-font-smoothing: grayscale;
   color: #333;
   background-color: #f4faff;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: opacity 1s ease 1.0s; /* 2秒遅延してから1秒かけてフェードアウト */
+}
+.v-enter-from, .v-leave-to {
+  opacity: 0;
 }
 
 .text-site-color {
