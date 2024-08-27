@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Transition>
-      <div v-if="show" class="fixed z-[9999] h-full bg-white flex justify-center items-center">
+      <div v-if="show" class="max-w-[480px] fixed z-[9999] h-full bg-white flex justify-center items-center">
         <img src="@/assets/images/shihonet_ogp.png" class="w-full" />
       </div>
     </Transition>
