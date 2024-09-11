@@ -7,6 +7,7 @@ import ProfilesLayout from "@/views/layouts/ProfilesLayout.vue";
 import SignupLayout from "@/views/layouts/SignupLayout.vue";
 import ThanksPostLayout from "@/views/layouts/ThanksPostLayout.vue";
 import TopLayout from "@/views/layouts/TopLayout.vue";
+import MessageFormLayout from "@/views/layouts/graduation/MessageFormLayout.vue";
 
 export {
   AboutLayout,
@@ -18,4 +19,5 @@ export {
   SignupLayout,
   ThanksPostLayout,
   TopLayout,
+  MessageFormLayout,
 };

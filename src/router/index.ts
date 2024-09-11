@@ -13,6 +13,7 @@ import {
   BlogsShowLayout,
   LoginLayout,
   ThanksPostLayout,
+  MessageFormLayout,
 } from "@/views/layouts";
 
 const routes = [
@@ -57,6 +58,15 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginLayout,
+  },
+  {
+    path: "/graduation",
+    children: [
+      {
+        path: "form",
+        component: MessageFormLayout,
+      }
+    ]
   },
   {
     // 未定義のURLをルートにリダイレクト
