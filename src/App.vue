@@ -1,14 +1,8 @@
 <template>
   <div id="app">
-    <Transition>
-      <div v-if="show" class="max-w-[480px] fixed z-[9999] h-full bg-white flex justify-center items-center">
-        <img src="@/assets/images/shihonet_ogp.png" class="w-full" />
-      </div>
-    </Transition>
-
     <ShowToast />
     <PageHeader />
-    <RouterView></RouterView>
+    <RouterView />
     <PageFooter class="mt-40" />
   </div>
 </template>
@@ -16,13 +10,6 @@
 <script setup lang="ts">
 import "./index.css";
 import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
-import { onMounted, ref } from "vue";
-
-const show = ref(true);
-
-onMounted(() => {
-  show.value = false;
-});
 </script>
 
 <style>
