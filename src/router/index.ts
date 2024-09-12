@@ -14,7 +14,7 @@ import {
   LoginLayout,
   ThanksPostLayout,
   MessageFormLayout,
-  MessageSentVerifiedLayout,
+  PaymentMethodsLayout,
 } from "@/views/layouts";
 
 const routes = [
@@ -64,17 +64,12 @@ const routes = [
     path: "/graduation",
     children: [
       {
-        path: "messages",
-        children: [
-          {
-            path: "form/AfOT3voj",
-            component: MessageFormLayout,
-          },
-          {
-            path: "sent_verified/ORDypUSr",
-            component: MessageSentVerifiedLayout,
-          },
-        ],
+        path: "form/AfOT3voj",
+        component: MessageFormLayout,
+      },
+      {
+        path: "payment/ORDypUSr",
+        component: PaymentMethodsLayout,
       },
     ],
   },

@@ -8,7 +8,7 @@ import SignupLayout from "@/views/layouts/SignupLayout.vue";
 import ThanksPostLayout from "@/views/layouts/ThanksPostLayout.vue";
 import TopLayout from "@/views/layouts/TopLayout.vue";
 import MessageFormLayout from "@/views/layouts/graduation/MessageFormLayout.vue";
-import MessageSentVerifiedLayout from "@/views/layouts/graduation/MessageSentVerifiedLayout.vue";
+import PaymentMethodsLayout from "@/views/layouts/graduation/PaymentMethodsLayout.vue";
 
 export {
   AboutLayout,
@@ -21,5 +21,5 @@ export {
   ThanksPostLayout,
   TopLayout,
   MessageFormLayout,
-  MessageSentVerifiedLayout,
+  PaymentMethodsLayout,
 };

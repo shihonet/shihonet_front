@@ -45,10 +45,6 @@
       <p class="ml-1 text-[16px] font-bold">
         参加口数<span class="text-red-500">*</span>
       </p>
-      <ul class="mt-1 ml-5 text-gray-400 text-[12px] list-disc">
-        <li>支払い先は、送信後のページにてご確認いただけます。</li>
-        <li>期日までに支払いを完了しない場合、回答は無効となります。</li>
-      </ul>
       <select
         v-model.number="selectedAmount"
         class="mt-2 h-12 px-4 border rounded-lg w-1/2 bg-white"
@@ -66,6 +62,11 @@
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
         支払い方法<span class="text-red-500">*</span>
+      </p>
+      <p class="mt-1 ml-1 text-gray-400 text-[12px]">
+        支払い先は、送信後に表示される
+        <RouterLink to="/graduation/payment/ORDypUSr">こちら</RouterLink>
+        のページにてご確認いただけます。
       </p>
       <div class="mt-2 space-y-2">
         <label class="ml-4 flex items-center">
@@ -114,11 +115,9 @@
     </div>
 
     <div class="mt-8">
-      <p class="ml-1 text-[16px] font-bold">
-        その他コメント（任意）
-      </p>
+      <p class="ml-1 text-[16px] font-bold">その他コメント（任意）</p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        企画者へ伝えておきたいことがあれば、ご自由にご記入ください。（こちらでのご質問へのご回答はいたしかねます）
+        主催者へ伝えておきたいことがあれば、ご自由にご記入ください。（こちらでのご質問へのご回答はいたしかねます）
       </p>
       <textarea
         class="mt-2 p-4 border rounded-lg w-full bg-white"
@@ -203,7 +202,10 @@ import { ref } from "vue";
 import Checkbox from "primevue/checkbox";
 import { SummaryArea } from "@/views/components/graduation/messageForm";
 import { BaseButton } from "@/views/components/common";
-// import { useOpenStore } from "@/stores/common/openStore";
+import router from "@/router";
+import { useOpenStore } from "@/stores/common/openStore";
+
+const openStore = useOpenStore();
 
 const xAccountName = ref("");
 const contact = ref("");
@@ -231,22 +233,6 @@ const remainingWordCount = () => {
   return 100 - message.value.length;
 };
 
-const submit = () => {
-  alert(
-    "一度送信すると取り消しはできません。\nこの内容で送信してよろしいですか？"
-  );
-  console.log({
-    xAccountName: xAccountName.value,
-    contact: contact.value,
-    paymentMethod: paymentMethod.value,
-    selectedAmount: selectedAmount.value,
-    message: message.value,
-    note: note.value,
-    isApproved: isApproved.value,
-    optOutOfMessagePosting: optOutOfMessagePosting.value,
-  });
-};
-
 const isSubmitButtonDisabled = () => {
   return (
     !contact.value ||
@@ -257,7 +243,34 @@ const isSubmitButtonDisabled = () => {
   );
 };
 
-// TODO: エラートーストを表示する
-// const openStore = useOpenStore();
-// openStore.setToast("error", "あああ");
+const submit = () => {
+  alert(
+    "一度送信すると取り消しはできません。\nこの内容で送信してよろしいですか？"
+  );
+
+  // debug
+  console.log({
+    xAccountName: xAccountName.value,
+    contact: contact.value,
+    paymentMethod: paymentMethod.value,
+    selectedAmount: selectedAmount.value,
+    message: message.value,
+    note: note.value,
+    isApproved: isApproved.value,
+    optOutOfMessagePosting: optOutOfMessagePosting.value,
+  });
+
+  // TODO: POST request
+  // TODO: 失敗時はエラートーストを表示する
+  // const openStore = useOpenStore();
+  // openStore.setToast("error", "送信に失敗しました");
+
+  // TODO: 遷移先パス差し替え
+  router.push("/graduation/payment/ORDypUSr");
+  openStore.setToast(
+    "success",
+    "ご参加いただきありがとうございます！\n1週間以内にお支払いをお願いいたします！\n（支払いを完了しないと、送信した内容が無効になります）",
+    5000
+  );
+};
 </script>
