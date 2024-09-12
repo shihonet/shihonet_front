@@ -128,7 +128,7 @@
 
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
-        【重要確認】<span class="text-red-500">*</span>
+        【確認事項】<span class="text-red-500">*</span>
       </p>
       <div class="mt-1 bg-gray-100 border rounded-lg">
         <ul class="mt-1 p-3 ml-5 text-[12px] list-disc">
@@ -269,8 +269,7 @@ const submit = () => {
   router.push("/graduation/payment/ORDypUSr");
   openStore.setToast(
     "success",
-    "ご参加いただきありがとうございます！\n1週間以内にお支払いをお願いいたします！\n（支払いを完了しないと、送信した内容が無効になります）",
-    5000
+    "ご参加いただきありがとうございます！\nお支払い方法をご確認ください！",
   );
 };
 </script>
