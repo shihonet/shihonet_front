@@ -55,6 +55,10 @@ import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
   background-color: rgb(227, 227, 227);
 }
 
+.border-site-color {
+  border-color: #6197ff;
+}
+
 .text-error-color {
   color: rgb(255, 0, 0);
 }

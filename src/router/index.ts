@@ -67,11 +67,11 @@ const routes = [
         path: "messages",
         children: [
           {
-            path: "form",
+            path: "form/AfOT3voj",
             component: MessageFormLayout,
           },
           {
-            path: "sent_verified",
+            path: "sent_verified/ORDypUSr",
             component: MessageSentVerifiedLayout,
           },
         ],
