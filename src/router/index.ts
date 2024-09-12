@@ -14,6 +14,7 @@ import {
   LoginLayout,
   ThanksPostLayout,
   MessageFormLayout,
+  MessageSentVerifiedLayout,
 } from "@/views/layouts";
 
 const routes = [
@@ -63,10 +64,19 @@ const routes = [
     path: "/graduation",
     children: [
       {
-        path: "form",
-        component: MessageFormLayout,
-      }
-    ]
+        path: "messages",
+        children: [
+          {
+            path: "form",
+            component: MessageFormLayout,
+          },
+          {
+            path: "sent_verified",
+            component: MessageSentVerifiedLayout,
+          },
+        ],
+      },
+    ],
   },
   {
     // 未定義のURLをルートにリダイレクト
