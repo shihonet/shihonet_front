@@ -14,7 +14,7 @@ import {
   LoginLayout,
   ThanksPostLayout,
   MessageFormLayout,
-  PaymentMethodsLayout,
+  CompleteForm,
 } from "@/views/layouts";
 
 const routes = [
@@ -68,8 +68,8 @@ const routes = [
         component: MessageFormLayout,
       },
       {
-        path: "payment/ORDypUSr",
-        component: PaymentMethodsLayout,
+        path: "complete/ORDypUSr",
+        component: CompleteForm,
       },
     ],
   },
