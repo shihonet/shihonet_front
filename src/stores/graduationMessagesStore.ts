@@ -28,20 +28,20 @@ export const useGraduationMessagesStore = defineStore("graduationMessages", {
       this.isLoading = true;
       const openStore = useOpenStore();
       try {
-        await axios.post<ApiRequestGraduationMessage>(
-          "/api/graduation_messages",
-          {
-            x_account_name: graduationMessage.xAccountName,
-            contact: graduationMessage.contact,
-            payment_method: graduationMessage.paymentMethod,
-            selected_amount: graduationMessage.selectedAmount,
-            message: graduationMessage.message,
-            note: graduationMessage.note,
-            exclude_from_site_message: graduationMessage.excludeFromSiteMessage,
-          }
-        );
+        // await axios.post<ApiRequestGraduationMessage>(
+        //   "/api/graduation_messages",
+        //   {
+        //     x_account_name: graduationMessage.xAccountName,
+        //     contact: graduationMessage.contact,
+        //     payment_method: graduationMessage.paymentMethod,
+        //     selected_amount: graduationMessage.selectedAmount,
+        //     message: graduationMessage.message,
+        //     note: graduationMessage.note,
+        //     exclude_from_site_message: graduationMessage.excludeFromSiteMessage,
+        //   }
+        // );
         // TODO: 遷移先パス差し替え
-        await router.push("/graduation/complete/ORDypUSr");
+        await router.push("/graduation/form/complete/ORDypUSr");
         openStore.setToast(
           "success",
           "メールを送信しました。内容をご確認の上、一週間以内にお支払いを完了させてください。",
