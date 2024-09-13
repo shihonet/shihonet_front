@@ -68,7 +68,7 @@ const routes = [
         component: MessageFormLayout,
       },
       {
-        path: "complete/ORDypUSr",
+        path: "form/complete/ORDypUSr",
         component: CompleteForm,
       },
     ],
