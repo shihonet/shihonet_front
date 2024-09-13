@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="mt-6 h-12 bg-site-light-color flex items-center justify-between px-4"
+      class="mt-6 h-12 bg-site-light-color flex items-center justify-between px-4 hover:cursor-pointer"
       @click="dropdownOpen = !dropdownOpen"
     >
       <p class="text-white text-3xl">Q</p>

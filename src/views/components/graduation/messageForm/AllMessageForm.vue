@@ -44,7 +44,7 @@
       </p>
       <ul class="mt-1 ml-5 text-gray-400 text-[12px] list-disc">
         <li>絵文字、特殊文字、改行は反映されない可能性がございます。</li>
-        <li>お名前を記載したい場合は、本文内にご記載ください。</li>
+        <li>お名前を掲載したい場合は、本文内にご記載ください。</li>
         <li>記入可能文字数は、最大100文字です。</li>
       </ul>
       <textarea
@@ -192,6 +192,8 @@
     </BaseButton>
 
     <div class="mt-16 py-6 px-4 bg-white">
+      [イラスト・デザイン] しかた（X: <a href="https://x.com/skt_sk_" class="text-blue-500 hover:underline">@skt_sk_</a>）<br />
+      <div class="h-1" />
       [主催団体] #shihonet（しほねっと）<br />
       <div class="mt-1 text-[12px]">
         <p>

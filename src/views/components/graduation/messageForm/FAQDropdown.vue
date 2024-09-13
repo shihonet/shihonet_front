@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-14 bg-site-color flex items-center justify-between px-4"
+    class="h-14 bg-site-color flex items-center justify-between px-4 hover:cursor-pointer"
     @click="dropdownOpen = !dropdownOpen"
   >
     <p
@@ -28,11 +28,11 @@
       />
       <QuestionItem
         question="メッセージは参加者全員分掲載されますか？"
-        answer="ご送金までが完了された参加者様分は、全員分を掲載いたします。ただし、主催者が内容を事前に確認させていただき、公に掲載するにあたり不適切と判断した場合は掲載しない可能性がございます。"
+        answer="ご送金までが完了された参加者様分は、全員分を掲載いたします。ただし、主催者が内容を事前に確認させていただき、公に掲示するにあたり不適切と判断した場合は掲載しない可能性がございます。"
       />
       <QuestionItem
         question="２口以上応募した場合、その分文字数を増やせますか？"
-        answer="申し訳ございませんが、増やせません。しかし、ご出資金は参加者様からのお気持ちとして大切に頂戴いたします。無理のない範囲でご参加ください。"
+        answer="本企画は口数を問わず、お一人様100文字までとさせていただきます。たくさんのファンの方々の想いと感謝を届けられるよう、ご理解いただけますと幸いです。"
       />
       <QuestionItem
         question="いつまで企画に参加できますか？"
@@ -44,7 +44,7 @@
       />
       <QuestionItem
         question="出資した予算はどのように使われますか？"
-        answer="出資金は、広告掲出費用やそれに係るポスター印刷費用として使用いたします。"
+        answer="出資金は、広告掲示費用やそれに係るポスター印刷費用として使用いたします。"
       />
       <QuestionItem
         question="想定金額に達しなかった場合、企画はどうなりますか？"
