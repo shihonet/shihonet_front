@@ -28,10 +28,13 @@ import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
   background-color: #f4faff;
 }
 
-.v-enter-active, .v-leave-active {
+.v-enter-active,
+.v-leave-active {
   transition: opacity 1s ease 1.5s; /* 遅延してから1秒かけてフェードアウト */
 }
-.v-enter-from, .v-leave-to {
+
+.v-enter-from,
+.v-leave-to {
   opacity: 0;
 }
 
@@ -41,6 +44,10 @@ import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
 
 .bg-site-color {
   background-color: #6197ff;
+}
+
+.bg-site-light-color {
+  background-color: #cedcfb;
 }
 
 .bg-site-blog-color {

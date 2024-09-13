@@ -2,8 +2,7 @@
   <div class="mx-6">
     <div class="mt-6 border-2 border-site-color bg-white rounded-md">
       <div class="text-center text-[24px] font-bold text-site-color py-6">
-        加藤史帆ちゃん卒業記念<br />
-        応援広告
+        加藤史帆さん卒業記念企画
       </div>
     </div>
     <SummaryArea />
@@ -194,6 +193,32 @@
     >
       送信する
     </BaseButton>
+
+    <div class="mt-16 py-6 px-4 bg-white">
+      [主催団体] #shihonet（しほねっと）<br />
+      <div class="mt-1 text-[12px]">
+        <p>
+          #shihonet とは…
+          <a
+            href="https://www.shihonet.site/about"
+            target="_blank"
+            class="font-medium text-blue-500 hover:underline"
+            >https://www.shihonet.site/about</a
+          >
+        </p>
+        <p class="mt-1">※お問い合わせ先</p>
+        <p>
+          X:
+          <a
+            href="https://x.com/shihonet0202"
+            target="_blank"
+            class="font-medium text-blue-500 hover:underline"
+            >@shihonet0202</a
+          >
+          / email: shihonet0202@gmail.com
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -244,7 +269,9 @@ const isSubmitButtonDisabled = () => {
 };
 
 const submit = async () => {
-  const isConfirmed = confirm("一度送信すると取り消しはできません。\nこの内容で送信してよろしいですか？");
+  const isConfirmed = confirm(
+    "一度送信すると取り消しはできません。\nこの内容で送信してよろしいですか？"
+  );
   if (!isConfirmed) {
     return;
   }
