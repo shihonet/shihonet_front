@@ -14,7 +14,7 @@
     </div>
 
     <div class="mt-8">
-      <p class="ml-1 text-[16px] font-bold">Xアカウント名</p>
+      <p class="ml-1 text-[16px] font-bold">XアカウントID(任意)</p>
       <input
         class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
         type="text"
@@ -25,12 +25,10 @@
 
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
-        X(旧Twitter)アカウントID または メールアドレス<span class="text-red-500"
-          >*</span
-        >
+        メールアドレス<span class="text-red-500">*</span>
       </p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        確認のために運営よりご連絡させていただく場合がございます。
+        お支払い先情報をお送りするため、正確なメールアドレスをご入力ください。
       </p>
       <input
         class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
@@ -38,6 +36,28 @@
         v-model="contact"
         autocomplete="new-password"
       />
+    </div>
+
+    <div class="mt-8">
+      <p class="ml-1 text-[16px] font-bold">
+        掲載メッセージ<span class="text-red-500">*</span>
+      </p>
+      <ul class="mt-1 ml-5 text-gray-400 text-[12px] list-disc">
+        <li>絵文字、特殊文字、改行は反映されない可能性がございます。</li>
+        <li>お名前を記載したい場合は、本文内にご記載ください。</li>
+        <li>記入可能文字数は、最大100文字です。</li>
+      </ul>
+      <textarea
+        class="mt-2 p-4 border rounded-lg w-full bg-white"
+        v-model="message"
+        rows="6"
+      />
+      <div
+        class="text-[12px] ml-1"
+        :class="{ 'text-red-500': remainingWordCount() < 0 }"
+      >
+        残り {{ remainingWordCount() }} 文字入力できます
+      </div>
     </div>
 
     <div class="mt-8">
@@ -92,28 +112,6 @@
     </div>
 
     <div class="mt-8">
-      <p class="ml-1 text-[16px] font-bold">
-        掲載メッセージ<span class="text-red-500">*</span>
-      </p>
-      <ul class="mt-1 ml-5 text-gray-400 text-[12px] list-disc">
-        <li>絵文字、特殊文字、改行は反映されない可能性がございます。</li>
-        <li>お名前を記載したい場合は、本文内にご記載ください。</li>
-        <li>記入可能文字数は、最大100文字です。</li>
-      </ul>
-      <textarea
-        class="mt-2 p-4 border rounded-lg w-full bg-white"
-        v-model="message"
-        rows="6"
-      />
-      <div
-        class="text-[12px] ml-1"
-        :class="{ 'text-red-500': remainingWordCount() < 0 }"
-      >
-        残り {{ remainingWordCount() }} 文字入力できます
-      </div>
-    </div>
-
-    <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">その他コメント（任意）</p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
         主催者へ伝えておきたいことがあれば、ご自由にご記入ください。（こちらでのご質問へのご回答はいたしかねます）
@@ -131,22 +129,21 @@
       </p>
       <div class="mt-1 bg-gray-100 border rounded-lg">
         <ul class="mt-1 p-3 ml-5 text-[12px] list-disc">
-          <li>送信後にフォーム内容の変更はできません。</li>
+          <li>送信後に入力内容の変更はできません。</li>
           <li>
-            主催者が内容を事前に確認させていただきます。公に掲載するにあたって不適切と判断した内容は掲載しない可能性がございます。
+            主催者が内容を事前に確認させていただきます。公に掲載するにあたり不適切と判断した場合は掲載しない可能性がございます。
           </li>
           <li>
-            複数回答いただいた場合は、一番最後にご回答いただいたメッセージのみを使用させていただく可能性がございます。
+            複数回答いただいた場合は、一番最後にご回答いただいたメッセージのみを使用させていただきます。
           </li>
           <li>
-            一度ご出資いただいた後、再度ご出資したい場合は、再度フォームをご送信ください。
+            ご入力いただいた内容は、その他目的での使用、第三者へのデータ譲渡など一切いたしません。
           </li>
           <li>
-            ご入力いただいた内容につきましては、丁重にお預かりさせていただきますため、その他目的での使用、第三者へのデータ譲渡などは一切いたしません。
+            企画中止とならない限り、ご返金はいたしかねます。予めご了承ください。
           </li>
-          <li>原則としてご返金はいたしかねます。予めご了承ください。</li>
           <li>
-            掲出に関する詳細情報の開示は、掲載開始日以降となります。お答えできない場合がございますので、予めご了承ください。
+            銀行振込にて、振込手数料等が発生した場合は参加者側にてご負担いただきますようお願いいたします。
           </li>
           <li>
             その他お問い合わせは、X:
@@ -234,7 +231,7 @@ const graduationMessagesStore = useGraduationMessagesStore();
 const xAccountName = ref("");
 const contact = ref("");
 const paymentMethod = ref("");
-const selectedAmount = ref(2);
+const selectedAmount = ref(1);
 const message = ref("");
 const note = ref("");
 const isApproved = ref(false);
@@ -246,11 +243,6 @@ const options = [
   { value: 3, text: "3口（1,500円）" },
   { value: 4, text: "4口（2,000円）" },
   { value: 5, text: "5口（2,500円）" },
-  { value: 6, text: "6口（3,000円）" },
-  { value: 7, text: "7口（3,500円）" },
-  { value: 8, text: "8口（4,000円）" },
-  { value: 9, text: "9口（4,500円）" },
-  { value: 10, text: "10口（5,000円）" },
 ];
 
 const remainingWordCount = () => {

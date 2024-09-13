@@ -5,7 +5,7 @@
       @click="dropdownOpen = !dropdownOpen"
     >
       <p class="text-white text-3xl">Q</p>
-      <p class="text-sm text-black pl-6 flex-1 tracking-wider">
+      <p class="text-sm text-black px-3 flex-1 tracking-wider">
         {{ question }}
       </p>
       <i
