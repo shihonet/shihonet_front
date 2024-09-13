@@ -178,7 +178,7 @@
       <label class="mt-2 w-full flex items-center hover:cursor-pointer">
         <input
           type="checkbox"
-          v-model="optOutOfMessagePosting"
+          v-model="excludeFromSiteMessage"
           class="bg-white"
         />
         <span class="ml-2 text-gray-400 text-[12px]">
@@ -202,10 +202,9 @@ import { ref } from "vue";
 import Checkbox from "primevue/checkbox";
 import { SummaryArea } from "@/views/components/graduation/messageForm";
 import { BaseButton } from "@/views/components/common";
-import router from "@/router";
-import { useOpenStore } from "@/stores/common/openStore";
+import { useGraduationMessagesStore } from "@/stores/graduationMessagesStore";
 
-const openStore = useOpenStore();
+const graduationMessagesStore = useGraduationMessagesStore();
 
 const xAccountName = ref("");
 const contact = ref("");
@@ -214,7 +213,7 @@ const selectedAmount = ref(2);
 const message = ref("");
 const note = ref("");
 const isApproved = ref(false);
-const optOutOfMessagePosting = ref(false);
+const excludeFromSiteMessage = ref(false);
 
 const options = [
   { value: 1, text: "1口（500円）" },
@@ -239,37 +238,25 @@ const isSubmitButtonDisabled = () => {
     !paymentMethod.value ||
     !selectedAmount.value ||
     !message.value ||
-    !isApproved.value
+    !isApproved.value ||
+    graduationMessagesStore.getIsLoading
   );
 };
 
-const submit = () => {
-  alert(
-    "一度送信すると取り消しはできません。\nこの内容で送信してよろしいですか？"
-  );
+const submit = async () => {
+  const isConfirmed = confirm("一度送信すると取り消しはできません。\nこの内容で送信してよろしいですか？");
+  if (!isConfirmed) {
+    return;
+  }
 
-  // debug
-  console.log({
+  await graduationMessagesStore.requestPost({
     xAccountName: xAccountName.value,
     contact: contact.value,
     paymentMethod: paymentMethod.value,
     selectedAmount: selectedAmount.value,
     message: message.value,
     note: note.value,
-    isApproved: isApproved.value,
-    optOutOfMessagePosting: optOutOfMessagePosting.value,
+    excludeFromSiteMessage: excludeFromSiteMessage.value,
   });
-
-  // TODO: POST request
-  // TODO: 失敗時はエラートーストを表示する
-  // const openStore = useOpenStore();
-  // openStore.setToast("error", "送信に失敗しました");
-
-  // TODO: 遷移先パス差し替え
-  router.push("/graduation/payment/ORDypUSr");
-  openStore.setToast(
-    "success",
-    "ご参加いただきありがとうございます！\nお支払い方法をご確認ください！",
-  );
 };
 </script>
