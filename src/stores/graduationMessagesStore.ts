@@ -9,8 +9,8 @@ import router from "@/router";
 
 export const useGraduationMessagesStore = defineStore("graduationMessages", {
   state: () => ({
-    xAccountName: "",
-    contact: "",
+    xAccountId: "",
+    email: "",
     paymentMethod: "",
     selectedAmount: 0,
     message: "",
@@ -31,8 +31,8 @@ export const useGraduationMessagesStore = defineStore("graduationMessages", {
         // await axios.post<ApiRequestGraduationMessage>(
         //   "/api/graduation_messages",
         //   {
-        //     x_account_name: graduationMessage.xAccountName,
-        //     contact: graduationMessage.contact,
+        //     x_account_id: graduationMessage.xAccountId,
+        //     email: graduationMessage.email,
         //     payment_method: graduationMessage.paymentMethod,
         //     selected_amount: graduationMessage.selectedAmount,
         //     message: graduationMessage.message,

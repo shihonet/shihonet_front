@@ -1,6 +1,6 @@
 export interface GraduationMessage {
-  xAccountName: string,
-  contact: string,
+  xAccountId: string,
+  email: string,
   paymentMethod: string,
   selectedAmount: number,
   message: string,
@@ -9,8 +9,8 @@ export interface GraduationMessage {
 }
 
 export interface ApiRequestGraduationMessage {
-  x_account_name: string,
-  contact: string,
+  x_account_id: string,
+  email: string,
   payment_method: string,
   selected_amount: number,
   message: string,

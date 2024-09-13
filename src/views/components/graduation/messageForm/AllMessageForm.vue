@@ -18,7 +18,7 @@
       <input
         class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
         type="text"
-        v-model="xAccountName"
+        v-model="xAccountId"
         autocomplete="new-password"
       />
     </div>
@@ -32,8 +32,9 @@
       </p>
       <input
         class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
+        :class="{ 'border-red-500': email && !isEmailValid }"
         type="text"
-        v-model="contact"
+        v-model="email"
         autocomplete="new-password"
       />
     </div>
@@ -192,7 +193,10 @@
     </BaseButton>
 
     <div class="mt-16 py-6 px-4 bg-white">
-      [イラスト・デザイン] しかた（X: <a href="https://x.com/skt_sk_" class="text-blue-500 hover:underline">@skt_sk_</a>）<br />
+      [イラスト・デザイン] しかた（X:
+      <a href="https://x.com/skt_sk_" class="text-blue-500 hover:underline"
+        >@skt_sk_</a
+      >）<br />
       <div class="h-1" />
       [主催団体] #shihonet（しほねっと）<br />
       <div class="mt-1 text-[12px]">
@@ -222,7 +226,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Checkbox from "primevue/checkbox";
 import { SummaryArea } from "@/views/components/graduation/messageForm";
 import { BaseButton } from "@/views/components/common";
@@ -230,8 +234,8 @@ import { useGraduationMessagesStore } from "@/stores/graduationMessagesStore";
 
 const graduationMessagesStore = useGraduationMessagesStore();
 
-const xAccountName = ref("");
-const contact = ref("");
+const xAccountId = ref("");
+const email = ref("");
 const paymentMethod = ref("");
 const selectedAmount = ref(1);
 const message = ref("");
@@ -251,9 +255,14 @@ const remainingWordCount = () => {
   return 100 - message.value.length;
 };
 
+const isEmailValid = computed(() => {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email.value);
+});
+
 const isSubmitButtonDisabled = () => {
   return (
-    !contact.value ||
+    !isEmailValid.value ||
     !paymentMethod.value ||
     !selectedAmount.value ||
     !message.value ||
@@ -271,8 +280,8 @@ const submit = async () => {
   }
 
   await graduationMessagesStore.requestPost({
-    xAccountName: xAccountName.value,
-    contact: contact.value,
+    xAccountId: xAccountId.value,
+    email: email.value,
     paymentMethod: paymentMethod.value,
     selectedAmount: selectedAmount.value,
     message: message.value,
