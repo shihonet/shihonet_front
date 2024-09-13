@@ -37,7 +37,7 @@
     </div>
 
     <p class="text-center mt-16 text-[12px]">
-      加藤史帆ちゃん応援広告へ参加したことをぜひ共有してください！
+      加藤史帆ちゃん卒業記念応援広告へ参加したことを<br/>ぜひ共有してください！
     </p>
     <div class="mt-4 flex justify-center">
       <PostX
