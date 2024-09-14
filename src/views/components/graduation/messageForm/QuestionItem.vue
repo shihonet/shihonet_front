@@ -4,7 +4,7 @@
       class="mt-6 h-12 bg-site-light-color flex items-center justify-between px-4 hover:cursor-pointer"
       @click="dropdownOpen = !dropdownOpen"
     >
-      <p class="text-white text-3xl">Q</p>
+      <p class="text-white text-3xl w-[22px] text-center">Q</p>
       <p class="text-sm text-black px-3 flex-1 tracking-wider">
         {{ question }}
       </p>
@@ -20,8 +20,8 @@
         v-show="dropdownOpen"
         class="bg-white flex items-center justify-between mt-2 px-4"
       >
-        <p class="text-3xl text-red-400">A</p>
-        <p class="text-sm text-black pl-6 flex-1 tracking-wider">
+        <p class="text-3xl text-red-400 w-[22px] text-center">A</p>
+        <p class="text-sm text-black pl-3 flex-1 tracking-wider">
           {{ answer }}
         </p>
       </div>
