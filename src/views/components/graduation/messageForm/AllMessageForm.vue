@@ -35,7 +35,7 @@
         :class="{ 'border-red-500': email && !isEmailValid }"
         type="text"
         v-model="email"
-        autocomplete="new-password"
+        autocomplete="email"
       />
     </div>
 
@@ -64,6 +64,9 @@
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
         参加口数<span class="text-red-500">*</span>
+      </p>
+      <p class="mt-1 ml-1 text-gray-400 text-[12px]">
+        1口500円となります。最大5口まで選択可能です。
       </p>
       <select
         v-model.number="selectedAmount"
