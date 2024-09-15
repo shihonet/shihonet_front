@@ -26,7 +26,7 @@
         <li>
           ご送金は、
           <RouterLink
-            to="/graduation/messages/form/AfOT3voj"
+            to="/graduation/messages/form"
             class="text-blue-500 hover:underline"
             >参加申請フォーム
           </RouterLink>

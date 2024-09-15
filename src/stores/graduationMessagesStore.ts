@@ -40,8 +40,7 @@ export const useGraduationMessagesStore = defineStore("graduationMessages", {
             exclude_from_site_message: graduationMessage.excludeFromSiteMessage,
           }
         );
-        // TODO: 遷移先パス差し替え
-        await router.push("/graduation/messages/form/complete/ORDypUSr");
+        await router.push("/graduation/messages/form/complete");
         openStore.setToast(
           "success",
           "メールを送信しました。内容をご確認の上、一週間以内にお支払いを完了させてください。",

@@ -82,6 +82,6 @@
 import { BaseButton } from "@/views/components/common";
 
 const toFormPage = () => {
-  window.location.href = "/graduation/messages/form/AfOT3voj";
+  window.location.href = "/graduation/messages/form";
 };
 </script>
