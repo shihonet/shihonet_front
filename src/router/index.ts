@@ -64,11 +64,11 @@ const routes = [
     path: "/graduation",
     children: [
       {
-        path: "messages/form/AfOT3voj",
+        path: "messages/form",
         component: MessageFormLayout,
       },
       {
-        path: "messages/form/complete/ORDypUSr",
+        path: "messages/form/complete",
         component: CompleteForm,
       },
     ],
