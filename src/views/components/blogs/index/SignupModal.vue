@@ -3,7 +3,7 @@
     <div class="flex flex-col max-w-72 pt-8 pb-4">
       <div class="text-right">
         <i
-          class="pi pi-times hover:cursor-pointer"
+          class="pi pi-times cursor-pointer"
           style="font-size: 1.5rem"
           @click="closeModal"
         ></i>

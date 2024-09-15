@@ -14,9 +14,9 @@
             class="flex justify-center items-center ml-2"
             @click="updateFavorite"
           >
-            <div class="w-6 h-6 flex justify-center items-center hover:cursor-pointer">
-              <i v-if="props.isFavorite" class="pi pi-heart-fill hover:cursor-pointer" style="color: #94c8ff"></i>
-              <i v-else class="pi pi-heart hover:cursor-pointer" style="color: #cccccc"></i>
+            <div class="w-6 h-6 flex justify-center items-center cursor-pointer">
+              <i v-if="props.isFavorite" class="pi pi-heart-fill cursor-pointer" style="color: #94c8ff"></i>
+              <i v-else class="pi pi-heart cursor-pointer" style="color: #cccccc"></i>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
           <RouterLink
             :to="`/blogs/${props.id}`"
             :isLoggedin="isLoggedIn"
-            class="text-blue-500 text-sm underline text-right hover:cursor-pointer"
+            class="text-blue-500 text-sm underline text-right cursor-pointer"
           >
             See more ＞
           </RouterLink>

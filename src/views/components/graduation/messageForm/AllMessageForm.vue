@@ -48,12 +48,8 @@
         <li>お名前を掲載したい場合は、本文内にご記載ください。</li>
         <li>記入可能文字数は、最大100文字です。</li>
       </ul>
-      <label class="mt-2 ml-1 w-full flex items-center hover:cursor-pointer">
-        <input
-          type="checkbox"
-          v-model="isDonationOnly"
-          class="bg-white hover:cursor-pointer"
-        />
+      <label class="mt-2 ml-1 w-full flex items-center cursor-pointer">
+        <CustomCheckbox v-model:checked="isDonationOnly" />
         <span class="ml-2 text-gray-400 text-[12px]">
           ご支援のみでメッセージ記入不要の場合はチェックをつけてください。
         </span>
@@ -82,7 +78,7 @@
       </p>
       <select
         v-model.number="selectedAmount"
-        class="mt-2 h-12 px-4 border rounded-lg w-1/2 bg-white"
+        class="mt-2 h-12 px-4 border rounded-lg w-1/2 bg-white cursor-pointer"
       >
         <option
           v-for="option in options"
@@ -101,27 +97,37 @@
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
         お支払い先は、送信後にお送りするメールにてご確認いただけます。
       </p>
-      <div class="mt-4 space-y-4">
-        <label class="ml-4 flex items-center hover:cursor-pointer">
-          <input
-            type="radio"
-            v-model="paymentMethod"
-            name="payment"
-            value="paypay"
-            class="mr-2 bg-white hover:cursor-pointer"
-          />
-          PayPay
-        </label>
-        <label class="ml-4 flex items-center hover:cursor-pointer">
-          <input
-            type="radio"
-            v-model="paymentMethod"
-            name="payment"
-            value="bank_transfer"
-            class="mr-2 bg-white hover:cursor-pointer"
-          />
-          銀行振込
-        </label>
+      <div class="mt-4 ml-2 space-y-4">
+        <div class="flex items-center">
+          <label class="relative flex items-center cursor-pointer">
+            <input
+              name="payment"
+              type="radio"
+              v-model="paymentMethod"
+              value="paypay"
+              class="peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+            />
+            <span
+              class="absolute bg-blue-600 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            ></span>
+          </label>
+          <label class="ml-2 text-slate-600 text-sm" for="html">PayPay</label>
+        </div>
+        <div class="flex items-center">
+          <label class="relative flex items-center cursor-pointer">
+            <input
+              name="payment"
+              type="radio"
+              v-model="paymentMethod"
+              value="bank_transfer"
+              class="peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+            />
+            <span
+              class="absolute bg-blue-600 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            ></span>
+          </label>
+          <label class="ml-2 text-slate-600 text-sm" for="html">銀行振込</label>
+        </div>
       </div>
     </div>
 
@@ -173,9 +179,10 @@
         </ul>
       </div>
       <label
-        class="mt-2 h-12 px-4 border rounded-lg w-full bg-white flex items-center hover:cursor-pointer"
+        class="mt-2 h-12 px-4 border rounded-lg w-full bg-white flex items-center cursor-pointer"
+        :class="{ 'bg-blue-100': isApproved }"
       >
-        <Checkbox v-model="isApproved" binary class="bg-white" />
+        <CustomCheckbox v-model:checked="isApproved" :size="'lg'" />
         <span class="ml-4">上記の内容を確認しました</span>
       </label>
     </div>
@@ -185,12 +192,8 @@
         応援広告のメッセージを、#shihonet
         サイト内にも掲載させていただく予定です。もし掲載を希望されない場合は、こちらにチェックをつけてください。
       </p>
-      <label class="mt-2 w-full flex items-center hover:cursor-pointer">
-        <input
-          type="checkbox"
-          v-model="excludeFromSiteMessage"
-          class="bg-white hover:cursor-pointer"
-        />
+      <label class="mt-2 w-full flex items-center cursor-pointer">
+        <CustomCheckbox v-model:checked="excludeFromSiteMessage" :size="'md'" />
         <span class="ml-2 text-gray-400 text-[12px]">
           #shihonet サイト内のメッセージ掲載を希望しない
         </span>
@@ -240,9 +243,8 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import Checkbox from "primevue/checkbox";
 import { SummaryArea } from "@/views/components/graduation/messageForm";
-import { BaseButton } from "@/views/components/common";
+import { BaseButton, CustomCheckbox } from "@/views/components/common";
 import { useGraduationMessagesStore } from "@/stores/graduationMessagesStore";
 
 const graduationMessagesStore = useGraduationMessagesStore();
@@ -297,6 +299,16 @@ const submit = async () => {
   if (!isConfirmed) {
     return;
   }
+
+  console.log({
+    xAccountId: xAccountId.value,
+    email: email.value,
+    paymentMethod: paymentMethod.value,
+    selectedAmount: selectedAmount.value,
+    message: isDonationOnly.value ? null : message.value,
+    note: note.value,
+    excludeFromSiteMessage: excludeFromSiteMessage.value,
+  });
 
   await graduationMessagesStore.requestPost({
     xAccountId: xAccountId.value,

@@ -12,6 +12,7 @@ import TitlePart from "./TitlePart.vue";
 import WaitingForLoading from "./WaitingForLoading.vue";
 import FavoriteFloatingActionButton from "./FavoriteFloatingActionButton.vue";
 import ShowToast from "./ShowToast.vue";
+import CustomCheckbox from "./CustomCheckbox.vue";
 
 export {
   BaseButton,
@@ -28,4 +29,5 @@ export {
   WaitingForLoading,
   FavoriteFloatingActionButton,
   ShowToast,
+  CustomCheckbox,
 };

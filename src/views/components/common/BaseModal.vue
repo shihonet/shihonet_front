@@ -5,7 +5,7 @@
         <div class="flex items-center justify-center min-h-screen">
           <div class="flex flex-col mx-8">
             <div class="w-full text-white text-[40px] text-right">
-              <span @click="closeModal" class="hover:cursor-pointer">×</span>
+              <span @click="closeModal" class="cursor-pointer">×</span>
             </div>
             <div class="w-full h-[540px]">
               <slot></slot>

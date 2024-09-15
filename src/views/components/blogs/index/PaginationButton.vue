@@ -2,13 +2,13 @@
   <div class="mt-20">
     <div class="flex justify-center items-center text-[20px] font-bold">
       <span
-        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
+        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white cursor-pointer"
         v-if="currentPage > 2"
         @click="requestGetBlogs(currentPage > skipPages ? currentPage - skipPages : 1)"
         >{{ currentPage > skipPages ? -skipPages : 1 - currentPage }}</span
       >
       <span
-        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
+        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white cursor-pointer"
         v-if="currentPage > 1"
         @click="requestGetBlogs(currentPage - 1)"
         >＜</span
@@ -18,13 +18,13 @@
         >{{ currentPage }}</span
       >
       <span
-        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
+        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white cursor-pointer"
         v-if="currentPage < totalPage"
         @click="requestGetBlogs(currentPage + 1)"
         >＞</span
       >
       <span
-        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white hover:cursor-pointer"
+        class="w-12 h-12 mx-1.5 my-1.5 flex justify-center rounded-full bg-blue-200 items-center text-white cursor-pointer"
         v-if="currentPage + 1 < totalPage"
         @click="
           requestGetBlogs(

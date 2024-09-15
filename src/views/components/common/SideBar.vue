@@ -3,12 +3,12 @@
   <div class="flex items-center mr-4">
     <i
       v-if="!isLoggedIn"
-      class="pi pi-sign-in mr-6 hover:cursor-pointer"
+      class="pi pi-sign-in mr-6 cursor-pointer"
       style="color: black"
       @click="redirectToLogin"
     ></i>
     <i
-      class="pi pi-bars hover:cursor-pointer"
+      class="pi pi-bars cursor-pointer"
       style="color: black"
       @click="toggleSidebar"
     ></i>
@@ -29,12 +29,12 @@
       <div class="flex items-center mr-4">
         <i
           v-if="!isLoggedIn"
-          class="pi pi-sign-in mr-6 hover:cursor-pointer"
+          class="pi pi-sign-in mr-6 cursor-pointer"
           style="color: black"
           @click="redirectToLogin"
         ></i>
         <i
-          class="pi pi-times hover:cursor-pointer"
+          class="pi pi-times cursor-pointer"
           style="color: black"
           @click="toggleSidebar"
         ></i>

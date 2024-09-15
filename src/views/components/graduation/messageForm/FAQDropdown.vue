@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-14 bg-site-color flex items-center justify-between px-4 hover:cursor-pointer"
+    class="h-14 bg-site-color flex items-center justify-between px-4 cursor-pointer"
     @click="dropdownOpen = !dropdownOpen"
   >
     <p

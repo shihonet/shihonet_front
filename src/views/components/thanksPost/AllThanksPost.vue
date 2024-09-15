@@ -41,7 +41,7 @@
         <div class="mt-10 flex items-center justify-center">
           <div
             @click="retryGacha"
-            class="bg-white font-bold py-3 px-6 rounded-full border border-gray-500 hover:opacity-80 hover:cursor-pointer"
+            class="bg-white font-bold py-3 px-6 rounded-full border border-gray-500 hover:opacity-80 cursor-pointer"
           >
             罪ながらもう一度
           </div>
