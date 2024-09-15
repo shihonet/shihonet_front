@@ -41,7 +41,7 @@
 
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
-        掲載メッセージ<span class="text-red-500">*</span>
+        加藤史帆さんへメッセージ<span class="text-red-500">*</span>
       </p>
       <ul class="mt-1 ml-5 text-gray-400 text-[12px] list-disc">
         <li>絵文字、特殊文字、改行は反映されない可能性がございます。</li>
