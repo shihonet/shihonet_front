@@ -105,7 +105,7 @@
               type="radio"
               v-model="paymentMethod"
               value="paypay"
-              class="peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+              class="peer h-4 w-4 cursor-pointer bg-white appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
             />
             <span
               class="absolute bg-blue-600 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -120,7 +120,7 @@
               type="radio"
               v-model="paymentMethod"
               value="bank_transfer"
-              class="peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+              class="peer h-4 w-4 cursor-pointer bg-white appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
             />
             <span
               class="absolute bg-blue-600 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"

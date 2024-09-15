@@ -41,7 +41,7 @@ export const useGraduationMessagesStore = defineStore("graduationMessages", {
         //   }
         // );
         // TODO: 遷移先パス差し替え
-        await router.push("/graduation/form/complete/ORDypUSr");
+        await router.push("/graduation/messages/form/complete/ORDypUSr");
         openStore.setToast(
           "success",
           "メールを送信しました。内容をご確認の上、一週間以内にお支払いを完了させてください。",
