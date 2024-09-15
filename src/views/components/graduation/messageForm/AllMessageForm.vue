@@ -14,21 +14,11 @@
     </div>
 
     <div class="mt-8">
-      <p class="ml-1 text-[16px] font-bold">XアカウントID(任意)</p>
-      <input
-        class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
-        type="text"
-        v-model="xAccountId"
-        autocomplete="new-password"
-      />
-    </div>
-
-    <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
         メールアドレス<span class="text-red-500">*</span>
       </p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        お支払い先情報をお送りするため、正確なメールアドレスをご入力ください。
+        フォーム送信後にお支払い先情報をお送りするため、正確なメールアドレスをご入力ください。
       </p>
       <input
         class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
@@ -36,6 +26,16 @@
         type="text"
         v-model="email"
         autocomplete="email"
+      />
+    </div>
+
+    <div class="mt-8">
+      <p class="ml-1 text-[16px] font-bold">XアカウントID（任意）</p>
+      <input
+        class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
+        type="text"
+        v-model="xAccountId"
+        autocomplete="new-password"
       />
     </div>
 
@@ -48,16 +48,28 @@
         <li>お名前を掲載したい場合は、本文内にご記載ください。</li>
         <li>記入可能文字数は、最大100文字です。</li>
       </ul>
-      <textarea
-        class="mt-2 p-4 border rounded-lg w-full bg-white"
-        v-model="message"
-        rows="6"
-      />
-      <div
-        class="text-[12px] ml-1"
-        :class="{ 'text-red-500': remainingWordCount() < 0 }"
-      >
-        残り {{ remainingWordCount() }} 文字入力できます
+      <label class="mt-2 ml-1 w-full flex items-center hover:cursor-pointer">
+        <input
+          type="checkbox"
+          v-model="isDonationOnly"
+          class="bg-white hover:cursor-pointer"
+        />
+        <span class="ml-2 text-gray-400 text-[12px]">
+          ご支援のみでメッセージ記入不要の場合はチェックをつけてください。
+        </span>
+      </label>
+      <div v-show="!isDonationOnly">
+        <textarea
+          class="mt-2 p-4 border rounded-lg w-full bg-white"
+          v-model="message"
+          rows="6"
+        />
+        <div
+          class="text-[12px] ml-1"
+          :class="{ 'text-red-500': remainingWordCount() < 0 }"
+        >
+          残り {{ remainingWordCount() }} 文字入力できます
+        </div>
       </div>
     </div>
 
@@ -66,7 +78,7 @@
         参加口数<span class="text-red-500">*</span>
       </p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        1口500円となります。最大5口まで選択可能です。
+        1口500円となります。一度で最大10口まで選択可能です。
       </p>
       <select
         v-model.number="selectedAmount"
@@ -87,28 +99,26 @@
         支払い方法<span class="text-red-500">*</span>
       </p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        お支払い先は、送信後に表示される
-        <RouterLink to="/graduation/payment/ORDypUSr">こちら</RouterLink>
-        のページにてご確認いただけます。
+        お支払い先は、送信後にお送りするメールにてご確認いただけます。
       </p>
-      <div class="mt-2 space-y-2">
-        <label class="ml-4 flex items-center">
+      <div class="mt-4 space-y-4">
+        <label class="ml-4 flex items-center hover:cursor-pointer">
           <input
             type="radio"
             v-model="paymentMethod"
             name="payment"
             value="paypay"
-            class="mr-2 bg-white"
+            class="mr-2 bg-white hover:cursor-pointer"
           />
           PayPay
         </label>
-        <label class="ml-4 flex items-center">
+        <label class="ml-4 flex items-center hover:cursor-pointer">
           <input
             type="radio"
             v-model="paymentMethod"
             name="payment"
             value="bank_transfer"
-            class="mr-2 bg-white"
+            class="mr-2 bg-white hover:cursor-pointer"
           />
           銀行振込
         </label>
@@ -179,7 +189,7 @@
         <input
           type="checkbox"
           v-model="excludeFromSiteMessage"
-          class="bg-white"
+          class="bg-white hover:cursor-pointer"
         />
         <span class="ml-2 text-gray-400 text-[12px]">
           #shihonet サイト内のメッセージ掲載を希望しない
@@ -241,6 +251,7 @@ const xAccountId = ref("");
 const email = ref("");
 const paymentMethod = ref("");
 const selectedAmount = ref(1);
+const isDonationOnly = ref(false);
 const message = ref("");
 const note = ref("");
 const isApproved = ref(false);
@@ -252,6 +263,11 @@ const options = [
   { value: 3, text: "3口（1,500円）" },
   { value: 4, text: "4口（2,000円）" },
   { value: 5, text: "5口（2,500円）" },
+  { value: 6, text: "6口（3,000円）" },
+  { value: 7, text: "7口（3,500円）" },
+  { value: 8, text: "8口（4,000円）" },
+  { value: 9, text: "9口（4,500円）" },
+  { value: 10, text: "10口（5,000円）" },
 ];
 
 const remainingWordCount = () => {
@@ -268,7 +284,7 @@ const isSubmitButtonDisabled = () => {
     !isEmailValid.value ||
     !paymentMethod.value ||
     !selectedAmount.value ||
-    !message.value ||
+    (!isDonationOnly.value && !message.value) ||
     !isApproved.value ||
     graduationMessagesStore.getIsLoading
   );
@@ -287,7 +303,7 @@ const submit = async () => {
     email: email.value,
     paymentMethod: paymentMethod.value,
     selectedAmount: selectedAmount.value,
-    message: message.value,
+    message: isDonationOnly.value ? null : message.value,
     note: note.value,
     excludeFromSiteMessage: excludeFromSiteMessage.value,
   });

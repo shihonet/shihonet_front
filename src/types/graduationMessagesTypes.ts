@@ -3,7 +3,7 @@ export interface GraduationMessage {
   email: string,
   paymentMethod: string,
   selectedAmount: number,
-  message: string,
+  message: string | null,
   note: string,
   excludeFromSiteMessage: boolean,
 }
@@ -13,7 +13,7 @@ export interface ApiRequestGraduationMessage {
   email: string,
   payment_method: string,
   selected_amount: number,
-  message: string,
+  message: string | null,
   note: string,
   exclude_from_site_message: boolean,
 }
