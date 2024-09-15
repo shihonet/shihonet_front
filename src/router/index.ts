@@ -69,11 +69,11 @@ const routes = [
         component: CommercialTransactionDisclosureLayout,
       },
       {
-        path: "messages/form/AfOT3voj",
+        path: "messages/form",
         component: MessageFormLayout,
       },
       {
-        path: "messages/form/complete/ORDypUSr",
+        path: "messages/form/complete",
         component: CompleteFormLayout,
       },
     ],
