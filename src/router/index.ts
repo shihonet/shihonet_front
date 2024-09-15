@@ -14,7 +14,8 @@ import {
   LoginLayout,
   ThanksPostLayout,
   MessageFormLayout,
-  CompleteForm,
+  CompleteFormLayout,
+  CommercialTransactionDisclosureLayout,
 } from "@/views/layouts";
 
 const routes = [
@@ -64,12 +65,16 @@ const routes = [
     path: "/graduation",
     children: [
       {
+        path: "commercial_transaction_disclosure",
+        component: CommercialTransactionDisclosureLayout,
+      },
+      {
         path: "messages/form/AfOT3voj",
         component: MessageFormLayout,
       },
       {
         path: "messages/form/complete/ORDypUSr",
-        component: CompleteForm,
+        component: CompleteFormLayout,
       },
     ],
   },

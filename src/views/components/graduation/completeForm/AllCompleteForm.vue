@@ -45,7 +45,10 @@
     </div>
 
     <div class="mt-16 py-6 px-4 bg-white">
-      [イラスト・デザイン] しかた（X: <a href="https://x.com/skt_sk_" class="text-blue-500 hover:underline">@skt_sk_</a>）<br />
+      [イラスト・デザイン] しかた（X:
+      <a href="https://x.com/skt_sk_" class="text-blue-500 hover:underline"
+        >@skt_sk_</a
+      >）<br />
       <div class="h-1" />
       [主催団体] #shihonet（しほねっと）<br />
       <div class="mt-1 text-[12px]">
@@ -69,6 +72,15 @@
           >
           / email: shihonet0202@gmail.com
         </p>
+        <div class="mt-2">
+          「特定商取引法に基づく表記」は
+          <RouterLink
+            to="/graduation/commercial_transaction_disclosure"
+            class="text-site-color hover:underline"
+          >
+            こちら
+          </RouterLink>
+        </div>
       </div>
     </div>
   </div>

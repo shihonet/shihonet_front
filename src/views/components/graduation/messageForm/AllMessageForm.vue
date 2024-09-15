@@ -236,6 +236,15 @@
           >
           / email: shihonet0202@gmail.com
         </p>
+        <div class="mt-2">
+          「特定商取引法に基づく表記」は
+          <RouterLink
+            to="/graduation/commercial_transaction_disclosure"
+            class="text-site-color hover:underline"
+          >
+            こちら
+          </RouterLink>
+        </div>
       </div>
     </div>
   </div>

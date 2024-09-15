@@ -8,7 +8,8 @@ import SignupLayout from "@/views/layouts/SignupLayout.vue";
 import ThanksPostLayout from "@/views/layouts/ThanksPostLayout.vue";
 import TopLayout from "@/views/layouts/TopLayout.vue";
 import MessageFormLayout from "@/views/layouts/graduation/MessageFormLayout.vue";
-import CompleteForm from "@/views/layouts/graduation/CompleteForm.vue";
+import CompleteFormLayout from "@/views/layouts/graduation/CompleteFormLayout.vue";
+import CommercialTransactionDisclosureLayout from "./graduation/CommercialTransactionDisclosureLayout.vue";
 
 export {
   AboutLayout,
@@ -21,5 +22,6 @@ export {
   ThanksPostLayout,
   TopLayout,
   MessageFormLayout,
-  CompleteForm,
+  CompleteFormLayout,
+  CommercialTransactionDisclosureLayout,
 };
