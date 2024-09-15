@@ -300,16 +300,6 @@ const submit = async () => {
     return;
   }
 
-  console.log({
-    xAccountId: xAccountId.value,
-    email: email.value,
-    paymentMethod: paymentMethod.value,
-    selectedAmount: selectedAmount.value,
-    message: isDonationOnly.value ? null : message.value,
-    note: note.value,
-    excludeFromSiteMessage: excludeFromSiteMessage.value,
-  });
-
   await graduationMessagesStore.requestPost({
     xAccountId: xAccountId.value,
     email: email.value,

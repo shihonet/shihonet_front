@@ -28,18 +28,18 @@ export const useGraduationMessagesStore = defineStore("graduationMessages", {
       this.isLoading = true;
       const openStore = useOpenStore();
       try {
-        // await axios.post<ApiRequestGraduationMessage>(
-        //   "/api/graduation_messages",
-        //   {
-        //     x_account_id: graduationMessage.xAccountId,
-        //     email: graduationMessage.email,
-        //     payment_method: graduationMessage.paymentMethod,
-        //     selected_amount: graduationMessage.selectedAmount,
-        //     message: graduationMessage.message,
-        //     note: graduationMessage.note,
-        //     exclude_from_site_message: graduationMessage.excludeFromSiteMessage,
-        //   }
-        // );
+        await axios.post<ApiRequestGraduationMessage>(
+          "/api/graduation_messages",
+          {
+            x_account_id: graduationMessage.xAccountId,
+            email: graduationMessage.email,
+            payment_method: graduationMessage.paymentMethod,
+            selected_amount: graduationMessage.selectedAmount,
+            message: graduationMessage.message,
+            note: graduationMessage.note,
+            exclude_from_site_message: graduationMessage.excludeFromSiteMessage,
+          }
+        );
         // TODO: 遷移先パス差し替え
         await router.push("/graduation/messages/form/complete/ORDypUSr");
         openStore.setToast(
