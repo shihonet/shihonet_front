@@ -46,7 +46,7 @@
       <ul class="mt-1 ml-5 text-gray-400 text-[12px] list-disc">
         <li>絵文字、特殊文字、改行は反映されない可能性がございます。</li>
         <li>お名前を掲載したい場合は、本文内にご記載ください。</li>
-        <li>記入可能文字数は、最大100文字です。</li>
+        <li>記入可能文字数は、最大50文字です。</li>
       </ul>
       <label class="mt-2 ml-1 w-full flex items-center cursor-pointer">
         <CustomCheckbox v-model:checked="isDonationOnly" />
@@ -295,15 +295,10 @@ const options = [
   { value: 3, text: "3口（1,500円）" },
   { value: 4, text: "4口（2,000円）" },
   { value: 5, text: "5口（2,500円）" },
-  { value: 6, text: "6口（3,000円）" },
-  { value: 7, text: "7口（3,500円）" },
-  { value: 8, text: "8口（4,000円）" },
-  { value: 9, text: "9口（4,500円）" },
-  { value: 10, text: "10口（5,000円）" },
 ];
 
 const remainingWordCount = () => {
-  return 100 - message.value.length;
+  return 50 - message.value.length;
 };
 
 const isEmailValid = computed(() => {
