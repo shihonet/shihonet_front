@@ -10,6 +10,7 @@ import TopLayout from "@/views/layouts/TopLayout.vue";
 import MessageFormLayout from "@/views/layouts/graduation/MessageFormLayout.vue";
 import CompleteFormLayout from "@/views/layouts/graduation/CompleteFormLayout.vue";
 import CommercialTransactionDisclosureLayout from "./graduation/CommercialTransactionDisclosureLayout.vue";
+import CompleteCreditCardPayment from "@/views/layouts/graduation/CompleteCreditCardPayment.vue";
 
 export {
   AboutLayout,
@@ -24,4 +25,5 @@ export {
   MessageFormLayout,
   CompleteFormLayout,
   CommercialTransactionDisclosureLayout,
+  CompleteCreditCardPayment,
 };

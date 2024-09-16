@@ -240,7 +240,7 @@
           「特定商取引法に基づく表記」は
           <RouterLink
             to="/graduation/commercial_transaction_disclosure"
-            class="text-site-color hover:underline"
+            class="text-blue-500 hover:underline"
           >
             こちら
           </RouterLink>
