@@ -97,7 +97,7 @@
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
         お支払い先は、送信後にお送りするメールにてご確認いただけます。
       </p>
-      <div class="mt-4 ml-2 space-y-4">
+      <div class="mt-4 ml-2">
         <div class="flex items-center">
           <label class="relative flex items-center cursor-pointer">
             <input
@@ -113,7 +113,7 @@
           </label>
           <label class="ml-2 text-slate-600 text-sm" for="html">PayPay</label>
         </div>
-        <div class="flex items-center">
+        <div class="mt-4 flex items-center">
           <label class="relative flex items-center cursor-pointer">
             <input
               name="payment"
@@ -128,6 +128,26 @@
           </label>
           <label class="ml-2 text-slate-600 text-sm" for="html">銀行振込</label>
         </div>
+        <div class="mt-4 flex items-center">
+          <label class="relative flex items-center cursor-pointer">
+            <input
+              name="payment"
+              type="radio"
+              v-model="paymentMethod"
+              value="credit_card"
+              class="peer h-4 w-4 cursor-pointer bg-white appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+            />
+            <span
+              class="absolute bg-blue-600 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            ></span>
+          </label>
+          <label class="ml-2 text-slate-600 text-sm" for="html"
+            >クレジットカード決済</label
+          >
+        </div>
+        <p class="ml-6 text-gray-400 text-[12px]">
+          利用者のデータは暗号化され、安全に保たれます。
+        </p>
       </div>
     </div>
 
@@ -179,15 +199,15 @@
         </ul>
       </div>
       <label
-        class="mt-2 h-12 px-4 border rounded-lg w-full bg-white flex items-center cursor-pointer"
-        :class="{ 'bg-blue-100': isApproved }"
+        class="mt-2 h-12 px-4 border rounded-lg w-full flex items-center cursor-pointer"
+        :class="isApproved ? 'bg-sky-100' : 'bg-white'"
       >
         <CustomCheckbox v-model:checked="isApproved" :size="'lg'" />
         <span class="ml-4">上記の内容を確認しました</span>
       </label>
     </div>
 
-    <div class="mt-8">
+    <div v-if="!isDonationOnly" class="mt-8">
       <p class="text-gray-400 text-[12px]">
         応援広告のメッセージを、#shihonet
         サイト内にも掲載させていただく予定です。もし掲載を希望されない場合は、こちらにチェックをつけてください。
@@ -255,12 +275,13 @@ import { computed, ref } from "vue";
 import { SummaryArea } from "@/views/components/graduation/messageForm";
 import { BaseButton, CustomCheckbox } from "@/views/components/common";
 import { useGraduationMessagesStore } from "@/stores/graduationMessagesStore";
+import { PaymentMethod } from "@/types/graduationMessagesTypes";
 
 const graduationMessagesStore = useGraduationMessagesStore();
 
 const xAccountId = ref("");
 const email = ref("");
-const paymentMethod = ref("");
+const paymentMethod = ref<PaymentMethod>("paypay");
 const selectedAmount = ref(1);
 const isDonationOnly = ref(false);
 const message = ref("");
