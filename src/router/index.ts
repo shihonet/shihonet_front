@@ -13,6 +13,10 @@ import {
   BlogsShowLayout,
   LoginLayout,
   ThanksPostLayout,
+  MessageFormLayout,
+  CompleteFormLayout,
+  CommercialTransactionDisclosureLayout,
+  CompleteCreditCardPayment,
 } from "@/views/layouts";
 
 const routes = [
@@ -57,6 +61,27 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginLayout,
+  },
+  {
+    path: "/graduation",
+    children: [
+      {
+        path: "commercial_transaction_disclosure",
+        component: CommercialTransactionDisclosureLayout,
+      },
+      {
+        path: "complete_credit_card_payment",
+        component: CompleteCreditCardPayment,
+      },
+      {
+        path: "messages/form",
+        component: MessageFormLayout,
+      },
+      {
+        path: "messages/form/complete",
+        component: CompleteFormLayout,
+      },
+    ],
   },
   {
     // 未定義のURLをルートにリダイレクト

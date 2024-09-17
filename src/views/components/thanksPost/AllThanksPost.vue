@@ -4,8 +4,8 @@
     <p>ジェネレーター</p>
   </div>
   <div class="mt-6 text-gray-500 font-light text-center text-[12px]">
-    <p>懐かしい過去のブログから加藤史帆ちゃん画像が厳選され、</p>
-    <p>毎日加藤史帆ちゃんへの感謝をポストできます！</p>
+    <p>懐かしい過去のブログから加藤史帆さん画像が厳選され、</p>
+    <p>毎日加藤史帆さんへの感謝をポストできます！</p>
   </div>
   <div class="mt-12">
     <div v-if="isLoading">
@@ -17,7 +17,7 @@
       </BaseButton>
       <div v-else>
         <p class="text-center text-[16px]">
-          ↓ 本日感謝を捧げる加藤史帆ちゃんはこちら ↓
+          ↓ 本日感謝を捧げる加藤史帆さんはこちら ↓
         </p>
         <div class="flex justify-center mt-8">
           <img :src="imageUrl" class="w-[300px]" />
@@ -41,7 +41,7 @@
         <div class="mt-10 flex items-center justify-center">
           <div
             @click="retryGacha"
-            class="bg-white font-bold py-3 px-6 rounded-full border border-gray-500 hover:opacity-80 hover:cursor-pointer"
+            class="bg-white font-bold py-3 px-6 rounded-full border border-gray-500 hover:opacity-80 cursor-pointer"
           >
             罪ながらもう一度
           </div>

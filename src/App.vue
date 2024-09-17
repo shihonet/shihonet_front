@@ -1,14 +1,8 @@
 <template>
   <div id="app">
-    <Transition>
-      <div v-if="show" class="max-w-[480px] fixed z-[9999] h-full bg-white flex justify-center items-center">
-        <img src="@/assets/images/shihonet_ogp.png" class="w-full" />
-      </div>
-    </Transition>
-
     <ShowToast />
     <PageHeader />
-    <RouterView></RouterView>
+    <RouterView />
     <PageFooter class="mt-40" />
   </div>
 </template>
@@ -16,13 +10,6 @@
 <script setup lang="ts">
 import "./index.css";
 import { PageHeader, PageFooter, ShowToast } from "@/views/components/common";
-import { onMounted, ref } from "vue";
-
-const show = ref(true);
-
-onMounted(() => {
-  show.value = false;
-});
 </script>
 
 <style>
@@ -41,10 +28,13 @@ onMounted(() => {
   background-color: #f4faff;
 }
 
-.v-enter-active, .v-leave-active {
+.v-enter-active,
+.v-leave-active {
   transition: opacity 1s ease 1.5s; /* 遅延してから1秒かけてフェードアウト */
 }
-.v-enter-from, .v-leave-to {
+
+.v-enter-from,
+.v-leave-to {
   opacity: 0;
 }
 
@@ -54,6 +44,10 @@ onMounted(() => {
 
 .bg-site-color {
   background-color: #6197ff;
+}
+
+.bg-site-light-color {
+  background-color: #cedcfb;
 }
 
 .bg-site-blog-color {
@@ -66,6 +60,10 @@ onMounted(() => {
 
 .bg-disabled-color {
   background-color: rgb(227, 227, 227);
+}
+
+.border-site-color {
+  border-color: #6197ff;
 }
 
 .text-error-color {

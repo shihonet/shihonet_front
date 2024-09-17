@@ -3,7 +3,7 @@
     <div class="flex flex-col max-w-72 pt-8 pb-4">
       <div class="text-right">
         <i
-          class="pi pi-times hover:cursor-pointer"
+          class="pi pi-times cursor-pointer"
           style="font-size: 1.5rem"
           @click="closeModal"
         ></i>
@@ -13,10 +13,7 @@
           ブログをお気に入り登録にするにはログインが必要です⭐️
         </p>
         <div class="text-sm">
-          <p class="mt-2">「#shihonet club」へログインすると、</p>
-          <p class="mt-2">・ブログをお気に入りにできる</p>
-          <p>・寄せ書きを投稿できる（絶賛実装予定）</p>
-          <p class="mt-2">以上の機能をご利用いただくことができます。</p>
+          <p class="mt-2">「#shihonet club」へログインすると、ブログをお気に入りに登録して、自分だけのブログリストを作ることができます！</p>
           <p class="mt-2 text-gray-800 text-[12px]">
             ※サイト内にて、一切の費用がかかることはございません
           </p>

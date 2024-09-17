@@ -15,7 +15,7 @@
   <FadeInOnScroll>
     <div class="mt-16 border-2 border-green-200 rounded-lg py-4 px-2">
       <p class="text-[14px] font-light text-center">
-        リアルタイムで加藤史帆ちゃんの近況を知りたい方は、
+        リアルタイムで加藤史帆さんの近況を知りたい方は、
         <a
           href="https://www.hinatazaka46.com/s/h46app/page_common/app_guide"
           target="_blank"

@@ -12,6 +12,7 @@ const openStore = useOpenStore();
 
 const showToastType = computed(() => openStore.getShowToastType);
 const toastMessage = computed(() => openStore.getToastMessage);
+const life = computed(() => openStore.getLife);
 
 // INFO: How to use this component "ShowToast"
 // INFO: Success -> openStore.setToast("success", "[message for success]");
@@ -22,7 +23,7 @@ const showToast = () => {
   toast.add({
     severity: showToastType.value,
     summary: toastMessage.value,
-    life: 3000,
+    life: life.value,
   });
   openStore.resetToast();
 };
