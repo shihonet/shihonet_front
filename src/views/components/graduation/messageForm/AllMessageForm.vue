@@ -74,7 +74,7 @@
         参加口数<span class="text-red-500">*</span>
       </p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        1口500円となります。一度で最大10口まで選択可能です。
+        1口500円となります。一度で最大5口まで選択可能です。
       </p>
       <select
         v-model.number="selectedAmount"
