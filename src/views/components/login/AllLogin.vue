@@ -39,7 +39,6 @@ const openStore = useOpenStore();
 const isLoggedIn = computed(() => userSessionsStore.getIsLoggedIn);
 
 onMounted(async () => {
-  await userSessionsStore.requestGetUserSessions();
   if (!isLoggedIn.value) return;
 
   await router.push("/blogs");
