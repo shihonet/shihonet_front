@@ -68,7 +68,6 @@ const userSessionsStore = useUserSessionsStore();
 const isLoggedIn = ref(false);
 
 onMounted(async () => {
-  await userSessionsStore.requestGetUserSessions();
   isLoggedIn.value = userSessionsStore.getIsLoggedIn;
   await blogShowStore.requestFetchBlog(props.id, isLoggedIn.value);
 });
