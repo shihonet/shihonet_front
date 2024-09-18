@@ -35,7 +35,6 @@ export const useBlogsStore = defineStore("blogs", {
       this.currentPage = page;
       const userSessionsStore = useUserSessionsStore();
       try {
-        await userSessionsStore.requestGetUserSessions();
         const isLoggedIn = userSessionsStore.getIsLoggedIn;
 
         let url = "/api/blogs"; // isFavoriteなしのブログ一覧
