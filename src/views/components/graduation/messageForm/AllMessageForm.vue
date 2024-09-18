@@ -306,12 +306,16 @@ const isEmailValid = computed(() => {
   return emailPattern.test(email.value);
 });
 
+const isMessageValid = computed(() => {
+  return isDonationOnly.value || (message.value.length <= 50 && message.value.length > 0);
+});
+
 const isSubmitButtonDisabled = () => {
   return (
     !isEmailValid.value ||
     !paymentMethod.value ||
     !selectedAmount.value ||
-    (!isDonationOnly.value && !message.value) ||
+    !isMessageValid.value ||
     !isApproved.value ||
     graduationMessagesStore.getIsLoading
   );
