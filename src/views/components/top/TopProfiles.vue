@@ -1,7 +1,7 @@
 <template>
   <div class="mx-6">
     <FadeInOnScroll>
-      <div class="mt-40 mx-10">
+      <div class="mx-10">
         <TitlePart title="Shiho Kato" />
       </div>
       <p class="mt-10 text-center text-light text-site-color text-sm">
