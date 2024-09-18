@@ -220,11 +220,7 @@
       </label>
     </div>
 
-    <BaseButton
-      class="mt-20"
-      @click="submit"
-      :disabled="isSubmitButtonDisabled()"
-    >
+    <BaseButton class="mt-20" @click="submit" :disabled="!isFormValid()">
       送信する
     </BaseButton>
 
@@ -277,6 +273,8 @@ import { BaseButton, CustomCheckbox } from "@/views/components/common";
 import { useGraduationMessagesStore } from "@/stores/graduationMessagesStore";
 import { PaymentMethod } from "@/types/graduationMessagesTypes";
 
+const MAX_MESSAGE_LENGTH = 50;
+
 const graduationMessagesStore = useGraduationMessagesStore();
 
 const xAccountId = ref("");
@@ -298,7 +296,7 @@ const options = [
 ];
 
 const remainingWordCount = () => {
-  return 50 - message.value.length;
+  return MAX_MESSAGE_LENGTH - message.value.length;
 };
 
 const isEmailValid = computed(() => {
@@ -307,17 +305,19 @@ const isEmailValid = computed(() => {
 });
 
 const isMessageValid = computed(() => {
-  return isDonationOnly.value || (message.value.length <= 50 && message.value.length > 0);
+  const isMessageLengthValid =
+    message.value.length > 0 && message.value.length <= MAX_MESSAGE_LENGTH;
+  return isDonationOnly.value || isMessageLengthValid;
 });
 
-const isSubmitButtonDisabled = () => {
+const isFormValid = () => {
   return (
-    !isEmailValid.value ||
-    !paymentMethod.value ||
-    !selectedAmount.value ||
-    !isMessageValid.value ||
-    !isApproved.value ||
-    graduationMessagesStore.getIsLoading
+    isEmailValid.value &&
+    paymentMethod.value &&
+    selectedAmount.value &&
+    isMessageValid.value &&
+    isApproved.value &&
+    !graduationMessagesStore.getIsLoading
   );
 };
 
