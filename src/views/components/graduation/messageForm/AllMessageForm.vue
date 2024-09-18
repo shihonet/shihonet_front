@@ -58,7 +58,8 @@
         <textarea
           class="mt-2 p-4 border rounded-lg w-full bg-white"
           v-model="message"
-          rows="6"
+          @input="formatMessage"
+          rows="4"
         />
         <div
           class="text-[12px] ml-1"
@@ -159,7 +160,7 @@
       <textarea
         class="mt-2 p-4 border rounded-lg w-full bg-white"
         v-model="note"
-        rows="6"
+        rows="4"
       />
     </div>
 
@@ -309,6 +310,13 @@ const isMessageValid = computed(() => {
     message.value.length > 0 && message.value.length <= MAX_MESSAGE_LENGTH;
   return isDonationOnly.value || isMessageLengthValid;
 });
+
+// メッセージの改行と空白を削除
+const formatMessage = (event: any) => {
+  message.value = event.target.value
+    .replace(/\r?\n|\r/g, "")
+    .replace(/[\r\n\s\u3000]/g, "");
+};
 
 const isFormValid = () => {
   return (
