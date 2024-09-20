@@ -31,6 +31,9 @@
 
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">XアカウントID（任意）</p>
+      <p class="mt-1 ml-1 text-gray-400 text-[12px] list-disc">
+        Xのアカウントをお持ちの方は、できるだけご入力をお願いいたします。
+      </p>
       <input
         class="mt-2 h-12 px-4 border rounded-lg w-full bg-white"
         type="text"
