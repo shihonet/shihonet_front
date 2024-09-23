@@ -9,27 +9,38 @@ import {
 import { useOpenStore } from "@/stores/common/openStore";
 import router from "@/router";
 
-interface GraduationMessageState extends GraduationMessage {
+// GraduationMessage から必要なプロパティだけを抽出し、isLoading プロパティを追加した型を定義
+interface GraduationMessageState
+  extends Pick<
+    GraduationMessage,
+    | "participantId"
+    | "email"
+    | "paymentMethod"
+    | "selectedAmount"
+    | "paymentDeadline"
+  > {
   isLoading: boolean;
 }
 
 export const useGraduationMessagesStore = defineStore("graduationMessages", {
   state: (): GraduationMessageState => ({
     participantId: "",
-    xAccountId: null,
     email: "",
     paymentMethod: "" as PaymentMethod,
     selectedAmount: 0,
     paymentDeadline: "",
-    message: null,
-    note: null,
-    excludeFromSiteMessage: false,
     isLoading: false,
   }),
   persist: [
     {
-      key: 'graduationMessages',
-      paths: ['participantId', 'email', 'paymentMethod', 'selectedAmount', 'paymentDeadline'],
+      key: "graduationMessages",
+      paths: [
+        "participantId",
+        "email",
+        "paymentMethod",
+        "selectedAmount",
+        "paymentDeadline",
+      ],
       storage: window.sessionStorage,
     },
   ],
@@ -71,12 +82,12 @@ export const useGraduationMessagesStore = defineStore("graduationMessages", {
         this.paymentDeadline = data.payment_deadline;
         // Redirect to the completion page
         await router.push("/graduation/messages/form/complete");
-        openStore.setToast(
-          "success",
-          "フォームを正常に送信しました！"
-        );
+        openStore.setToast("success", "フォームを正常に送信しました！");
       } catch (error: any) {
-        openStore.setToast("error", "エラーが発生しました。運営者へお問い合わせください。");
+        openStore.setToast(
+          "error",
+          "エラーが発生しました。運営者へお問い合わせください。"
+        );
       } finally {
         this.isLoading = false;
       }

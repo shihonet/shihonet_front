@@ -29,7 +29,7 @@
             <p>
               【送金先】PayPay<br />
               下記リンクよりご送金ください。<br />
-              <a :href="paypayLink" class="text-blue-500 cursor-pointer hover:underline">{{ paypayLink }}</a>
+              <a :href="paypayLink" target="_blank" class="text-blue-500 cursor-pointer hover:underline">{{ paypayLink }}</a>
             </p>
             <p class="mt-3 text-red-500">[重要] 必ずメールアドレスをご記載の上ご送金ください！！</p>
           </div>
@@ -46,7 +46,7 @@
             <p>
               【送金先】クレジットカード決済<br />
               ①こちらのリンクをタップ<br />
-              <a :href="creditCardPaymentLink" class="text-blue-500 cursor-pointer hover:underline">{{
+              <a :href="creditCardPaymentLink" target="_blank" class="text-blue-500 cursor-pointer hover:underline">{{
                 creditCardPaymentLink
               }}</a
               ><br />
