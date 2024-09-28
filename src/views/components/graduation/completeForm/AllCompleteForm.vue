@@ -165,6 +165,6 @@ const paymentDeadline = graduationMessagesStore.getPaymentDeadline;
 
 const amount = `${selectedAmount}口（${selectedAmount * AMOUNT_PER_UNIT}円）`;
 
-const creditCardPaymentLink = "https://donate.stripe.com/test_fZedUqcuL5Kc1Wg8ww";
+const creditCardPaymentLink = "https://donate.stripe.com/eVa01JdBr61QcBWbII";
 const paypayLink = "https://qr.paypay.ne.jp/p2p01_KfeA3K1C26b23yGz";
 </script>
