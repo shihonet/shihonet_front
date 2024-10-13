@@ -52,12 +52,12 @@
         <li>お名前を掲載したい場合は、本文内にご記載ください。</li>
         <li>記入可能文字数は、最大50文字です。</li>
       </ul>
-      <label class="mt-2 ml-1 w-full flex items-center cursor-pointer">
-        <CustomCheckbox v-model:checked="isDonationOnly" />
-        <span class="ml-2 text-gray-400 text-[12px]">
-          ご支援のみでメッセージ記入不要の場合はチェックをつけてください。
-        </span>
-      </label>
+<!--      <label class="mt-2 ml-1 w-full flex items-center cursor-pointer">-->
+<!--        <CustomCheckbox v-model:checked="isDonationOnly" />-->
+<!--        <span class="ml-2 text-gray-400 text-[12px]">-->
+<!--          ご支援のみでメッセージ記入不要の場合はチェックをつけてください。-->
+<!--        </span>-->
+<!--      </label>-->
       <div v-show="!isDonationOnly">
         <textarea
           class="mt-2 p-4 border rounded-lg w-full bg-white"
@@ -76,14 +76,15 @@
 
     <div class="mt-8">
       <p class="ml-1 text-[16px] font-bold">
-        参加口数<span class="text-red-500">*</span>
+        参加口数
       </p>
       <p class="mt-1 ml-1 text-gray-400 text-[12px]">
-        1口500円となります。一度で最大5口まで選択可能です。
+        残り枠数わずかとなった為、1口（500円）参加のみ受け付けております。
       </p>
       <select
         v-model.number="selectedAmount"
-        class="mt-2 h-12 px-4 border rounded-lg w-1/2 bg-white cursor-pointer"
+        class="mt-2 h-12 px-4 border rounded-lg w-1/2 bg-white"
+        :disabled="true"
       >
         <option
           v-for="option in options"
