@@ -7,7 +7,7 @@
     </div>
     <SummaryArea />
 
-    <FinishFormView v-if="isFinished()" class="mt-14" />
+    <FinishFormView v-if="isFinished()" class="mt-14 mx-6" />
 
     <div v-else class="mt-14">
       <div
