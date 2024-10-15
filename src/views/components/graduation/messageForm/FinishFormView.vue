@@ -1,6 +1,5 @@
 <template>
   <div class="text-[16px] py-8 px-4 text-center border-2 border-red-200">
-    目標金額に到達したため、<br />
     募集は終了いたしました！🎉<br />
     たくさんのご参加、<br />
     ありがとうございました！<br />
