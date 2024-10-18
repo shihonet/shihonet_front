@@ -24,7 +24,7 @@
       />
       <div class="flex justify-center mt-5">
         <img
-          src="@/assets/images/graduation_message_ogp.jpg"
+          src="@/assets/images/graduation_message_completed.jpg"
           class="w-full max-w-80 cursor-pointer"
           @click="toMessageFormPage"
         />

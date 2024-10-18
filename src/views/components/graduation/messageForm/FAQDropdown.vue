@@ -4,9 +4,9 @@
     @click="dropdownOpen = !dropdownOpen"
   >
     <p
-      class="text-center pl-6 flex-1 text-white text-3xl font-bold tracking-wider"
+      class="text-center pl-6 flex-1 text-white text-xl tracking-wider"
     >
-      FAQ
+      よくあるご質問
     </p>
     <i
       class="pi pi-angle-down text-white transition-transform duration-300"
@@ -48,7 +48,7 @@
       />
       <QuestionItem
         question="出資した予算はどのように使われますか？"
-        answer="出資金は、広告掲示費用やそれに係るポスター印刷費用として使用いたします。"
+        answer="出資金は、広告掲示費用やポスター印刷費用として使用いたします。"
       />
       <QuestionItem
         question="想定金額に達しなかった場合、企画はどうなりますか？"
