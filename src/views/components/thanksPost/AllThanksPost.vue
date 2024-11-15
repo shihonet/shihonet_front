@@ -74,7 +74,24 @@ const requestGetRandomBlogs = async () => {
   await randomBlogsStore.requestGetRandomBlogs();
 }
 
-const postLink = computed(() => randomBlogsStore.getPostLink()); // NOTE: 関数を呼び出して値を返している
+// 12月25日までの残り日数
+const today = new Date();
+const targetDate = new Date("2024-12-25");
+const diffTime = targetDate.getTime() - today.getTime();
+const remainingDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+console.log(remainingDays);
+
+let tweetText: string;
+// 改行: `%0A`
+// #  : `%23`
+if (remainingDays > 0) {
+  tweetText = `あと${remainingDays}日🎄%0A今日もアイドルでいてくれてありがとう🫶%0A%23としちゃん今日もありがとう%0A%23日向坂46 %23加藤史帆%0A%23shihonet`;
+} else if (remainingDays === 0) {
+  tweetText = `今日はついに %23加藤史帆卒業セレモニー 🎄%0Aとても寂しいです…（ ;  ; ）%0Aそれでも、あなたは私の永遠のアイドルです！%0A今日もアイドルでいてくれてありがとう🫶%0A%23としちゃん今日もありがとう%0A%23日向坂46 %23加藤史帆%0A%23shihonet`;
+} else {
+  tweetText = `今日も永遠のアイドルでいてくれてありがとう🫶%0A%23としちゃん今日もありがとう%0A%23日向坂46 %23加藤史帆%0A%23shihonet`;
+}
+const postLink = `https://x.com/intent/tweet?text=${tweetText}`
 
 const retryGacha = () => {
   randomBlogsStore.setHasClickedButton(false);
