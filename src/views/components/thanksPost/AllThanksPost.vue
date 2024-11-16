@@ -77,9 +77,11 @@ const requestGetRandomBlogs = async () => {
 // 12月25日までの残り日数
 const today = new Date();
 const targetDate = new Date("2024-12-25");
+targetDate.setHours(0, 0, 0, 0);
+today.setHours(0, 0, 0, 0);
+
 const diffTime = targetDate.getTime() - today.getTime();
 const remainingDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-console.log(remainingDays);
 
 let tweetText: string;
 // 改行: `%0A`
